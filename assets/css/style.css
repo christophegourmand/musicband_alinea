@@ -1,0 +1,172 @@
+/*#########################  RESET */
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+
+a:any-link {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+/*#########################  VARIABLES */
+:root {
+    --gray: hsl(0, 0%, 21%);
+    --lightgray: hsl(0, 0%, 37%);
+    --darkgray: hsl(0, 0%, 11%);
+    
+    --blue: hsl(216, 100%, 50%);;
+    --lightblue: hsl(216, 100%, 74%);
+    --darkblue: hsl(216, 100%, 29%);;
+    
+
+    --green: hsl(150, 100%, 46%);
+    --lightgreen: hsl(150, 100%, 75%);
+    --darkgreen: hsl(150, 97%, 24%);
+
+    --red: hsl(9, 100%, 50%);
+    --lightred: hsl(9, 100%, 76%);
+    --darkred: hsl(9, 100%, 29%);
+    
+    --orange: hsl(22, 100%, 56%);
+    --lightorange: hsl(22, 100%, 64%);
+    --darkorange: hsl(22, 100%, 37%);
+
+    --yellow: hsl(54, 100%, 50%);
+    --lightyellow: hsl(54, 100%, 74%);
+    --darkyellow: hsl(54, 98%, 38%);
+
+    --gold: hsl(44, 100%, 50%);
+    --lightgold: hsl(44, 100%, 68%);
+    --darkgold: hsl(44, 100%, 39%);
+
+    --cyan: hsl(172, 100%, 37%);
+    --lightcyan: hsl(172, 99%, 47%);
+    --cyan: hsl(172, 100%, 24%);
+}
+
+/*#########################  BASE & TYPO */
+body {
+    height: 100vh;
+
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-style: normal; /* or italic */
+    font-variant: normal; /* or small-cap */
+}
+/*#########################  LAYOUT */
+
+/* ------------------------ Repérage */
+header {
+    background-color: var(--lightblue);
+}
+
+main {
+    background-color: var(--lightred);
+}
+
+footer {
+    background-color: var(--lightblue);
+}
+
+
+/* ------------------------ mainLayout */
+body {
+    display: grid;
+    grid-template-rows: minmax(150px, 1fr) 4fr auto;
+}
+
+
+
+/* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
+
+/* X-S : */
+/* @media screen and (max-width: 576.9px) {  */
+    
+
+/* }  */
+
+/* SM : */
+@media screen and (min-width: 576px) {
+
+}
+
+/* MD : */
+@media screen and (min-width: 768px) {
+
+}
+
+/* LG : */
+@media screen and (min-width: 992px) {
+
+
+}
+
+/* XL : */
+@media screen and (min-width: 1200px) {
+
+}
+
+
+/*#########################  MODULES */
+
+
+/* ------------------------ Navbar Bottom */
+
+
+
+@media screen and (max-width: 768px) {
+    .navbtm {
+        display: block;
+
+        background-color: hsl(0, 96%, 15%);
+    }
+
+        .navbtm-menus {
+            /* margin: 0 1rem; */
+
+            /* display: grid; */
+            /* grid-template-columns: 1fr 1fr 1fr 1fr;  */
+
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+        }
+
+            .navbtm-item {
+                flex-grow: 1;  /* as a child */
+                padding: .5rem;
+
+                display: flex;  /* as a parent */
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+                .navbtm-link {
+                    font-size: 10vw;
+                    color: white; /* if not class 'active' */
+                }
+
+            .navbtm-item.active .navbtm-link {
+                color: hsl(9, 100%, 43%);  /* if class active only */
+            }
+
+}
+
+@media screen and (min-width: 768px) {
+    .navbtm {
+        display: none;
+    }
+}
+/*#########################  STATES */
+/*#########################  THEME */
+main {
+    background-color: #222;
+    color: white;
+}
+
+
