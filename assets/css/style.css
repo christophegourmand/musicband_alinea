@@ -1,4 +1,4 @@
-/*#########################  RESET */
+/*:r #########################  RESET */
 * {
     box-sizing: border-box;
     margin:0;
@@ -13,7 +13,7 @@ li {
     list-style-type: none;
 }
 
-/*#########################  VARIABLES */
+/*:r #########################  VARIABLES */
 :root {
     --gray: hsl(0, 0%, 21%);
     --lightgray: hsl(0, 0%, 37%);
@@ -47,81 +47,232 @@ li {
     --cyan: hsl(172, 100%, 37%);
     --lightcyan: hsl(172, 99%, 47%);
     --cyan: hsl(172, 100%, 24%);
+
 }
 
-/*#########################  BASE & TYPO */
+/*:r #########################  BASE & TYPO */
 body {
     height: 100vh;
 
-    font-family: sans-serif;
-    font-size: 1rem;
+    /* font-family: sans-serif; */
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.2rem;
     font-style: normal; /* or italic */
     font-variant: normal; /* or small-cap */
 }
-/*#########################  LAYOUT */
 
-/* ------------------------ Repérage */
-header {
-    background-color: var(--lightblue);
+/*:r #########################  LAYOUT */
+
+
+/*:o ---------------------- mainLayout */
+
+.pageMargin {
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
+
+header {
+    height: 100vh;
+}
+
 
 main {
-    background-color: var(--lightred);
+    height: 20rem;
 }
-
-footer {
-    background-color: var(--lightblue);
-}
-
-
-/* ------------------------ mainLayout */
-body {
-    display: grid;
-    grid-template-rows: minmax(150px, 1fr) 4fr auto;
-}
-
 
 
 /* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
 
 /* X-S : */
 /* @media screen and (max-width: 576.9px) {  */
-    
+
+
+
+
 
 /* }  */
 
-/* SM : */
+/*:b SM : */
 @media screen and (min-width: 576px) {
 
 }
 
-/* MD : */
+/*:b MD : */
 @media screen and (min-width: 768px) {
 
 }
 
-/* LG : */
+/*:b LG : */
 @media screen and (min-width: 992px) {
 
 
 }
 
-/* XL : */
+/*:b XL : */
 @media screen and (min-width: 1200px) {
 
 }
 
 
-/*#########################  MODULES */
+/*:r #########################  MODULES */
 
 
-/* ------------------------ Navbar Bottom */
+/*
+:g  petits écran :  pas de nav-toggler, juste bouton rond en bas
+:g  moyen écran :  nav-toggler,  mais pas de menu en bas
+:g  OU ALORS POUR PETIT ET MOYEN, uTILISER QUE LE BOUTON DU BAS.
+:g  
+*/
+
+/*:y ------------------------ Navbar  */
+
+/*:b  APPLIQUER QUOI QU'IL ARRIVE  */
+.nav {
+    
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+
+                    /* border: 1px solid red; */
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+                        background-color: hsla(0, 31.9%, 44.3%, 0.36);
+}
+
+    .nav-brand {
+        font-size: 2.5rem;
+        color: white;
+    }
 
 
+        .nav-link {
+            font-size: 1.2rem;
+            font-weight: 100;
+        }
+
+
+/*:b UNIQUEMENT POUR LES PETITS ECRANS */
+@media screen and (max-width: 768px) {
+
+    .nav {
+    }
+
+        .nav-brand {
+            
+        }
+
+        .nav-toggler {
+            background-color: transparent;
+            color: white;
+            font-size: 2rem;
+            border: none;
+        }
+
+        .nav-menus {
+            display: none;
+        }
+
+            .nav-item {
+
+            }
+            
+                .nav-link {
+
+                }
+
+}
+
+/*:b UNIQUEMENT POUR LES GRANDS ÉCRANS */
+@media screen and (min-width: 768px) {
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+        .nav-brand {
+                            /* border: 1px solid white; */
+            flex-grow:1;
+            
+        }
+
+        .nav-toggler {
+            display: none;
+        }
+
+        .nav-menus {
+            flex-grow: 3;
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            /* align-content: baseline; */
+            align-items: stretch;
+
+                            /* border: 1px solid white; */
+        }
+
+            .nav-item {
+                flex-grow: 1;
+                /* margin-left: 2rem;  */
+                
+                                /* background-color: darkred; */
+                                /* border: 1px solid red; */
+
+                display: flex;
+                
+                justify-content: center;
+                align-items: center;
+            }
+
+
+                .nav-link {
+                    padding-bottom: .3rem;
+
+                    color: white;
+                
+                                /* border: 1px solid yellow; */
+                }
+
+                .nav-item.active .nav-link {
+                    border-bottom: 3px solid var(--red);
+                }
+}
+
+
+/*:y ------------------------ BRAND  */
+.brand {
+    height: 80%;
+                /* border: 1px solid white; */
+                /* background: white; */
+
+    display: grid;
+    place-items: center;
+}
+
+    .brand-name {
+        font-family: 'Mrs Saint Delafield', cursive;
+        font-weight: 200;
+        font-size: 12rem;
+        color: white;
+    }
+
+
+
+
+/*:y ------------------------ Navbar Bottom */
 
 @media screen and (max-width: 768px) {
     .navbtm {
         display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
 
         background-color: hsl(0, 96%, 15%);
     }
@@ -162,10 +313,20 @@ body {
         display: none;
     }
 }
-/*#########################  STATES */
-/*#########################  THEME */
+
+/*:r #########################  STATES */
+
+
+/*:r #########################  THEME */
+header {
+    background-image: url("../img/alinea_img_instrument_gtr-chevalet_001_degrade.jpg");
+    background-position: 60% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 main {
-    background-color: #222;
+    background-color: #1e1e1e;
     color: white;
 }
 
