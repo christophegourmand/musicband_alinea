@@ -1,0 +1,361 @@
+@charset "UTF-8";
+/* UTILITIES */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
+/*:b SM : */
+/*:b MD : */
+/*:b LG : */
+/*:b XL : */
+@-webkit-keyframes apparition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes apparition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes neon {
+  0% {
+    text-shadow: none;
+  }
+  25% {
+    text-shadow: 0 0 .5rem white;
+  }
+  50% {
+    text-shadow: 0 0 3rem white;
+  }
+  100% {
+    text-shadow: 0 0 1rem white;
+  }
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: none;
+  }
+  25% {
+    text-shadow: 0 0 .5rem white;
+  }
+  50% {
+    text-shadow: 0 0 3rem white;
+  }
+  100% {
+    text-shadow: 0 0 1rem white;
+  }
+}
+
+/* BASE */
+/* HERE HTML-TAGS ONLY , it should not contain class, id , or else */
+a:-webkit-any-link {
+  text-decoration: none;
+}
+a:-moz-any-link {
+  text-decoration: none;
+}
+a:any-link {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  /* font-family: sans-serif; */
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  /* or italic */
+  font-variant: normal;
+  /* or small-cap */
+}
+
+/* LAYOUTS */
+body {
+  height: 100vh;
+}
+
+.pageMargin {
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+header {
+  height: 100vh;
+}
+
+.header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main {
+  height: 20rem;
+}
+
+/* MODULES */
+/*:y ------------------------ Navbar  */
+/*:b  APPLIQUER QUOI QU'IL ARRIVE ==================================  */
+.nav {
+  width: 100%;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-brand {
+  border: 1px solid orange;
+  vertical-align: middle;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.nav-brand > span {
+  position: relative;
+  top: .3rem;
+}
+
+.nav-item {
+  border: 1px solid blue;
+}
+
+.nav-link {
+  border: 1px solid white;
+  font-size: 2.2rem;
+  font-weight: 200;
+}
+
+/*:b UNIQUEMENT POUR LES PETITS ECRANS ============================================= */
+@media screen and (max-width: 768px) {
+  .nav-toggler {
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border: 1px solid blue;
+  }
+  .nav-menus {
+    display: none;
+  }
+}
+
+/*:b UNIQUEMENT POUR LES GRANDS ÉCRANS ==================================================== */
+@media screen and (min-width: 768px) {
+  .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .nav-brand {
+    /* border: 1px solid white; */
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
+  .nav-toggler {
+    display: none;
+  }
+  .nav-menus {
+    -webkit-box-flex: 3;
+        -ms-flex-positive: 3;
+            flex-grow: 3;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    /* align-content: baseline; */
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    /* border: 1px solid white; */
+  }
+  .nav-item {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    /* margin-left: 2rem; */
+    /* background-color: darkred; */
+    /* border: 1px solid red; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nav-link {
+    padding-top: 1.2rem;
+    /*padding-bottom: .3rem;*/
+    color: white;
+    /* border: 1px solid yellow; */
+  }
+  .nav-item.active .nav-link {
+    border-bottom: 3px solid var(--red);
+    font-weight: 600;
+  }
+}
+
+.brand {
+  display: inline-block;
+  margin-top: 2rem;
+  -webkit-animation-name: apparition;
+          animation-name: apparition;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+}
+
+.brand .brand-logo {
+  display: inline-block;
+  margin-right: -0.6rem;
+  height: 9.5rem;
+}
+
+.brand .brand-name {
+  display: inline-block;
+  font-family: 'Overpass', sans-serif;
+  font-weight: 200;
+  font-size: 5.5rem;
+  color: white;
+  -webkit-animation-name: neon;
+          animation-name: neon;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  /*text-shadow: 0 0 1rem blue;   */
+  /*end of animation must match */
+}
+
+.brand .brand-name:first-letter {
+  /* the letter A of 'alinea' has been kept in html (entire name in 'h1' for Google). 
+        So here I make it desapear to replace by a logo 'A' instead. */
+  font-size: 0;
+}
+
+/*:y ------------------------ Navbar Bottom */
+@media screen and (max-width: 768px) {
+  .navbtm {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #4b0202;
+  }
+  .navbtm-menus {
+    /* margin: 0 1rem; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;  */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+            justify-content: stretch;
+  }
+  .navbtm-item {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    /* as a child */
+    padding: .5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* as a parent */
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .navbtm-link {
+    font-size: 10vw;
+    color: white;
+    /* if not class 'active' */
+  }
+  .navbtm-item.active .navbtm-link {
+    color: #db2100;
+    /* if class active only */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbtm {
+    display: none;
+  }
+}
+
+/* STATES */
+/* THEME */
+header {
+  background-image: url("../img/backgrounds/alinea_background_guitar_black.jpg");
+  background-position: 60% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+main {
+  /*background-color: #1e1e1e;*/
+  background-color: red;
+  color: dark;
+}
+/*# sourceMappingURL=main_style.css.map */

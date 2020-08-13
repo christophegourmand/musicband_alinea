@@ -1,0 +1,16 @@
+// @use "../utilities/colors";
+
+header {
+    background-image: url("../img/backgrounds/alinea_background_guitar_black.jpg");
+    // background-color: $darkgray;
+    background-position: 60% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+    /*background-color: #1e1e1e;*/
+	background-color: red;
+
+    color: dark;
+}

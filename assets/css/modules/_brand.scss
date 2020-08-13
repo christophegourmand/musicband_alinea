@@ -1,0 +1,42 @@
+.brand {
+    display: inline-block;
+    margin-top: 2rem; 
+
+	animation-name: apparition;
+	animation-duration: 5s;
+
+    .brand-logo {
+        display: inline-block;
+        margin-right: -0.6rem;
+
+        height: 9.5rem;
+        // position: relative;
+        // bottom: 2rem;
+
+    }
+
+
+
+    .brand-name {
+        display: inline-block;
+
+        // font-family: 'Mrs Saint Delafield', cursive;
+        font-family: 'Overpass', sans-serif;
+
+        font-weight: 200;
+        font-size: 5.5rem;
+        color: white;
+		
+		animation-name: neon;
+		animation-duration: 2s;
+		/*text-shadow: 0 0 1rem blue;   */
+				/*end of animation must match */
+    }
+
+    .brand-name:first-letter {
+        /* the letter A of 'alinea' has been kept in html (entire name in 'h1' for Google). 
+        So here I make it desapear to replace by a logo 'A' instead. */
+        font-size: 0;   
+    }
+
+}

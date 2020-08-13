@@ -1,0 +1,48 @@
+/*:y ------------------------ Navbar Bottom */
+
+@media screen and (max-width: 768px) {
+    .navbtm {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        background-color: hsl(0, 96%, 15%);
+    }
+
+        .navbtm-menus {
+            /* margin: 0 1rem; */
+
+            /* display: grid; */
+            /* grid-template-columns: 1fr 1fr 1fr 1fr;  */
+
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+        }
+
+            .navbtm-item {
+                flex-grow: 1;  /* as a child */
+                padding: .5rem;
+
+                display: flex;  /* as a parent */
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+                .navbtm-link {
+                    font-size: 10vw;
+                    color: white; /* if not class 'active' */
+                }
+
+            .navbtm-item.active .navbtm-link {
+                color: hsl(9, 100%, 43%);  /* if class active only */
+            }
+
+}
+
+@media screen and (min-width: 768px) {
+    .navbtm {
+        display: none;
+    }
+}

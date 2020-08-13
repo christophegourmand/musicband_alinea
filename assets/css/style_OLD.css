@@ -128,7 +128,6 @@ main {
 
 /*:b  APPLIQUER QUOI QU'IL ARRIVE  */
 .nav {
-    
     padding-top: .5rem;
     padding-bottom: .5rem;
 
@@ -143,46 +142,54 @@ main {
 }
 
     .nav-brand {
+					/*border: 1px solid red;*/
+		
+		vertical-align:  middle;
         font-size: 2.5rem;
         color: white;
     }
 
+	.nav-brand > span {
+		position: relative;
+		top: .3rem;
+	}
+
+	.nav-menus {}
+
+		.nav-item {
+						/*border: 1px solid blue;*/
+		}
+
 
         .nav-link {
-            font-size: 1.2rem;
-            font-weight: 100;
+						/*border: 1px solid white;*/
+            font-size: 1.3rem;
+            font-weight: 200;
         }
 
 
 /*:b UNIQUEMENT POUR LES PETITS ECRANS */
 @media screen and (max-width: 768px) {
 
-    .nav {
-    }
+    .nav {}
 
-        .nav-brand {
-            
-        }
+        .nav-brand {}
 
         .nav-toggler {
             background-color: transparent;
             color: white;
             font-size: 2rem;
             border: none;
+									border: 1px solid blue;
         }
 
         .nav-menus {
             display: none;
         }
 
-            .nav-item {
-
-            }
+            .nav-item {}
             
-                .nav-link {
-
-                }
-
+                .nav-link {}
 }
 
 /*:b UNIQUEMENT POUR LES GRANDS ÉCRANS */
@@ -198,7 +205,6 @@ main {
         .nav-brand {
                             /* border: 1px solid white; */
             flex-grow:1;
-            
         }
 
         .nav-toggler {
@@ -211,7 +217,7 @@ main {
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
-            /* align-content: baseline; */
+            				/* align-content: baseline; */
             align-items: stretch;
 
                             /* border: 1px solid white; */
@@ -219,33 +225,58 @@ main {
 
             .nav-item {
                 flex-grow: 1;
-                /* margin-left: 2rem;  */
+                /* margin-left: 2rem; */
                 
                                 /* background-color: darkred; */
                                 /* border: 1px solid red; */
 
                 display: flex;
-                
+
                 justify-content: center;
                 align-items: center;
-            }
+			}
 
-
+			.nav-item:hover .nav-link {
+			}
+			
                 .nav-link {
-                    padding-bottom: .3rem;
+					padding-top: 1.2rem;
+                    /*padding-bottom: .3rem;*/
 
                     color: white;
-                
+
                                 /* border: 1px solid yellow; */
                 }
 
                 .nav-item.active .nav-link {
                     border-bottom: 3px solid var(--red);
+					font-weight: 600;
                 }
 }
 
 
 /*:y ------------------------ BRAND  */
+
+@keyframes apparition {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+@keyframes neon {
+	0% {
+		text-shadow: none;
+	}
+	25% {
+		text-shadow: 0 0 .5rem white;			
+	}
+	50% {
+		text-shadow: 0 0 3rem white;
+	}
+	100% {
+		text-shadow: 0 0 1rem white;
+	}
+}
+
 .brand {
     height: 80%;
                 /* border: 1px solid white; */
@@ -253,6 +284,9 @@ main {
 
     display: grid;
     place-items: center;
+	
+	animation-name: apparition;
+	animation-duration: 5s;
 }
 
     .brand-name {
@@ -260,6 +294,11 @@ main {
         font-weight: 200;
         font-size: 12rem;
         color: white;
+		
+		animation-name: neon;
+		animation-duration: 2s;
+		/*text-shadow: 0 0 1rem blue;   */
+				/*end of animation must match */
     }
 
 
@@ -326,8 +365,10 @@ header {
 }
 
 main {
-    background-color: #1e1e1e;
-    color: white;
+    /*background-color: #1e1e1e;*/
+	background-color: white;
+
+    color: dark;
 }
 
 
