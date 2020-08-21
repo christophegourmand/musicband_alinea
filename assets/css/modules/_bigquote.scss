@@ -1,0 +1,22 @@
+.bigquote {
+    padding: $headerMargin;
+
+    font: {
+        family: inherit;
+        weight: 100;
+        size: 2rem;
+        style: normal;    
+    }
+
+    color: white;
+
+    .bigquote-text {
+        text-align: justify;
+    }
+
+    .bigquote-author {
+        font-size: 1.5rem;
+    }
+}
+
+

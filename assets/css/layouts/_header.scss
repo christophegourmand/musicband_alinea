@@ -1,10 +1,20 @@
 header {
     height: 100vh;
+
+    @include flex_col(space-between, stretch);
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.header-head {
+    flex-grow: 1;
+
+    @include flex_col(flex-start, center);
 }
 
+.header-body {
+    flex-grow: 1;
+
+    width: 100%;
+    padding: 0 $headerMargin;
+
+    @include flex_col(flex-end, flex-end);
+}

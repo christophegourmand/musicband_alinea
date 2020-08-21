@@ -1,4 +1,6 @@
 // :root {
+    $dominant-color: #f50000;
+
     $gray: hsl(0, 0%, 21%);
     $lightgray: hsl(0, 0%, 37%);
     $darkgray: hsl(0, 0%, 11%);
@@ -11,9 +13,10 @@
     $lightgreen: hsl(150, 100%, 75%);
     $darkgreen: hsl(150, 97%, 24%);
 
-    $red: hsl(9, 100%, 50%);
+    // $red: hsl(9, 100%, 50%);
+    $red: hsl(0, 100%, 39%);
     $lightred: hsl(9, 100%, 76%);
-    $darkred: hsl(9, 100%, 29%);
+    $darkred: hsl(9, 100%, 32%);
     
     $orange: hsl(22, 100%, 56%);
     $lightorange: hsl(22, 100%, 64%);

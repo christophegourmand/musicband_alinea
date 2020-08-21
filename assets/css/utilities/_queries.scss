@@ -2,22 +2,22 @@
 
 
 /*:b SM : */
-@media screen and (min-width: 576px) {
+@media screen and (min-width: #{$breakpoint-sm}) {
 
 }
 
 /*:b MD : */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: #{$breakpoint-md}) {
 
 }
 
 /*:b LG : */
-@media screen and (min-width: 992px) {
+@media screen and (min-width: #{$breakpoint-lg}) {
 
 
 }
 
 /*:b XL : */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: #{$breakpoint-xl}) {
 
 }

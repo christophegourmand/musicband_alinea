@@ -1,0 +1,21 @@
+
+.interactive-flyover {
+        width: 100vw;
+
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+
+    .interactive-flyover_img {
+        // flex-grow: 1;
+        width: 100%;
+    }
+    
+    .interactive-flyover_result {
+        // flex-grow: 1;
+        width: 100%;
+
+        .result {
+            color: white;
+        }
+    }
+}

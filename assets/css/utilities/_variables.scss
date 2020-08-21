@@ -1,1 +1,41 @@
+// MEDIA QUERIES ==================================
+
+// XS: old phones
+$breakpoint-sm: 576px; 
+// phone
+$breakpoint-md: 768px; 
+// tablet
+$breakpoint-lg: 992px;
+// laptop
+$breakpoint-xl: 1200px;
+// wide display (imac, tv)
+
+$smaller-than-sm: "only screen and (max-width: #{$breakpoint-sm})";
+$bigger-than-sm: "only screen and (min-width: #{$breakpoint-sm})";
+
+$smaller-than-md: "only screen and (max-width: #{$breakpoint-md})";
+$bigger-than-md: "only screen and (min-width: #{$breakpoint-md})";
+
+$smaller-than-lg: "only screen and (max-width: #{$breakpoint-lg})";
+$bigger-than-lg: "only screen and (min-width: #{$breakpoint-lg})";
+
+$smaller-than-xl: "only screen and (max-width: #{$breakpoint-xl})";
+$bigger-than-xl: "only screen and (min-width: #{$breakpoint-xl})";
+
+/*
+https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
+    
+    According to this website, here are the sizes of devices : 
+    (i personaly think that most devices have bigger sizes than that)
+
+    320px — 480px: Mobile devices
+    481px — 768px: iPads, Tablets
+    769px — 1024px: Small screens, laptops
+    1025px — 1200px: Desktops, large screens
+    1201px and more —  Extra large screens, TV
+*/
+
+// OTHER VARIABLES ==================================
+
 $pageMargin: 6vw;
+$headerMargin: 2rem;

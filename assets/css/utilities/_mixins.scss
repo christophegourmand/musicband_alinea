@@ -1,5 +1,23 @@
 // faire un mixin pour flex: 
-        // display: flex;
-        // flex-direction: row;
-        // justify-content: center;
-        // align-items: center;
+
+@mixin flex_row($x-align:space-evenly, $y-align:center){
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: $x-align;
+        align-items: $y-align;
+}
+
+@mixin flex_col($x-align, $y-align){
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: $x-align;
+        align-items: $y-align;
+}
+
+
+@mixin bordure($color){
+        border: 1px solid $color;
+                                                        // border-color: transparent;
+}

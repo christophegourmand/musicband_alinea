@@ -1,30 +1,34 @@
+$ratio-brand-and-name: 5.5/9.5; 
+
 .brand {
+
     display: inline-block;
-    margin-top: 2rem; 
+    margin-top: 2rem;
+
+    @include flex_row(center, baseline);
 
 	animation-name: apparition;
 	animation-duration: 5s;
 
     .brand-logo {
-        display: inline-block;
+        // display: inline-block;
         margin-right: -0.6rem;
 
         height: 9.5rem;
         // position: relative;
         // bottom: 2rem;
 
+                                                        // @include bordure(yellow);
     }
 
-
-
     .brand-name {
-        display: inline-block;
+        // display: inline-block;
 
         // font-family: 'Mrs Saint Delafield', cursive;
         font-family: 'Overpass', sans-serif;
 
         font-weight: 200;
-        font-size: 5.5rem;
+        font-size: 9.5rem*$ratio-brand-and-name;
         color: white;
 		
 		animation-name: neon;
@@ -38,5 +42,16 @@
         So here I make it desapear to replace by a logo 'A' instead. */
         font-size: 0;   
     }
+}
 
+@media #{$smaller-than-lg} {
+    .brand{
+        .brand-logo {
+            height: 6rem;
+        }
+        
+        .brand-name {
+            font-size: 6rem*$ratio-brand-and-name;
+        }
+    }
 }

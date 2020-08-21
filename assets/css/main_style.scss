@@ -10,7 +10,7 @@
 @import "base/base";
 @import "base/fonts";
 @import "base/typo";
-@import "base/tables";
+// @import "base/tables";
 
 /* LAYOUTS */
 @import "layouts/body";
@@ -24,6 +24,11 @@
 @import "modules/navbar";
 @import "modules/brand";
 @import "modules/navbar-bottom";
+@import "modules/catchphrase";
+@import "modules/bigquote";
+@import "modules/interactive-flyover";
+
+@import "modules/test";
 
 /* STATES */
 @import "states/states";
@@ -32,3 +37,4 @@
 @import "theme/dark";
 @import "theme/light";
 @import "theme/back-white-red";
+

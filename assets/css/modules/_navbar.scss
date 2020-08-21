@@ -1,85 +1,199 @@
 /*:y ------------------------ Navbar  */
 
-/*:b  APPLIQUER QUOI QU'IL ARRIVE ==================================  */
+//:g  APPLIQUER QUOI QU'IL ARRIVE ==================================
 .nav {
+                                            // @include bordure(red);
     width: 100%;
-
+    margin-right: $pageMargin;
+    margin-left: $pageMargin;
+    
     padding-top: .5rem;
     padding-bottom: .5rem;
 
-                    border: 1px solid red;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 
-                        // background-color: hsla(0, 31.9%, 44.3%, 0.36);
-}
+
+    @include flex_row(space-between, stretch);
+
 
     .nav-brand {
-					border: 1px solid orange;
-		
+					                        // @include bordure(rgb(61, 255, 78));
 		vertical-align:  middle;
         font-size: 2.5rem;
         color: white;
+ 
+        span {
+            position: relative;
+            top: .3rem;
+        }
     }
 
-	.nav-brand > span {
-		position: relative;
-		top: .3rem;
-	}
-
-	.nav-menus {}
+	.nav-menus {
+                                        // @include bordure(orange);
+        height: 100%;
 
 		.nav-item {
-						border: 1px solid blue;
+                                        // @include bordure(yellow);
+            @include flex_row(center, center);
+				
+            .nav-link {
+                                        // @include bordure(blue);
+                // display: inline;
+                
+                height: fit-content;
+                font-size: 2.2rem;
+                font-weight: 200;
+            }
 		}
 
+    }
+}
 
-        .nav-link {
-						border: 1px solid white;
-            font-size: 2.2rem;
-            font-weight: 200;
-        }
+//:g UNIQUEMENT POUR LES PETITS ECRANS =============================================
+@media #{$smaller-than-lg} {
 
+    .nav {
+        position: fixed;
+        bottom: 0rem;
+        left: 0;
 
-/*:b UNIQUEMENT POUR LES PETITS ECRANS ============================================= */
-@media screen and (max-width: 768px) {
+        margin-right: 0;
+        margin-left: 0;
 
-    .nav {}
+        padding-top: 0;
+        padding-bottom: 0;
 
-        .nav-brand {}
+        display: flex;
+        flex-direction: column-reverse;
+        // align-items: stretch;
+
+        background-color: $darkgray;
+
+        // .nav-brand {}
 
         .nav-toggler {
-            background-color: transparent;
-            color: white;
-            font-size: 2rem;
+            // width: 3.5rem;
+            // width: 5rem;
+            
+            // padding: .5rem .9rem;
+            height: 8vh;
+
+            // border-radius: 3rem;
+            // border: 1px solid white;
             border: none;
-									border: 1px solid blue;
+            
+            // background-color: hsla(0, 18%, 11%, 0.5);
+            background-color: #3b3b3b;
+
+            font-size: 2rem;
+            text-align: center;
+            color: white;
+
+            &:active {
+                border: none;
+            }
         }
 
         .nav-menus {
             display: none;
-        }
-
-            .nav-item {}
+            height: 92vh;
             
-                .nav-link {}
-}
+            // When button_toggler is clicked, class "show" is added and we display in flex:
+            &.show {
+                // @include flex_col(center,center);
 
-/*:b UNIQUEMENT POUR LES GRANDS ÉCRANS ==================================================== */
-@media screen and (min-width: 768px) {
+                //:r i try display grid : 
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
 
-    .nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: stretch;
+            .nav-item {
+                
+                border: 1px solid #333;
+                @include flex_row(center, baseline);
+
+                .nav-link {
+                    height: 100%;
+                    width: 100%;
+
+                    @include flex_row(center, center);
+
+                    font-size: 2rem;
+                    // font-weight: 400;
+                    color: white;
+                    text-shadow: 1px 1px 2px black;
+                }
+
+            }
+
+            .nav-item.bg-music {
+                background: {
+                    image: url("https://source.unsplash.com/HwU5H9Y6aL8/200x100"); // plus tard appeler une variable.
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            .nav-item.bg-photos {
+                background: {
+                    image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg"); // 
+                    size: cover;
+                    repeat: norepeat;
+                    // color: hsla(0%,100%,50%,1);
+                }
+            }
+            .nav-item.bg-actu {
+                background: {
+                    image: url("https://source.unsplash.com/mnypcmLnXE0/200x100"); // plus tard appeler une variable.
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            .nav-item.bg-tour {
+                background: {
+                    image: url("https://source.unsplash.com/QrqeusbpFMM/200x100"); // plus tard appeler une variable.
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            .nav-item.bg-contact {
+                background: {
+                    image: url("https://source.unsplash.com/PLDkBHbM3Hc/200x100"); // plus tard appeler une variable.
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            .nav-item.bg-bio {
+                background: {
+                    image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00022_nico-tatouage.jpg"); // plus tard appeler une variable.
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            .nav-item.bg-acheter {
+                background: {
+                    image: url("./../img/photos/from-facebook/from_facebook_exploitables/alinea_album_madison_menu.png");
+                    size: cover;
+                    repeat: norepeat;
+                }
+            }
+            
+        }
     }
 
+}
+
+//:g UNIQUEMENT POUR LES GRANDS ÉCRANS ==================================================== 
+@media #{$bigger-than-lg} {
+
+    .nav {
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+        @include flex_row(space-between, stretch);   
+
         .nav-brand {
-                            /* border: 1px solid white; */
             flex-grow:1;
         }
 
@@ -87,45 +201,81 @@
             display: none;
         }
 
-        .nav-menus {
-            flex-grow: 3;
-            
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            				/* align-content: baseline; */
-            align-items: stretch;
+        .nav-scoring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 101;
 
-                            /* border: 1px solid white; */
+            height: 100%;
+            width: 100%;
+
+            padding: 0 $headerMargin;
+
+            // background-color: rgb(146, 146, 146);
+
+            @include flex_col(space-between, stretch);
+
+            .nav-scoring-line {
+                height: 1px;
+                background-color: rgb(146, 146, 146);
+            }
         }
 
+        .nav-menus {
+            flex-grow: 1;
+
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 102;
+            
+            @include flex_row(space-evenly, center);
+
             .nav-item {
-                flex-grow: 1;
+                // flex-grow: 1;
                 /* margin-left: 2rem; */
                 
                                 /* background-color: darkred; */
-                                /* border: 1px solid red; */
 
-                display: flex;
+                @include flex_row(center, center);
 
-                justify-content: center;
-                align-items: center;
-			}
-
-			.nav-item:hover .nav-link {
-			}
-			
                 .nav-link {
-					padding-top: 1.2rem;
+					padding-top: .5rem;
                     /*padding-bottom: .3rem;*/
-
-                    color: white;
-
-                                /* border: 1px solid yellow; */
+                    color: white;      
                 }
 
-                .nav-item.active .nav-link {
-                    border-bottom: 3px solid var(--red);
+                &:hover .nav-link {
+                    position: relative;
+                    top: .5rem;
+                    left: 0;
+                    z-index: 103;
+
+                    font-weight: 400;
+
+                    // &:first-letter {
+                        // color: $red;
+                    // }
+                }
+			
+                &.active .nav-link {
+                    // border-bottom: 3px solid $red;
+                
 					font-weight: 600;
+
                 }
+			}
+
+            .nav-note {
+                                        // @include bordure(yellow);
+
+                height: 1rem;
+                width: 1.3rem;
+                background-color: #b0b0b0;
+                border-radius: 100%;
+
+            }
+        }
+    }
 }

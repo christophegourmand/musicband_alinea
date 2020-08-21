@@ -2,10 +2,14 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+
         <title>ALINEA groupe de musique - site Officiel</title>
         <meta name="description" content="Site Officiel du groupe de musique ALINEA, pour suivre l'actualité, les dates de concerts, retrouver les photos, vidéos et écouter les albums.">
         
-        <link rel="icon" href="./assets/img/favicon_alinea_rouge.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <link rel="icon" href="./assets/img/icons/favicon_alinea_rouge.png">
         
         <!-- FONTS -->
         <script src="https://kit.fontawesome.com/20e04a2320.js" crossorigin="anonymous"></script>
@@ -17,46 +21,104 @@
         <!-- STYLE -->
         <link rel="stylesheet" href="assets/css/main_style.css">
     </head>
+    <!-- ############################################################################## -->
+    <!-- ############################################################################## -->
+    <!-- ############################################################################## -->
     <body>
         <header>
-            <div class="header-container">
+            <div class="header-head">
+                
                 <div class="brand">
-                    <img class="brand-logo" src="/assets/img/icons/logo_alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA">
+                    <!-- <img class="brand-logo" src="/assets/img/icons/Logo_Alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA"> -->
+                    <img class="brand-logo" src="/assets/img/icons/Logo_Alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA">
                     <h1 class="brand-name">ALINEA</h1>
                 </div>
 
-                <nav class="nav pageMargin">
+                <nav class="nav">
                     <!-- <a href="index.html" class="nav-brand"><span>ALINEA</span></a> -->
                     <button type="button" class="nav-toggler" id="nav_toggler"><i class="fas fa-bars"></i></button>
-                    <ul class="nav-menus">
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link">Musique</a>
+
+                    <div class="nav-scoring">
+                        <div class="nav-scoring-line"></div>
+                        <div class="nav-scoring-line"></div>
+                        <div class="nav-scoring-line"></div>
+                        <div class="nav-scoring-line"></div>
+                        <div class="nav-scoring-line"></div>
+                    </div>
+                    <ul class="nav-menus show" id="nav_menus">
+                        <li class="nav-item bg-music active">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Musique</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Photos</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-photos">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Photos</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Actu</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-actu">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Actu</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Tour</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-tour">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Tour</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-contact">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Contact</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Bio</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-bio">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Bio</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Acheter</a>
+                        <div class="nav-note"></div>
+                        <li class="nav-item bg-acheter">
+                            <a href="#" class="nav-link">
+                                <span class="nav-link-title">Acheter</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
+                <div class="header-body">
+                    <blockquote class="catchphrase">ALINEA<br>‟ En s'écartant de la ligne ″</blockquote>
+                </div>
             </div>
         </header>
+
+
         <main>
-            MAIN
+            <section class="bigquote">
+                <blockquote class="bigquote-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error non vitae maxime a consequuntur eius commodi nostrum ipsum possimus? Rerum labore consectetur cupiditate at repellendus facilis recusandae corrupti! Hic!</blockquote>
+                <cite class="bigquote-author">Thierry CIVIDINO</cite>
+            </section>
+
+            <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
+
+            <!-- <section class="interactive-flyover">
+                <img class="interactive-flyover_img" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
+                <div class="interactive-flyover_result">
+                    <p class="result">Simoné</p>
+                    <p class="result">Nicole</p>
+                    <p class="result">Thierry</p>
+                    <p class="result">Nico</p>
+                    <p class="result">Ponpon</p>
+                </div>
+            </section> -->
+            
+
         </main>
+
+        
         <footer>
             <!--
             <nav class="navbtm">
@@ -84,5 +146,7 @@
             </nav>
             -->
         </footer>
+
+        <script src="./assets/js/mainPage.js"></script>
     </body>
 </html>

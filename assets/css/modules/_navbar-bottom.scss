@@ -1,13 +1,15 @@
 /*:y ------------------------ Navbar Bottom */
 
-@media screen and (max-width: 768px) {
+@media #{$smaller-than-lg} {
     .navbtm {
+        width: 100%;
+
         display: block;
         position: absolute;
         left: 0;
         bottom: 0;
 
-        background-color: hsl(0, 96%, 15%);
+        background-color: hsla(0, 96%, 15%, 0.3);
     }
 
         .navbtm-menus {
@@ -41,7 +43,7 @@
 
 }
 
-@media screen and (min-width: 768px) {
+@media #{$bigger-than-lg} {
     .navbtm {
         display: none;
     }
