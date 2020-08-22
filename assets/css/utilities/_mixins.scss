@@ -1,4 +1,6 @@
-// faire un mixin pour flex: 
+/* =========================================== */
+/* UTILITIES / MIXINS */
+/* =========================================== */
 
 @mixin flex_row($x-align:space-evenly, $y-align:center){
         display: flex;
