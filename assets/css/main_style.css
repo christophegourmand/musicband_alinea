@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* UTILITIES */
+/* =========================================== */
+/* UTILITIES / NORMALIZE */
+/* =========================================== */
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -7,6 +10,15 @@
   padding: 0;
 }
 
+/* =========================================== */
+/* UTILITIES / MIXINS */
+/* =========================================== */
+/* =========================================== */
+/* UTILITIES / COLORS */
+/* =========================================== */
+/* =========================================== */
+/* UTILITIES / VARIABLES */
+/* =========================================== */
 /*
 https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
     
@@ -19,11 +31,17 @@ https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-stan
     1025px — 1200px: Desktops, large screens
     1201px and more —  Extra large screens, TV
 */
+/* =========================================== */
+/* UTILITIES / QUERIES */
+/* =========================================== */
 /* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
 /*:b SM : */
 /*:b MD : */
 /*:b LG : */
 /*:b XL : */
+/* =========================================== */
+/* UTILITIES / ANIMATIONS */
+/* =========================================== */
 @-webkit-keyframes apparition {
   from {
     opacity: 0;
@@ -72,6 +90,9 @@ https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-stan
 }
 
 /* BASE */
+/* =========================================== */
+/* BASE / base */
+/* =========================================== */
 /* HERE HTML-TAGS ONLY , it should not contain class, id , or else */
 a:-webkit-any-link {
   text-decoration: none;
@@ -94,6 +115,9 @@ img {
   width: 100%;
 }
 
+/* =========================================== */
+/* BASE / fonts */
+/* =========================================== */
 body {
   /* font-family: sans-serif; */
   font-family: 'Overpass', sans-serif;
@@ -104,12 +128,21 @@ body {
   /* or small-cap */
 }
 
+/* =========================================== */
+/* BASE / typo */
+/* =========================================== */
 /* LAYOUTS */
+/* =========================================== */
+/* LAYOUTS / body */
+/* =========================================== */
 .pageMargin {
   padding-left: 6vw;
   padding-right: 6vw;
 }
 
+/* =========================================== */
+/* LAYOUTS / header */
+/* =========================================== */
 header {
   height: 100vh;
   display: -webkit-box;
@@ -173,7 +206,22 @@ header {
           align-items: flex-end;
 }
 
+/* =========================================== */
+/* LAYOUTS / main */
+/* =========================================== */
+/* =========================================== */
+/* LAYOUTS / aside */
+/* =========================================== */
+/* =========================================== */
+/* LAYOUTS / footer */
+/* =========================================== */
 /* MODULES */
+/* =========================================== */
+/* MODULES / buttons */
+/* =========================================== */
+/* =========================================== */
+/* MODULES / navbar */
+/* =========================================== */
 /*:y ------------------------ Navbar  */
 .nav {
   width: 100%;
@@ -279,6 +327,9 @@ header {
         grid-template-columns: 1fr 1fr;
     -ms-grid-rows: (1fr)[4];
         grid-template-rows: repeat(4, 1fr);
+  }
+  .nav .nav-menus .nav-note {
+    display: none;
   }
   .nav .nav-menus .nav-item {
     border: 1px solid #333;
@@ -481,6 +532,9 @@ header {
   }
 }
 
+/* =========================================== */
+/* MODULES / brand */
+/* =========================================== */
 .brand {
   display: inline-block;
   margin-top: 2rem;
@@ -538,6 +592,9 @@ header {
   }
 }
 
+/* =========================================== */
+/* MODULES / navbar-bottom */
+/* =========================================== */
 /*:y ------------------------ Navbar Bottom */
 @media only screen and (max-width: 992px) {
   .navbtm {
@@ -598,6 +655,9 @@ header {
   }
 }
 
+/* =========================================== */
+/* MODULES / catchphrase */
+/* =========================================== */
 .catchphrase {
   margin-bottom: 5rem;
   font-size: 1.5rem;
@@ -605,6 +665,9 @@ header {
   color: white;
 }
 
+/* =========================================== */
+/* MODULES / bigquote */
+/* =========================================== */
 .bigquote {
   padding: 2rem;
   font-family: inherit;
@@ -622,6 +685,9 @@ header {
   font-size: 1.5rem;
 }
 
+/* =========================================== */
+/* MODULES / interactive-flyover */
+/* =========================================== */
 .interactive-flyover {
   width: 100vw;
   display: -ms-grid;
@@ -642,8 +708,23 @@ header {
   color: white;
 }
 
+/* =========================================== */
+/* MODULES / test */
+/* =========================================== */
 /* STATES */
+/* =========================================== */
+/* STATES / states */
+/* =========================================== */
 /* THEME */
+/* =========================================== */
+/* THEME / dark */
+/* =========================================== */
+/* =========================================== */
+/* THEME / light */
+/* =========================================== */
+/* =========================================== */
+/* THEME / black-white-red */
+/* =========================================== */
 header {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.5)), to(rgba(84, 135, 165, 0.5))), url("../img/backgrounds/alinea_background_guitar_black.jpg");
   background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.5), rgba(84, 135, 165, 0.5)), url("../img/backgrounds/alinea_background_guitar_black.jpg");
