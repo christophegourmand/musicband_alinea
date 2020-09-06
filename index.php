@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>ALINEA groupe de musique - site Officiel</title>
+        <title><?php echo $page_title?></title>
         <meta name="description" content="Site Officiel du groupe de musique ALINEA, pour suivre l'actualité, les dates de concerts, retrouver les photos, vidéos et écouter les albums.">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,62 +33,8 @@
                     <img class="brand-logo" src="/assets/img/icons/Logo_Alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA">
                     <h1 class="brand-name">ALINEA</h1>
                 </div>
-
-                <nav class="nav">
-                    <!-- <a href="index.html" class="nav-brand"><span>ALINEA</span></a> -->
-                    <button type="button" class="nav-toggler" id="nav_toggler"><i class="fas fa-bars"></i></button>
-
-                    <div class="nav-scoring">
-                        <div class="nav-scoring-line"></div>
-                        <div class="nav-scoring-line"></div>
-                        <div class="nav-scoring-line"></div>
-                        <div class="nav-scoring-line"></div>
-                        <div class="nav-scoring-line"></div>
-                    </div>
-                    <ul class="nav-menus" id="nav_menus">
-                        <li class="nav-item bg-music active">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Musique</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-photos">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Photos</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-actu">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Actu</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-tour">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Tour</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-contact">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Contact</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-bio">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Bio</span>
-                            </a>
-                        </li>
-                        <div class="nav-note"></div>
-                        <li class="nav-item bg-acheter">
-                            <a href="#" class="nav-link">
-                                <span class="nav-link-title">Acheter</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <?php include("./views/modules/navbar.php")?>
+            
                 <div class="header-body">
                     <blockquote class="catchphrase">ALINEA<br>‟ En s'écartant de la ligne ″</blockquote>
                 </div>
@@ -100,6 +46,7 @@
             <section class="bigquote">
                 <blockquote class="bigquote-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error non vitae maxime a consequuntur eius commodi nostrum ipsum possimus? Rerum labore consectetur cupiditate at repellendus facilis recusandae corrupti! Hic!</blockquote>
                 <cite class="bigquote-author">Thierry CIVIDINO</cite>
+                <?php include("./views/essai.php")?>
             </section>
 
             <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
