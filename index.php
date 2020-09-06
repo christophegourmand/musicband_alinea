@@ -2,8 +2,10 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-
+        
+        <?php $page_title = "ALINEA groupe de musique - site Officiel"?>
         <title><?php echo $page_title?></title>
+
         <meta name="description" content="Site Officiel du groupe de musique ALINEA, pour suivre l'actualité, les dates de concerts, retrouver les photos, vidéos et écouter les albums.">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
