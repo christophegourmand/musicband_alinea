@@ -30,19 +30,7 @@
                 <?php include("./views/essai.php"); ?>
             </section>
 
-            <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
-
-            <!-- <section class="interactive-flyover">
-                <img class="interactive-flyover_img" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
-                <div class="interactive-flyover_result">
-                    <p class="result">Simoné</p>
-                    <p class="result">Nicole</p>
-                    <p class="result">Thierry</p>
-                    <p class="result">Nico</p>
-                    <p class="result">Ponpon</p>
-                </div>
-            </section> -->
-            
+            <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">         
 
         </main>
 
