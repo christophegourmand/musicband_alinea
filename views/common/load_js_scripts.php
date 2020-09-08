@@ -1,0 +1,1 @@
+<script src="<?php echo($prefix_to_root_folder.'assets/js/mainPage.js')?>"></script>
