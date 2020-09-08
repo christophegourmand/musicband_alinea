@@ -5,20 +5,22 @@
 $ratio-brand-and-name: 5.5/9.5; 
 
 .brand {
-
     display: inline-block;
     margin-top: 2rem;
+    margin-left: 2rem;
 
     @include flex_row(center, baseline);
+
+    font-size: 65%;
 
 	animation-name: apparition;
 	animation-duration: 5s;
 
     .brand-logo {
         // display: inline-block;
-        margin-right: -0.6rem;
+        margin-right: -0.6em;
 
-        height: 9.5rem;
+        height: 9.5em;
         // position: relative;
         // bottom: 2rem;
 
@@ -32,7 +34,7 @@ $ratio-brand-and-name: 5.5/9.5;
         font-family: 'Overpass', sans-serif;
 
         font-weight: 200;
-        font-size: 9.5rem*$ratio-brand-and-name;
+        font-size: 9.5em*$ratio-brand-and-name;
         color: white;
 		
 		animation-name: neon;

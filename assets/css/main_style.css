@@ -178,9 +178,9 @@ header {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .header-body {
@@ -224,9 +224,7 @@ header {
 /* =========================================== */
 /*:y ------------------------ Navbar  */
 .nav {
-  width: 100vw;
-  margin-right: 6vw;
-  margin-left: 6vw;
+  width: 100%;
   padding-top: .5rem;
   padding-bottom: .5rem;
   display: -webkit-box;
@@ -538,6 +536,7 @@ header {
 .brand {
   display: inline-block;
   margin-top: 2rem;
+  margin-left: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -553,6 +552,7 @@ header {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
+  font-size: 65%;
   -webkit-animation-name: apparition;
           animation-name: apparition;
   -webkit-animation-duration: 5s;
@@ -560,14 +560,14 @@ header {
 }
 
 .brand .brand-logo {
-  margin-right: -0.6rem;
-  height: 9.5rem;
+  margin-right: -0.6em;
+  height: 9.5em;
 }
 
 .brand .brand-name {
   font-family: 'Overpass', sans-serif;
   font-weight: 200;
-  font-size: 5.5rem;
+  font-size: 5.5em;
   color: white;
   -webkit-animation-name: neon;
           animation-name: neon;

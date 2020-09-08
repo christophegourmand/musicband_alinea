@@ -11,7 +11,7 @@ header {
 .header-head {
     flex-grow: 1;
 
-    @include flex_col(flex-start, center);
+    @include flex_col(flex-start, flex-start);
 }
 
 .header-body {

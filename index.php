@@ -1,42 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <?php include("./views/modules/head.php"); ?>
-    <!-- ############################################################################## -->
-    <!-- ############################################################################## -->
-    <!-- ############################################################################## -->
-    <body>
-        <header>
-            <div class="header-head">
-                
-                <div class="brand">
-                    <!-- <img class="brand-logo" src="/assets/img/icons/Logo_Alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA"> -->
-                    <img class="brand-logo" src="/assets/img/icons/Logo_Alinea_red_big.png" alt="logo ALINEA" title="logo ALINEA">
-                    <h1 class="brand-name">ALINEA</h1>
-                </div>
-                
-                <?php include("./views/modules/navbar.php"); ?>
-            
-                <div class="header-body">
-                    <blockquote class="catchphrase">ALINEA<br>‟ En s'écartant de la ligne ″</blockquote>
-                </div>
-            </div>
-        </header>
+<?php
+    include("common_variables.php"); // In order to use the variable $website_prefix_url . (but later)
+
+    $prefix_to_root_folder = "./";
+
+    include($prefix_to_root_folder."views/pages/page_index.php");
+
+?>
 
 
-        <main>
-            <section class="bigquote">
-                <blockquote class="bigquote-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error non vitae maxime a consequuntur eius commodi nostrum ipsum possimus? Rerum labore consectetur cupiditate at repellendus facilis recusandae corrupti! Hic!</blockquote>
-                <cite class="bigquote-author">Thierry CIVIDINO</cite>
-                <?php include("./views/essai.php"); ?>
-            </section>
 
-            <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">         
-
-        </main>
-
-        <?php include("./views/modules/footer.php"); ?>
-        
-
-        <script src="./assets/js/mainPage.js"></script>
-    </body>
-</html>
+<pre>
+    <?php print_r($_SERVER); ?>
+</pre>
