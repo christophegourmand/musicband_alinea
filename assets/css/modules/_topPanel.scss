@@ -1,0 +1,14 @@
+.topPanel {
+
+    &.full-height {
+        height: 100vh;
+    }
+
+    background: {   
+        image: linear-gradient(to bottom, rgba(22, 22, 22, 0.5), rgba(84, 135, 165, 0.5)), url("../img/backgrounds/alinea_background_guitar_black.jpg");
+        // color: $darkgray;
+        position: 60% 50%;
+        size: cover;
+        repeat: no-repeat;
+    }
+}
