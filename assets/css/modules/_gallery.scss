@@ -1,0 +1,41 @@
+.gallery {
+
+    .gallery-title {
+        text-align: center;
+        color: white;
+    }
+
+    // 1ère solution,  utiliser GRID
+    /*
+    .gallery-body {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 200px;
+        grid-auto-rows: 200px;
+        // column-gap: 5px;
+        // row-gap: 5px;
+
+        .gallery-img {
+            width: 100%;
+
+            margin: 3px;
+        }
+    }
+    */
+
+    // 2ème solution,  utiliser FLEX  avec le Wrap
+    .gallery-body {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .gallery-img {
+            // width: 20vw;
+            height: 250px;
+
+            margin: 3px;
+        }
+    }
+    
+
+}
