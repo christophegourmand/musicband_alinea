@@ -16,7 +16,5 @@
         <?php include($prefix_to_root_folder."views/modules/navbar.php"); ?>
     
     </div>
-    <div class="header-body">
-        <?php include($prefix_to_root_folder."views/pages/".$page_name."/header-body.php"); ?>
-    </div>
+
 </header>

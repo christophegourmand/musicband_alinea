@@ -1,5 +1,25 @@
 <footer>
-    <h2>CECI EST LE FOOTER</h2>
+
+    <nav class="navfooter">
+        <ul class="navfooter-menus">
+            <li class="navfooter-item">
+                <a class="navfooter-link" href="#">Plan du site</a>
+            </li>
+            <li class="navfooter-item">
+                <a class="navfooter-link" href="mailto:alineamusique@gmail.com" target="_top">Contacter le groupe</a>
+            </li>
+            <li class="navfooter-item">
+                <a class="navfooter-link" href="mailto:christophe.gourmand@gmail.com" target="_top">Contacter le Webmaster</a>
+            </li>
+            <li class="navfooter-item">
+                <a class="navfooter-link" href="mailto:christophe.gourmand@gmail.com" target="_top">À propos</a>
+            </li>
+            <li class="navfooter-item">
+                <a class="navfooter-link" href="mailto:christophe.gourmand@gmail.com" target="_top">Partenaires</a>
+            </li>
+        </ul>
+    </nav>
+
     <!--
     <nav class="navbtm">
         <ul class="navbtm-menus">

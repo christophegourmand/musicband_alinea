@@ -9,7 +9,6 @@
 /* BASE */
 @import "base/base";
 @import "base/fonts";
-@import "base/typo";
 // @import "base/tables";
 
 /* LAYOUTS */
@@ -25,6 +24,7 @@
 @import "modules/navbar";
 @import "modules/brand";
 @import "modules/navbar-bottom";
+@import "modules/navbar-footer";
 @import "modules/catchphrase";
 @import "modules/bigquote";
 @import "modules/interactive-flyover";
