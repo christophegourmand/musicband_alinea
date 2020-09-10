@@ -3,10 +3,17 @@
 /* =========================================== */
 
 .catchphrase {
-    margin-bottom: 5rem;
-
-    font-size: 1.5rem;
+    @include flex_col(flex-start, flex-end);
+    margin-top: 3rem;
     font-weight: 200;
-    color: white;
 
+    .catchphrase-phrase {
+        font-size: 1.2rem;
+        color: white;
+    }
+
+    .catchphrase-cite {
+        font-size: .8rem;
+        color: #aaa;
+    }
 }

@@ -1,1 +1,0 @@
-<p>HEADER BODY DE LA PAGE "page_photos"</p>

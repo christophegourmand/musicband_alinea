@@ -1,1 +1,0 @@
-<blockquote class="catchphrase">ALINEA<br>‟ En s'écartant de la ligne ″</blockquote>

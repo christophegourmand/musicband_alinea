@@ -25,8 +25,8 @@
         <div class="topPanel full-height">
             <?php include($prefix_to_root_folder."views/common/header.php"); ?>
 
-            <div class="header-body">
-                <?php include($prefix_to_root_folder."views/pages/".$page_name."/header-body.php"); ?>
+            <div class="topPanel-body">
+                <?php include($prefix_to_root_folder."views/pages/".$page_name."/topPanel-body.php"); ?>
             </div>
         </div>
         <?php include($prefix_to_root_folder."views/pages/".$page_name."/page-content.php"); ?>

@@ -12,4 +12,13 @@
         size: cover;
         repeat: no-repeat;
     }
+
+    .topPanel-body {
+        flex-grow: 1;
+
+        width: 100%;
+        padding: 0 $headerMargin;
+
+        @include flex_col(flex-start, flex-end);
+    }
 }
