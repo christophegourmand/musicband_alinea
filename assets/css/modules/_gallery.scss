@@ -5,13 +5,13 @@
         color: white;
     }
 
-    // 1ère solution,  utiliser GRID
+    // 1ère solution,  utiliser GRID   avec 'vw'
     /*
     .gallery-body {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 200px;
-        grid-auto-rows: 200px;
+        grid-template-columns: repeat(5, 20vw);
+        grid-template-rows: 12vw;
+        grid-auto-rows: 12vw;
         // column-gap: 5px;
         // row-gap: 5px;
 
@@ -23,19 +23,43 @@
     }
     */
 
-    // 2ème solution,  utiliser FLEX  avec le Wrap
+    // 2ème solution,  utiliser GRID avec des widths et height fixes.
+    
+    .gallery-body {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(150px, 25vw));
+        grid-template-rows: 15vw;
+        grid-auto-rows: 15vw;
+        // column-gap: 5px;
+        // row-gap: 5px;
+
+        .gallery-img {
+            width: 100%;
+
+            margin: 3px;
+        }
+    }
+    
+    @media #{$bigger-than-lg} {
+        .gallery-body {
+            grid-template-columns: repeat(4, minmax(150px, 25vw));
+        }
+    }
+
+    // 3ème solution,  utiliser FLEX  avec le Wrap
+/*     
     .gallery-body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
 
         .gallery-img {
-            // width: 20vw;
-            height: 250px;
+            width: 20vw;
+            // height: 15vw;
 
             margin: 3px;
         }
     }
-    
+    */ 
 
 }
