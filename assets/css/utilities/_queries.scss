@@ -2,8 +2,34 @@
 /* UTILITIES / QUERIES */
 /* =========================================== */
 
-
 /* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
+
+
+// MEDIA QUERIES ==================================
+
+// XS: old phones
+$breakpoint-sm: 576px; 
+// phone
+$breakpoint-md: 768px; 
+// tablet
+$breakpoint-lg: 992px;
+// laptop
+$breakpoint-xl: 1200px;
+// wide display (imac, tv)
+
+$smaller-than-sm: "only screen and (max-width: #{$breakpoint-sm})";
+$bigger-than-sm: "only screen and (min-width: #{$breakpoint-sm})";
+
+$smaller-than-md: "only screen and (max-width: #{$breakpoint-md})";
+$bigger-than-md: "only screen and (min-width: #{$breakpoint-md})";
+
+$smaller-than-lg: "only screen and (max-width: #{$breakpoint-lg})";
+$bigger-than-lg: "only screen and (min-width: #{$breakpoint-lg})";
+
+$smaller-than-xl: "only screen and (max-width: #{$breakpoint-xl})";
+$bigger-than-xl: "only screen and (min-width: #{$breakpoint-xl})";
+
+
 
 /*:b SM : */
 @media screen and (min-width: #{$breakpoint-sm}) {

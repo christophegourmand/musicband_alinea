@@ -201,6 +201,96 @@ footer {
   height: fit-content(100%);
 }
 
+/*
+
+@media only screen and (min-width: 992px) {
+    
+    .split_30_70 {
+        // display: flex;
+
+        &>*:first-child {
+            width: 30%;
+            
+            
+        }
+
+        &>*:nth-child(2) {
+            width: 70%;
+            
+      
+        }
+    }
+}
+
+*/
+.songs {
+  margin: 1rem;
+}
+
+@media only screen and (min-width: 992px) {
+  .songs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .songs > *:first-child {
+    width: 30%;
+  }
+  .songs > *:nth-child(2) {
+    width: 70%;
+  }
+}
+
+.songs .songs-list {
+  background-color: #a31800;
+}
+
+.songs .horizontalCard-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.songs .horizontalCard-container .horizontalCard {
+  padding: .4rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.songs .horizontalCard-container .horizontalCard:hover {
+  background-color: blue;
+}
+
+.songs .horizontalCard-container .horizontalCard .horizontalCard-title {
+  font-weight: 200;
+  color: white;
+}
+
 /* MODULES */
 /* =========================================== */
 /* MODULES / buttons */

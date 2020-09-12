@@ -1,0 +1,22 @@
+/*
+
+@media #{$bigger-than-lg} {
+    
+    .split_30_70 {
+        // display: flex;
+
+        &>*:first-child {
+            width: 30%;
+            
+            
+        }
+
+        &>*:nth-child(2) {
+            width: 70%;
+            
+      
+        }
+    }
+}
+
+*/
