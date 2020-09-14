@@ -1,14 +1,15 @@
+<?php include($prefix_to_root_folder."/views/pages/page_musique/allSongs_variables.php")?>
+
 <main>
     <h2 class="page-title">Musique</h2>
     <section class="songs split_30_70">
         <aside class="songs-list horizontalCard-container">
-
-            <?php // LOOP SUR LE TABLEAU DES CHANSONS ?>
-                <div class="horizontalCard" id="horizontalCard_madison">
-                    <h3 class="horizontalCard-title">LOOPING_ELEMENT</h3>
+            <?php for($i=0 ; $i<count($allSongs_array) ; $i++): ?>
+                <div class="horizontalCard" id="<?php echo('horizontalCard_song_'.$i);?>">
+                    <h3 class="horizontalCard-title"><?=$allSongs_array[$i]["song_title"]?></h3>
                 </div>
-            <?php // FIN DE LOOP ?>
-
+            <?php endfor; ?>
+            <!-- 
             <div class="horizontalCard" id="horizontalCard_madison">
                 <h3 class="horizontalCard-title">Madison</h3>
             </div>
@@ -39,9 +40,12 @@
             <div class="horizontalCard" id="horizontalCard_madison">
                 <h3 class="horizontalCard-title">J'ai pas les mots</h3>
             </div>
+            -->
         </aside>
         <div class="lyric">
-            <h3 class="lyric-title">Titre du morceau</h3>
+            <!-- plus tard changer la valeur de [0] selon le click -->
+            <!--
+            <h3 class="lyric-title"><?=$allSongs_array[0]["song_title"]?></h3>
             <article class="lyric-list">
                 <p class="lyric-paragraph">
                     <span class="lyric-sentence">Not by way of an apology</span>
@@ -65,6 +69,7 @@
                     <span class="lyric-sentence">Love is needing, love is bleeding me</span>
                 </p>
             </article>
+            -->
         </div>
     </section>
     
