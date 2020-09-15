@@ -6,7 +6,9 @@
         <aside class="songs-list horizontalCard-container">
             <?php for($i=0 ; $i<count($allSongs_array) ; $i++): ?>
                 <div class="horizontalCard" id="<?php echo('horizontalCard_song_'.$i);?>">
-                    <h3 class="horizontalCard-title"><?=$allSongs_array[$i]["song_title"]?></h3>
+                    <a class="horizontalCard-link" href="#">
+                        <h3 class="horizontalCard-title"><?=$allSongs_array[$i]["song_title"]?></h3>
+                    </a>
                 </div>
             <?php endfor; ?>
             <!-- 

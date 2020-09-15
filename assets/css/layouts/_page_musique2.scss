@@ -9,22 +9,22 @@
 
     .horizontalCard-container {
                                             // @include bordure(red);
-        @include flex_row(center , center);
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-rows: 12rem;
+        grid-auto-rows: 12rem;
+        grid-template-columns: repeat(4,1fr);
+        grid-gap: 1rem;
 
         .horizontalCard {
                         // @include bordure(blue);
 
-            margin: 1rem;
-            width: 20rem;
-            
-
-            background-color: #777;
-            border-radius: .6rem;
+            width: 100%;
 
             @include flex_row(stretch , stretch);
             // flex-wrap: nowrap;
 
+            background-color: #777;
+            border-radius: .6rem;
             background-size: cover;
             background-repeat: no-repeat;
 
@@ -35,10 +35,8 @@
                 .horizontalCard-link {
 
                     .horizontalCard-title {
-                        color: black;
                         font-size: 2rem;
                         font-weight: 400;
-                        text-shadow: 0 0 .9rem black;
                     }
                 
                 }
@@ -112,7 +110,6 @@
                                         // @include bordure(red);
                 // width: 100%;
                 flex-grow: 1;
-                padding: 4rem 0;
 
                 @include flex_row(center, center);
 

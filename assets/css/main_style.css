@@ -228,7 +228,6 @@ footer {
 }
 
 .songs .horizontalCard-container {
-  border: 1px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -251,7 +250,6 @@ footer {
 .songs .horizontalCard-container .horizontalCard {
   margin: 1rem;
   width: 20rem;
-  padding: 4rem 0;
   background-color: #777;
   border-radius: .6rem;
   display: -webkit-box;
@@ -263,18 +261,26 @@ footer {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .songs .horizontalCard-container .horizontalCard:hover {
-  background-color: blue;
+  background-color: #757474;
+  background-blend-mode: screen;
+}
+
+.songs .horizontalCard-container .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
+  color: black;
+  font-size: 2rem;
+  font-weight: 400;
+  text-shadow: 0 0 .9rem black;
 }
 
 .songs .horizontalCard-container .horizontalCard:nth-child(1) {
@@ -327,7 +333,29 @@ footer {
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard .horizontalCard-title {
+.songs .horizontalCard-container .horizontalCard .horizontalCard-link {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 4rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.songs .horizontalCard-container .horizontalCard .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
   font-weight: 200;
   color: white;

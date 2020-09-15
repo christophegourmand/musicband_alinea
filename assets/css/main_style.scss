@@ -18,7 +18,8 @@
 @import "layouts/aside";
 @import "layouts/footer";
 @import "layouts/page_divider";
-@import "layouts/page_musique";
+@import "layouts/page_musique"; // using Flex
+// @import "layouts/page_musique2"; // using Grid (test)
 
 /* MODULES */
 @import "modules/buttons";
