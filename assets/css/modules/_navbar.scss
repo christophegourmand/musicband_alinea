@@ -14,8 +14,6 @@
     padding-top: .5rem;
     padding-bottom: .5rem;
 
-
-
     @include flex_row(space-between, stretch);
 
 
@@ -136,14 +134,18 @@
 
             .nav-item.bg-music {
                 background: {
-                    image: url("https://source.unsplash.com/HwU5H9Y6aL8/200x100"); // plus tard appeler une variable.
+                    // image: url("https://source.unsplash.com/HwU5H9Y6aL8/200x100"); // plus tard appeler une variable.
+                    image: url("https://live.staticflickr.com/8623/16342600542_397f2effcf_k.jpg");
                     size: cover;
                     repeat: norepeat;
                 }
             }
+
+            
             .nav-item.bg-photos {
                 background: {
-                    image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg"); // 
+                    // image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg"); // 
+                    image: url("https://cdn.pixabay.com/photo/2015/06/08/15/09/photography-801891_960_720.jpg"); // plus tard appeler une variable.
                     size: cover;
                     repeat: norepeat;
                     // color: hsla(0%,100%,50%,1);
@@ -151,7 +153,8 @@
             }
             .nav-item.bg-actu {
                 background: {
-                    image: url("https://source.unsplash.com/mnypcmLnXE0/200x100"); // plus tard appeler une variable.
+                    // image: url("https://source.unsplash.com/mnypcmLnXE0/200x100"); // plus tard appeler une variable.
+                    image: url("./../img/backgrounds/optical_fiber_cable.png");
                     size: cover;
                     repeat: norepeat;
                 }
@@ -162,6 +165,8 @@
                     size: cover;
                     repeat: norepeat;
                 }
+                // background-color: #800606;
+                // background-blend-mode: screen;
             }
             .nav-item.bg-contact {
                 background: {
@@ -172,14 +177,14 @@
             }
             .nav-item.bg-bio {
                 background: {
-                    image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00022_nico-tatouage.jpg"); // plus tard appeler une variable.
+                    image: url("./../img/photos/from-CoppaStudio/2020.02.07/alinea_00003_thierry.jpg"); // plus tard appeler une variable.
                     size: cover;
                     repeat: norepeat;
                 }
             }
             .nav-item.bg-acheter {
                 background: {
-                    image: url("./../img/photos/from-facebook/from_facebook_exploitables/alinea_album_madison_menu.png");
+                    image: url("./../img/photos/album_book/00_PochetteAvant.jpg");
                     size: cover;
                     repeat: norepeat;
                 }

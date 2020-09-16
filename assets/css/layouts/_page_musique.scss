@@ -29,18 +29,17 @@
             background-repeat: no-repeat;
 
             &:hover {
-                background-color: #757474;
+                background-color: #b4b4b4;
                 background-blend-mode: screen;
             
                 .horizontalCard-link {
 
                     .horizontalCard-title {
-                        color: black;
+                        color: $darkred;
                         font-size: 2rem;
                         font-weight: 400;
-                        text-shadow: 0 0 .9rem black;
+                        text-shadow: 0 0 0rem black;
                     }
-                
                 }
             }
 

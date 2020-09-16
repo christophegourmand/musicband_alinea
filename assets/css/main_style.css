@@ -228,30 +228,48 @@ footer {
 }
 
 .songs .horizontalCard-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 12rem;
+      grid-template-rows: 12rem;
+  grid-auto-rows: 12rem;
+  grid-gap: 1rem;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  /* @media only screen and (max-width: 576px) {
+        } */
+}
+
+@media only screen and (min-width: 576px) {
+  .songs .horizontalCard-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .songs .horizontalCard-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .songs .horizontalCard-container {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .songs .horizontalCard-container {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .songs .horizontalCard-container .horizontalCard {
-  margin: 1rem;
-  width: 20rem;
-  background-color: #777;
-  border-radius: .6rem;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -267,20 +285,21 @@ footer {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  background-color: #777;
+  border-radius: .6rem;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .songs .horizontalCard-container .horizontalCard:hover {
-  background-color: #757474;
-  background-blend-mode: screen;
+  border: 3px solid white;
+  -webkit-transition: background-size 1.5s ease-out;
+  transition: background-size 1.5s ease-out;
 }
 
 .songs .horizontalCard-container .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
-  color: black;
   font-size: 2rem;
-  font-weight: 400;
-  text-shadow: 0 0 .9rem black;
+  font-weight: 300;
 }
 
 .songs .horizontalCard-container .horizontalCard:nth-child(1) {
@@ -337,7 +356,6 @@ footer {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 4rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -357,7 +375,7 @@ footer {
 
 .songs .horizontalCard-container .horizontalCard .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
-  font-weight: 200;
+  font-weight: 300;
   color: white;
   text-shadow: 0 0 .5rem black;
 }
@@ -567,17 +585,17 @@ footer {
     text-shadow: 1px 1px 2px black;
   }
   .nav .nav-menus .nav-item.bg-music {
-    background-image: url("https://source.unsplash.com/HwU5H9Y6aL8/200x100");
+    background-image: url("https://live.staticflickr.com/8623/16342600542_397f2effcf_k.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-photos {
-    background-image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg");
+    background-image: url("https://cdn.pixabay.com/photo/2015/06/08/15/09/photography-801891_960_720.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-actu {
-    background-image: url("https://source.unsplash.com/mnypcmLnXE0/200x100");
+    background-image: url("./../img/backgrounds/optical_fiber_cable.png");
     background-size: cover;
     background-repeat: norepeat;
   }
@@ -592,12 +610,12 @@ footer {
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-bio {
-    background-image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00022_nico-tatouage.jpg");
+    background-image: url("./../img/photos/from-CoppaStudio/2020.02.07/alinea_00003_thierry.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-acheter {
-    background-image: url("./../img/photos/from-facebook/from_facebook_exploitables/alinea_album_madison_menu.png");
+    background-image: url("./../img/photos/album_book/00_PochetteAvant.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }
@@ -1032,6 +1050,10 @@ footer {
 /* =========================================== */
 /* STATES / states */
 /* =========================================== */
+.todo {
+  color: red;
+}
+
 /* THEME */
 /* =========================================== */
 /* THEME / dark */

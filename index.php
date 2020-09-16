@@ -6,7 +6,3 @@
     include($prefix_to_root_folder."views/pages/page_index.php");
 
 ?>
-
-<pre>
-    <?php // print_r($_SERVER); ?>
-</pre>

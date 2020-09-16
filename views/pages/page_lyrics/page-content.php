@@ -1,26 +1,20 @@
 <?php include($prefix_to_root_folder."/datas/allSongs_variables.php")?>
+<?php $songToDisplay_nbr = $_GET['songClicked']; ?>
 
 <main>
     <h2 class="page-title">Musique</h2>
-
-    <q class="todo">
-        j'ai ajouté des classes 'bg-song-#' dans chaque 'horizontalCard', maintenant il faut changer le '_page_musique2.scss' : 
-        <br>
-        les '&:nth-child(1)' doivent êtres sortis du selecteur .horizontalCard et mettre 'bg-song-#' à la place.
-    </q>
-
+    
+    <button><a href="<?php echo($prefix_to_root_folder."views/pages/page_musique.php");?>">RETOUR</a></button>
     
     <section class="songs split_30_70">
         <aside class="songs-list horizontalCard-container">
-            <?php for($i=0 ; $i<count($allSongs_array) ; $i++): ?>
-                <div class="horizontalCard <?='bg-song-'.$i?>" id="<?php echo('horizontalCard_song_'.$i);?>">
-                    <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_lyrics.php'.'?songClicked='.$i);?>">
-
-                    <!-- .'/?song='.$i -->
-                        <h3 class="horizontalCard-title"><?=$allSongs_array[$i]["song_title"]?></h3>
+        
+                <div class="horizontalCard" id="<?php echo('horizontalCard_song_'.$songToDisplay_nbr);?>">
+                    <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder."/views/pages/page_lyrics.php")?>">
+                        <h3 class="horizontalCard-title"><?=$allSongs_array[$songToDisplay_nbr]["song_title"]?></h3>
                     </a>
                 </div>
-            <?php endfor; ?>
+            
         </aside>
 
         <div class="lyric">

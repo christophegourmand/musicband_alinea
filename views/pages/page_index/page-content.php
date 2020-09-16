@@ -1,7 +1,7 @@
 <main>
     <section class="bigquote">
-        <blockquote class="bigquote-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error non vitae maxime a consequuntur eius commodi nostrum ipsum possimus? Rerum labore consectetur cupiditate at repellendus facilis recusandae corrupti! Hic!</blockquote>
-        <cite class="bigquote-author">Thierry CIVIDINO</cite>
+        <blockquote class="bigquote-text">Bienvenu sur notre site. La route est longue pour un artiste, et cette route ne serait pas possible sans votre soutient. <br>Comme a dit un grand homme, nous espérons que vous prendrez autant de plaisir à écouter nos musiques que nous à les composer.</blockquote>
+        <cite class="bigquote-author">Alinea</cite>
         
     </section>
 

@@ -12,8 +12,27 @@
         display: grid;
         grid-template-rows: 12rem;
         grid-auto-rows: 12rem;
-        grid-template-columns: repeat(4,1fr);
         grid-gap: 1rem;
+
+            grid-template-columns: repeat(1,1fr);
+        /* @media #{$smaller-than-sm} {
+        } */
+
+        @media #{$bigger-than-sm} {
+            grid-template-columns: repeat(2,1fr);
+        }
+        
+        @media #{$bigger-than-md} {
+            grid-template-columns: repeat(2,1fr);
+        }
+        
+        @media #{$bigger-than-lg} {
+            grid-template-columns: repeat(3,1fr);
+        }
+        
+        @media #{$bigger-than-xl} {
+            grid-template-columns: repeat(4,1fr);
+        }
 
         .horizontalCard {
                         // @include bordure(blue);
@@ -25,20 +44,28 @@
 
             background-color: #777;
             border-radius: .6rem;
-            background-size: cover;
+            background-size: cover; // put 100% to add effect
             background-repeat: no-repeat;
 
             &:hover {
-                background-color: #757474;
-                background-blend-mode: screen;
+                // background-color: #b4b4b4;
+                // background-blend-mode: screen;
+
+                border: 3px solid white;
+
+                transition: background-size 1.5s ease-out;
+                
+                // background-position: center top;
+                // background-size: 120%; // in case you put 100% just higher.
             
                 .horizontalCard-link {
 
                     .horizontalCard-title {
+                        // color: $darkred;
                         font-size: 2rem;
-                        font-weight: 400;
+                        font-weight: 300;
+                        // text-shadow: 0 0 0rem black;
                     }
-                
                 }
             }
 
@@ -75,6 +102,7 @@
             // song: Post-it
             &:nth-child(6) {
                 background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
+                // background-image: url("https://source.unsplash.com/UQZvynxNuqgo/500x300");
                 background-position: left top;
             }
 
@@ -117,7 +145,7 @@
                                                 // @include bordure(yellow);
                     
                     font-size: 2rem;
-                    font-weight: 200;
+                    font-weight: 300;
                     color: white;
 
                     text-shadow: 0 0 .5rem black;                
