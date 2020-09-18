@@ -1,0 +1,23 @@
+.lyrics {
+
+    text-align: center;
+
+    .lyrics-title {
+        font-size: 2rem;
+        color: red;        
+    }
+    .lyrics-list {
+        
+        .lyrics-paragraph {
+
+
+            .lyrics-sentence {
+                color: white;
+            }
+            
+            .lyrics-sentence--chorus {
+                color: red;
+            }
+        }
+    }
+}

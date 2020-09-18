@@ -129,6 +129,10 @@ body {
   /* or small-cap */
 }
 
+.white {
+  color: white;
+}
+
 /* LAYOUTS */
 /* =========================================== */
 /* LAYOUTS / body */
@@ -1043,9 +1047,30 @@ footer {
   color: white;
 }
 
+.lyrics {
+  text-align: center;
+}
+
+.lyrics .lyrics-title {
+  font-size: 2rem;
+  color: red;
+}
+
+.lyrics .lyrics-list .lyrics-paragraph .lyrics-sentence {
+  color: white;
+}
+
+.lyrics .lyrics-list .lyrics-paragraph .lyrics-sentence--chorus {
+  color: red;
+}
+
 /* =========================================== */
 /* MODULES / test */
 /* =========================================== */
+.white {
+  color: white;
+}
+
 /* STATES */
 /* =========================================== */
 /* STATES / states */

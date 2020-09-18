@@ -6,7 +6,7 @@
 
     <button><a href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">RETOUR</a></button>
     
-    <section class="songs split_30_70">
+    <section class="songs">
         <aside class="songs-list horizontalCard-container">
         
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
@@ -17,35 +17,37 @@
             
         </aside>
 
-        <div class="lyric">
-            <!-- plus tard changer la valeur de [0] selon le click -->
-            
-            <!--
-            <h3 class="lyric-title"><?=$allSongs_array[0]["song_title"]?></h3>
-            <article class="lyric-list">
-                <p class="lyric-paragraph">
-                    <span class="lyric-sentence">Not by way of an apology</span>
-                    <span class="lyric-sentence">For the things that I have done</span>
-                    <span class="lyric-sentence">Do I set my boat upon the sea</span>
-                </p>
-                <p class="lyric-paragraph">
-                    <span class="lyric-sentence">So like thunder I am breaking free</span>
-                    <span class="lyric-sentence">In the landscape of the heart</span>
-                    <span class="lyric-sentence">It's hard to tell what's really taken me</span>
-                </p>
-                <p class="lyric-paragraph chorus">
-                    <span class="lyric-sentence">Now I see it all through different eyes</span>
-                    <span class="lyric-sentence">This emotion can't be wrong</span>
-                    <span class="lyric-sentence">Past the mountains under empy skies</span>
-                    <span class="lyric-sentence">And the road goes on and on...</span>
-                </p>
-                <p class="lyric-paragraph">
-                    <span class="lyric-sentence">I've been living through this poetry</span>
-                    <span class="lyric-sentence">Tangled words and worn out prose</span>
-                    <span class="lyric-sentence">Love is needing, love is bleeding me</span>
-                </p>
+        <pre class="white">
+            <?php 
+                // TEST DE LOOPING
+                // print_r($allSongs_array[$songToDisplay_nbr]); // donne un array . 
+                // print_r($allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"]); // donne un array . 
+
+                // for($sentence_index = 0 ; $sentence_index <count($allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"]) ; $sentence_index++) {
+                for ($paragraph_index = 0 ; $paragraph_index < 3 ; $paragraph_index++) {
+                    print_r( $allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"][$paragraph_index] );
+                }
+            ?>
+        </pre>
+
+        ______________________________________________________________________________________________________
+        <div class="lyrics">
+            <h3 class="lyrics-title"><?=$allSongs_array[$songToDisplay_nbr]["song_title"]?></h3>
+            <article class="lyrics-list">
+
+                <?php for ($paragraph_index = 0 ; $paragraph_index < count($allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"]) ; $paragraph_index++): ?>
+                    
+                    <?php $sentences_array = $allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"][$paragraph_index]["sentences"];?>
+                    
+                    <p class="lyrics-paragraph <?=$allSongs_array[$songToDisplay_nbr]["song_lyrics_paragraphs"][$paragraph_index]["type"];?>">
+                        <?php for($sentence_index = 0 ; $sentence_index < count($sentences_array) ; $sentence_index++): ?>
+                            <span class="lyrics-sentence">$sentences_array[$sentence_index]</span>
+                        <?php endfor; ?>
+                    </p>
+                <?php endfor; ?>
+
             </article>
-            -->
+            
         </div>
     </section>
     
