@@ -21,7 +21,7 @@
             <?php include($prefix_to_root_folder."views/common/header.php"); ?>
 
             <div class="topPanel-body">
-                <?php // include($prefix_to_root_folder."views/pages/".$page_name."/topPanel-body.php"); ?>
+                <?php include($prefix_to_root_folder."views/pages/".$page_name."/topPanel-body.php"); ?>
             </div>
         </div>
 

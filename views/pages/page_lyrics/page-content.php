@@ -1,17 +1,17 @@
-<?php include($prefix_to_root_folder."/datas/allSongs_variables.php")?>
-<?php $songToDisplay_nbr = $_GET['songClicked']; ?>
+<?php include($prefix_to_root_folder.'datas/allSongs_variables.php');?>
+<?php $songToDisplay_nbr = $_GET['songClicked'];?>
 
 <main>
     <h2 class="page-title">Musique</h2>
-    
-    <button><a href="<?php echo($prefix_to_root_folder."views/pages/page_musique.php");?>">RETOUR</a></button>
+
+    <button><a href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">RETOUR</a></button>
     
     <section class="songs split_30_70">
         <aside class="songs-list horizontalCard-container">
         
-                <div class="horizontalCard" id="<?php echo('horizontalCard_song_'.$songToDisplay_nbr);?>">
-                    <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder."/views/pages/page_lyrics.php")?>">
-                        <h3 class="horizontalCard-title"><?=$allSongs_array[$songToDisplay_nbr]["song_title"]?></h3>
+                <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
+                    <a class="horizontalCard-link" href="<?=$prefix_to_root_folder.'views/pages/page_lyrics.php';?>">
+                        <h3 class="horizontalCard-title"><?=$allSongs_array[$songToDisplay_nbr]['song_title'];?></h3>
                     </a>
                 </div>
             
@@ -19,6 +19,7 @@
 
         <div class="lyric">
             <!-- plus tard changer la valeur de [0] selon le click -->
+            
             <!--
             <h3 class="lyric-title"><?=$allSongs_array[0]["song_title"]?></h3>
             <article class="lyric-list">

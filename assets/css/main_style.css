@@ -302,56 +302,6 @@ footer {
   font-weight: 300;
 }
 
-.songs .horizontalCard-container .horizontalCard:nth-child(1) {
-  background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
-  background-position: top center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(2) {
-  background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
-  background-position: left center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(3) {
-  background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
-  background-position: center top;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(4) {
-  background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
-  background-position: left center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(5) {
-  background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
-  background-position: left center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(6) {
-  background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
-  background-position: left top;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(7) {
-  background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
-  background-position: right bottom;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(8) {
-  background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
-  background-position: left center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(9) {
-  background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
-  background-position: left center;
-}
-
-.songs .horizontalCard-container .horizontalCard:nth-child(10) {
-  background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
-  background-position: left center;
-}
-
 .songs .horizontalCard-container .horizontalCard .horizontalCard-link {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -378,6 +328,56 @@ footer {
   font-weight: 300;
   color: white;
   text-shadow: 0 0 .5rem black;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-0 {
+  background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
+  background-position: top center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-1 {
+  background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
+  background-position: left center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-2 {
+  background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
+  background-position: center top;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-3 {
+  background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
+  background-position: left center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-4 {
+  background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
+  background-position: left center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-5 {
+  background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
+  background-position: left top;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-6 {
+  background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
+  background-position: right bottom;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-7 {
+  background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
+  background-position: left center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-8 {
+  background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
+  background-position: left center;
+}
+
+.songs .horizontalCard-container .horizontalCard.bg-song-9 {
+  background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
+  background-position: left center;
 }
 
 /* MODULES */

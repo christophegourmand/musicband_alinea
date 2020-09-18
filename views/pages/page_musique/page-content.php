@@ -1,14 +1,7 @@
-<?php include($prefix_to_root_folder."/datas/allSongs_variables.php")?>
+<?php include($prefix_to_root_folder.'datas/allSongs_variables.php')?>
 
 <main>
     <h2 class="page-title">Musique</h2>
-
-    <q class="todo">
-        j'ai ajouté des classes 'bg-song-#' dans chaque 'horizontalCard', maintenant il faut changer le '_page_musique2.scss' : 
-        <br>
-        les '&:nth-child(1)' doivent êtres sortis du selecteur .horizontalCard et mettre 'bg-song-#' à la place.
-    </q>
-
     
     <section class="songs split_30_70">
         <aside class="songs-list horizontalCard-container">

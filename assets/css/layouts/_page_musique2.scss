@@ -69,68 +69,6 @@
                 }
             }
 
-            // song: Madison
-            &:nth-child(1) {
-                background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
-                background-position: top center;
-            }
-
-            // song: Soif
-            &:nth-child(2) {
-                background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
-                background-position: left center;
-            }
-
-            // song: Le placard
-            &:nth-child(3) {
-                background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
-                background-position: center top;
-            }
-
-            // song: L'Exil
-            &:nth-child(4) {
-                background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
-                background-position: left center;
-            }
-
-            // song: Pas d'autre Monde
-            &:nth-child(5) {
-                background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
-                background-position: left center;
-            }
-
-            // song: Post-it
-            &:nth-child(6) {
-                background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
-                // background-image: url("https://source.unsplash.com/UQZvynxNuqgo/500x300");
-                background-position: left top;
-            }
-
-            // song: Si tu vas bien
-            &:nth-child(7) {
-                background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
-                background-position: right bottom;
-            }
-
-            // song: Blanc et Noire
-            &:nth-child(8) {
-                background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
-                
-                background-position: left center;
-            }
-
-            // song: Des foules de toi
-            &:nth-child(9) {
-                background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
-                background-position: left center;
-            }
-
-            // song: J'ai pas les mots
-            &:nth-child(10) {
-                background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
-                background-position: left center;
-            }
-
             
             // -------------------------
 
@@ -152,6 +90,68 @@
                 }
             }
 
+            // song: Madison
+            &.bg-song-0 {
+                background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
+                background-position: top center;
+            }
+
+            // song: Soif
+            &.bg-song-1 {
+                background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
+                background-position: left center;
+            }
+
+            // song: Le placard
+            &.bg-song-2 {
+                background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
+                background-position: center top;
+            }
+
+            // song: L'Exil
+            &.bg-song-3 {
+                background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
+                background-position: left center;
+            }
+
+            // song: Pas d'autre Monde
+            &.bg-song-4 {
+                background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
+                background-position: left center;
+            }
+
+            // song: Post-it
+            &.bg-song-5 {
+                background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
+                // background-image: url("https://source.unsplash.com/UQZvynxNuqgo/500x300");
+                background-position: left top;
+            }
+
+            // song: Si tu vas bien
+            &.bg-song-6 {
+                background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
+                background-position: right bottom;
+            }
+
+            // song: Blanc et Noire
+            &.bg-song-7 {
+                background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
+                
+                background-position: left center;
+            }
+
+            // song: Des foules de toi
+            &.bg-song-8 {
+                background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
+                background-position: left center;
+            }
+
+            // song: J'ai pas les mots
+            &.bg-song-9 {
+                background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
+                background-position: left center;
+            }
+            
         }
     }
 
