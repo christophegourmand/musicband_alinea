@@ -4,7 +4,7 @@
 
     .lyrics-title {
         font-size: 2rem;
-        color: red;        
+        color: var(--theme-color_important);        
     }
     .lyrics-list {
     
@@ -13,11 +13,11 @@
 
 
             .lyrics-sentence {
-                color: white;
+                color: var(--theme-color_neutral);
             }
             
             .lyrics-sentence--chorus {
-                color: red;
+                color: var(--theme-color_important);
             }
         }
     }

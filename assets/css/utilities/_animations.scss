@@ -12,12 +12,12 @@
 		text-shadow: none;
 	}
 	25% {
-		text-shadow: 0 0 .5rem white;			
+		text-shadow: 0 0 .5rem var(--theme-color_neutral);			
 	}
 	50% {
-		text-shadow: 0 0 3rem white;
+		text-shadow: 0 0 3rem var(--theme-color_neutral);
 	}
 	100% {
-		text-shadow: 0 0 1rem white;
+		text-shadow: 0 0 1rem var(--theme-color_neutral);
 	}
 }

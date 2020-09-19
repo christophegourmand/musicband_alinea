@@ -12,21 +12,22 @@
 <main>
     <h2 class="page-title">Musique</h2>
 
-    <button><a href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">RETOUR</a></button>
     
-    <section class="songs">
-        <aside class="songs-list horizontalCard-container">
+    <section class="album">
+        <h2 class="album-title">Madison</h2>
         
+        
+        <aside class="songs-list grid_pageLyrics">
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
-                    <a class="horizontalCard-link" href="<?=$prefix_to_root_folder.'views/pages/page_lyrics.php';?>">
+                    <a class="horizontalCard-link" href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">
                         <h3 class="horizontalCard-title"><?=$song_title_str?></h3>
                     </a>
+                    <a class="btn btn_dark horizontalCard-button" href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">&lt;</a>
                 </div>
-            
         </aside>
 
         <div class="lyrics">
-            <h3 class="lyrics-title"><?=$song_title_str?></h3>
+            <!-- <h3 class="lyrics-title"><?=$song_title_str?></h3> -->
             <article class="lyrics-list white">
                 <?php for ($paragraph_index = 0 ; $paragraph_index < count($lyrics_paragraphs_indArr) ; $paragraph_index++): ?>
                     <?php $paragraph_sentences_indArr = $lyrics_paragraphs_indArr[$paragraph_index]['sentences']; ?>

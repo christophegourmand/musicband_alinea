@@ -38,7 +38,7 @@
             
                 .navbtm-link {
                     font-size: 10vw;
-                    color: white; /* if not class 'active' */
+                    color: var(--theme-color_neutral); /* if not class 'active' */
                 }
 
             .navbtm-item.active .navbtm-link {

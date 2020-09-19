@@ -1,0 +1,30 @@
+.btn {
+    padding: .5rem;
+    
+    border: none;
+    text-shadow: none;
+    border-radius: 2rem;
+    
+    font-size: 1rem;
+
+    /*
+    .btn-link {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+    }
+    */
+}
+
+.btn_dark {
+    background-color: var(--theme-color_important);
+    // border: 1px solid var(--theme-color_important);
+    
+    color: var(--theme-color_neutral);
+}
+
+.fly_bottom-right {
+    // position: fixed;
+    // bottom: 6rem;
+    // right: 2rem;
+}

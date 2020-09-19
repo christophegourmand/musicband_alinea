@@ -16,6 +16,14 @@
 /* =========================================== */
 /* UTILITIES / COLORS */
 /* =========================================== */
+:root {
+  --theme-color_important: #e40000;
+  --theme-color_neutral: white;
+  --theme-color_discret: #b0b0b0;
+  --theme-color_background: #1c1c1c;
+  --theme-color_brand: white;
+}
+
 /* =========================================== */
 /* UTILITIES / VARIABLES */
 /* =========================================== */
@@ -64,13 +72,13 @@ https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-stan
     text-shadow: none;
   }
   25% {
-    text-shadow: 0 0 .5rem white;
+    text-shadow: 0 0 0.5rem var(--theme-color_neutral);
   }
   50% {
-    text-shadow: 0 0 3rem white;
+    text-shadow: 0 0 3rem var(--theme-color_neutral);
   }
   100% {
-    text-shadow: 0 0 1rem white;
+    text-shadow: 0 0 1rem var(--theme-color_neutral);
   }
 }
 
@@ -79,13 +87,13 @@ https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-stan
     text-shadow: none;
   }
   25% {
-    text-shadow: 0 0 .5rem white;
+    text-shadow: 0 0 0.5rem var(--theme-color_neutral);
   }
   50% {
-    text-shadow: 0 0 3rem white;
+    text-shadow: 0 0 3rem var(--theme-color_neutral);
   }
   100% {
-    text-shadow: 0 0 1rem white;
+    text-shadow: 0 0 1rem var(--theme-color_neutral);
   }
 }
 
@@ -130,7 +138,7 @@ body {
 }
 
 .white {
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 /* LAYOUTS */
@@ -202,6 +210,7 @@ header {
 /* LAYOUTS / footer */
 /* =========================================== */
 footer {
+  padding-bottom: 4rem;
   height: fit-content(100%);
 }
 
@@ -227,11 +236,27 @@ footer {
 }
 
 */
-.songs {
+.album {
   margin: 1rem;
 }
 
-.songs .horizontalCard-container {
+.album .album-title {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--theme-color_neutral);
+  text-align: left;
+  font-size: 2.9rem;
+  font-weight: 100;
+  letter-spacing: 0.321em;
+  color: var(--theme-color_important);
+}
+
+.album .album-title .album-title-mention {
+  font-size: 1rem;
+  letter-spacing: normal;
+}
+
+.album .grid_pageMusique {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 12rem;
@@ -245,35 +270,36 @@ footer {
 }
 
 @media only screen and (min-width: 576px) {
-  .songs .horizontalCard-container {
+  .album .grid_pageMusique {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .songs .horizontalCard-container {
+  .album .grid_pageMusique {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .songs .horizontalCard-container {
+  .album .grid_pageMusique {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .songs .horizontalCard-container {
+  .album .grid_pageMusique {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.songs .horizontalCard-container .horizontalCard {
+.album .horizontalCard {
   width: 100%;
+  min-height: 12rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -295,18 +321,18 @@ footer {
   background-repeat: no-repeat;
 }
 
-.songs .horizontalCard-container .horizontalCard:hover {
-  border: 3px solid white;
+.album .horizontalCard:hover {
+  border: 3px solid var(--theme-color_neutral);
   -webkit-transition: background-size 1.5s ease-out;
   transition: background-size 1.5s ease-out;
 }
 
-.songs .horizontalCard-container .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
+.album .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
   font-weight: 300;
 }
 
-.songs .horizontalCard-container .horizontalCard .horizontalCard-link {
+.album .horizontalCard .horizontalCard-link {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -327,59 +353,65 @@ footer {
           align-items: center;
 }
 
-.songs .horizontalCard-container .horizontalCard .horizontalCard-link .horizontalCard-title {
+.album .horizontalCard .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
   font-weight: 300;
-  color: white;
+  color: var(--theme-color_neutral);
   text-shadow: 0 0 .5rem black;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-0 {
+.album .horizontalCard .horizontalCard-button {
+  display: inline;
+  right: 1rem;
+  top: 1rem;
+}
+
+.bg-song-0 {
   background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
   background-position: top center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-1 {
+.bg-song-1 {
   background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-2 {
+.bg-song-2 {
   background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
   background-position: center top;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-3 {
+.bg-song-3 {
   background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-4 {
+.bg-song-4 {
   background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-5 {
+.bg-song-5 {
   background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
   background-position: left top;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-6 {
+.bg-song-6 {
   background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
   background-position: right bottom;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-7 {
+.bg-song-7 {
   background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-8 {
+.bg-song-8 {
   background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
   background-position: left center;
 }
 
-.songs .horizontalCard-container .horizontalCard.bg-song-9 {
+.bg-song-9 {
   background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
   background-position: left center;
 }
@@ -466,7 +498,7 @@ footer {
 .nav .nav-brand {
   vertical-align: middle;
   font-size: 2.5rem;
-  color: white;
+  color: var(--theme-color_brand);
 }
 
 .nav .nav-brand span {
@@ -520,7 +552,7 @@ footer {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    background-color: #1c1c1c;
+    background-color: var(--theme-color_background);
   }
   .nav .nav-toggler {
     height: 8vh;
@@ -528,7 +560,7 @@ footer {
     background-color: #3b3b3b;
     font-size: 2rem;
     text-align: center;
-    color: white;
+    color: var(--theme-color_neutral);
   }
   .nav .nav-toggler:active {
     border: none;
@@ -729,7 +761,7 @@ footer {
   .nav .nav-menus .nav-item .nav-link {
     padding-top: .5rem;
     /*padding-bottom: .3rem;*/
-    color: white;
+    color: var(--theme-color_neutral);
   }
   .nav .nav-menus .nav-item:hover .nav-link {
     position: relative;
@@ -859,7 +891,7 @@ footer {
   }
   .navbtm-link {
     font-size: 10vw;
-    color: white;
+    color: var(--theme-color_neutral);
     /* if not class 'active' */
   }
   .navbtm-item.active .navbtm-link {
@@ -896,6 +928,26 @@ footer {
   text-decoration: underline;
 }
 
+.btn {
+  padding: .5rem;
+  border: none;
+  text-shadow: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  /*
+    .btn-link {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+    }
+    */
+}
+
+.btn_dark {
+  background-color: var(--theme-color_important);
+  color: var(--theme-color_neutral);
+}
+
 /* =========================================== */
 /* MODULES / catchphrase */
 /* =========================================== */
@@ -921,7 +973,7 @@ footer {
 
 .catchphrase .catchphrase-phrase {
   font-size: 1.2rem;
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .catchphrase .catchphrase-cite {
@@ -937,7 +989,7 @@ footer {
   font-variant: small-caps;
   letter-spacing: .7rem;
   text-align: center;
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .img-full-page {
@@ -953,7 +1005,7 @@ footer {
   font-weight: 100;
   font-size: 2rem;
   font-style: normal;
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .bigquote .bigquote-text {
@@ -999,7 +1051,7 @@ footer {
 
 .gallery .gallery-title {
   text-align: center;
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .gallery .gallery-body {
@@ -1044,27 +1096,27 @@ footer {
 }
 
 .interactive-flyover .interactive-flyover_result .result {
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .lyrics .lyrics-title {
   font-size: 2rem;
-  color: red;
+  color: var(--theme-color_important);
 }
 
 .lyrics .lyrics-list .lyrics-paragraph .lyrics-sentence {
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 .lyrics .lyrics-list .lyrics-paragraph .lyrics-sentence--chorus {
-  color: red;
+  color: var(--theme-color_important);
 }
 
 /* =========================================== */
 /* MODULES / test */
 /* =========================================== */
 .white {
-  color: white;
+  color: var(--theme-color_neutral);
 }
 
 /* STATES */
@@ -1086,13 +1138,13 @@ footer {
 /* THEME / black-white-red */
 /* =========================================== */
 main {
-  background-color: #1c1c1c;
+  background-color: var(--theme-color_background);
   color: dark;
 }
 
 footer {
   background-color: #1c1c1c;
-  border-top: 1px solid #9e0000;
+  border-top: 1px solid var(--theme-color_important);
   font-weight: 200;
   color: white;
 }

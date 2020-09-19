@@ -1,6 +1,6 @@
 .songs {
     margin: 1rem;
-                // border: 1px solid red;
+                // border: 1px solid var(--theme-color_important);
 
 
     .songs-list {
@@ -120,7 +120,7 @@
                     
                     font-size: 2rem;
                     font-weight: 200;
-                    color: white;
+                    color: var(--theme-color_neutral);
 
                     text-shadow: 0 0 .5rem black;                
                 }

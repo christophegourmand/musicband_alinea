@@ -21,7 +21,7 @@
 					                        // @include bordure(rgb(61, 255, 78));
 		vertical-align:  middle;
         font-size: 2.5rem;
-        color: white;
+        color: var(--theme-color_brand);
  
         span {
             position: relative;
@@ -68,7 +68,7 @@
         flex-direction: column-reverse;
         // align-items: stretch;
 
-        background-color: $darkgray;
+        background-color: var(--theme-color_background);
 
         // .nav-brand {}
 
@@ -80,7 +80,7 @@
             height: 8vh;
 
             // border-radius: 3rem;
-            // border: 1px solid white;
+            // border: 1px solid var(--theme-color_neutral);
             border: none;
             
             // background-color: hsla(0, 18%, 11%, 0.5);
@@ -88,7 +88,7 @@
 
             font-size: 2rem;
             text-align: center;
-            color: white;
+            color: var(--theme-color_neutral);
 
             &:active {
                 border: none;
@@ -257,7 +257,7 @@
                 .nav-link {
 					padding-top: .5rem;
                     /*padding-bottom: .3rem;*/
-                    color: white;      
+                    color: var(--theme-color_neutral);      
                 }
 
                 &:hover .nav-link {
@@ -269,12 +269,12 @@
                     font-weight: 400;
 
                     // &:first-letter {
-                        // color: $red;
+                        // color: $var(--theme-color_important);
                     // }
                 }
 			
                 &.active .nav-link {
-                    // border-bottom: 3px solid $red;
+                    // border-bottom: 3px solid $var(--theme-color_important);
                 
 					font-weight: 600;
 

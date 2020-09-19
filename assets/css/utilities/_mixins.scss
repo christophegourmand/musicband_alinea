@@ -23,3 +23,11 @@
         border: 1px solid $color;
                                                         // border-color: transparent;
 }
+
+@mixin effect_blur($pixelsOfBlur) {
+        filter: blur($pixelsOfBlur);
+        -o-filter: blur($pixelsOfBlur);
+        -ms-filter: blur($pixelsOfBlur);
+        -moz-filter: blur($pixelsOfBlur);
+        -webkit-filter: blur($pixelsOfBlur);
+}
