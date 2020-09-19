@@ -5,12 +5,12 @@
     
     <section class="songs split_30_70">
         <aside class="songs-list horizontalCard-container">
-            <?php for($i=0 ; $i<count($allSongs_array) ; $i++): ?>
+            <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
                 <div class="horizontalCard <?='bg-song-'.$i?>" id="<?php echo('horizontalCard_song_'.$i);?>">
                     <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_lyrics.php'.'?songClicked='.$i);?>">
 
                     <!-- .'/?song='.$i -->
-                        <h3 class="horizontalCard-title"><?=$allSongs_array[$i]["song_title"]?></h3>
+                        <h3 class="horizontalCard-title"><?=$allSongs_indArray[$i]["song_title"]?></h3>
                     </a>
                 </div>
             <?php endfor; ?>
@@ -19,7 +19,7 @@
         <div class="lyric">
             <!-- plus tard changer la valeur de [0] selon le click -->
             <!--
-            <h3 class="lyric-title"><?=$allSongs_array[0]["song_title"]?></h3>
+            <h3 class="lyric-title"><?=$allSongs_indArray[0]["song_title"]?></h3>
             <article class="lyric-list">
                 <p class="lyric-paragraph">
                     <span class="lyric-sentence">Not by way of an apology</span>
