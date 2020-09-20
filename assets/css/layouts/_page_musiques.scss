@@ -2,7 +2,10 @@
     margin: 1rem;
                 // border: 1px solid red;
 
+    @include flex_col(flex-start, center);
+
     .album-title {
+        width: 100%;
         margin-top: 3rem;
         margin-bottom: 1rem;
 
@@ -21,11 +24,23 @@
         }
     }
 
+    .album-img {
+        width: 100%;
+        @media #{$bigger-than-sm} {width: 510px;}
+        // @media #{$bigger-than-md} {width: 100%;}
+        // @media #{$bigger-than-lg} {width: 100%;}
+        // @media #{$bigger-than-xl} {width: 100%;}
+        
+        margin-top: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+
     .songs-list {
         // put rules for songs=list here
     }
 
     .grid_pageMusique {
+        width: 100%;
                                             // @include bordure(red);
         display: grid;
         grid-template-rows: 12rem;

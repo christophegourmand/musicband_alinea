@@ -10,12 +10,11 @@
 ?>
 
 <main>
-    <h2 class="page-title">Musique</h2>
+    <h2 class="page-title">Musiques</h2>
 
     
     <section class="album">
         <h2 class="album-title">Madison</h2>
-        
         
         <aside class="songs-list grid_pageLyrics">
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">

@@ -6,7 +6,7 @@
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er album</sup></h2>
 
-        <img src="" title="" alt="" >
+        <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
         
         <aside class="songs-list grid_pageMusique">
             <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>

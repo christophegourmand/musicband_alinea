@@ -235,9 +235,25 @@ footer {
 */
 .album {
   margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .album .album-title {
+  width: 100%;
   margin-top: 3rem;
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--theme-color_neutral);
@@ -254,7 +270,20 @@ footer {
   letter-spacing: normal;
 }
 
+.album .album-img {
+  width: 100%;
+  margin-top: 1.8rem;
+  margin-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .album .album-img {
+    width: 510px;
+  }
+}
+
 .album .grid_pageMusique {
+  width: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 12rem;
