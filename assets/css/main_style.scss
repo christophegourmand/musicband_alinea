@@ -19,13 +19,14 @@
 @import "layouts/footer";
 @import "layouts/page_divider";
 @import "layouts/page_musiques"; // using Grid
+@import "layouts/page_lyrics";
 
 /* MODULES */
 @import "modules/buttons";
 @import "modules/topPanel";
 @import "modules/navbar";
 @import "modules/brand";
-@import "modules/navbar-bottom";
+// @import "modules/navbar-bottom";
 @import "modules/navbar-footer";
 @import "modules/btn";
 @import "modules/catchphrase";

@@ -7,7 +7,7 @@
     .album-title {
         width: 100%;
         margin-top: 3rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2.5rem;
 
         border-bottom: 2px solid var(--theme-color_neutral);
 
@@ -31,15 +31,10 @@
         // @media #{$bigger-than-lg} {width: 100%;}
         // @media #{$bigger-than-xl} {width: 100%;}
         
-        margin-top: 1.8rem;
         margin-bottom: 2.5rem;
     }
 
-    .songs-list {
-        // put rules for songs=list here
-    }
-
-    .grid_pageMusique {
+    .album-songs-cards {
         width: 100%;
                                             // @include bordure(red);
         display: grid;

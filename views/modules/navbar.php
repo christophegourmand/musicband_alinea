@@ -23,8 +23,8 @@
     </div>
     <ul class="nav-menus" id="nav_menus">
         <li class="nav-item bg-music">  <!-- classe active dans le li -->
-            <a href="<?php echo($prefix_to_root_folder."views/pages/page_musique.php");?>" class="nav-link">
-                <span class="nav-link-title">Musique</span>
+            <a href="<?php echo($prefix_to_root_folder."views/pages/page_musiques.php");?>" class="nav-link">
+                <span class="nav-link-title">Musiques</span>
             </a>
         </li>
         <div class="nav-note"></div>

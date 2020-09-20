@@ -255,7 +255,7 @@ footer {
 .album .album-title {
   width: 100%;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
   border-bottom: 2px solid var(--theme-color_neutral);
   text-align: left;
   font-size: 2.9rem;
@@ -272,7 +272,6 @@ footer {
 
 .album .album-img {
   width: 100%;
-  margin-top: 1.8rem;
   margin-bottom: 2.5rem;
 }
 
@@ -282,7 +281,7 @@ footer {
   }
 }
 
-.album .grid_pageMusique {
+.album .album-songs-cards {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -297,28 +296,28 @@ footer {
 }
 
 @media only screen and (min-width: 576px) {
-  .album .grid_pageMusique {
+  .album .album-songs-cards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .album .grid_pageMusique {
+  .album .album-songs-cards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .album .grid_pageMusique {
+  .album .album-songs-cards {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (min-width: 1200px) {
-  .album .grid_pageMusique {
+  .album .album-songs-cards {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
   }
@@ -445,6 +444,52 @@ footer {
 .bg-song-11 {
   background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
   background-position: left center;
+}
+
+.album-song-banner {
+  width: 100%;
+}
+
+.album-song-banner .horizontalCard-title--big {
+  font-size: 3rem !important;
+  font-weight: 300;
+}
+
+.lyrics {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.lyrics .lyrics-paragraph.verse {
+  font-weight: 100;
+  color: var(--theme-color_neutral);
+}
+
+.lyrics .lyrics-paragraph.chorus {
+  font-weight: 600;
+  color: var(--theme-color_neutral);
+}
+
+.lyrics .lyrics-paragraph .lyrics-sentence {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .lyrics .lyrics-paragraph .lyrics-sentence {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .lyrics .lyrics-paragraph .lyrics-sentence {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .lyrics .lyrics-paragraph .lyrics-sentence {
+    font-size: 1.8rem;
+  }
 }
 
 /* MODULES */
@@ -682,7 +727,7 @@ footer {
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-acheter {
-    background-image: url("./../img/photos/album_book/00_PochetteAvant.jpg");
+    background-image: url("./../img/photos/album_madison_book/00_PochetteAvant.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }
@@ -875,69 +920,6 @@ footer {
   }
   .brand .brand-name {
     font-size: 3.47368rem;
-  }
-}
-
-/* =========================================== */
-/* MODULES / navbar-bottom */
-/* =========================================== */
-/*:y ------------------------ Navbar Bottom */
-@media only screen and (max-width: 992px) {
-  .navbtm {
-    width: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(75, 2, 2, 0.3);
-  }
-  .navbtm-menus {
-    /* margin: 0 1rem; */
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr 1fr 1fr;  */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: stretch;
-        -ms-flex-pack: stretch;
-            justify-content: stretch;
-  }
-  .navbtm-item {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    /* as a child */
-    padding: .5rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    /* as a parent */
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .navbtm-link {
-    font-size: 10vw;
-    color: var(--theme-color_neutral);
-    /* if not class 'active' */
-  }
-  .navbtm-item.active .navbtm-link {
-    color: #db2100;
-    /* if class active only */
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .navbtm {
-    display: none;
   }
 }
 

@@ -8,7 +8,7 @@
 
         <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
         
-        <aside class="songs-list grid_pageMusique">
+        <aside class="album-songs-cards">
             <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
                 <div class="horizontalCard <?='bg-song-'.$i?>" id="<?php echo('horizontalCard_song_'.$i);?>">
                     <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_lyrics.php'.'?songClicked='.$i);?>">

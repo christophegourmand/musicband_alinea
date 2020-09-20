@@ -1,7 +1,7 @@
 <?php 
 // VARIABLES USED TO BUILD PATH-TO-FILES :
     $prefix_to_root_folder = "../../";
-    $page_name = "page_musique"; // used to build paths-to-files
+    $page_name = "page_musiques"; // used to build paths-to-files
 
 
 // VARIABLES USED IN HEADER :
@@ -9,7 +9,7 @@
     $page_description = "Morceaux, paroles, et plus";
 
 // VARIABLES TO ADJUST "common elements" (header, navbar, ...)
-    $active_menu_in_navbar = "Musique";
+    $active_menu_in_navbar = "Musiques";
 
 ?>
 
