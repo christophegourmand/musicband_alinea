@@ -19,10 +19,12 @@
         
         <aside class="songs-list grid_pageLyrics">
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
+                    <a class="horizontalCard-btn btn-outline-white" href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">
+                        <span class="btn-txt">&lt;</span>
+                    </a>
                     <a class="horizontalCard-link" href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">
                         <h3 class="horizontalCard-title"><?=$song_title_str?></h3>
                     </a>
-                    <a class="btn btn_dark horizontalCard-button" href="<?=$prefix_to_root_folder.'views/pages/page_musique.php';?>">&lt;</a>
                 </div>
         </aside>
 

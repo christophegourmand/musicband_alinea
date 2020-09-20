@@ -178,6 +178,23 @@ $allSongs_indArray = [
         ]
     ],
     // ------------------ end song
+    [
+        "song_title"=>"Le Placard (instrumental)",
+        "song_lyrics_paragraphs"=>[
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
+            ]           
+        ]
+    ],
+    // ------------------ end song
     
     [
         "song_title"=>"Si tu vas bien",
@@ -235,6 +252,24 @@ $allSongs_indArray = [
     
     [
         "song_title"=>"J'ai pas les mots",
+        "song_lyrics_paragraphs"=>[
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
+            ]           
+        ]
+    ],
+    // ------------------ end song
+    
+    [
+        "song_title"=>"J'écrirai",
         "song_lyrics_paragraphs"=>[
             [
                 "type"=>"verse",

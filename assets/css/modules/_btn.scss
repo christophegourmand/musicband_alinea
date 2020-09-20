@@ -7,6 +7,12 @@
     
     font-size: 1rem;
 
+    @include flex_row(center, center);
+    
+    .btn-txt {
+        margin: .5rem;
+        font-size: 1rem;
+    }
     /*
     .btn-link {
         display: inline-block;
@@ -16,14 +22,26 @@
     */
 }
 
-.btn_dark {
-    background-color: var(--theme-color_important);
+.btn-dark {
+    @extend .btn;
+    // background-color: var(--theme-color_important);
     // border: 1px solid var(--theme-color_important);
     
-    color: var(--theme-color_neutral);
+    // color: var(--theme-color_neutral);
+    color: white;
+}
+
+.btn-outline-white {
+    @extend .btn;
+    // background-color: var(--theme-color_important);
+    // border: 1px solid var(--theme-color_neutral);
+    
+    // color: var(--theme-color_neutral);
+    color: white;
 }
 
 .fly_bottom-right {
+    
     // position: fixed;
     // bottom: 6rem;
     // right: 2rem;

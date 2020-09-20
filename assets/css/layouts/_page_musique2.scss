@@ -10,12 +10,13 @@
 
         text-align: left;
         font-size: 2.9rem;
-        font-weight: 100;
+        font-weight: 200;
         letter-spacing: 0.321em;
         color: var(--theme-color_important);
 
         .album-title-mention {
-            font-size: 1rem;
+            font-size: 1.5rem;
+            font-weight: 100;
             letter-spacing: normal;
         }
     }
@@ -111,11 +112,12 @@
                 }
             }
 
-            .horizontalCard-button {
-                display: inline;
+            .horizontalCard-btn {
+                // height: 1rem;
+                
                 // position: relative;
-                right: 1rem;
-                top: 1rem;
+                // left: 1rem;
+                // top: 1rem;
             }
                   
         }
@@ -127,62 +129,86 @@
 
 // song: Madison
 .bg-song-0 {
-    background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
-    background-position: top center;
+    // background-image: url("https://source.unsplash.com/9upgIKSu5w8/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_madison.jpg");
+    background-position: center center;
 }
 
 // song: Soif
 .bg-song-1 {
-    background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
-    background-position: left center;
+    // background-image: url("https://source.unsplash.com/jB8WaHvHmoY/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_soif.jpg");
+    background-position: center center;
 }
 
 // song: Le placard
 .bg-song-2 {
-    background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
-    background-position: center top;
+    // background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_le-placard.jpg");
+    background-position: center center;
 }
 
 // song: L'Exil
 .bg-song-3 {
-    background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
+    // background-image: url("https://source.unsplash.com/fDcwEmqMJls/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_lexil.jpg");
     background-position: left center;
 }
 
 // song: Pas d'autre Monde
 .bg-song-4 {
-    background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
-    background-position: left center;
+    // background-image: url("https://source.unsplash.com/FPt10LXK0cg/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_pas-dautre-monde.jpg");
+    background-position: 0% 70%;
 }
 
 // song: Post-it
 .bg-song-5 {
-    background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
+    // background-image: url("https://source.unsplash.com/r4QtHoDqk5w/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_post-it.jpg");
     // background-image: url("https://source.unsplash.com/UQZvynxNuqgo/500x300");
-    background-position: left top;
+    background-position: center center;
+}
+
+// song: Le Placard (instrumental)
+.bg-song-6 {
+    // background-image: url("https://source.unsplash.com/WKP4fdQPFto/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_le-placard-instru.jpg");
+    background-position: 100% 34%;
 }
 
 // song: Si tu vas bien
-.bg-song-6 {
-    background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
-    background-position: right bottom;
+.bg-song-7 {
+    // background-image: url("https://source.unsplash.com/iRbHr8jpmGw/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_si-tu-vas-bien.jpg");
+    background-position: 100% 80%;
 }
 
 // song: Blanc et Noire
-.bg-song-7 {
-    background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
+.bg-song-8 {
+    // background-image: url("https://source.unsplash.com/O7JOmrK2YVs/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_blanc-et-noir.jpg");
     
     background-position: left center;
 }
 
 // song: Des foules de toi
-.bg-song-8 {
-    background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
+.bg-song-9 {
+    // background-image: url("https://source.unsplash.com/-xQoTg250qk/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_des-foules-de-toi.jpg");
     background-position: left center;
 }
 
 // song: J'ai pas les mots
-.bg-song-9 {
+.bg-song-10 {
+    // background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
+    background-image: url("../img/photos/album_madison_backgrounds/madison_jai-pas-les-mots.jpg");
+    background-position: left center;
+}
+
+// song: J'écrirai
+.bg-song-11 {
     background-image: url("https://source.unsplash.com/5_Ez6yEh8EE/500x300");
+    // background-image: url("../img/photos/album_madison_backgrounds/");
     background-position: left center;
 }

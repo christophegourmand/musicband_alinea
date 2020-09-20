@@ -5,6 +5,9 @@
     
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er album</sup></h2>
+
+        <img src="" title="" alt="" >
+        
         <aside class="songs-list grid_pageMusique">
             <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
                 <div class="horizontalCard <?='bg-song-'.$i?>" id="<?php echo('horizontalCard_song_'.$i);?>">

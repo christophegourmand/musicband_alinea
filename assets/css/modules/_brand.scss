@@ -35,12 +35,17 @@ $ratio-brand-and-name: 5.5/9.5;
 
         font-weight: 200;
         font-size: 9.5em*$ratio-brand-and-name;
-        color: white;
 		
 		animation-name: neon;
 		animation-duration: 2s;
 		/*text-shadow: 0 0 1rem blue;   */
 				/*end of animation must match */
+
+        color: white;   // in case in html, I have a .brand-name who does not contain a link.
+
+        a, a:visited {
+            color: white;  // here I redefine the color, to overwrite color-rules from the browser. 
+        }
     }
 
     .brand-name:first-letter {
