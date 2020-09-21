@@ -1,0 +1,38 @@
+.sitemap {    
+   
+    margin: 2rem $pageMargin;
+
+    line-height: 1.5;
+    color: var(--theme-color_neutral);
+
+    .sitemap-list-level1 {
+
+        .sitemap-item-level1 {
+            list-style-type: disc;
+        }
+
+        .sitemap-list-level2 {
+            
+            margin-left: 2rem;
+
+            .sitemap-item-level2 {
+                list-style-type: circle;
+            }
+
+        }
+
+
+    }
+
+
+
+
+    .sitemap-link:any-link {
+        text-decoration: underline;
+        
+        font-size: 1.3rem;
+        font-weight: 200;
+        color: var(--theme-color_neutral);
+    }
+
+}

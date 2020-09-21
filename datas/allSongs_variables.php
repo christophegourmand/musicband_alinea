@@ -243,7 +243,7 @@ $allSongs_indArray = [
     // ------------------ end song
     
     [
-        "song_title"=>"Pas d'Autre Monde",
+        "song_title"=>"Pas d'autre Monde",
         "song_lyrics_paragraphs"=>[
             [
                 "type"=>"verse",
@@ -296,14 +296,33 @@ $allSongs_indArray = [
             [
                 "type"=>"verse",
                 "sentences"=>[
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Il faudra bien se dire merci, le taire mais le dire, mon ami",
                 ]
-            ]           
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Il faudra bien se dire je t’aime, le taire mais le dire quand même",
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Il faudra bien se dire un jour, il faudra bien le dire, mon amour!",
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Faudra bien le dire! Le dire un jour!",
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Faudra bien le dire, mon amour",
+                ]
+            ],
         ]
     ],
     // ------------------ end song
@@ -392,32 +411,96 @@ $allSongs_indArray = [
             [
                 "type"=>"verse",
                 "sentences"=>[
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Distinguer le blanc du noir",
+                    "Des panoplies de songes, et chacun son histoire",
+                    "Afficher, en blanc et noir",
+                    "Des plaisirs illustrés, des rêves ou des cauchemars"
                 ]
-            ]           
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Voir les choses, en blanc ou noir",
+                    "Pour effacer les gestes, encaisser l’espoir",
+                    "Diluer, en blanc ou noir",
+                    "Le bonheur encadré, jusqu’à la petite mort"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Mélanger en blanc et noir",
+                    "Nos ambitions croissantes, noyées dans le miroir",
+                    "Effacer, le blanc, le noir",
+                    "Diluer les nuances du fond de ton regard"
+                ]
+            ],
+            [
+                "type"=>"chorus",
+                "sentences"=>[
+                    "Ou blanc ou noir",
+                    "Distinguer le blanc du noir"
+                ]
+            ]
         ]
     ],
     // ------------------ end song
     
     [
-        "song_title"=>"Des foules de toi",
+        "song_title"=>"Des foules en toi",
         "song_lyrics_paragraphs"=>[
             [
                 "type"=>"verse",
                 "sentences"=>[
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Encore un temps pour penser, on aurait donné nos vies jusqu’au dernier souffle",
+                    "Encore faut-il accepter, que le temps qui est promis est bien trop court",
+                    "Encore le temps de rêver, je vais penser à toi jusqu’au petit jour",
+                    "Alors faut-il accepter les chiens aux abois ou les poupées sourdes?"
                 ]
-            ]           
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "C’est full en toi, tu sais, ces foules en toi",
+                    "Des foules de toi, partout, que des full de toi."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Encore un temps pour oser, ce matin mes Amis, je deviens sourd",
+                    "Encore faut-il traverser la folie, la peur, les armures,",
+                    "Toujours, pourtant je le sais, que tous nos démons ne sont que nos atours,",
+                    "Unis vers la liberté, de choisir les nuits, les nuits de nos jours."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "C’est full en toi, tu sais, ces foules en toi",
+                    "Des foules de toi, partout, que des full de toi."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Quand nos rêves nous échappent, comme une réalité",
+                    "Quand le temps nous rattrape, pour tous nous effacer",
+                    "Quand les lèvres trahissent, quand on comprend l’esquisse",
+                    "Quand les rêves nous réveillent."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "C’est full en toi, tu sais depuis, que c’est full en toi",
+                    "C’est foules en toi, tu sais depuis, que des foules de toi",
+                    "Ces foules, c’est full, partout, des foules de toi. Tu sais déjà ?",
+                    "Ces foules de toi",
+                    "Full de toi",
+                    "Full de toi."
+                ]
+            ]
         ]
     ],
     // ------------------ end song
@@ -428,14 +511,54 @@ $allSongs_indArray = [
             [
                 "type"=>"verse",
                 "sentences"=>[
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "J’ai pas vraiment les mots qu’il faut",
+                    "J’ai pas vraiment les idées claires",
+                    "Pas expert en la matière",
+                    "J’ai pas les mots, j’ai pas les mots qu’il faut"
                 ]
-            ]           
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "J’ai pas toujours le nécessaire",
+                    "Pour affronter mes idéaux",
+                    "Les mains tendues en revolver",
+                    "J’ai pas les mots; j’ai pas les mots qu’il faut"
+                ]
+            ],
+            [
+                "type"=>"chorus",
+                "sentences"=>[
+                    "Y’a mes envies, mes envers, dans des puits de lumière",
+                    "De vie en vies, de verres en vers, dans mes nuits de poussière"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "J’ai pas compris mon dictionnaire",
+                    "J’fais d’l’audimate dans mon studio",
+                    "J’traine des liasses le nez en l’air",
+                    "J’ai pas les mots, j’ai pas les mots qu’il faut"
+                ]
+            ],
+            [
+                "type"=>"chorus",
+                "sentences"=>[
+                    "Y’a mes envies, mes envers, dans des puits de lumière",
+                    "De vie en vies, de verres en vers, dans mes nuits de poussière",
+                    "Y’a mes envies, mes envers, dans des puits de lumière",
+                    "De vie en vies, de verres en vers, dans mes nuits de poussière"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Qu’est-ce que tu vois?",
+                    "Dans ces nuits là, qu’est-ce que tu vois?",
+                    "Dans mes nuits de poussières"
+                ]
+            ]
         ]
     ],
     // ------------------ end song
@@ -453,7 +576,7 @@ $allSongs_indArray = [
                     "",
                     ""
                 ]
-            ]           
+            ]
         ]
     ]
     // ------------------ end song

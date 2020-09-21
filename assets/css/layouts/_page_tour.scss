@@ -1,0 +1,35 @@
+.tour {
+    margin: 3rem 7rem;
+
+    color: var(--theme-color_neutral);
+
+    .tour-title {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--theme-color_neutral);
+        
+        font-size: 3rem;
+        font-weight: 200;
+        text-align: left;
+        
+    }
+
+    .tour-body {
+
+        .tour-event {
+            @include flex_row(left, center);
+
+            .tour-event-date {
+                
+            }
+            
+            .tour-event-location {
+
+            }
+            
+            .tour-event-city {
+
+            }
+        }
+    }
+
+}
