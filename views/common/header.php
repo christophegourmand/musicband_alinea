@@ -11,10 +11,13 @@
             </a>
             -->
             <h1 class="brand-name"><a href="/">ALINEA</a></h1>
+
         </div>
         
         <?php include($prefix_to_root_folder."views/modules/navbar.php"); ?>
     
     </div>
+
+    <p class="incrustation_pixels" id="incrustation_pixels">info developer<p>
 
 </header>

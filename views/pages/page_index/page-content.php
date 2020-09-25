@@ -1,7 +1,7 @@
 <main>
     <section class="bigquote">
-        <blockquote class="bigquote-text">Bienvenu sur notre site. La route est longue pour un artiste, et cette route ne serait pas possible sans votre soutient. <br>Comme a dit un grand homme, nous espérons que vous prendrez autant de plaisir à écouter nos musiques que nous à les composer.</blockquote>
-        <cite class="bigquote-author">Alinea</cite>
+        <blockquote class="bigquote-text">Etrange.<br>Comme tout l’est.<br>Comme Nous sommes.<br>Toujours à deux doigts de vivre vraiment… Avec vous. Avec Nous. Avec sois-même.<br>Nous sommes nos chairs inconnues, nous sommes  « l’autrement », l’exception aux règles, ce que le bruit de vivre est au silence de nos solitudes, ce que la destination est au chemin, quand l’arrivée se dessine enfin, au loin.<br>A la fois le commencement, et à la fois la fin d’une nouvelle idée.<br>L’Alinéa à tout ça…</blockquote>
+        <cite class="bigquote-author"></cite>
         
     </section>
 

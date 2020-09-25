@@ -1,0 +1,71 @@
+.musiciens {
+    margin: 0 $pageMargin;
+
+    color: var(--theme-color_neutral);
+
+    .musiciens-container {
+        margin-bottom: 2rem;
+
+        .musiciens-name {
+            border-bottom: 1px solid var(--theme-color_important);
+            margin-bottom: 1rem;
+
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        .musiciens-photo {
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-attachment: fixed;
+
+        }
+        .musiciens-photo.img-thierry {
+            background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+        }
+        .musiciens-photo.img-simone {
+            background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+        }
+        .musiciens-photo.img-nico {
+            background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");
+        }
+        .musiciens-photo.img-romain {
+            background-image: url("../img/photos/musicians/photo_presentation_romain.jpg");
+        }
+        .musiciens-photo.img-nicole {
+            background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
+        }
+
+        .musiciens-description {
+            margin-top: 2rem;
+            margin-left: 2rem;
+            
+            font-size: 1.3rem;
+            font-weight: 100;
+        }
+
+        .musiciens-role {
+            // margin-left: 3rem;
+            
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: 100;
+            color: var(--theme-color_important);
+        }
+
+        @media #{$smaller-than-sm} {
+            .musiciens-name {
+                font-size: 1.4rem;
+            }
+            .musiciens-description {
+                font-size: 1rem;
+            }
+            .musiciens-role {
+                font-size: 1rem;
+            }
+
+        }
+    }
+}

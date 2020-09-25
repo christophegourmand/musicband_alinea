@@ -11,6 +11,14 @@
             menusToShow_node.classList.toggle("show");
         });
 
-// xxxxxxxxxxxxxxxxxx : 
+// ON MOBILE , adjusting the height of the css class  ".topPanel.full-height"
+document.getElementById("indexPage_topPanel").style.height = window.innerHeight;
+console.log(window.innerHeight);
 
+
+// I check if my PHP pieces of html inclusions load the script more than once : 
                                         console.log("mainPage.js Loaded");
+
+
+// I temporary display the width of the browser to work on media queries :  (TO REMOVE !!!)
+document.getElementById("incrustation_pixels").innerText = screen.width + "px";

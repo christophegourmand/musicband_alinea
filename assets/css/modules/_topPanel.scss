@@ -2,7 +2,7 @@
     @include flex_col(space-between, stretch);
 
     &.full-height {
-        height: 100vh;
+        // height: 92vh; // I stoppd to handle the height here. Instead I do it with Javascript using  window.innerHeight;
     }
 
     background: {   

@@ -9,13 +9,17 @@
         family: inherit;
         weight: 100;
         size: 2rem;
-        style: normal;    
+        style: normal;
+    }
+
+    @media #{$smaller-than-lg}{
+        font-size: 1.4rem;
     }
 
     color: var(--theme-color_neutral);
 
     .bigquote-text {
-        text-align: justify;
+        text-align: left;
     }
 
     .bigquote-author {

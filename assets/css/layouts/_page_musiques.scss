@@ -38,8 +38,8 @@
         width: 100%;
                                             // @include bordure(red);
         display: grid;
-        grid-template-rows: 12rem;
-        grid-auto-rows: 12rem;
+        grid-template-rows: 8rem;
+        grid-auto-rows: 8rem;
         grid-gap: 1rem;
 
         grid-template-columns: repeat(1,1fr);
@@ -48,6 +48,8 @@
 
         @media #{$bigger-than-sm} {
             grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 12rem;
+            grid-auto-rows: 12rem;
         }
         
         @media #{$bigger-than-md} {
@@ -67,7 +69,11 @@
                         // @include bordure(blue);
 
             width: 100%;
-            min-height: 12rem;
+            min-height: 8rem;
+
+            @media #{$bigger-than-sm} {
+                min-height: 12rem;
+            }
 
             @include flex_row(stretch , stretch);
             // flex-wrap: nowrap;

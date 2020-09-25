@@ -22,7 +22,7 @@
     <?php include($prefix_to_root_folder."views/common/head.php"); ?>
 
     <body>
-        <div class="topPanel full-height">
+        <div class="topPanel full-height" id="indexPage_topPanel">
             <?php include($prefix_to_root_folder."views/common/header.php"); ?>
 
             <div class="topPanel-body">

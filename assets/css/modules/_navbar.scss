@@ -55,8 +55,9 @@
 
     .nav {
         position: fixed;
-        bottom: 0rem;
+        bottom: 0;
         left: 0;
+        z-index: 999;
 
         margin-right: 0;
         margin-left: 0;
@@ -90,14 +91,16 @@
             text-align: center;
             color: var(--theme-color_neutral);
 
-            &:active {
+            &:active, &:focus, &:visited, &:focus-within,  {
                 border: none;
+                outline: none;
             }
         }
 
         .nav-menus {
             display: none;
-            height: 92vh;
+            // height: 92vh; //:r the top is hided by firefox or Chrome address-bar on top ! 
+            height: 84vh; //:r so I put less than 92vh.
             
             // When button_toggler is clicked, class "show" is added and we display in flex:
             &.show {
