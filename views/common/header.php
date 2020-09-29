@@ -18,6 +18,6 @@
     
     </div>
 
-    <p class="incrustation_pixels" id="incrustation_pixels">info developer<p>
+    <!-- <p class="incrustation_pixels" id="incrustation_pixels">000 px<p> -->
 
 </header>

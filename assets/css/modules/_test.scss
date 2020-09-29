@@ -13,3 +13,16 @@
     color: white;
     background-color: red;
 }
+
+body::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    background-color: red;
+    color: white;
+
+    content: "XS";
+
+    // @media #{$bigger-than-sm}{ content: }  // À FINIR après correction des medias queries.
+}

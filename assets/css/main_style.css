@@ -97,6 +97,35 @@ https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-stan
   }
 }
 
+.flex_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.split-2col-md {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  grid-auto-columns: repeat(1, 1fr);
+  border: 1px solid yellow;
+}
+
+@media only screen and (min-width: 768px) {
+  .split-2col-md {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    grid-auto-columns: repeat(2, 1fr);
+  }
+}
+
 /* BASE */
 /* =========================================== */
 /* BASE / base */
@@ -270,14 +299,27 @@ footer {
 }
 
 .album .album-img {
+  border: 1px solid red;
   width: 100%;
   margin-bottom: 2.5rem;
 }
 
 @media only screen and (min-width: 576px) {
   .album .album-img {
-    width: 510px;
+    width: 420px;
   }
+}
+
+.album .musicPlateform {
+  border: 1px solid red;
+}
+
+.album .musicPlateform .musicPlateform-message {
+  padding: 0 2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 200;
+  color: var(--theme-color_neutral);
 }
 
 .album .album-songs-cards {
@@ -596,7 +638,8 @@ footer {
 }
 
 .musiciens .musiciens-container .musiciens-name {
-  border-bottom: 1px solid var(--theme-color_important);
+  border-top: 1px solid var(--theme-color_important);
+  padding-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1.8rem;
   font-weight: 300;
@@ -606,7 +649,7 @@ footer {
   height: 300px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 50% 10%;
   background-attachment: fixed;
 }
 
@@ -615,7 +658,7 @@ footer {
 }
 
 .musiciens .musiciens-container .musiciens-photo.img-simone {
-  background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+  background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
 }
 
 .musiciens .musiciens-container .musiciens-photo.img-nico {
@@ -1387,6 +1430,15 @@ footer {
   right: 10px;
   color: white;
   background-color: red;
+}
+
+body::before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  content: "XS";
 }
 
 /* STATES */

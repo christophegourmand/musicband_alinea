@@ -7,7 +7,8 @@
         margin-bottom: 2rem;
 
         .musiciens-name {
-            border-bottom: 1px solid var(--theme-color_important);
+            border-top: 1px solid var(--theme-color_important);
+            padding-top: 1rem;
             margin-bottom: 1rem;
 
             font-size: 1.8rem;
@@ -18,15 +19,14 @@
             height: 300px;
             background-size: contain;
             background-repeat: no-repeat;
-            background-position: 50% 50%;
+            background-position: 50% 10%;
             background-attachment: fixed;
-
         }
         .musiciens-photo.img-thierry {
             background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
         }
         .musiciens-photo.img-simone {
-            background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+            background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
         }
         .musiciens-photo.img-nico {
             background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");

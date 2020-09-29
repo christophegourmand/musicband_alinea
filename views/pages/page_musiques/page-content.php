@@ -6,7 +6,15 @@
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er&nbsp;album</sup></h2>
 
-        <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
+        <div class="split-2col-md">
+            <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
+            
+            <div class="musicPlateform">
+                <p class="musicPlateform-message">Disponible sur vos plateformes favorites !</p>
+                <a href="" class="musicPlateform-link"></a>
+            </div>
+        </div>
+
         
         <aside class="album-songs-cards">
             <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>

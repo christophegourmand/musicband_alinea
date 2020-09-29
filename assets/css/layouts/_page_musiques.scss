@@ -25,13 +25,28 @@
     }
 
     .album-img {
+                    @include bordure(red);
+
         width: 100%;
-        @media #{$bigger-than-sm} {width: 510px;}
+        @media #{$bigger-than-sm} {width: 420px;}
         // @media #{$bigger-than-md} {width: 100%;}
         // @media #{$bigger-than-lg} {width: 100%;}
         // @media #{$bigger-than-xl} {width: 100%;}
         
         margin-bottom: 2.5rem;
+    }
+
+    .musicPlateform {
+                    @include bordure(red);
+
+        .musicPlateform-message {
+            padding: 0 2rem;
+            text-align: center;
+
+            font-size: 1.8rem;
+            font-weight: 200;
+            color: var(--theme-color_neutral);
+        }
     }
 
     .album-songs-cards {
