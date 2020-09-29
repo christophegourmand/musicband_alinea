@@ -17,12 +17,25 @@
 body::before {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 50%;
 
     background-color: red;
     color: white;
-
-    content: "XS";
-
-    // @media #{$bigger-than-sm}{ content: }  // À FINIR après correction des medias queries.
+    
+    @include media("","xs") {
+        content: "XS";
+    }
+    @include media("sm","sm") {
+        content: "SM";
+    }
+    @include media("md","md") {
+        content: "MD";
+    }
+    @include media("lg","lg") {
+        content: "LG";
+    }
+    @include media("xl","") {
+        content: "XL";
+    }
+    
 }

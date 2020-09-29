@@ -7,47 +7,146 @@
 
 // MEDIA QUERIES ==================================
 
-// XS: old phones
-$breakpoint-sm: 576px;
-// phone
-$breakpoint-md: 768px; 
-// tablet
-$breakpoint-lg: 992px;
-// laptop
-$breakpoint-xl: 1200px;
-// wide display (imac, tv)
 
-$smaller-than-sm: "only screen and (max-width: #{$breakpoint-sm})";
-$bigger-than-sm: "only screen and (min-width: #{$breakpoint-sm})";
+// DEFINITION of breakpoints-limits variables :
+    // XS: old phones
+    $breakpoint-xs-sm: 576px;
+    // phone
+    $breakpoint-sm-md: 768px; 
+    // tablet
+    $breakpoint-md-lg: 992px;
+    // laptop
+    $breakpoint-lg-xl: 1200px;
+    // wide display (imac, tv)
 
-$smaller-than-md: "only screen and (max-width: #{$breakpoint-md})";
-$bigger-than-md: "only screen and (min-width: #{$breakpoint-md})";
+// USAGE of the breakpoints : Version 1
 
-$smaller-than-lg: "only screen and (max-width: #{$breakpoint-lg})";
-$bigger-than-lg: "only screen and (min-width: #{$breakpoint-lg})";
+    /* SM : */
+    @media screen and (min-width: #{$breakpoint-xs-sm}) {
 
-$smaller-than-xl: "only screen and (max-width: #{$breakpoint-xl})";
-$bigger-than-xl: "only screen and (min-width: #{$breakpoint-xl})";
+    }
+
+    /* MD : */
+    @media screen and (min-width: #{$breakpoint-sm-md}) {
+
+    }
+
+    /* LG : */
+    @media screen and (min-width: #{$breakpoint-md-lg}) {
 
 
+    }
 
-/*:b SM : */
-@media screen and (min-width: #{$breakpoint-sm}) {
+    /* XL : */
+    @media screen and (min-width: #{$breakpoint-lg-xl}) {
 
+    }
+
+// USAGE of the breakpoints : Version 2
+
+    $smaller-than-sm: "only screen and (max-width: #{$breakpoint-xs-sm})"; // XS
+    $bigger-than-sm: "only screen and (min-width: #{$breakpoint-xs-sm})"; // SM-MD-LG-XL
+
+    $smaller-than-md: "only screen and (max-width: #{$breakpoint-sm-md})"; // XS-SM
+    $bigger-than-md: "only screen and (min-width: #{$breakpoint-sm-md})"; // MD-LG-XL
+
+    $smaller-than-lg: "only screen and (max-width: #{$breakpoint-md-lg})";
+    $bigger-than-lg: "only screen and (min-width: #{$breakpoint-md-lg})";
+
+    $smaller-than-xl: "only screen and (max-width: #{$breakpoint-lg-xl})";
+    $bigger-than-xl: "only screen and (min-width: #{$breakpoint-lg-xl})";
+
+
+// USAGE of the breakpoints : Version 3 = Correction of version 2
+
+// XS
+@media screen and (max-width: $breakpoint-xs-sm) {}
+
+// SM 
+@media screen and (min-width: $breakpoint-xs-sm) and (max-width: $breakpoint-sm-md){}
+
+// MD 
+@media screen and (min-width: $breakpoint-sm-md) and (max-width: $breakpoint-md-lg){}
+
+// LG 
+@media screen and (min-width: $breakpoint-md-lg) and (max-width: $breakpoint-lg-xl){}
+
+// XL 
+@media screen and (min-width: $breakpoint-lg-xl) {}
+
+
+@mixin media($min_width_given_str , $max_width_given_str) {
+    $min_width_str: "";
+    $max_width_str: "";
+    $and_optional_str: "";
+
+    @if ($min_width_given_str == "min") {
+        $min_width_str: "";
+    } @else if ($min_width_given_str == "sm") {
+        $min_width_str: "(min-width: 576px)";
+    } @else if ($min_width_given_str == "md") {
+        $min_width_str: "(min-width: 768px)";
+    } @else if ($min_width_given_str == "lg") {
+        $min_width_str: "(min-width: 992px)";
+    } @else if ($min_width_given_str == "xl") {
+        $min_width_str: "(min-width: 1200px)";
+    } // @else {
+      //  @error "minimal value should be min, sm, md, lg, xl _ with quotes";
+    // }
+
+    @if $max_width_given_str == "max" {
+        $max_width_str: "";
+    } @else if ($max_width_given_str == "xs") {
+        $max_width_str: "(max-width: 576px)";
+    } @else if ($max_width_given_str == "sm") {
+        $max_width_str: "(max-width: 768px)";
+    } @else if ($max_width_given_str == "md") {
+        $max_width_str: "(max-width: 992px)";
+    } @else if ($max_width_given_str == "lg") {
+        $max_width_str: "(max-width: 1200px)";
+    } // @else {
+      //  @error "maximal value should be max, xs, sm, md, lg _ with quotes";
+    // }
+
+    @if $min_width_given_str != "" and $max_width_given_str != "" {
+        $and_optional_str: "and";
+    } @else {
+        $and_optional_str: "";
+    }
+
+    $combined_queries: $min_width_str + $and_optional_str + $max_width_str;
+
+    // @debug $combined_queries;
+
+    @media screen and #{$combined_queries} {
+        @content;
+    }
 }
 
-/*:b MD : */
-@media screen and (min-width: #{$breakpoint-md}) {
 
-}
+/*
+je veux pouvoir utiliser de cette manière : 
 
-/*:b LG : */
-@media screen and (min-width: #{$breakpoint-lg}) {
+en dessous de :
+    @include xs {}
 
+    @include xs-sm {}
+    @include xs-sm-md {}
+    @include xs-sm-md-lg {}
+    @include xs-sm-md-lg-xl {}
+    
+    @include    sm-md-lg-xl {}
+    @include       md-lg-xl {}
+    @include          lg-xl {}
+    @include             xl {}
 
-}
+Je peux peut être transformer en :
 
-/*:b XL : */
-@media screen and (min-width: #{$breakpoint-xl}) {
+    @include media( "sm" , "max")
 
-}
+    @mixin media( $widthMin_arg , $widthMax_arg ) {
+        
+    }
+
+*/
+
