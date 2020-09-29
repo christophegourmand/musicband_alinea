@@ -14,9 +14,10 @@
                 <a href="" class="musicPlateform-link"></a>
             </div>
         </div>
+    </section>
 
-        
-        <aside class="album-songs-cards">
+    <section class="songs">
+        <aside class="songs-cards">
             <?php for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
                 <div class="horizontalCard <?='bg-song-'.$i?>" id="<?php echo('horizontalCard_song_'.$i);?>">
                     <a class="horizontalCard-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_lyrics.php'.'?songClicked='.$i);?>">
@@ -28,5 +29,4 @@
             <?php endfor; ?>
         </aside>
     </section>
-    
 </main>

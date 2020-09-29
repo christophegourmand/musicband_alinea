@@ -55,7 +55,7 @@
             color: var(--theme-color_important);
         }
 
-        @media #{$smaller-than-sm} {
+        @include media("","sm") {
             .musiciens-name {
                 font-size: 1.4rem;
             }

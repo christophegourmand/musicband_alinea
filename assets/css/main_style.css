@@ -143,7 +143,7 @@ Je peux peut être transformer en :
   border: 1px solid yellow;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .split-2col-md {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
@@ -267,7 +267,7 @@ footer {
 
 /*
 
-@media only screen and (min-width: 992px) {
+@include media("lg","") {
     
     .split_30_70 {
         // display: flex;
@@ -329,7 +329,7 @@ footer {
   margin-bottom: 2.5rem;
 }
 
-@media only screen and (min-width: 576px) {
+@media screen and (min-width: 576px) {
   .album .album-img {
     width: 420px;
   }
@@ -347,7 +347,26 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-.album .album-songs-cards {
+.songs {
+  margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.songs .songs-cards {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -357,12 +376,10 @@ footer {
   grid-gap: 1rem;
   -ms-grid-columns: (1fr)[1];
       grid-template-columns: repeat(1, 1fr);
-  /* @media only screen and (max-width: 576px) {
-        } */
 }
 
-@media only screen and (min-width: 576px) {
-  .album .album-songs-cards {
+@media screen and (min-width: 576px) {
+  .songs .songs-cards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
     -ms-grid-rows: 12rem;
@@ -371,28 +388,28 @@ footer {
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .album .album-songs-cards {
+@media screen and (min-width: 768px) {
+  .songs .songs-cards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media only screen and (min-width: 992px) {
-  .album .album-songs-cards {
+@media screen and (min-width: 992px) {
+  .songs .songs-cards {
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media only screen and (min-width: 1200px) {
-  .album .album-songs-cards {
+@media screen and (min-width: 1200px) {
+  .songs .songs-cards {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.album .horizontalCard {
+.songs .horizontalCard {
   width: 100%;
   min-height: 8rem;
   display: -webkit-box;
@@ -416,24 +433,24 @@ footer {
   background-repeat: no-repeat;
 }
 
-@media only screen and (min-width: 576px) {
-  .album .horizontalCard {
+@media screen and (min-width: 576px) {
+  .songs .horizontalCard {
     min-height: 12rem;
   }
 }
 
-.album .horizontalCard:hover {
+.songs .horizontalCard:hover {
   border: 3px solid var(--theme-color_neutral);
   -webkit-transition: background-size 1.5s ease-out;
   transition: background-size 1.5s ease-out;
 }
 
-.album .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
+.songs .horizontalCard:hover .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
   font-weight: 300;
 }
 
-.album .horizontalCard .horizontalCard-link {
+.songs .horizontalCard .horizontalCard-link {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -454,7 +471,7 @@ footer {
           align-items: center;
 }
 
-.album .horizontalCard .horizontalCard-link .horizontalCard-title {
+.songs .horizontalCard .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
   font-weight: 300;
   color: var(--theme-color_neutral);
@@ -521,11 +538,11 @@ footer {
   background-position: left center;
 }
 
-.album-song-banner {
+.songs-song-banner {
   width: 100%;
 }
 
-.album-song-banner .horizontalCard-title--big {
+.songs-song-banner .horizontalCard-title--big {
   font-size: 3rem !important;
   font-weight: 300;
 }
@@ -549,19 +566,19 @@ footer {
   font-size: 1rem;
 }
 
-@media only screen and (min-width: 576px) {
+@media screen and (min-width: 576px) {
   .lyrics .lyrics-paragraph .lyrics-sentence {
     font-size: 1.2rem;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .lyrics .lyrics-paragraph .lyrics-sentence {
     font-size: 1.5rem;
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .lyrics .lyrics-paragraph .lyrics-sentence {
     font-size: 1.8rem;
   }
@@ -631,7 +648,7 @@ footer {
   grid-column-gap: 3rem;
 }
 
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .contact .contact-body {
     -ms-grid-columns: 1fr 3fr;
         grid-template-columns: 1fr 3fr;
@@ -712,7 +729,7 @@ footer {
   color: var(--theme-color_important);
 }
 
-@media only screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .musiciens .musiciens-container .musiciens-name {
     font-size: 1.4rem;
   }
@@ -889,7 +906,7 @@ footer {
   font-weight: 200;
 }
 
-@media only screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .nav {
     position: fixed;
     bottom: 0;
@@ -1012,7 +1029,7 @@ footer {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .nav {
     position: relative;
     top: 0;
@@ -1193,7 +1210,7 @@ footer {
   font-size: 0;
 }
 
-@media only screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .brand .brand-logo {
     height: 6rem;
   }
@@ -1331,7 +1348,7 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-@media only screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .bigquote {
     font-size: 1.4rem;
   }
@@ -1398,7 +1415,7 @@ footer {
   margin: 3px;
 }
 
-@media only screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .gallery .gallery-body {
     -ms-grid-columns: (minmax(150px, 25vw))[4];
         grid-template-columns: repeat(4, minmax(150px, 25vw));

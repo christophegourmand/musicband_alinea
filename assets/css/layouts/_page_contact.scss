@@ -20,7 +20,7 @@
         grid-template-columns: 1fr;
         grid-column-gap: 3rem;
 
-        @media #{$bigger-than-md} {
+        @include media("md","") {
             grid-template-columns: 1fr 3fr;
         }
 

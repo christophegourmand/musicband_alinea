@@ -5,6 +5,8 @@
 /*:y ------------------------ Navbar  */
 
 //:g  APPLIQUER QUOI QU'IL ARRIVE ==================================
+
+
 .nav {
                                             // @include bordure(red);
     width: 100%;
@@ -51,7 +53,8 @@
 }
 
 //:g UNIQUEMENT POUR LES PETITS ECRANS =============================================
-@media #{$smaller-than-lg} {
+
+@include media("","md") {
 
     .nav {
         position: fixed;
@@ -200,7 +203,7 @@
 }
 
 //:g UNIQUEMENT POUR LES GRANDS ÉCRANS ==================================================== 
-@media #{$bigger-than-lg} {
+@include media("lg","") {
 
     .nav {
         position: relative;

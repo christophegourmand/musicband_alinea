@@ -40,7 +40,7 @@
         }
     }
     
-    @media #{$bigger-than-lg} {
+    @include media("lg","") {
         .gallery-body {
             grid-template-columns: repeat(4, minmax(150px, 25vw));
         }

@@ -11,7 +11,7 @@
 
                 @include bordure(yellow);
 
-    @media #{$bigger-than-md} {
+    @include media("md","") {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-columns: repeat(2, 1fr);
     }

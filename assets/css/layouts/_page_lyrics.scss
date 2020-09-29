@@ -1,7 +1,7 @@
-.album-song-banner {
+.songs-song-banner {
     width: 100%;
+
     .horizontalCard-title--big {
-        
         font-size: 3rem !important;
         font-weight: 300;
     }
@@ -22,17 +22,16 @@
             color: var(--theme-color_neutral);
         }
 
-
         .lyrics-sentence {
             font-size: 1rem;
 
-            @media #{$bigger-than-sm} {
+            @include media("sm","") {
                 font-size: 1.2rem;
             }
-            @media #{$bigger-than-md} {
+            @include media("md","") {
                 font-size: 1.5rem;
             }
-            @media #{$bigger-than-lg} {
+            @include media("lg","") {
                 font-size: 1.8rem;
             }
         }

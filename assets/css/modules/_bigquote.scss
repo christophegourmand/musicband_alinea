@@ -12,7 +12,7 @@
         style: normal;
     }
 
-    @media #{$smaller-than-lg}{
+    @include media("","lg") {
         font-size: 1.4rem;
     }
 

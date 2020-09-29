@@ -1,6 +1,6 @@
 /*
 
-@media #{$bigger-than-lg} {
+@include media("lg","") {
     
     .split_30_70 {
         // display: flex;

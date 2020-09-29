@@ -57,12 +57,14 @@
                 <span class="nav-link-title">Bio</span>
             </a>
         </li>
+        <!--
         <div class="nav-note"></div>
-        <li class="nav-item bg-acheter">  <!-- classe active dans le li -->
+        <li class="nav-item bg-acheter">
             <a href="<?php echo($prefix_to_root_folder.'views/pages/page_acheter.php');?>" class="nav-link">
-                <span class="nav-link-title">Acheter</span>
+                <span class="nav-link-title">Boutique</span>
             </a>
         </li>
+        -->
     </ul>
 </nav>
 

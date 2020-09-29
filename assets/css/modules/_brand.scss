@@ -55,7 +55,7 @@ $ratio-brand-and-name: 5.5/9.5;
     }
 }
 
-@media #{$smaller-than-lg} {
+@include media("","lg") {
     .brand{
         .brand-logo {
             height: 6rem;

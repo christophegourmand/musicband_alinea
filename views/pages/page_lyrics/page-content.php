@@ -15,8 +15,11 @@
     
     <section class="album">
         <h2 class="album-title">Madison</h2>
-        
-        <aside class="album-song-banner">
+    </section>
+
+    <section class="songs">
+
+        <aside class="songs-song-banner">
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
                     <a class="horizontalCard-btn btn-outline-white" href="<?=$prefix_to_root_folder.'views/pages/page_musiques.php';?>">
                         <span class="btn-txt">&lt;</span>
@@ -26,15 +29,12 @@
                     </a>
                 </div>
         </aside>
-            
+
         <article class="lyrics white">
+
             <?php for ($paragraph_index = 0 ; $paragraph_index < count($lyrics_paragraphs_indArr) ; $paragraph_index++): ?>
                 <?php $paragraph_sentences_indArr = $lyrics_paragraphs_indArr[$paragraph_index]['sentences']; ?>
                 <?php $paragraph_type_str = $lyrics_paragraphs_indArr[$paragraph_index]['type']; ?>
-
-                                                        <!-- <pre> -->
-                                                            <?php // print_r($paragraph_sentences_indArr);?>
-                                                        <!-- </pre> -->
 
                 <p class="lyrics-paragraph <?=$paragraph_type_str;?> ">
                     <?php for($sentence_index = 0 ; $sentence_index < count($paragraph_sentences_indArr) ; $sentence_index++): ?>
@@ -44,6 +44,8 @@
                 </p>
                 <br>
             <?php endfor; ?>
+
         </article>
     </section>
+
 </main>

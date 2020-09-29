@@ -36,6 +36,5 @@ body::before {
     }
     @include media("xl","") {
         content: "XL";
-    }
-    
+    }   
 }

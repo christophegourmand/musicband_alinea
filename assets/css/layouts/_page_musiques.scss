@@ -28,10 +28,10 @@
                     @include bordure(red);
 
         width: 100%;
-        @media #{$bigger-than-sm} {width: 420px;}
-        // @media #{$bigger-than-md} {width: 100%;}
-        // @media #{$bigger-than-lg} {width: 100%;}
-        // @media #{$bigger-than-xl} {width: 100%;}
+        @include media("sm","") {width: 420px;}
+        // @include media("md","") {width: 100%;}
+        // @include media("lg","") {width: 100%;}
+        // @include media("xl","") {width: 100%;}
         
         margin-bottom: 2.5rem;
     }
@@ -48,8 +48,14 @@
             color: var(--theme-color_neutral);
         }
     }
+}
 
-    .album-songs-cards {
+.songs {
+
+    margin: 1rem;
+    @include flex_col(flex-start, center);
+
+    .songs-cards {
         width: 100%;
                                             // @include bordure(red);
         display: grid;
@@ -58,24 +64,23 @@
         grid-gap: 1rem;
 
         grid-template-columns: repeat(1,1fr);
-        /* @media #{$smaller-than-sm} {
-        } */
+        
 
-        @media #{$bigger-than-sm} {
+        @include media("sm","") {
             grid-template-columns: repeat(2,1fr);
             grid-template-rows: 12rem;
             grid-auto-rows: 12rem;
         }
         
-        @media #{$bigger-than-md} {
+        @include media("md","") {
             grid-template-columns: repeat(2,1fr);
         }
         
-        @media #{$bigger-than-lg} {
+        @include media("lg","") {
             grid-template-columns: repeat(3,1fr);
         }
         
-        @media #{$bigger-than-xl} {
+        @include media("xl","") {
             grid-template-columns: repeat(4,1fr);
         }
     }
@@ -86,7 +91,7 @@
             width: 100%;
             min-height: 8rem;
 
-            @media #{$bigger-than-sm} {
+            @include media("sm","") {
                 min-height: 12rem;
             }
 

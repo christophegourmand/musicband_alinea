@@ -5,22 +5,20 @@
     grid-gap: 1rem;
 
     grid-template-columns: repeat(1,1fr);
-    /* @media #{$smaller-than-sm} {
-    } */
 
-    @media #{$bigger-than-sm} {
+    @include media("sm","") {
         grid-template-columns: repeat(2,1fr);
     }
     
-    @media #{$bigger-than-md} {
+    @include media("md","") {
         grid-template-columns: repeat(2,1fr);
     }
     
-    @media #{$bigger-than-lg} {
+    @include media("lg","") {
         grid-template-columns: repeat(3,1fr);
     }
     
-    @media #{$bigger-than-xl} {
+    @include media("xl","") {
         grid-template-columns: repeat(4,1fr);
     }
 }
