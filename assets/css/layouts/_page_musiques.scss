@@ -40,12 +40,49 @@
                     @include bordure(red);
 
         .musicPlateform-message {
+            margin-bottom: 2rem;
             padding: 0 2rem;
             text-align: center;
 
             font-size: 1.8rem;
             font-weight: 200;
             color: var(--theme-color_neutral);
+        }
+
+        .musicPlateform-plateforms {
+            @include flex_col(flex-start, stretch);
+            padding: 0 3rem;
+
+                    @include bordure(violet);
+
+            .musicPlateform-link {
+                @include flex_row(space-between, center);
+                    @include bordure(white);
+                // margin-bottom: 2rem;
+                padding: 1rem 0;
+
+                .musicPlateform-logo {
+                    height: 45px;
+                    // height: 100%;
+
+                    margin-right: 4rem;
+                }
+
+                .musicPlateform-button {
+                    //        @include bordure(blue);
+                    height: 100%;
+                    padding: 1rem 1rem;
+                    
+                    border-style: none;
+                    border-radius: 8px;
+                    background-color: #ffffff;
+                    
+                    font-family: 'Overpass', sans-serif;
+                    font-size: 1.3rem;
+                    color: #1f1f1f;
+
+                }
+            }
         }
     }
 }

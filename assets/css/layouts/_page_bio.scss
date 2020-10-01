@@ -6,7 +6,26 @@
     .musiciens-container {
         margin-bottom: 2rem;
 
+        // VERSION 1 :  USING GRID
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: fit-content(100%) 300px fit-content(100%);
+        grid-gap: 1rem;
+        grid-template-areas: 
+            "musiciens_name"
+            "musiciens_photo"
+            "musiciens_description";
+
+        @include media("md",""){
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: fit-content(100%) fit-content(100%);
+            grid-template-areas: 
+                "musiciens_name musiciens_name"
+                "musiciens_photo musiciens_description";
+        }
+
         .musiciens-name {
+            grid-area: musiciens_name;
             border-top: 1px solid var(--theme-color_important);
             padding-top: 1rem;
             margin-bottom: 1rem;
@@ -16,12 +35,19 @@
         }
 
         .musiciens-photo {
-            height: 300px;
-            background-size: contain;
+            grid-area: musiciens_photo;
+            // height: 300px;
+            width: 100%;
+            // background-size: contain;
+            @include background_size(contain);
             background-repeat: no-repeat;
-            background-position: 50% 10%;
-            background-attachment: fixed;
+            // background-position: 50% 10%;
+            // background-attachment: fixed;
+            // @include background_attachment(fixed);
+            
+                    background-color: gray; // to see the problem with background-position and background-size on iOS.
         }
+
         .musiciens-photo.img-thierry {
             background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
         }
@@ -39,8 +65,9 @@
         }
 
         .musiciens-description {
-            margin-top: 2rem;
-            margin-left: 2rem;
+            grid-area: musiciens_description;
+            // margin-top: 2rem;
+            // margin-left: 2rem;
             
             font-size: 1.3rem;
             font-weight: 100;

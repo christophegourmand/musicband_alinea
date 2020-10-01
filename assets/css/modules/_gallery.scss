@@ -2,7 +2,7 @@
     
     .gallery-title {
         text-align: center;
-        color: var(--theme-color_neutral);
+        color: var(--theme-color_important);
     }
 
     // 1ère solution,  utiliser GRID   avec 'vw'
@@ -25,6 +25,7 @@
 
     // 2ème solution,  utiliser GRID avec des widths et height fixes.
     
+    /*
     .gallery-body {
         display: grid;
         grid-template-columns: repeat(4, minmax(150px, 25vw));
@@ -45,21 +46,25 @@
             grid-template-columns: repeat(4, minmax(150px, 25vw));
         }
     }
+    */
 
     // 3ème solution,  utiliser FLEX  avec le Wrap
-/*     
+ 
     .gallery-body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
 
         .gallery-img {
-            width: 20vw;
+            width: 350px;
             // height: 15vw;
 
             margin: 3px;
         }
     }
-    */ 
+     
 
 }

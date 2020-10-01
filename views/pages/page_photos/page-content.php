@@ -1,4 +1,4 @@
-<main>
+<main class="">
     <h1 class="page-title">Photos</h1>
 
     <?php include($prefix_to_root_folder."views/pages/".$page_name."/photos_array.php"); ?>

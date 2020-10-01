@@ -31,3 +31,14 @@
         -moz-filter: blur($pixelsOfBlur);
         -webkit-filter: blur($pixelsOfBlur);
 }
+
+@mixin background_attachment($value) {
+        background-attachment: $value;
+        // -webkit-background-attachment: $value;
+}
+
+@mixin background_size($value) {
+        background-size: $value;
+        -webkit-background-size: $value;
+        
+}

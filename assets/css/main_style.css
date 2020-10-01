@@ -20,7 +20,7 @@
   --theme-color_important: #e40000;
   --theme-color_neutral: white;
   --theme-color_discret: #b0b0b0;
-  --theme-color_background: #1c1c1c;
+  --theme-color_background: #0e0e0e;
   --theme-color_brand: white;
 }
 
@@ -340,11 +340,68 @@ footer {
 }
 
 .album .musicPlateform .musicPlateform-message {
+  margin-bottom: 2rem;
   padding: 0 2rem;
   text-align: center;
   font-size: 1.8rem;
   font-weight: 200;
   color: var(--theme-color_neutral);
+}
+
+.album .musicPlateform .musicPlateform-plateforms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  padding: 0 3rem;
+  border: 1px solid violet;
+}
+
+.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid white;
+  padding: 1rem 0;
+}
+
+.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-logo {
+  height: 45px;
+  margin-right: 4rem;
+}
+
+.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-button {
+  height: 100%;
+  padding: 1rem 1rem;
+  border-style: none;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.3rem;
+  color: #1f1f1f;
 }
 
 .songs {
@@ -677,9 +734,30 @@ footer {
 
 .musiciens .musiciens-container {
   margin-bottom: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: fit-content(100%) 300px fit-content(100%);
+      grid-template-rows: fit-content(100%) 300px fit-content(100%);
+  grid-gap: 1rem;
+      grid-template-areas: "musiciens_name" "musiciens_photo" "musiciens_description";
+}
+
+@media screen and (min-width: 768px) {
+  .musiciens .musiciens-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: fit-content(100%) fit-content(100%);
+        grid-template-rows: fit-content(100%) fit-content(100%);
+        grid-template-areas: "musiciens_name musiciens_name" "musiciens_photo musiciens_description";
+  }
 }
 
 .musiciens .musiciens-container .musiciens-name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: musiciens_name;
   border-top: 1px solid var(--theme-color_important);
   padding-top: 1rem;
   margin-bottom: 1rem;
@@ -688,11 +766,14 @@ footer {
 }
 
 .musiciens .musiciens-container .musiciens-photo {
-  height: 300px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: musiciens_photo;
+  width: 100%;
   background-size: contain;
+  -webkit-background-size: contain;
   background-repeat: no-repeat;
-  background-position: 50% 10%;
-  background-attachment: fixed;
+  background-color: gray;
 }
 
 .musiciens .musiciens-container .musiciens-photo.img-thierry {
@@ -716,8 +797,9 @@ footer {
 }
 
 .musiciens .musiciens-container .musiciens-description {
-  margin-top: 2rem;
-  margin-left: 2rem;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: musiciens_description;
   font-size: 1.3rem;
   font-weight: 100;
 }
@@ -946,8 +1028,8 @@ footer {
     display: grid;
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: (1fr)[4];
-        grid-template-rows: repeat(4, 1fr);
+    -ms-grid-rows: (1fr)[3];
+        grid-template-rows: repeat(3, 1fr);
   }
   .nav .nav-menus .nav-note {
     display: none;
@@ -1379,17 +1461,25 @@ footer {
         }
     }
     */
-  /*     
+  /*
     .gallery-body {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(150px, 25vw));
+        grid-template-rows: 15vw;
+        grid-auto-rows: 15vw;
+        // column-gap: 5px;
+        // row-gap: 5px;
 
         .gallery-img {
-            width: 20vw;
-            // height: 15vw;
+            width: 100%;
 
             margin: 3px;
+        }
+    }
+    
+    @include media("lg","") {
+        .gallery-body {
+            grid-template-columns: repeat(4, minmax(150px, 25vw));
         }
     }
     */
@@ -1397,29 +1487,32 @@ footer {
 
 .gallery .gallery-title {
   text-align: center;
-  color: var(--theme-color_neutral);
+  color: var(--theme-color_important);
 }
 
 .gallery .gallery-body {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(150px, 25vw))[4];
-      grid-template-columns: repeat(4, minmax(150px, 25vw));
-  -ms-grid-rows: 15vw;
-      grid-template-rows: 15vw;
-  grid-auto-rows: 15vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .gallery .gallery-body .gallery-img {
-  width: 100%;
+  width: 350px;
   margin: 3px;
-}
-
-@media screen and (min-width: 992px) {
-  .gallery .gallery-body {
-    -ms-grid-columns: (minmax(150px, 25vw))[4];
-        grid-template-columns: repeat(4, minmax(150px, 25vw));
-  }
 }
 
 /* =========================================== */

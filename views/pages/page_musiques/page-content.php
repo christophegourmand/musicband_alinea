@@ -11,7 +11,33 @@
             
             <div class="musicPlateform">
                 <p class="musicPlateform-message">Disponible sur vos plateformes favorites !</p>
-                <a href="" class="musicPlateform-link"></a>
+                <div class="musicPlateform-plateforms">
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    <a href="#" class="musicPlateform-link">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <button class="musicPlateform-button">Ecouter</button>
+                    </a>
+                    
+                </div>
             </div>
         </div>
     </section>
