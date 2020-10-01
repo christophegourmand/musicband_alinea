@@ -108,7 +108,7 @@
       //  @error "maximal value should be max, xs, sm, md, lg _ with quotes";
     // }
 
-    @if $min_width_given_str != "" and $max_width_given_str != "" {
+    @if $min_width_str != "" and $max_width_str != "" {
         $and_optional_str: "and";
     } @else {
         $and_optional_str: "";

@@ -4,15 +4,3 @@
     flex-wrap: wrap;
 }
 
-.split-2col-md {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-columns: repeat(1, 1fr);
-
-                @include bordure(yellow);
-
-    @include media("md","") {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-columns: repeat(2, 1fr);
-    }
-}

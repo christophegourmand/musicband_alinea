@@ -7,21 +7,35 @@
         margin-bottom: 2rem;
 
         // VERSION 1 :  USING GRID
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: fit-content(100%) 300px fit-content(100%);
-        grid-gap: 1rem;
-        grid-template-areas: 
-            "musiciens_name"
-            "musiciens_photo"
-            "musiciens_description";
+        
+        // display: grid;
+        // grid-template-columns: 1fr;
+        // grid-template-rows: fit-content(100%) 300px fit-content(100%);
+        // grid-gap: 1rem;
+        // grid-template-areas: 
+        //     "musiciens_name"
+        //     "musiciens_photo"
+        //     "musiciens_description";
 
-        @include media("md",""){
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: fit-content(100%) fit-content(100%);
-            grid-template-areas: 
-                "musiciens_name musiciens_name"
-                "musiciens_photo musiciens_description";
+        // @include media("md",""){
+        //     grid-template-columns: 1fr 1fr;
+        //     grid-template-rows: fit-content(100%) fit-content(100%);
+        //     grid-template-areas: 
+        //         "musiciens_name musiciens_name"
+        //         "musiciens_photo musiciens_description";
+        // }
+
+        @include media("min","sm") {
+            .musiciens-name {
+                font-size: 1.4rem;
+            }
+            .musiciens-description {
+                font-size: 1rem;
+            }
+            .musiciens-role {
+                font-size: 1rem;
+            }
+
         }
 
         .musiciens-name {
@@ -34,44 +48,54 @@
             font-weight: 300;
         }
 
-        .musiciens-photo {
-            grid-area: musiciens_photo;
-            // height: 300px;
-            width: 100%;
-            // background-size: contain;
-            @include background_size(contain);
-            background-repeat: no-repeat;
-            // background-position: 50% 10%;
-            // background-attachment: fixed;
-            // @include background_attachment(fixed);
-            
-                    background-color: gray; // to see the problem with background-position and background-size on iOS.
-        }
+        .musiciens-2col {
+            // VERSION 2 :  USING FLEX
+            @include flex_col(flex-start, center);
 
-        .musiciens-photo.img-thierry {
-            background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
-        }
-        .musiciens-photo.img-simone {
-            background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
-        }
-        .musiciens-photo.img-nico {
-            background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");
-        }
-        .musiciens-photo.img-romain {
-            background-image: url("../img/photos/musicians/photo_presentation_romain.jpg");
-        }
-        .musiciens-photo.img-nicole {
-            background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
-        }
+            @include media("md","max"){
+                @include flex_row(space-between, flex-start);
+            }
 
-        .musiciens-description {
-            grid-area: musiciens_description;
-            // margin-top: 2rem;
-            // margin-left: 2rem;
-            
-            font-size: 1.3rem;
-            font-weight: 100;
+            .musiciens-img {
+                width: 100%;
+                margin-bottom: 1rem;
+
+                @include media("md","max"){
+                    width: 50%;
+                }
+                
+                @include media("xl","max"){
+                    width: 40%;
+                }
+            }
+        
+            .musiciens-description {
+                grid-area: musiciens_description;
+                // margin-top: 2rem;
+                // margin-left: 2rem;
+                
+                font-size: 1.3rem;
+                font-weight: 100;
+                    @include media("md","xl"){
+                        width: 50%;
+                        // flex-grow: 1;
+                        padding: 0 2rem;
+                    }
+                    @include media("xl","max"){
+                        width: 60%;
+                        // flex-grow: 1;
+                        padding: 0 2rem;
+                        font-size: 1.8rem;
+                    }
+            }
         }
+        
+
+
+        
+
+        
+
 
         .musiciens-role {
             // margin-left: 3rem;
@@ -82,17 +106,37 @@
             color: var(--theme-color_important);
         }
 
-        @include media("","sm") {
-            .musiciens-name {
-                font-size: 1.4rem;
-            }
-            .musiciens-description {
-                font-size: 1rem;
-            }
-            .musiciens-role {
-                font-size: 1rem;
-            }
+        
 
+        .musiciens-bgphoto {
+            grid-area: musiciens_photo;
+            // height: 300px;
+            // width: 100%;
+            flex-grow: 1;
+            // background-size: contain;
+            @include background_size(contain);
+            background-repeat: no-repeat;
+            // background-position: 50% 10%;
+            // background-attachment: fixed;
+            // @include background_attachment(fixed);
+            
+                    background-color: gray; // to see the problem with background-position and background-size on iOS.
+        }
+
+        .musiciens-bgphoto.img-thierry {
+            background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+        }
+        .musiciens-bgphoto.img-simone {
+            background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
+        }
+        .musiciens-bgphoto.img-nico {
+            background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");
+        }
+        .musiciens-bgphoto.img-romain {
+            background-image: url("../img/photos/musicians/photo_presentation_romain.jpg");
+        }
+        .musiciens-bgphoto.img-nicole {
+            background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
         }
     }
 }

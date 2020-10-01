@@ -6,7 +6,7 @@
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er&nbsp;album</sup></h2>
 
-        <div class="split-2col-md">
+        <div class="album-layout">
             <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
             
             <div class="musicPlateform">

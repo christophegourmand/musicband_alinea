@@ -6,6 +6,7 @@
         font-size: 2rem;
         color: var(--theme-color_important);        
     }
+
     .lyrics-list {
     
         
@@ -21,4 +22,11 @@
             }
         }
     }
+}
+
+.horizontalCard-title {
+    // color: $darkred;
+    font-size: 2rem;
+    font-weight: 300;
+    // text-shadow: 0 0 0rem black;
 }

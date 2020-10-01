@@ -134,23 +134,6 @@ Je peux peut être transformer en :
       flex-wrap: wrap;
 }
 
-.split-2col-md {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[1];
-      grid-template-columns: repeat(1, 1fr);
-  grid-auto-columns: repeat(1, 1fr);
-  border: 1px solid yellow;
-}
-
-@media screen and (min-width: 768px) {
-  .split-2col-md {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    grid-auto-columns: repeat(2, 1fr);
-  }
-}
-
 /* BASE */
 /* =========================================== */
 /* BASE / base */
@@ -168,11 +151,6 @@ a:any-link {
 
 li {
   list-style-type: none;
-}
-
-img {
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 /* =========================================== */
@@ -288,7 +266,6 @@ footer {
 
 */
 .album {
-  margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -323,23 +300,66 @@ footer {
   letter-spacing: normal;
 }
 
-.album .album-img {
-  border: 1px solid red;
+.album .album-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .album .album-layout {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.album .album-layout .album-img {
   width: 100%;
   margin-bottom: 2.5rem;
 }
 
-@media screen and (min-width: 576px) {
-  .album .album-img {
-    width: 420px;
+@media screen and (min-width: 768px) {
+  .album .album-layout .album-img {
+    width: 50%;
   }
 }
 
-.album .musicPlateform {
-  border: 1px solid red;
+.album .album-layout .musicPlateform {
+  width: 100%;
 }
 
-.album .musicPlateform .musicPlateform-message {
+@media screen and (min-width: 768px) {
+  .album .album-layout .musicPlateform {
+    width: 50%;
+  }
+}
+
+.album .album-layout .musicPlateform .musicPlateform-message {
   margin-bottom: 2rem;
   padding: 0 2rem;
   text-align: center;
@@ -348,7 +368,7 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-.album .musicPlateform .musicPlateform-plateforms {
+.album .album-layout .musicPlateform .musicPlateform-plateforms {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -365,10 +385,9 @@ footer {
       -ms-flex-align: stretch;
           align-items: stretch;
   padding: 0 3rem;
-  border: 1px solid violet;
 }
 
-.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link {
+.album .album-layout .musicPlateform .musicPlateform-plateforms .musicPlateform-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -384,16 +403,15 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid white;
   padding: 1rem 0;
 }
 
-.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-logo {
+.album .album-layout .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-logo {
   height: 45px;
   margin-right: 4rem;
 }
 
-.album .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-button {
+.album .album-layout .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-button {
   height: 100%;
   padding: 1rem 1rem;
   border-style: none;
@@ -445,7 +463,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .songs .songs-cards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
@@ -673,7 +691,7 @@ footer {
 }
 
 .contact {
-  margin: 3rem 7rem;
+  padding: 3rem 2rem;
 }
 
 .contact .contact-title {
@@ -734,81 +752,6 @@ footer {
 
 .musiciens .musiciens-container {
   margin-bottom: 2rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: fit-content(100%) 300px fit-content(100%);
-      grid-template-rows: fit-content(100%) 300px fit-content(100%);
-  grid-gap: 1rem;
-      grid-template-areas: "musiciens_name" "musiciens_photo" "musiciens_description";
-}
-
-@media screen and (min-width: 768px) {
-  .musiciens .musiciens-container {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: fit-content(100%) fit-content(100%);
-        grid-template-rows: fit-content(100%) fit-content(100%);
-        grid-template-areas: "musiciens_name musiciens_name" "musiciens_photo musiciens_description";
-  }
-}
-
-.musiciens .musiciens-container .musiciens-name {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: musiciens_name;
-  border-top: 1px solid var(--theme-color_important);
-  padding-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: 300;
-}
-
-.musiciens .musiciens-container .musiciens-photo {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: musiciens_photo;
-  width: 100%;
-  background-size: contain;
-  -webkit-background-size: contain;
-  background-repeat: no-repeat;
-  background-color: gray;
-}
-
-.musiciens .musiciens-container .musiciens-photo.img-thierry {
-  background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
-}
-
-.musiciens .musiciens-container .musiciens-photo.img-simone {
-  background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
-}
-
-.musiciens .musiciens-container .musiciens-photo.img-nico {
-  background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");
-}
-
-.musiciens .musiciens-container .musiciens-photo.img-romain {
-  background-image: url("../img/photos/musicians/photo_presentation_romain.jpg");
-}
-
-.musiciens .musiciens-container .musiciens-photo.img-nicole {
-  background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
-}
-
-.musiciens .musiciens-container .musiciens-description {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: musiciens_description;
-  font-size: 1.3rem;
-  font-weight: 100;
-}
-
-.musiciens .musiciens-container .musiciens-role {
-  text-align: right;
-  font-size: 1.3rem;
-  font-weight: 100;
-  color: var(--theme-color_important);
 }
 
 @media screen and (max-width: 768px) {
@@ -821,6 +764,129 @@ footer {
   .musiciens .musiciens-container .musiciens-role {
     font-size: 1rem;
   }
+}
+
+.musiciens .musiciens-container .musiciens-name {
+  grid-area: musiciens_name;
+  border-top: 1px solid var(--theme-color_important);
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.musiciens .musiciens-container .musiciens-2col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .musiciens .musiciens-container .musiciens-2col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.musiciens .musiciens-container .musiciens-2col .musiciens-img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .musiciens .musiciens-container .musiciens-2col .musiciens-img {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .musiciens .musiciens-container .musiciens-2col .musiciens-img {
+    width: 40%;
+  }
+}
+
+.musiciens .musiciens-container .musiciens-2col .musiciens-description {
+  grid-area: musiciens_description;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+@media screen and (min-width: 768px) {
+  .musiciens .musiciens-container .musiciens-2col .musiciens-description {
+    width: 50%;
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .musiciens .musiciens-container .musiciens-2col .musiciens-description {
+    width: 60%;
+    padding: 0 2rem;
+    font-size: 1.8rem;
+  }
+}
+
+.musiciens .musiciens-container .musiciens-role {
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: 100;
+  color: var(--theme-color_important);
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto {
+  grid-area: musiciens_photo;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-size: contain;
+  -webkit-background-size: contain;
+  background-repeat: no-repeat;
+  background-color: gray;
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto.img-thierry {
+  background-image: url("../img/photos/musicians/photo_presentation_thierry.jpg");
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto.img-simone {
+  background-image: url("../img/photos/musicians/photo_presentation_simone.jpg");
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto.img-nico {
+  background-image: url("../img/photos/musicians/photo_presentation_nico.jpg");
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto.img-romain {
+  background-image: url("../img/photos/musicians/photo_presentation_romain.jpg");
+}
+
+.musiciens .musiciens-container .musiciens-bgphoto.img-nicole {
+  background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
 }
 
 .mentions-legales {
@@ -1549,6 +1615,11 @@ footer {
 
 .lyrics .lyrics-list .lyrics-paragraph .lyrics-sentence--chorus {
   color: var(--theme-color_important);
+}
+
+.horizontalCard-title {
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 /* =========================================== */

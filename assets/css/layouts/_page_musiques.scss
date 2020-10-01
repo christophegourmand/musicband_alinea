@@ -1,5 +1,5 @@
 .album {
-    margin: 1rem;
+    // margin: 1rem;
                 // border: 1px solid red;
 
     @include flex_col(flex-start, center);
@@ -23,64 +23,88 @@
             letter-spacing: normal;
         }
     }
+    
+    .album-layout {
+                    @include bordure(yellow);
+        // display: grid;
+        // grid-template-columns: repeat(1, 1fr);
+        // grid-auto-columns: repeat(1, 1fr);
+        @include flex_col(flex-start, center);
 
-    .album-img {
-                    @include bordure(red);
 
-        width: 100%;
-        @include media("sm","") {width: 420px;}
-        // @include media("md","") {width: 100%;}
-        // @include media("lg","") {width: 100%;}
-        // @include media("xl","") {width: 100%;}
-        
-        margin-bottom: 2.5rem;
-    }
 
-    .musicPlateform {
-                    @include bordure(red);
+        @include media("md","max") {
+            // grid-template-columns: repeat(2, 1fr);
+            // grid-auto-columns: repeat(2, 1fr);
 
-        .musicPlateform-message {
-            margin-bottom: 2rem;
-            padding: 0 2rem;
-            text-align: center;
+            @include flex_row(space-between,flex-start);
+        }
+    
+        .album-img {
+                        @include bordure(red);
 
-            font-size: 1.8rem;
-            font-weight: 200;
-            color: var(--theme-color_neutral);
+            width: 100%;
+            // @include media("sm","max") {width: 420px;}
+            @include media("md","max") {
+                width: 50%;
+            }
+            // @include media("lg","") {width: 100%;}
+            // @include media("xl","") {width: 100%;}
+            
+            // text-align: center;
+            margin-bottom: 2.5rem;
         }
 
-        .musicPlateform-plateforms {
-            @include flex_col(flex-start, stretch);
-            padding: 0 3rem;
+        .musicPlateform {
+                        @include bordure(red);
+            width: 100%;
+            @include media("md","max") {
+                width: 50%;
+            }
 
-                    @include bordure(violet);
+            .musicPlateform-message {
+                margin-bottom: 2rem;
+                padding: 0 2rem;
+                text-align: center;
 
-            .musicPlateform-link {
-                @include flex_row(space-between, center);
-                    @include bordure(white);
-                // margin-bottom: 2rem;
-                padding: 1rem 0;
+                font-size: 1.8rem;
+                font-weight: 200;
+                color: var(--theme-color_neutral);
+            }
 
-                .musicPlateform-logo {
-                    height: 45px;
-                    // height: 100%;
+            .musicPlateform-plateforms {
+                @include flex_col(flex-start, stretch);
+                padding: 0 3rem;
 
-                    margin-right: 4rem;
-                }
+                                @include bordure(violet);
 
-                .musicPlateform-button {
-                    //        @include bordure(blue);
-                    height: 100%;
-                    padding: 1rem 1rem;
-                    
-                    border-style: none;
-                    border-radius: 8px;
-                    background-color: #ffffff;
-                    
-                    font-family: 'Overpass', sans-serif;
-                    font-size: 1.3rem;
-                    color: #1f1f1f;
+                .musicPlateform-link {
+                                @include bordure(white);
+                    @include flex_row(space-between, center);
+                    // margin-bottom: 2rem;
+                    padding: 1rem 0;
 
+                    .musicPlateform-logo {
+                        height: 45px;
+                        // height: 100%;
+
+                        margin-right: 4rem;
+                    }
+
+                    .musicPlateform-button {
+                        //        @include bordure(blue);
+                        height: 100%;
+                        padding: 1rem 1rem;
+                        
+                        border-style: none;
+                        border-radius: 8px;
+                        background-color: #ffffff;
+                        
+                        font-family: 'Overpass', sans-serif;
+                        font-size: 1.3rem;
+                        color: #1f1f1f;
+
+                    }
                 }
             }
         }
@@ -103,21 +127,21 @@
         grid-template-columns: repeat(1,1fr);
         
 
-        @include media("sm","") {
+        @include media("sm","max") {
             grid-template-columns: repeat(2,1fr);
             grid-template-rows: 12rem;
             grid-auto-rows: 12rem;
         }
         
-        @include media("md","") {
+        @include media("md","lg") {
             grid-template-columns: repeat(2,1fr);
         }
         
-        @include media("lg","") {
+        @include media("lg","xl") {
             grid-template-columns: repeat(3,1fr);
         }
         
-        @include media("xl","") {
+        @include media("xl","max") {
             grid-template-columns: repeat(4,1fr);
         }
     }
