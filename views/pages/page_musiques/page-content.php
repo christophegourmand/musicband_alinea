@@ -25,15 +25,15 @@
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">
-                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/from_imusiciandigital/logo_amazonmp3_onlight.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">
-                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/from_imusiciandigital/logo_google-play_onlight.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">
-                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/from_imusiciandigital/logo_tidal_onlight.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     
