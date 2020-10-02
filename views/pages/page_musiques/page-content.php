@@ -7,7 +7,7 @@
         <h2 class="album-title">Madison<sup class="album-title-mention">1er&nbsp;album</sup></h2>
 
         <div class="album-layout">
-            <img class="album-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
+            <img class="album-img album-img--shadow" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/album_madison_book/00_PochetteAvant.jpg');?>" title="Pochette de l'album Madison" alt="Pochette de l'album Madison">
             
             <div class="musicPlateform">
                 <p class="musicPlateform-message">Disponible sur vos plateformes favorites !</p>
@@ -17,11 +17,11 @@
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">
-                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/deezer/fr_FR-dark.png');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">
-                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_Apple_Music_Listen_on_Lockup_RGB_wht_090220.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
+                        <img class="musicPlateform-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/apple/FR_iTunes_Store_Buy_Badge_RGB_011618.svg');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
                         <button class="musicPlateform-button">Ecouter</button>
                     </a>
                     <a href="#" class="musicPlateform-link">

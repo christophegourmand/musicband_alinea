@@ -349,6 +349,11 @@ footer {
   }
 }
 
+.album .album-layout .album-img.album-img--shadow {
+  -webkit-box-shadow: 6px 6px 26px #2f374f;
+          box-shadow: 6px 6px 26px #2f374f;
+}
+
 .album .album-layout .musicPlateform {
   width: 100%;
 }
@@ -407,7 +412,9 @@ footer {
 }
 
 .album .album-layout .musicPlateform .musicPlateform-plateforms .musicPlateform-link .musicPlateform-logo {
-  height: 45px;
+  width: 40%;
+  min-width: 200px;
+  max-width: 316px;
   margin-right: 4rem;
 }
 
@@ -548,6 +555,7 @@ footer {
 
 .songs .horizontalCard .horizontalCard-link .horizontalCard-title {
   font-size: 2rem;
+  text-align: center;
   font-weight: 300;
   color: var(--theme-color_neutral);
   text-shadow: 0 0 .5rem black;
