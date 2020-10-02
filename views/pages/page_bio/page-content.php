@@ -53,7 +53,7 @@
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-romain"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_romain.jpg');?>" alt="photo du musicien" title="photo du musicien">
-                <p class="musiciens-description">(sa bio arrivera bientôt)
+                <p class="musiciens-description">Né à Bron le 19/02/1986. Père de 2 enfants Intronisé par le reggae. 
                 </p>
             </div>
             <p class="musiciens-role">Bassiste</p>
