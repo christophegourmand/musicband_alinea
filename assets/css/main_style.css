@@ -1298,8 +1298,8 @@ footer {
     z-index: 103;
     font-weight: 400;
   }
-  .nav .nav-menus .nav-item.active .nav-link {
-    font-weight: 600;
+  .nav .nav-menus .nav-item.active {
+    border-bottom: 3px solid var(--theme-color_important);
   }
   .nav .nav-menus .nav-note {
     height: 1rem;
