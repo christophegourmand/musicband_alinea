@@ -1,6 +1,5 @@
 .album {
-    // margin: 1rem;
-                // border: 1px solid red;
+    margin: 0 $pageMargin;
 
     @include flex_col(flex-start, center);
 
@@ -33,25 +32,23 @@
 
 
 
-        @include media("md","max") {
+        @include media("lg","max") {
             // grid-template-columns: repeat(2, 1fr);
             // grid-auto-columns: repeat(2, 1fr);
 
-            @include flex_row(space-between,flex-start);
+            @include flex_row(space-around, flex-start);
         }
     
         .album-img {
                         @include bordure(red);
 
             width: 100%;
-            // @include media("sm","max") {width: 420px;}
-            @include media("md","max") {
+            max-width: 550px;
+            
+            @include media("lg","max") {
                 width: 50%;
             }
-            // @include media("lg","") {width: 100%;}
-            // @include media("xl","") {width: 100%;}
             
-            // text-align: center;
             margin-bottom: 2.5rem;
 
             &.album-img--shadow {
@@ -60,9 +57,10 @@
         }
 
         .musicPlateform {
-                        @include bordure(red);
+                                // @include bordure(red);
             width: 100%;
-            @include media("md","max") {
+
+            @include media("lg","max") {
                 width: 50%;
             }
 
@@ -77,39 +75,59 @@
             }
 
             .musicPlateform-plateforms {
-                @include flex_col(flex-start, stretch);
-                padding: 0 3rem;
-
                                 @include bordure(violet);
+                width: 100%;
+                @include flex_row(center, center);
+                flex-wrap: wrap;
+                padding: 0 1rem;
+                
+                // @include media("md","max"){
+                    // @include flex_row(center, center);
+                    // flex-wrap: wrap;
+                // }
+
 
                 .musicPlateform-link {
                                 @include bordure(white);
-                    @include flex_row(space-between, center);
+
+                    @include flex_row(center, center); // between logo and button
                     // margin-bottom: 2rem;
-                    padding: 1rem 0;
+                    padding: 1rem 2rem;
+                    width: 50%;
+                    min-width: 265px;
+                    max-width: 316px;
+                    
+                        .musicPlateform-logo {
+                                            // @include bordure(red);
+                            // width: 40%;
+                            width: 100%;
+                            min-width: 200px;
+                            max-width: 316px;
+                            // margin-right: 2rem;
 
-                    .musicPlateform-logo {
-                        width: 40%;
-                        min-width: 200px;
-                        max-width: 316px;
+                                @include media("md","max"){
+                                    // width: 50%;
+                                    // min-width: 200px;
+                                    // max-width: 316px;
+                                    // margin-right: 4rem;
+                                }
+                        }
 
-                        margin-right: 4rem;
-                    }
+                        .musicPlateform-button {
+                                            // @include bordure(blue);
+                            height: 100%;
+                            padding: 1rem 1rem;
+                            
+                            border-style: none;
+                            border-radius: 8px;
+                            background-color: #ffffff;
+                            
+                            font-family: 'Overpass', sans-serif;
+                            font-size: 1.3rem;
+                            color: #1f1f1f;
 
-                    .musicPlateform-button {
-                        //        @include bordure(blue);
-                        height: 100%;
-                        padding: 1rem 1rem;
-                        
-                        border-style: none;
-                        border-radius: 8px;
-                        background-color: #ffffff;
-                        
-                        font-family: 'Overpass', sans-serif;
-                        font-size: 1.3rem;
-                        color: #1f1f1f;
-
-                    }
+                            display: none;
+                        }
                 }
             }
         }
@@ -118,7 +136,7 @@
 
 .songs {
 
-    margin: 1rem;
+    margin: 2rem $pageMargin;
     @include flex_col(flex-start, center);
 
     .songs-cards {

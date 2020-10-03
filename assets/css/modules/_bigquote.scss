@@ -3,17 +3,18 @@
 /* =========================================== */
 
 .bigquote {
-    padding: $headerMargin;
+    // padding: $headerMargin;
+    padding: 4rem 2rem;
 
     font: {
         family: inherit;
         weight: 100;
-        size: 2rem;
         style: normal;
+        size: 1.4rem;
     }
 
-    @include media("","lg") {
-        font-size: 1.4rem;
+    @include media("md","max") {
+        font-size: 2rem;
     }
 
     color: var(--theme-color_neutral);

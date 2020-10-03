@@ -1,0 +1,48 @@
+.socialMedia {
+    // background-image: linear-gradient(to bottom, var(--theme-color_background), var(--theme-color_important), var(--theme-color_background)); 
+
+    background-image: linear-gradient(to bottom left, #2d1f8e, #bd1c1c);
+    padding: 3rem 0;
+    
+    .socialMedia-slogan {
+        text-align: center;
+        
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: #fffdfd;
+
+    }
+
+    .socialMedia-link-container {
+
+        @include flex_col(center,center);
+
+        @include media("md","max"){
+            @include flex_row(center,center);
+
+        }
+
+        .socialMedia-link {
+                        @include bordure(white);
+            
+            @include flex_col(center, center);
+            height: 120px;
+
+
+            .socialMedia-logo {
+
+                margin: 20px;
+                width: 80px;
+
+            }
+        }
+    }
+}
+
+.bg-facebook {
+    background-color: rgb(59, 59, 241);
+}
+
+.bg-youtube {
+    background-color: red;
+}

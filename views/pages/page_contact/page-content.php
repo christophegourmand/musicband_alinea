@@ -13,6 +13,10 @@
             </div>
             <div class="contact-body_right-col">
                 <p class="contact-description">La musique est ce qui nous anime, nous aimons en jouer, mais surtout la partager ! Donc n'hésitez pas à nous contacter pour une prestation musicale, un projet, ou même pour nous soutenir.</p>
+
+                <a class="socialMedia-link" href="" target="_blank">LogoFACEBOOK</a>
+                <a class="socialMedia-link" href="" target="_blank">LogoYOUTUBE</a>
+                <a class="socialMedia-link" href="" target="_blank">LogoINSTAGRAM</a>
             </div>
         </div>
     </section>
