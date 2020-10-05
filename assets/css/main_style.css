@@ -1024,8 +1024,8 @@ footer {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.5)), to(rgba(84, 135, 165, 0.5))), url("../img/backgrounds/alinea_background_guitar_black.jpg");
-  background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.5), rgba(84, 135, 165, 0.5)), url("../img/backgrounds/alinea_background_guitar_black.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.5)), to(rgba(84, 135, 165, 0.5))), url("../img/backgrounds/alinea_background_guitar_black_SD.jpg");
+  background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.5), rgba(84, 135, 165, 0.5)), url("../img/backgrounds/alinea_background_guitar_black_SD.jpg");
   background-position: 60% 50%;
   background-size: cover;
   background-repeat: no-repeat;

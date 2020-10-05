@@ -10,7 +10,7 @@
 
             <?php for($index_img=0 ; $index_img < sizeof($photos_20200624_color_sd) ; $index_img++): ?>
 
-                <img class="gallery-img" src="<?="/assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/".$photos_20200624_color_sd[$index_img]?>" alt="" title="">
+                <img class="gallery-img" src="<?="/assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/thumbnails/".$photos_20200624_color_sd[$index_img]?>" alt="" title="">
             
             <?php endfor ?>
 
