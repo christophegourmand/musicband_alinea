@@ -1,0 +1,39 @@
+.section {
+
+    margin: 2rem $pageMargin;
+
+    .section-title {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--theme-color_neutral);
+        
+        text-align: left;
+        font-size: 3rem;
+        font-weight: 200;
+        color: var(--theme-color_neutral);
+    }
+
+    .section-message {
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+
+        text-align: left;
+
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: var(--theme-color_neutral);
+    }
+    
+    .section-text {
+        margin-right: 2rem;
+
+        text-align: left;
+
+        font-size: 1.3rem;
+        font-weight: 200;
+        color: var(--theme-color_discret);
+    }
+}
+
+.section--actu {
+    padding: 2rem 0;
+}

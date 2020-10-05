@@ -1,5 +1,5 @@
 .tour {
-    margin: 3rem 7rem;
+    margin: 3rem 2rem;
 
     color: var(--theme-color_neutral);
 
@@ -16,20 +16,38 @@
     .tour-body {
 
         .tour-event {
-            @include flex_row(left, center);
+            max-width: 70rem;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: fit-content(100%);
+            margin-bottom: 3.5rem;
+
+            border-left: 3px solid var(--theme-color_important);
+            padding-left: 1rem; // space between red-left-line and date. 
+
+            @include media("md","max"){
+                grid-template-columns: 15rem 1fr 1fr;
+                grid-column-gap: 2rem;
+                grid-row-gap: 3rem;
+            }
 
             .tour-event-date {
-                
+                font-size: 1.6rem;
+                font-weight: 200;
             }
             
             .tour-event-location {
-
+                font-size: 1.6rem;
+                font-weight: 200;
+                color: #ff8300;
             }
             
             .tour-event-city {
-
+                font-size: 1.7rem;
+                font-weight: 400;
+                font-variant: petite-caps;
             }
         }
     }
-
 }

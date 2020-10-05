@@ -3,8 +3,6 @@
 <main>
     <h2 class="page-title">Bio</h2>
     
-    <section>
-    </section>
     <section class="musiciens">
         <div class="musiciens-container">
             <h3 class="musiciens-name">Le Groupe</h3>

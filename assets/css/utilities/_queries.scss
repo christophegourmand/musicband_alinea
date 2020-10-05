@@ -83,13 +83,13 @@
     @if ($min_width_given_str == "min") {
         $min_width_str: "";
     } @else if ($min_width_given_str == "sm") {
-        $min_width_str: "(min-width: 576px)";
+        $min_width_str: "(min-width: 575.9px)";
     } @else if ($min_width_given_str == "md") {
-        $min_width_str: "(min-width: 768px)";
+        $min_width_str: "(min-width: 767.9px)";
     } @else if ($min_width_given_str == "lg") {
-        $min_width_str: "(min-width: 992px)";
+        $min_width_str: "(min-width: 991.9px)";
     } @else if ($min_width_given_str == "xl") {
-        $min_width_str: "(min-width: 1200px)";
+        $min_width_str: "(min-width: 1199.9px)";
     } // @else {
       //  @error "minimal value should be min, sm, md, lg, xl _ with quotes";
     // }

@@ -4,3 +4,17 @@
     flex-wrap: wrap;
 }
 
+.flex_2col-md {
+    @include media("md","max"){
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: flex-start;
+
+        &>* {
+            width: 100% / 2;
+        }
+    }
+}

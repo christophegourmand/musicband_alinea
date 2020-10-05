@@ -14,20 +14,21 @@
     }
 
     .socialMedia-link-container {
-
         @include flex_col(center,center);
 
         @include media("md","max"){
             @include flex_row(center,center);
-
         }
 
+        margin: 2rem 2rem;
+
+
         .socialMedia-link {
-                        @include bordure(white);
-            
-            @include flex_col(center, center);
+                        // @include bordure(white);
+            margin: 2rem 2rem;
             height: 120px;
 
+            @include flex_col(center, center);
 
             .socialMedia-logo {
 
@@ -45,4 +46,8 @@
 
 .bg-youtube {
     background-color: red;
+}
+
+.bg-instagram {
+    background-color: #f92d83;
 }

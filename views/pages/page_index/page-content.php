@@ -4,18 +4,7 @@
         <cite class="bigquote-author"></cite>
     </section>
 
-    <section class="socialMedia">
-        <p class="socialMedia-slogan">N'hésitez pas à venir nous suivre sur les réseaux Sociaux !</p>
-        <div class="socialMedia-link-container">
-            <a class="socialMedia-link bg-facebook" href="" target="_blank">
-                <img class="socialMedia-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/facebook/f_logo_RGB-White_144.png');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
-            </a>
-            <a class="socialMedia-link bg-youtube" href="" target="_blank">
-                <img class="socialMedia-logo" src="<?php echo($prefix_to_root_folder.'/assets/img/partners/youtube/yt_icon_mono_dark.png');?>" alt="logo plateforme musicale" title="logo plateforme musicale">
-            </a>
-            <a class="socialMedia-link" href="" target="_blank">LogoINSTAGRAM</a>
-        </div>
-    </section>
+    <?php include($prefix_to_root_folder."views/modules/socialmedia.php")?>
 
     <img class="img-full-page" src="/assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/alinea_00027_groupe.jpg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">         
 

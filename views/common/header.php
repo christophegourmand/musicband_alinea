@@ -10,7 +10,7 @@
                 <h1 class="brand-name">ALINEA</h1>
             </a>
             -->
-            <h1 class="brand-name"><a href="/">ALINEA</a></h1>
+            <h1 class="brand-name"><a href="/">ALINÉA.</a></h1>
 
         </div>
         

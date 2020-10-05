@@ -2,6 +2,9 @@
     width: 100%;
 
     .horizontalCard-title--big {
+        position: relative;
+        left: -1rem;
+
         font-size: 3rem !important;
         font-weight: 300;
     }
