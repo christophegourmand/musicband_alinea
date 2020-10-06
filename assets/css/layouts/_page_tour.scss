@@ -27,7 +27,7 @@
             padding-left: 1rem; // space between red-left-line and date. 
 
             @include media("md","max"){
-                grid-template-columns: 15rem 1fr 1fr;
+                grid-template-columns: 17rem 1fr 1fr;
                 grid-column-gap: 2rem;
                 grid-row-gap: 3rem;
             }

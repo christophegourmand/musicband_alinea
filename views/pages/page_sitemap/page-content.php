@@ -41,10 +41,11 @@
             <li class="sitemap-item-level1">
                 <a class="sitemap-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_bio.php');?>">Bio</a>
             </li>
+            <!--
             <li class="sitemap-item-level1">
                 <a class="sitemap-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_acheter.php');?>">Acheter</a>
             </li>
-
+            -->
         </ul>        
     </section>
 </main>

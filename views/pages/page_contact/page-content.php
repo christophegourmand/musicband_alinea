@@ -10,13 +10,21 @@
                 <h4 class="contact-address">
                     <a class="contact-link" href="mailto:alineamusique@gmail.com">alineamusique@gmail.com</a>
                 </h4>
+                <div class="socialMedia-mini-link-container">
+                        <a class="socialMedia-mini-link" href="https://www.facebook.com/Alineamusique">
+                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/facebook/f_logo_RGB-White_58.png'?>" alt="logo facebook" title="logo facebook">
+                        </a>
+                        <a class="socialMedia-mini-link" href="https://www.youtube.com/channel/UCKoysXy-RHdX1QtP4Ugr9Fw">
+                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/youtube/youtube_social_circle_dark.png'?>" alt="logo youtube" title="logo youtube">
+                        </a>
+                        <a class="socialMedia-mini-link" href="https://www.instagram.com/alineamusique/">
+                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/instagram/glyph-logo_May2016_modified_white_400px.png'?>" alt="logo instagram" title="logo instagram">
+                        </a>
+                </div>
             </div>
             <div class="contact-body_right-col">
                 <p class="contact-description">La musique est ce qui nous anime, nous aimons en jouer, mais surtout la partager ! Donc n'hésitez pas à nous contacter pour une prestation musicale, un projet, ou même pour nous soutenir.</p>
 
-                <a class="socialMedia-link" href="" target="_blank">LogoFACEBOOK</a>
-                <a class="socialMedia-link" href="" target="_blank">LogoYOUTUBE</a>
-                <a class="socialMedia-link" href="" target="_blank">LogoINSTAGRAM</a>
             </div>
         </div>
     </section>
@@ -58,6 +66,9 @@
             <div class="contact-body_left-col">
                 <h4 class="contact-address">
                     <a class="contact-link" href="mailto:christophe.gourmand@gmail.com">christophe.gourmand@gmail.com</a>
+                </h4>
+                <h4 class="contact-address">
+                    <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/">LinkedIn</a>
                 </h4>
                 <h4 class="contact-address">
                     <a class="contact-link" href="https://github.com/christophegourmand">https://github.com/christophegourmand</a>

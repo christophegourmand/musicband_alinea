@@ -51,3 +51,34 @@
 .bg-instagram {
     background-color: #f92d83;
 }
+
+
+
+.socialMedia-mini-link-container {
+    width: 100%;
+    margin: 1.2rem 0;
+
+    @include flex_row(flex-start,center);
+
+    // @include media("md","max"){
+    //    @include flex_row(center,center);
+    // }
+
+    // margin: 2rem 2rem;
+
+
+    .socialMedia-mini-link {
+                    // @include bordure(white);
+        // margin: 2rem 2rem;
+        // height: 120px;
+
+        @include flex_col(center, center);
+
+        .socialMedia-mini-logo {
+
+            margin-right: 30px;
+            width: 40px;
+
+        }
+    }
+}

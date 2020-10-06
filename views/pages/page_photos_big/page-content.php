@@ -31,7 +31,7 @@
                 
                 <div class="gallery-body">
                     <?php for($index_img=0 ; $index_img < sizeof($photos_of_album_indArr) ; $index_img++): ?>
-                        <a class="gallery-img-link" href="<?=$photoAlbum_path_to_originals.$photos_of_album_indArr[$index_img]['filename'].'?album_id='.$album_index.'&photo_id='.$index_img?>">
+                        <a class="gallery-img-link" href="<?=$photoAlbum_path_to_originals.$photos_of_album_indArr[$index_img]['filename']?>">
                             <img class="gallery-img" src="<?=$photoAlbum_path_to_thumbmails.$photos_of_album_indArr[$index_img]['filename']?>" alt="<?= $photos_of_album_indArr[$index_img]['description']?>" title="<?= $photos_of_album_indArr[$index_img]['description']?>">
                         </a>
                     <?php endfor ?>

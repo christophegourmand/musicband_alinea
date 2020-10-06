@@ -1,0 +1,41 @@
+<?php 
+
+                    // Photos that we don't want are commented with '//'
+
+$photos_20200624_color_sd = [
+    // "alinea_00014_nico-and-simone-piano.jpg",
+    "alinea_00027_groupe.jpg",
+    "alinea_00015_nico-and-simone-piano.jpg",
+    "alinea_00016_thierry-guitare.jpg",
+    // "alinea_00017_nicole-lyrics.jpg",
+    // "alinea_00018_simone-lyrics.jpg",
+    "alinea_00019_instrument_cajon.jpg",
+    // "alinea_00020_instrument_cajon.jpg",
+    "alinea_00021_nicole.jpg",
+    "alinea_00022_nico-tatouage.jpg",
+    // "alinea_00023_instrument_steel-tongue-drum.jpg",
+    "alinea_00024_instrument_steel-tongue-drum.jpg",
+    "alinea_00025_groupe.jpg",
+    "alinea_00026_groupe.jpg",
+    "alinea_00028_groupe.jpg",
+    "alinea_00029_groupe.jpg",
+    "alinea_00030_groupe.jpg",
+    "alinea_00031_main-shaker.jpg",
+    "alinea_00032_instrument_steel-tongue-drum.jpg",
+    "alinea_00033_main-shaker.jpg",
+    "alinea_00034_instrument_guitare-thierry.jpg",
+    "alinea_00035_instrument_guitare-thierry.jpg",
+    "alinea_00036_thierry.jpg",
+    "alinea_00037_thierry.jpg",
+    "alinea_00038_instrument_steel-tongue-drum.jpg",
+    "alinea_00039_arbre-raylight.jpg",
+    "alinea_00040_thierry-play-guitare.jpg",
+    "alinea_00041_nicole.jpg",
+    "alinea_00042_instrument_piano.jpg",
+    "alinea_00043_instrument_steel-tongue-drum.jpg",
+    "alinea_00044_instrument_claves.jpg",
+    "alinea_00045_instrument_claves.jpg",
+    "alinea_00048_instrument_tambourin.jpg",
+    "alinea_00049_instrument_guitare-thierry.jpg",
+    "alinea_00050_instrument_guitare-thierry.jpg"
+];
