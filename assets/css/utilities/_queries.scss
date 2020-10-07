@@ -8,73 +8,6 @@
 // MEDIA QUERIES ==================================
 
 
-// DEFINITION of breakpoints-limits variables :
-    // XS: old phones
-    $breakpoint-xs-sm: 576px;
-    // phone
-    $breakpoint-sm-md: 768px; 
-    // tablet
-    $breakpoint-md-lg: 992px;
-    // laptop
-    $breakpoint-lg-xl: 1200px;
-    // wide display (imac, tv)
-
-// USAGE of the breakpoints : Version 1
-
-    /* SM : */
-    @media screen and (min-width: #{$breakpoint-xs-sm}) {
-
-    }
-
-    /* MD : */
-    @media screen and (min-width: #{$breakpoint-sm-md}) {
-
-    }
-
-    /* LG : */
-    @media screen and (min-width: #{$breakpoint-md-lg}) {
-
-
-    }
-
-    /* XL : */
-    @media screen and (min-width: #{$breakpoint-lg-xl}) {
-
-    }
-
-// USAGE of the breakpoints : Version 2
-
-    $smaller-than-sm: "only screen and (max-width: #{$breakpoint-xs-sm})"; // XS
-    $bigger-than-sm: "only screen and (min-width: #{$breakpoint-xs-sm})"; // SM-MD-LG-XL
-
-    $smaller-than-md: "only screen and (max-width: #{$breakpoint-sm-md})"; // XS-SM
-    $bigger-than-md: "only screen and (min-width: #{$breakpoint-sm-md})"; // MD-LG-XL
-
-    $smaller-than-lg: "only screen and (max-width: #{$breakpoint-md-lg})";
-    $bigger-than-lg: "only screen and (min-width: #{$breakpoint-md-lg})";
-
-    $smaller-than-xl: "only screen and (max-width: #{$breakpoint-lg-xl})";
-    $bigger-than-xl: "only screen and (min-width: #{$breakpoint-lg-xl})";
-
-
-// USAGE of the breakpoints : Version 3 = Correction of version 2
-
-// XS
-@media screen and (max-width: $breakpoint-xs-sm) {}
-
-// SM 
-@media screen and (min-width: $breakpoint-xs-sm) and (max-width: $breakpoint-sm-md){}
-
-// MD 
-@media screen and (min-width: $breakpoint-sm-md) and (max-width: $breakpoint-md-lg){}
-
-// LG 
-@media screen and (min-width: $breakpoint-md-lg) and (max-width: $breakpoint-lg-xl){}
-
-// XL 
-@media screen and (min-width: $breakpoint-lg-xl) {}
-
-
 @mixin media($min_width_given_str , $max_width_given_str) {
     $min_width_str: "";
     $max_width_str: "";
@@ -122,31 +55,3 @@
         @content;
     }
 }
-
-
-/*
-je veux pouvoir utiliser de cette manière : 
-
-en dessous de :
-    @include xs {}
-
-    @include xs-sm {}
-    @include xs-sm-md {}
-    @include xs-sm-md-lg {}
-    @include xs-sm-md-lg-xl {}
-    
-    @include    sm-md-lg-xl {}
-    @include       md-lg-xl {}
-    @include          lg-xl {}
-    @include             xl {}
-
-Je peux peut être transformer en :
-
-    @include media( "sm" , "max")
-
-    @mixin media( $widthMin_arg , $widthMax_arg ) {
-        
-    }
-
-*/
-

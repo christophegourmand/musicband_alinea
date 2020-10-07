@@ -2,8 +2,6 @@
     @include flex_col(space-between, stretch);
 
     &.full-height {
-        // height: 92vh; // I stoppd to handle the height here. Instead I do it with Javascript using  window.innerHeight;
-        // UPDATE: Doesn't work with javascript. So i re-implement the height here:
         height: 92vh;
         
         @include media("md","max"){

@@ -1,9 +1,6 @@
 /* =========================================== */
 /* MODULES / test */
 /* =========================================== */
-.white {
-    color: var(--theme-color_neutral);
-}
 
 .incrustation_pixels {
     position: fixed;
@@ -13,6 +10,7 @@
     color: white;
     background-color: red;
 }
+
 
 body::before {
     position: fixed;
@@ -37,4 +35,8 @@ body::before {
     @include media("xl","") {
         content: "XL";
     }   
+}
+
+.todo {
+  color: red;
 }

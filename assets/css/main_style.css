@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* UTILITIES */
 /* =========================================== */
 /* UTILITIES / NORMALIZE */
@@ -24,54 +23,17 @@
   --theme-color_brand: white;
 }
 
+.white {
+  color: var(--theme-color_neutral);
+}
+
 /* =========================================== */
 /* UTILITIES / VARIABLES */
 /* =========================================== */
-/*
-https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
-    
-    According to this website, here are the sizes of devices : 
-    (i personaly think that most devices have bigger sizes than that)
-
-    320px — 480px: Mobile devices
-    481px — 768px: iPads, Tablets
-    769px — 1024px: Small screens, laptops
-    1025px — 1200px: Desktops, large screens
-    1201px and more —  Extra large screens, TV
-*/
 /* =========================================== */
 /* UTILITIES / QUERIES */
 /* =========================================== */
 /* X-SM  <576>  SM <768>  MD  <992> LG  <1200> XL */
-/* SM : */
-/* MD : */
-/* LG : */
-/* XL : */
-/*
-je veux pouvoir utiliser de cette manière : 
-
-en dessous de :
-    @include xs {}
-
-    @include xs-sm {}
-    @include xs-sm-md {}
-    @include xs-sm-md-lg {}
-    @include xs-sm-md-lg-xl {}
-    
-    @include    sm-md-lg-xl {}
-    @include       md-lg-xl {}
-    @include          lg-xl {}
-    @include             xl {}
-
-Je peux peut être transformer en :
-
-    @include media( "sm" , "max")
-
-    @mixin media( $widthMin_arg , $widthMax_arg ) {
-        
-    }
-
-*/
 /* =========================================== */
 /* UTILITIES / ANIMATIONS */
 /* =========================================== */
@@ -201,7 +163,6 @@ body {
 /* =========================================== */
 body {
   height: 100vh;
-  width: 100vw;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: auto 1fr auto;
@@ -274,28 +235,6 @@ footer {
   height: fit-content(100%);
 }
 
-/*
-
-@include media("lg","") {
-    
-    .split_30_70 {
-        // display: flex;
-
-        &>*:first-child {
-            width: 30%;
-            
-            
-        }
-
-        &>*:nth-child(2) {
-            width: 70%;
-            
-      
-        }
-    }
-}
-
-*/
 .album {
   margin: 0 2rem;
   display: -webkit-box;
@@ -317,7 +256,7 @@ footer {
 
 .album .album-title {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1rem;
   margin-bottom: 2.5rem;
   border-bottom: 2px solid var(--theme-color_neutral);
   text-align: left;
@@ -976,7 +915,6 @@ footer {
   background-size: contain;
   -webkit-background-size: contain;
   background-repeat: no-repeat;
-  background-color: gray;
 }
 
 .musiciens .musiciens-container .musiciens-bgphoto.img-thierry {
@@ -1400,7 +1338,6 @@ footer {
   }
   .nav .nav-menus .nav-item .nav-link {
     padding-top: .5rem;
-    /*padding-bottom: .3rem;*/
     color: var(--theme-color_neutral);
   }
   .nav .nav-menus .nav-item:hover .nav-link {
@@ -1541,13 +1478,6 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*
-    .btn-link {
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-    }
-    */
 }
 
 .btn .btn-txt, .btn-dark .btn-txt, .btn-outline-white .btn-txt {
@@ -1730,29 +1660,6 @@ footer {
 
 .gallery .gallery-body-big .gallery-img-container .gallery-img-description {
   text-align: center;
-  color: var(--theme-color_neutral);
-}
-
-/* =========================================== */
-/* MODULES / interactive-flyover */
-/* =========================================== */
-.interactive-flyover {
-  width: 100vw;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 4fr 2fr;
-      grid-template-columns: 4fr 2fr;
-}
-
-.interactive-flyover .interactive-flyover_img {
-  width: 100%;
-}
-
-.interactive-flyover .interactive-flyover_result {
-  width: 100%;
-}
-
-.interactive-flyover .interactive-flyover_result .result {
   color: var(--theme-color_neutral);
 }
 
@@ -1940,68 +1847,10 @@ footer {
   padding: 2rem 0;
 }
 
-/* =========================================== */
-/* MODULES / test */
-/* =========================================== */
-.white {
-  color: var(--theme-color_neutral);
-}
-
-.incrustation_pixels {
-  position: fixed;
-  display: inline-block;
-  top: 10px;
-  right: 10px;
-  color: white;
-  background-color: red;
-}
-
-body::before {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  background-color: red;
-  color: white;
-}
-
-@media screen and (max-width: 576px) {
-  body::before {
-    content: "XS";
-  }
-}
-
-@media screen and (min-width: 575.9px) and (max-width: 768px) {
-  body::before {
-    content: "SM";
-  }
-}
-
-@media screen and (min-width: 767.9px) and (max-width: 992px) {
-  body::before {
-    content: "MD";
-  }
-}
-
-@media screen and (min-width: 991.9px) and (max-width: 1200px) {
-  body::before {
-    content: "LG";
-  }
-}
-
-@media screen and (min-width: 1199.9px) {
-  body::before {
-    content: "XL";
-  }
-}
-
 /* STATES */
 /* =========================================== */
 /* STATES / states */
 /* =========================================== */
-.todo {
-  color: red;
-}
-
 /* THEME */
 /* =========================================== */
 /* THEME / dark */

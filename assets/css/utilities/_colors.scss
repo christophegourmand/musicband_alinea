@@ -12,41 +12,42 @@
     --theme-color_brand: white;
 }
 
+$dominant-color: #f50000;
 
+$gray: hsl(0, 0%, 21%);
+$lightgray: hsl(0, 0%, 37%);
+$darkgray: hsl(0, 0%, 11%);
 
-// :root {
-    $dominant-color: #f50000;
+$blue: hsl(216, 100%, 50%);
+$lightblue: hsl(216, 100%, 74%);
+$darkblue: hsl(216, 100%, 29%);
 
-    $gray: hsl(0, 0%, 21%);
-    $lightgray: hsl(0, 0%, 37%);
-    $darkgray: hsl(0, 0%, 11%);
-    
-    $blue: hsl(216, 100%, 50%);
-    $lightblue: hsl(216, 100%, 74%);
-    $darkblue: hsl(216, 100%, 29%);
+$green: hsl(150, 100%, 46%);
+$lightgreen: hsl(150, 100%, 75%);
+$darkgreen: hsl(150, 97%, 24%);
 
-    $green: hsl(150, 100%, 46%);
-    $lightgreen: hsl(150, 100%, 75%);
-    $darkgreen: hsl(150, 97%, 24%);
+// $red: hsl(9, 100%, 50%);
+$red: hsl(0, 100%, 39%);
+$lightred: hsl(9, 100%, 76%);
+$darkred: hsl(9, 100%, 32%);
 
-    // $red: hsl(9, 100%, 50%);
-    $red: hsl(0, 100%, 39%);
-    $lightred: hsl(9, 100%, 76%);
-    $darkred: hsl(9, 100%, 32%);
-    
-    $orange: hsl(22, 100%, 56%);
-    $lightorange: hsl(22, 100%, 64%);
-    $darkorange: hsl(22, 100%, 37%);
+$orange: hsl(22, 100%, 56%);
+$lightorange: hsl(22, 100%, 64%);
+$darkorange: hsl(22, 100%, 37%);
 
-    $yellow: hsl(54, 100%, 50%);
-    $lightyellow: hsl(54, 100%, 74%);
-    $darkyellow: hsl(54, 98%, 38%);
+$yellow: hsl(54, 100%, 50%);
+$lightyellow: hsl(54, 100%, 74%);
+$darkyellow: hsl(54, 98%, 38%);
 
-    $gold: hsl(44, 100%, 50%);
-    $lightgold: hsl(44, 100%, 68%);
-    $darkgold: hsl(44, 100%, 39%);
+$gold: hsl(44, 100%, 50%);
+$lightgold: hsl(44, 100%, 68%);
+$darkgold: hsl(44, 100%, 39%);
 
-    $cyan: hsl(172, 100%, 37%);
-    $lightcyan: hsl(172, 99%, 47%);
-    $cyan: hsl(172, 100%, 24%);
-// }
+$cyan: hsl(172, 100%, 37%);
+$lightcyan: hsl(172, 99%, 47%);
+$cyan: hsl(172, 100%, 24%);
+
+// developer can use for test : 
+.white {
+    color: var(--theme-color_neutral);
+}

@@ -6,25 +6,6 @@
     .musiciens-container {
         margin-bottom: 3rem;
 
-        // VERSION 1 :  USING GRID
-        
-        // display: grid;
-        // grid-template-columns: 1fr;
-        // grid-template-rows: fit-content(100%) 300px fit-content(100%);
-        // grid-gap: 1rem;
-        // grid-template-areas: 
-        //     "musiciens_name"
-        //     "musiciens_photo"
-        //     "musiciens_description";
-
-        // @include media("md",""){
-        //     grid-template-columns: 1fr 1fr;
-        //     grid-template-rows: fit-content(100%) fit-content(100%);
-        //     grid-template-areas: 
-        //         "musiciens_name musiciens_name"
-        //         "musiciens_photo musiciens_description";
-        // }
-
         @include media("min","sm") {
             .musiciens-name {
                 font-size: 1.4rem;
@@ -52,7 +33,6 @@
         }
 
         .musiciens-2col {
-            // VERSION 2 :  USING FLEX
             @include flex_col(flex-start, center);
 
             @include media("md","max"){
@@ -74,19 +54,15 @@
         
             .musiciens-description {
                 grid-area: musiciens_description;
-                // margin-top: 2rem;
-                // margin-left: 2rem;
                 
                 font-size: 1.3rem;
                 font-weight: 100;
                     @include media("md","xl"){
                         width: 50%;
-                        // flex-grow: 1;
                         padding: 0 2rem;
                     }
                     @include media("xl","max"){
                         width: 60%;
-                        // flex-grow: 1;
                         padding: 0 2rem;
                         font-size: 1.8rem;
                     }
@@ -94,7 +70,6 @@
         }
 
         .musiciens-role {
-            // margin-left: 3rem;
             text-align: right;
             font-size: 1.3rem;
             font-weight: 100;
@@ -112,8 +87,6 @@
             // background-position: 50% 10%;
             // background-attachment: fixed;
             // @include background_attachment(fixed);
-            
-                    background-color: gray; // to see the problem with background-position and background-size on iOS.
         }
 
         .musiciens-bgphoto.img-thierry {

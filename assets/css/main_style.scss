@@ -18,9 +18,8 @@
 @import "layouts/main";
 @import "layouts/aside";
 @import "layouts/footer";
-@import "layouts/page_divider";
 
-@import "layouts/page_musiques"; // using Grid
+@import "layouts/page_musiques";
 @import "layouts/page_lyrics";
 @import "layouts/page_tour";
 @import "layouts/page_contact";
@@ -43,13 +42,12 @@
 
 @import "modules/gallery";
 
-@import "modules/interactive-flyover";
 @import "modules/lyrics";
 @import "modules/socialmedia";
 @import "modules/section";
 
 
-@import "modules/test";
+// @import "modules/developer_test";
 
 /* STATES */
 @import "states/states";

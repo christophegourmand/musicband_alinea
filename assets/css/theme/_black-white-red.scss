@@ -2,31 +2,15 @@
 /* THEME / black-white-red */
 /* =========================================== */
 
-// @use "../utilities/colors";
+header {
+
+}
 
 body {
-    // background-color: red;
 	background-color: var(--theme-color_background);
-	// background-color: #2a3b3f;
 
     color: var(--theme-color_neutral);
 }
-
-
-header {
-    // &::before{
-    //     content: "";
-    //     height: 100%;
-    //     width: 100%;
-
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-        // z-index: 2;
-        // background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.5), rgba(84, 135, 165, 0.5));
-    // }
-}
-
 
 footer {
 	background-color: $darkgray;

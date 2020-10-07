@@ -1,10 +1,6 @@
 .navfooter {
 
-    .navfooter-menus {
-        // display: grid;
-        // grid-template-columns: repeat(3, 1fr);
-        // @include flex_row(space-evenly, center);
-        
+    .navfooter-menus {        
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         
