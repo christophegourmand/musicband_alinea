@@ -12,7 +12,7 @@
 
 <nav class="nav" id="main_navbar">
     <!-- <a href="index.html" class="nav-brand"><span>ALINEA</span></a> -->
-    <button type="button" class="nav-toggler" id="nav_toggler"><i class="fas fa-bars"></i></button>
+    <button type="button" class="nav-toggler" id="nav_toggler" aria-label="Menu principal"><i class="fas fa-bars"></i></button>
 
     <div class="nav-scoring">
         <div class="nav-scoring-line"></div>

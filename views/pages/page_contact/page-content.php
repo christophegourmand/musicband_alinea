@@ -76,7 +76,7 @@
             </div>
             <div class="contact-body_right-col">
                 <p class="contact-description">Développeur web Front-End et Back-End : réalisation de sites et applications web.</p>
-                <hr>
+                <br>
                 <p class="contact-description">Compositeur et ingé-son : Production et mixage de musiques originales &#47; soundesign et habillage sonore.</p>
             </div>
         </div>

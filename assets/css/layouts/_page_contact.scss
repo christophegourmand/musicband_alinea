@@ -1,15 +1,33 @@
 .contact {
-    width: 100%;
-    padding: 3rem $pageMargin;
+    @include media("min","md") {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include media("md","max") {
+        width: 100%;
+        padding: 3rem $pageMargin;
+    }
 
     .contact-title {
         margin-bottom: 1.5rem;
         border-bottom: 1px solid var(--theme-color_neutral);
         
         text-align: left;
-        font-size: 3rem;
         font-weight: 200;
         color: var(--theme-color_neutral);
+        
+        @include media("min","md") {
+            margin-left: 1rem;
+            margin-right: 1rem;
+
+            font-size: 2.5rem;
+        }
+        @include media("md","max") {
+            font-size: 3rem;
+        }
     }
 
     .contact-link:any-link {
@@ -17,6 +35,7 @@
     }
 
     .contact-body {
+
         display: grid;
         grid-template-columns: 1fr;
         grid-column-gap: 1rem;
@@ -27,19 +46,27 @@
         }
 
         .contact-body_left-col {
+                @include media("min","md") {
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+                }
             .contact-address {
+
                 margin-bottom: 1rem;
 
                 text-align: left;
                 font-size: 1.3rem;
                 font-weight: 200;
-                color: var(--theme-color_neutral);
-
-                
+                color: var(--theme-color_neutral);                
             }
         }
         
         .contact-body_right-col {
+            @include media("min","md") {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
             .contact-description {
                 text-align: left;
 

@@ -15,7 +15,11 @@
             margin-bottom: .3rem;
 
             .navfooter-link , .navfooter-link:visited {
-                font-size: 1.2rem;
+                font-size: .7rem;
+                
+                @include media("md","max") {
+                    font-size: 1.2rem;
+                }
 
                 &:link , &:visited {
                     color: var(--theme-color_neutral);

@@ -1,14 +1,12 @@
     <head>
         <meta charset="utf-8">
         
-                                                <!-- Plus tard retirer la variable et utiliser celle de page_index.php -->
         <title><?php echo $page_title; ?></title>
 
         <meta name="description" content="<?php echo $page_description; ?>">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="icon" href="./assets/img/icons/favicon_alinea_rouge.png">  -->
         <link rel="icon" href="/assets/img/icons/Logo_Alinea_white_big.png">
         
         <!-- FONTS -->

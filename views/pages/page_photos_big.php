@@ -1,7 +1,7 @@
 <?php 
 // VARIABLES USED TO BUILD PATH-TO-FILES :
     $prefix_to_root_folder = "../../";
-    $page_name = "page_photos"; // used to build paths-to-files
+    $page_name = "page_photos_big"; // used to build paths-to-files
 
 
 // VARIABLES USED IN HEADER :
