@@ -2012,9 +2012,9 @@ body::before {
 /* =========================================== */
 /* THEME / black-white-red */
 /* =========================================== */
-main {
+body {
   background-color: var(--theme-color_background);
-  color: dark;
+  color: var(--theme-color_neutral);
 }
 
 footer {

@@ -62,6 +62,7 @@
     </section>
     <section class="contact">
         <h3 class="contact-title"><a class="contact-link" href="mailto:christophe.gourmand@gmail.com">Christophe Gourmand</a></h3>
+
         <div class="contact-body">
             <div class="contact-body_left-col">
                 <h4 class="contact-address">
@@ -71,7 +72,7 @@
                     <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/">LinkedIn</a>
                 </h4>
                 <h4 class="contact-address">
-                    <a class="contact-link" href="https://github.com/christophegourmand">https://github.com/christophegourmand</a>
+                    <a class="contact-link" href="https://github.com/christophegourmand">GitHub</a>
                 </h4>
             </div>
             <div class="contact-body_right-col">
@@ -80,5 +81,6 @@
                 <p class="contact-description">Compositeur et ingé-son : Production et mixage de musiques originales &#47; soundesign et habillage sonore.</p>
             </div>
         </div>
+
     </section>
 </main>

@@ -4,6 +4,13 @@
 
 // @use "../utilities/colors";
 
+body {
+    // background-color: red;
+	background-color: var(--theme-color_background);
+	// background-color: #2a3b3f;
+
+    color: var(--theme-color_neutral);
+}
 
 
 header {
@@ -20,13 +27,6 @@ header {
     // }
 }
 
-main {
-    // background-color: red;
-	background-color: var(--theme-color_background);
-	// background-color: #2a3b3f;
-
-    color: dark;
-}
 
 footer {
 	background-color: $darkgray;
