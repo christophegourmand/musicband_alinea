@@ -1,18 +1,5 @@
 <?php
 
-/* $songs_database = [
-    "Madison",
-    "Soif",
-    "Le Placard",
-    "L'Exil",
-    "Pas d'Autre Monde",
-    "Post-It",
-    "Si tu vas bien",
-    "Blanc et Noir",
-    "Des foules de toi",
-    "J'ai pas les mots"
-]; */
-
 $allSongs_indArray = [
     [
         "song_title"=>"Madison",
@@ -447,7 +434,7 @@ $allSongs_indArray = [
     // ------------------ end song
     
     [
-        "song_title"=>"Des foules en toi",
+        "song_title"=>"Des foules de toi",
         "song_lyrics_paragraphs"=>[
             [
                 "type"=>"verse",
@@ -564,17 +551,39 @@ $allSongs_indArray = [
     // ------------------ end song
     
     [
-        "song_title"=>"J'écrirai",
+        "song_title"=>"J'écrirais",
         "song_lyrics_paragraphs"=>[
             [
                 "type"=>"verse",
                 "sentences"=>[
-                    "",
-                    "",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "J’écrirais bien quelques poèmes,",
+                    "J’écrirais bien quelques amours",
+                    "Pourquoi pas un vieux requiem,",
+                    "Une histoire à dormir debout",
+                    "J’écrirais bien un carpe diem avec du bleu un peu partout",
+                    "Et si tu me dis que tu m’aimes,",
+                    "Je veux bien redevenir fou."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "J’écrirais bien quelques poèmes,",
+                    "J’écrirais bien quelques amours",
+                    "Puisque les rimes restent les mêmes,",
+                    "Puisque le temps joue contre nous",
+                    "J’écrirais bien un carpe diem avec du rouge un peu partout",
+                    "Puisqu’elles sont mortes mes bohèmes,",
+                    "Puisque c’est ici qu’on s’échoue."
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "J’écrirais bien quelques poèmes,",
+                    "J’écrirais bien quelques amours",
+                    "Puisqu’elles sont mortes mes bohèmes,",
+                    "Puisque c’est ici qu’on s’échoue…"
                 ]
             ]
         ]

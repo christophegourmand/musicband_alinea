@@ -11,13 +11,13 @@
                     <a class="contact-link" href="mailto:alineamusique@gmail.com">alineamusique@gmail.com</a>
                 </h4>
                 <div class="socialMedia-mini-link-container">
-                        <a class="socialMedia-mini-link" href="https://www.facebook.com/Alineamusique">
+                        <a class="socialMedia-mini-link" href="https://www.facebook.com/Alineamusique" target="_blank">
                             <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/facebook/f_logo_RGB-White_58.png'?>" alt="logo facebook" title="logo facebook">
                         </a>
-                        <a class="socialMedia-mini-link" href="https://www.youtube.com/channel/UCKoysXy-RHdX1QtP4Ugr9Fw">
+                        <a class="socialMedia-mini-link" href="https://www.youtube.com/channel/UCKoysXy-RHdX1QtP4Ugr9Fw" target="_blank">
                             <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/youtube/youtube_social_circle_dark.png'?>" alt="logo youtube" title="logo youtube">
                         </a>
-                        <a class="socialMedia-mini-link" href="https://www.instagram.com/alineamusique/">
+                        <a class="socialMedia-mini-link" href="https://www.instagram.com/alineamusique/" target="_blank">
                             <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/instagram/glyph-logo_May2016_modified_white_400px.png'?>" alt="logo instagram" title="logo instagram">
                         </a>
                 </div>
@@ -36,7 +36,7 @@
                     <a class="contact-link" href="mailto:contact@coppastudio.fr">contact@coppastudio.fr</a>
                 </h4>
                 <h4 class="contact-address">
-                    <a class="contact-link" href="https://www.coppastudio.fr/">www.coppastudio.fr/</a>
+                    <a class="contact-link" href="https://www.coppastudio.fr/" target="_blank">www.coppastudio.fr/</a>
                 </h4>
             </div>
             <div class="contact-body_right-col">
@@ -52,7 +52,7 @@
                     <a class="contact-link" href="mailto:contact@odeva.fr">contact@odeva.fr</a>
                 </h4>
                 <h4 class="contact-address">
-                    <a class="contact-link" href="https://www.odeva.fr">www.odeva.fr</a>
+                    <a class="contact-link" href="https://www.odeva.fr" target="_blank">www.odeva.fr</a>
                 </h4>
             </div>
             <div class="contact-body_right-col">
@@ -69,10 +69,10 @@
                     <a class="contact-link" href="mailto:christophe.gourmand@gmail.com">christophe.gourmand@gmail.com</a>
                 </h4>
                 <h4 class="contact-address">
-                    <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/">LinkedIn</a>
+                    <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/" target="_blank">LinkedIn</a>
                 </h4>
                 <h4 class="contact-address">
-                    <a class="contact-link" href="https://github.com/christophegourmand">GitHub</a>
+                    <a class="contact-link" href="https://github.com/christophegourmand" target="_blank">GitHub</a>
                 </h4>
             </div>
             <div class="contact-body_right-col">

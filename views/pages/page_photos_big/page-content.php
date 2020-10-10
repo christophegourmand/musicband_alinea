@@ -30,20 +30,24 @@
     <h1 class="page-title">Photos</h1>
 
     <div class="gallery">
-        <h3 class="gallery-title"><?=$photoAlbum_albumName?></h3>
+        <a class="gallery-img-btn img-btn--back" href="<?= $prefix_to_root_folder.'views/pages/page_photos.php';?>">
+            <i class="fas fa-th"></i>
+        </a>
+        <h3 class="gallery-title"><?=$photoAlbum_albumName; ?></h3>
         <div class="gallery-body-big">
             <figure class="gallery-img-container">
-                <a class="gallery-img-btn img-btn--previous" href="<?= $path_to_previous_photo ?>">
+                <a class="gallery-img-btn img-btn--previous" href="<?= $path_to_previous_photo; ?>">
                     <i class="fas fa-chevron-left"></i>
                 </a>
+
                 
-                <img class="gallery-img-big" src="<?=$photoAlbum_path_to_originals.$photos_of_album_indArr[$photo_id]['filename']?>" alt="<?= $photos_of_album_indArr[$photo_id]['description']?>">
+                <img class="gallery-img-big" src="<?=$photoAlbum_path_to_originals.$photos_of_album_indArr[$photo_id]['filename']?>" alt="<?= $photos_of_album_indArr[$photo_id]['description']; ?>">
                 
-                <a class="gallery-img-btn img-btn--next" href="<?= $path_to_next_photo ?>">
+                <a class="gallery-img-btn img-btn--next" href="<?= $path_to_next_photo; ?>">
                     <i class="fas fa-chevron-right"></i>
                 </a>
 
-                <figcaption class="gallery-img-description"><?= $photos_of_album_indArr[$photo_id]['description']?></figcaption>
+                <figcaption class="gallery-img-description"><?= $photos_of_album_indArr[$photo_id]['description'];?></figcaption>
             </figure>
         </div>
     </div>

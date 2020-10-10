@@ -1,4 +1,6 @@
 NOT-IN-GIT/
 assets/img
-*.txt
 assets/css/main_style.css.map
+*.txt
+*.zip
+*.ini

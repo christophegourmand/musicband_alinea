@@ -4,7 +4,10 @@
         <title><?php echo $page_title; ?></title>
 
         <meta name="description" content="<?php echo $page_description; ?>">
-        
+        <meta name="creator" content="Christophe GOURMAND - Developpeur Web">
+        <meta name="keywords" content="musique, groupe, france, variété française, rock français">
+        <meta name="robots" content="index, follow, noarchive, nocache">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" href="/assets/img/icons/Logo_Alinea_white_big.png">
