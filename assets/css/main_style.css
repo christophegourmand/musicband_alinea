@@ -1573,6 +1573,7 @@ footer {
 
 .gallery .gallery-title {
   text-align: center;
+  font-size: 2rem;
   color: var(--theme-color_important);
 }
 
@@ -1594,6 +1595,7 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 2rem;
 }
 
 .gallery .gallery-body .gallery-img {

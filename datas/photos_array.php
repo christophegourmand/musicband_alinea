@@ -1,6 +1,7 @@
 <?php 
 
 $photoAlbums_indArray = [
+    // ############################################################## NEW ALBUM
     [
         "album_name"=> "2020.06.24",
         "path_to_thumbnails"=>"/assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/thumbnails/",
@@ -42,25 +43,50 @@ $photoAlbums_indArray = [
             ["filename"=>"alinea_00048_instrument_tambourin.jpg", "description"=>"instrument: tambourin"],
             ["filename"=>"alinea_00049_instrument_guitare-thierry.jpg", "description"=>"instrument: accord de guitare"],
             ["filename"=>"alinea_00050_instrument_guitare-thierry.jpg", "description"=>"instrument: chevalet de guitare"]
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
+        ]
+    ],
+    // ############################################################## NEW ALBUM
+    [
+        "album_name"=> "2020.10.24",
+        "path_to_thumbnails"=>"/assets/img/photos/from-facebook/2020.10.23/thumbnails/",
+        "path_to_originals"=>"/assets/img/photos/from-facebook/2020.10.23/",
+        "photos_of_album_indArr"=> [
+            ["filename"=>"alinea_00069_nicole.jpg", "description"=>"Nicole, souriante."],
+            ["filename"=>"alinea_00070_thierry-play-guitare.jpg", "description"=>"Thierry sur sa guitare électrique"],
+            ["filename"=>"alinea_00071_nico-play-drums.jpg", "description"=>"Nico, en plein riff de batterie"],
+            ["filename"=>"alinea_00072_romain-play-bass-bw.jpg", "description"=>"Romain à la basse"],
+            ["filename"=>"alinea_00073_romain-play-bass-color.jpg", "description"=>"Romain à la basse"],
+            ["filename"=>"alinea_00074_simone-play-piano.jpg", "description"=>"Simone au piano"],
+            ["filename"=>"alinea_00075_simone-play-piano-bw.jpg", "description"=>"Simone au piano"],
+            ["filename"=>"alinea_00076_thierry-play-guitare.jpg", "description"=>"Thierry à la guitare"],
+            ["filename"=>"alinea_00077_nico-play-drums.jpg", "description"=>"Nico à la batterie"]
         ]
     ]
+    // ############################################################## NEW ALBUM
+    // [
+        // "album_name"=> "",
+        // "path_to_thumbnails"=>"",
+        // "path_to_originals"=>"",
+        // "photos_of_album_indArr"=> [
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+        // ]
+    // ],
 ];
 
 
