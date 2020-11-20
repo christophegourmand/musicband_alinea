@@ -5,4 +5,6 @@
 
     include($prefix_to_root_folder."views/pages/page_index.php");
 
+    // commentaire christophe qui sera pushé sur branch master
+
 ?>
