@@ -1569,11 +1569,25 @@ footer {
 
 .gallery {
   position: relative;
+  /*
+    .gallery-title {
+        margin: 2rem $pageMargin;
+
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--theme-color_neutral);
+        
+        text-align: left;
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: var(--theme-color_neutral);
+    }
+*/
 }
 
 .gallery .gallery-title {
   text-align: center;
   font-size: 2rem;
+  font-weight: 100;
   color: var(--theme-color_important);
 }
 

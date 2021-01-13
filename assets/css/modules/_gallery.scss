@@ -1,13 +1,29 @@
 .gallery {
     position: relative; // i do that so i can use position 'absolute' on the button 'back'.
 
+    
     .gallery-title {
         text-align: center;
 
         font-size: 2rem;
+        font-weight: 100;
         color: var(--theme-color_important);
     }
+ 
+ // si Thierry Préfère la V2:
+/*
+    .gallery-title {
+        margin: 2rem $pageMargin;
 
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--theme-color_neutral);
+        
+        text-align: left;
+        font-size: 1.8rem;
+        font-weight: 200;
+        color: var(--theme-color_neutral);
+    }
+*/
     .gallery-body {
         display: flex;
         flex-direction: row;

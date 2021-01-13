@@ -61,7 +61,99 @@ $photoAlbums_indArray = [
             ["filename"=>"alinea_00076_thierry-play-guitare.jpg", "description"=>"Thierry à la guitare"],
             ["filename"=>"alinea_00077_nico-play-drums.jpg", "description"=>"Nico à la batterie"]
         ]
+    ],
+    // ############################################################## NEW ALBUM
+    [
+        "album_name"=> "2021.01.12",
+        "path_to_thumbnails"=>"/assets/img/photos/from-facebook/2021.01.12/thumbnails/",
+        "path_to_originals"=>"/assets/img/photos/from-facebook/2021.01.12/",
+        "photos_of_album_indArr"=> [
+            ["filename"=>"alinea_00078_romain-play-saxo.jpeg", "description"=>"Romain joue du saxo"],
+            ["filename"=>"alinea_00079_nicole-sing.jpeg", "description"=>"Nicole au chant"],
+            ["filename"=>"alinea_00081_instrument_piano.jpeg", "description"=>"Piano de Simone"],
+            ["filename"=>"alinea_00082_instrument_drums.jpeg", "description"=>"nouvelle batterie de Nico"],
+            ["filename"=>"alinea_00083_simone-on-phone.jpeg", "description"=>"Simone joue du smartphone"],
+            ["filename"=>"alinea_00084_nico-with-headphones.jpeg", "description"=>"Nico écoute au casque"],
+            ["filename"=>"alinea_00085_thierry-play-guitar.jpeg", "description"=>"Thierry sur sa guitare SG"],
+            ["filename"=>"alinea_00086_romain-play-drums.jpeg", "description"=>"Romain à la batterie"],
+            ["filename"=>"alinea_00080_instrument_drums.jpeg", "description"=>"La nouvelle batterie de Nico, rayonnante"]
+        ]
     ]
+    // ############################################################## NEW ALBUM
+    // [
+        // "album_name"=> "",
+        // "path_to_thumbnails"=>"",
+        // "path_to_originals"=>"",
+        // "photos_of_album_indArr"=> [
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+        // ]
+    // ],
+    // ############################################################## NEW ALBUM
+    // [
+        // "album_name"=> "",
+        // "path_to_thumbnails"=>"",
+        // "path_to_originals"=>"",
+        // "photos_of_album_indArr"=> [
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+        // ]
+    // ],
+    // ############################################################## NEW ALBUM
+    // [
+        // "album_name"=> "",
+        // "path_to_thumbnails"=>"",
+        // "path_to_originals"=>"",
+        // "photos_of_album_indArr"=> [
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+            // ["filename"=>"", "description"=>""],
+        // ]
+    // ],
     // ############################################################## NEW ALBUM
     // [
         // "album_name"=> "",
