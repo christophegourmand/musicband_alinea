@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="musiciens-container">
-            <h3 class="musiciens-name">Cividino Thierry</h3>
+            <h3 class="musiciens-name">Thierry <span class="musiciens-name-lastname">Cividino</span></h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-thierry"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_thierry2.jpg');?>" alt="photo du musicien" title="photo du musicien">
@@ -23,7 +23,7 @@
             <p class="musiciens-role">Auteur/compositeur/interprète</p>
         </div>
         <div class="musiciens-container">
-            <h3 class="musiciens-name">Candian Simone</h3>
+            <h3 class="musiciens-name">Simone <span class="musiciens-name-lastname">Candian</span></h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-simone"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_simone2.jpg');?>" alt="photo du musicien" title="photo du musicien">
@@ -35,7 +35,7 @@
             <p class="musiciens-role">Guitare, piano, chants.</p>
         </div>
         <div class="musiciens-container">
-            <h3 class="musiciens-name">Cividino Nicolas</h3>
+            <h3 class="musiciens-name">Nicolas <span class="musiciens-name-lastname">Cividino</span></h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-nico"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_nico.jpg');?>" alt="photo du musicien" title="photo du musicien">
@@ -47,7 +47,7 @@
             <p class="musiciens-role">Batterie/Percussions</p>
         </div>
         <div class="musiciens-container">
-            <h3 class="musiciens-name">Romain Hugon</h3>
+            <h3 class="musiciens-name">Romain <span class="musiciens-name-lastname">Hugon</span></h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-romain"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_romain.jpg');?>" alt="photo du musicien" title="photo du musicien">
@@ -56,7 +56,7 @@
             <p class="musiciens-role">Bassiste</p>
         </div>
         <div class="musiciens-container">
-            <h3 class="musiciens-name">Nicky Rafidinanahary</h3>
+            <h3 class="musiciens-name">Nicky <span class="musiciens-name-lastname">Rafidinanahary</span></h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-nicole"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_nicole.jpg');?>" alt="photo du musicien" title="photo du musicien">
