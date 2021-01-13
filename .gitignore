@@ -4,3 +4,4 @@ assets/css/main_style.css.map
 *.txt
 *.zip
 *.ini
+.vscode/

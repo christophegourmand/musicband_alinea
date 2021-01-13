@@ -117,7 +117,7 @@
             align-items: flex-start;
   }
   .flex_2col-md > * {
-    width: 100% / 2;
+    width: 50%;
   }
 }
 
@@ -1842,7 +1842,27 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-.section .section-message {
+@media screen and (min-width: 991.9px) {
+  .section .section-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: "space-between";
+        -ms-flex-pack: "space-between";
+            justify-content: "space-between";
+    -webkit-box-align: "flex-start";
+        -ms-flex-align: "flex-start";
+            align-items: "flex-start";
+  }
+}
+
+.section .section-content .section-content-text .section-content-text-message {
   margin-right: 2rem;
   margin-bottom: 1rem;
   text-align: left;
@@ -1851,12 +1871,24 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-.section .section-text {
+.section .section-content .section-content-text .section-content-text-submessage {
   margin-right: 2rem;
   text-align: left;
   font-size: 1.3rem;
   font-weight: 200;
   color: var(--theme-color_discret);
+}
+
+@media screen and (max-width: 1200px) {
+  .section .section-content .section-content-img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 991.9px) {
+  .section .section-content .section-content-img {
+    width: 50%;
+  }
 }
 
 .section--actu {
@@ -1887,5 +1919,34 @@ footer {
   border-top: 1px solid var(--theme-color_important);
   font-weight: 200;
   color: white;
+}
+
+/* DEBUG */
+.border-blue {
+  border: 2px solid #0066ff;
+}
+
+.border-red {
+  border: 2px solid #c70000;
+}
+
+.border-orange {
+  border: 2px solid #ff711f;
+}
+
+.border-green {
+  border: 2px solid #00eb75;
+}
+
+.border-yellow {
+  border: 2px solid #ffe600;
+}
+
+.border-purple {
+  border: 2px solid purple;
+}
+
+.border-pink {
+  border: 2px solid pink;
 }
 /*# sourceMappingURL=main_style.css.map */

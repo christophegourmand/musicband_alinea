@@ -58,12 +58,12 @@
 
     <section class="section section--actu">
         <h2 class="section-title">Les Jardins du rock</h2>
-        <div class="flex_2col-md">
-            <div>
-                <p class="section-message">Madison s’incruste dans votre salon! Le temps d’un concert privé, juste entre nous.</p>
-                <p class="section-text">N’hésitez pas à nous contacter pour connaître nos grilles tarifaires.</p>
+        <div class="section-content">
+            <div class="section-content-text">
+                <p class="section-content-text-message">Madison s’incruste dans votre salon! Le temps d’un concert privé, juste entre nous.</p>
+                <p class="section-content-text-submessage">N’hésitez pas à nous contacter pour connaître nos grilles tarifaires.</p>
             </div>
-            <img class="img-full-page" src="<?=$prefix_to_root_folder.'/assets/img/photos/flyers/alinea_00040_thierry-play-guitare_v2.jpg'?>" alt="Affiche pour Les Jardins du Rock" title="Affiche pour Les Jardins du Rock">
+            <img class="section-content-img" src="<?=$prefix_to_root_folder.'/assets/img/photos/flyers/alinea_00040_thierry-play-guitare_v2.jpg'?>" alt="Affiche pour Les Jardins du Rock" title="Affiche pour Les Jardins du Rock">
         </div>
     </section>
 

@@ -1,0 +1,6 @@
+@each $keynameColor, $valueColor in $borderColors_map {
+    
+    .border-#{$keynameColor} {  // here $color is the key of the pair (  because #{}  )
+        border: 2px solid $valueColor; // here $color is the value of the pair
+    }
+}
