@@ -598,6 +598,11 @@ footer {
   background-position: left center;
 }
 
+.bg-song-12 {
+  background-image: url("https://source.unsplash.com/rPOmLGwai2w/500x300");
+  background-position: left center;
+}
+
 .songs-song-banner {
   width: 100%;
 }

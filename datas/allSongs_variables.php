@@ -587,6 +587,64 @@ $allSongs_indArray = [
                 ]
             ]
         ]
+    ],
+    // ------------------ end song
+    [
+        "song_title"=>"Des bémols et des dièses",
+        "song_lyrics_paragraphs"=>[
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Au fil des SOS,",
+                    "Ces vagues à l’âme qui nous enfumes",
+                    "Des sociétés en laisse,",
+                    "La face cachée de sa plume",
+                    "Impatient de jeunesse. Il invente, il résume"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Au fil de ses ivresses,",
+                    "Ces états d’âmes qui nous bousculent",
+                    "Des amours qui s’affaissent,",
+                    "Pour colorer ses amertumes",
+                    "L’imminente promesse. Il crée, il présume"
+                ]
+            ],
+            [
+                "type"=>"chorus",
+                "sentences"=>[
+                    "Solo"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Entre les parenthèses,",
+                    "Le prestige de ses vertus",
+                    "Comme soufflant dans la braise,",
+                    "Il parle à des statues",
+                    "Appauvri de sa faiblesse. Il arpente, se consume"
+                ]
+            ],
+            [
+                "type"=>"verse",
+                "sentences"=>[
+                    "Des bémols et des dièses,",
+                    "Aux moments incongrus",
+                    "Des deux mains que l’on baise,",
+                    "Des temps inattendus",
+                    "Son bock de Bordelaise à la main, il s’imagine un futur…"
+                ]
+            ],
+            [
+                "type"=>"chorus",
+                "sentences"=>[
+                    "Solo"
+                ]
+            ]
+        ]
     ]
     // ------------------ end song
 ];
