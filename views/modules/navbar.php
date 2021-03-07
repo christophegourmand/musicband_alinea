@@ -59,8 +59,8 @@
         </li>
         <!--
         <div class="nav-note"></div>
-        <li class="nav-item bg-acheter <?php if($active_menu_in_navbar == 'Acheter') {echo 'active';}?>">
-            <a href="<?php echo($prefix_to_root_folder.'views/pages/page_acheter.php');?>" class="nav-link">
+        <li class="nav-item bg-acheter <?php # if($active_menu_in_navbar == 'Acheter') {echo 'active';}?>">
+            <a href="<?php # echo($prefix_to_root_folder.'views/pages/page_acheter.php');?>" class="nav-link">
                 <span class="nav-link-title">Boutique</span>
             </a>
         </li>

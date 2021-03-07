@@ -1,7 +1,14 @@
 <?php 
+    if ( !isset($_GET['songClicked']) || $_GET['songClicked'] == null )
+    {
+        $songToDisplay_nbr = 0;
+    }
+    else 
+    {        
+        $songToDisplay_nbr = $_GET['songClicked'];
+    }
+
     include($prefix_to_root_folder.'datas/allSongs_variables.php');
-    
-    $songToDisplay_nbr = $_GET['songClicked'];
     
     $song_assoArr = $allSongs_indArray[$songToDisplay_nbr];
     $song_title_str = $song_assoArr['song_title'];
@@ -30,8 +37,11 @@
                 </div>
         </aside>
 
-        <article class="lyrics white">
+        <div>
 
+        </div>
+
+        <article class="lyrics white">
             <?php for ($paragraph_index = 0 ; $paragraph_index < count($lyrics_paragraphs_indArr) ; $paragraph_index++): ?>
                 <?php $paragraph_sentences_indArr = $lyrics_paragraphs_indArr[$paragraph_index]['sentences']; ?>
                 <?php $paragraph_type_str = $lyrics_paragraphs_indArr[$paragraph_index]['type']; ?>
