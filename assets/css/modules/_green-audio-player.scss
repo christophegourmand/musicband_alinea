@@ -1,36 +1,80 @@
 // https://codepen.io/gregh/pen/NdVvbm?editors=0110
 
+/*
 .holder {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .get-it-on-github {
-        margin-top: 24px;
-        margin-bottom: 24px;
-        font-family: 'Roboto';
-        color: #55606E;
-    }
 }
+*/
+
+// ========= COLORS =================
+
+// V1 ----------------------------
+/* 
+$color_player_fill:#fff;
+$color_player_border:#fff;
+$color_player_shadow : rgba(207, 30, 30, 0.69);
+
+$color_progressBar_empty: #FCDBDB; //avant: #D8D8D8
+$color_progressBar_filled: #BF503D; //avant: #44BFA3
+
+$color_button_default: #55606E;
+$color_button_circle: hsl(0, 100%, 39%);
+$color_button_speaker:hsl(0, 100%, 39%);// avant: #44BFA3
+*/
+
+// V2 ----------------------------
+$color_player_fill:#332323;
+$color_player_border:#ad2f2f;
+$color_player_shadow : rgba(207, 30, 30, 0.69);
+
+$color_progressBar_empty: #FFF;
+$color_progressBar_filled: #BD0404;
+
+$color_button_default: #FFF;
+$color_button_circle: #f30202;
+$color_button_speaker:#ee5959;
+
+// ==================================
+
+
 
 .audio.green-audio-player {
-    width: 400px;
-    min-width: 300px;
+    @include media("","md")
+    {
+        width: 100%;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    
+    @include media("md","")
+    {
+        width: 400px;
+    }
+    
     height: 56px;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .07);
+    min-width: 300px;
+    
+    padding-left: 24px;
+    padding-right: 24px;
+
+    border-radius: 4px;
+    background-color: $color_player_fill;
+    border: 1px solid $color_player_border;
+    // box-shadow: 0 4px 16px 0 $color_player_shadow;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 24px;
-    padding-right: 24px;
-    border-radius: 4px;
+    
     user-select: none;
     -webkit-user-select: none;
-    background-color: #fff;
 
     .play-pause-btn {
         display: none;
         cursor: pointer;
+        color: $color_button_default;
     }
 
     .spinner {
@@ -44,12 +88,12 @@
 
     .slider {
         flex-grow: 1;
-        background-color: #D8D8D8;
+        background-color: $color_progressBar_empty;
         cursor: pointer;
         position: relative;
 
         .progress {
-            background-color: #44BFA3;
+            background-color: $color_progressBar_filled;
             border-radius: inherit;
             position: absolute;
             pointer-events: none;
@@ -58,7 +102,8 @@
                 height: 16px;
                 width: 16px;
                 border-radius: 8px;
-                background-color: #44BFA3;
+                // background-color: #44BFA3;
+                background-color: $color_button_circle;
                 position: absolute;
                 pointer-events: all;
                 box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.32);
@@ -70,7 +115,7 @@
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         line-height: 18px;
-        color: #55606E;
+        color: $color_button_default;
         display: flex;
         flex-grow: 1;
         justify-content: space-between;
@@ -107,7 +152,7 @@
             cursor: pointer;
 
             &.open path {
-                fill: #44BFA3;
+                fill: $color_button_speaker;
             }
         }
 
@@ -148,6 +193,13 @@
     }
 }
 
+svg
+{
+    display: block;
+}
+
+
+/*
 svg,
 img {
     display: block;
@@ -168,6 +220,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+*/
 
 @keyframes spin {
     from {
