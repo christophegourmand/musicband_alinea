@@ -37,9 +37,19 @@
                 </div>
         </aside>
 
-        <div>
+        <?php if ($songToDisplay_nbr == 12):?>
+            <div>
+                <audio controls>
+                    <source src="<?=$prefix_to_root_folder.'assets/audio/ALINEA_des-bemoles-et-des-dieses.mp3';?>" type="audio/mpeg">
+                    <p>
+                        Votre navigateur ne prend pas en charge l'audio HTML. 
+                        <a href="<?=$prefix_to_root_folder.'assets/audio/ALINEA_des-bemoles-et-des-dieses.mp3';?>">Voici un lien vers le fichier audio pour le télécharger.</a>
+                    </p>
+                </audio>
+            </div>
 
-        </div>
+            <?php #include($prefix_to_root_folder.'views/modules/audio_player.php');?>
+        <?php endif; ?>
 
         <article class="lyrics white">
             <?php for ($paragraph_index = 0 ; $paragraph_index < count($lyrics_paragraphs_indArr) ; $paragraph_index++): ?>
