@@ -2,26 +2,14 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/user/public_html/
-    
-    # copie des fichiers se trouvant à la racine:
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp googled9ba2263786741f0.html $DEPLOYPATH
     - /bin/cp common_variables.php $DEPLOYPATH
-    
-    # copie des dossiers se trouvant à la racine:
     - /bin/cp -R datas $DEPLOYPATH
     - /bin/cp -R views $DEPLOYPATH
-
-    # création du dossier assets pour ensuite y copier des fichiers et dossier:
     - /bin/mkdir $DEPLOYPATH/assets
-      # peut renvoyer une erreur de ce type si le dossier existe déjà :
-        # [[ mkdir: can't create directory '/root/serveurweb/www//assets': File exists ]]
-    
-    # copie des fichiers et dossier se trouvant dans assets
     - /bin/cp -R assets/audio $DEPLOYPATH/assets
     - /bin/cp -R assets/img $DEPLOYPATH/assets
     - /bin/cp -R assets/js $DEPLOYPATH/assets
-
-    # Dans 'assets' , création du dossier css car on veut juste y copier un seul fichier (donc pas copier tout le dossier 'css')
     - /bin/mkdir $DEPLOYPATH/assets/css
     - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css
