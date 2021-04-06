@@ -6,3 +6,4 @@ assets/css/main_style.css.map
 *.zip
 *.ini
 .vscode/
+.code-workspace
