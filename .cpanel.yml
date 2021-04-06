@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/user/public_html/
+    - export DEPLOYPATH=/home/alineamu/public_html/
     - /bin/cp index.php $DEPLOYPATH
     - /bin/cp googled9ba2263786741f0.html $DEPLOYPATH
     - /bin/cp common_variables.php $DEPLOYPATH
