@@ -703,6 +703,15 @@ footer {
   font-variant: petite-caps;
 }
 
+.contact {
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1.3s;
+          transition-duration: 1.3s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
 @media screen and (max-width: 992px) {
   .contact {
     padding-top: 1.5rem;
@@ -717,6 +726,10 @@ footer {
     width: 100%;
     padding: 3rem 2rem;
   }
+}
+
+.contact:hover, .contact:active, .contact:focus {
+  background-color: #a31800;
 }
 
 .contact .contact-title {

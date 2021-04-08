@@ -1,4 +1,5 @@
 .contact {
+
     @include media("min","md") {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
@@ -9,6 +10,14 @@
     @include media("md","max") {
         width: 100%;
         padding: 3rem $pageMargin;
+    }
+
+    transition-property: all;
+    transition-duration: 1.3s;
+    transition-timing-function: linear;
+
+    &:hover , &:active, &:focus {
+        background-color: $darkred;
     }
 
     .contact-title {
@@ -77,3 +86,4 @@
         }
     }
 }
+
