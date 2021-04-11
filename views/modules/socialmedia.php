@@ -1,4 +1,4 @@
-<section class="socialMedia">
+<section id="socialMedia_id" class="socialMedia">
     <p class="socialMedia-slogan">N'hésitez pas à venir nous suivre sur les réseaux Sociaux !</p>
     <div class="socialMedia-link-container">
         <a class="socialMedia-link bg-facebook" href="https://www.facebook.com/Alineamusique" target="_blank">
