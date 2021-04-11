@@ -10,13 +10,6 @@
 
 
 function setHeightForMenusTiles() {
-}
-
-setHeightForMenusTiles(); // works
-
-// window.addEventListener("resize", setHeightForMenusTiles()); // doesnt work.
-window.addEventListener("resize", function(){
-
     // (1) OBTAIN WINDOW VISIBLE INNER SIZE,  
     /* (1) obtenir la taille intérieure la partie visible de la fenêtre, ,  */
     var visible_window_interior_size = window.innerHeight;
@@ -50,4 +43,6 @@ window.addEventListener("resize", function(){
     console.count(counterLabel);
 
     console.info("✅ DONE: height of menus has been changed !");
-} );
+}
+
+window.addEventListener("resize", setHeightForMenusTiles );
