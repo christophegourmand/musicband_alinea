@@ -697,6 +697,11 @@ footer {
   color: #ff8300;
 }
 
+.tour .tour-body .tour-event .tour-event-location .tour-event-mapIcon {
+  margin-left: 1rem;
+  color: #ff8300;
+}
+
 .tour .tour-body .tour-event .tour-event-city {
   font-size: 1.7rem;
   font-weight: 400;
