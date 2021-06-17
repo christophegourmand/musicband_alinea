@@ -1,5 +1,5 @@
 
-//* ON 'MOBILE' MODE, DISPLAYING <MENUS PANEL> WHEN BUTTON IS CLICKED. 
+//* ON 'MOBILE' MODE, DISPLAYING <MENUS PANEL> WHEN BUTTON IS CLICKED.
     var menuToggler_node = document.getElementById("nav_toggler");
 
     var menusToShow_node = document.getElementById("nav_menus");
@@ -53,7 +53,7 @@ window.addEventListener("resize", setHeightForMenusTiles );
 
 var listOfSectionsContact_arr = Array.from( document.querySelectorAll(".contact") );
 
-console.log(listOfSectionsContact_arr[1]);
+// console.log(listOfSectionsContact_arr[1]);
 /* 
     next step: 
         1- detecter à quel moment une section (par ex: Coppa Studio), est au milieu de l'écran.
@@ -79,16 +79,19 @@ console.log(listOfSectionsContact_arr[1]);
 
 
 function animateElementOnAppear(element_node, cssClassToAdd_str){
-    var elementPositionTop = element_node.offsetTop;
-    var elementHeight = element_node.offsetHeight;
-    var elementPositionBottom = elementPositionTop + elementHeight;
 
-    window.addEventListener('scroll', function(event){
-        scrollPositionY = window.scrollY;
-        if (scrollPositionY > elementPositionBottom ) {
-            element_node.classList.add(cssClassToAdd_str);
-        }
-    });
+    if (element_node != null ) {
+        var elementPositionTop = element_node.offsetTop;
+        var elementHeight = element_node.offsetHeight;
+        var elementPositionBottom = elementPositionTop + elementHeight;
+    
+        window.addEventListener('scroll', function(event){
+            let scrollPositionY = window.scrollY;
+            if (scrollPositionY > elementPositionBottom ) {
+                element_node.classList.add(cssClassToAdd_str);
+            }
+        });
+    }
 }
 
 
@@ -96,38 +99,41 @@ function animateElementOnAppear(element_node, cssClassToAdd_str){
     window.addEventListener('scroll', function(event){
         
         // Position de la div social_media depuis le haut:
-            divSocialMedia_node = document.getElementById('socialMedia_id');
-            positionDivSocialMedia_nbr = divSocialMedia_node.offsetTop; // en largeur LG :  environ 1275px
-                /* cette valeur signifie : pour que la div socialMedia se trouve en haut de la fenêtre*/
-            //console.debug(`positionDivSocialMedia_nbr: ${positionDivSocialMedia_nbr}` );
-    
+            let divSocialMedia_node = document.getElementById('socialMedia_id');
+
+            if (divSocialMedia_node != null) {
+                let positionDivSocialMedia_nbr = divSocialMedia_node.offsetTop; // en largeur LG :  environ 1275px
+                    /* cette valeur signifie : pour que la div socialMedia se trouve en haut de la fenêtre*/
+                //console.debug(`positionDivSocialMedia_nbr: ${positionDivSocialMedia_nbr}` );
         
-            // position actuelle du scroll dans la page:
-            scrollPositionY = window.scrollY;
-            console.debug(`window.scrollY: ${window.scrollY}` );
             
-            // detecter si on a scrollé au point d'afficher la divSocialMedia :
-            /*
-            - à 676px de scroll: debut d'apparition de la div socialMedia
-            - a 947 de scroll: les 3 icones sont finies d'être affichées.
-            */
-
-            var socialMediaIcons = Array.from(document.getElementsByClassName("socialMedia-link"));
-                                                                            // console.log("socialMediaIcons");
-                                                                            // console.log(socialMediaIcons);
-
-            if (scrollPositionY > 1020 ) {
-                                                                            console.info("PLAY ANIMATION");
+                // position actuelle du scroll dans la page:
+                let scrollPositionY = window.scrollY;
+                console.debug(`window.scrollY: ${window.scrollY}` );
                 
-                // var delayBeforeAppear = 300;
-                                                            console.debug(socialMediaIcons);
-                socialMediaIcons.forEach( function(element) {
-                    //element.style.transitionDelay = delayBeforeAppear + 150;
-                                                                            // console.debug(delayBeforeAppear);
-                    element.classList.add("play-animation");
-                });
+                // detecter si on a scrollé au point d'afficher la divSocialMedia :
+                /*
+                - à 676px de scroll: debut d'apparition de la div socialMedia
+                - a 947 de scroll: les 3 icones sont finies d'être affichées.
+                */
+    
+                var socialMediaIcons = Array.from(document.getElementsByClassName("socialMedia-link"));
+                                                                                // console.log("socialMediaIcons");
+                                                                                // console.log(socialMediaIcons);
+    
+                if (scrollPositionY > 1020 ) {
+                                                                                // console.info("PLAY ANIMATION");
+                    
+                    // var delayBeforeAppear = 300;
+                                                                console.debug(socialMediaIcons);
+                    socialMediaIcons.forEach( function(element) {
+                        //element.style.transitionDelay = delayBeforeAppear + 150;
+                                                                                // console.debug(delayBeforeAppear);
+                        element.classList.add("play-animation");
+                    });
+                    
+                }
 
-                
             }
     });    
 

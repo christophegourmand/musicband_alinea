@@ -1,0 +1,22 @@
+# SITEMAP / plan du site
+
+- Accueil
+- Musiques
+  - Paroles : Madison
+  - Paroles : Soif
+  - Paroles : Le Placard
+  - Paroles : L'Exil
+  - Paroles : Pas d'autre Monde
+  - Paroles : Post-It
+  - Paroles : Le Placard (instrumental)
+  - Paroles : Si tu vas bien
+  - Paroles : Blanc et Noir
+  - Paroles : Des foules de toi
+  - Paroles : J'ai pas les mots
+  - Paroles : J'écrirais
+  - Paroles : Des bémols et des dièses
+- Photos
+- Actu
+- Tour , Concerts
+- Contact
+- Bio

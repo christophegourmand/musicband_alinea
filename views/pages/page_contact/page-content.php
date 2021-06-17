@@ -66,13 +66,16 @@
         <div class="contact-body">
             <div class="contact-body_left-col">
                 <h4 class="contact-address">
-                    <a class="contact-link" href="mailto:christophe.gourmand@gmail.com">christophe.gourmand@gmail.com</a>
+                    <a class="contact-link" href="<?=$prefix_to_root_folder.'controller/mailToChristopheGourmand.php'?>">me contacter</a>
                 </h4>
                 <h4 class="contact-address">
                     <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/" target="_blank">LinkedIn</a>
                 </h4>
                 <h4 class="contact-address">
                     <a class="contact-link" href="https://github.com/christophegourmand" target="_blank">GitHub</a>
+                </h4>
+                <h4 class="contact-address">
+                    <a class="contact-link" href="https://codepen.io/saragone" target="_blank">CodePen</a>
                 </h4>
             </div>
             <div class="contact-body_right-col">
