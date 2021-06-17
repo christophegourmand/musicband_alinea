@@ -1,20 +1,13 @@
 ---
 deployment:
   tasks:
-    # CHRIS : definition of global variable DEPLOYPATH
     - export DEPLOYPATH=/home/alineamu/public_html/
-
-    # CHRIS : here i create the folder 'assets' instead of copying recursively all of it, cause in /css/, i don't want the scss folders to be copied.
     - /bin/mkdir $DEPLOYPATH/assets
     - /bin/cp -R assets/audio $DEPLOYPATH/assets
     - /bin/cp -R assets/img $DEPLOYPATH/assets
     - /bin/cp -R assets/js $DEPLOYPATH/assets
-
-    # CHRIS: here i don't want all the css-folder-content to be copied, so i create the folder then copy main_style.css :
     - /bin/mkdir $DEPLOYPATH/assets/css
     - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css
-
-    # COPY OF OTHER FOLDERS
     - /bin/cp common_variables.php $DEPLOYPATH
     - /bin/cp -R controller $DEPLOYPATH
     - /bin/cp -R datas $DEPLOYPATH
