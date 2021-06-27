@@ -1,0 +1,42 @@
+.alinea_svg {
+    position: absolute;
+    opacity: 0.3; // remettre 0.2
+    top: 0;
+    left: 0;
+}
+
+/* Élément | http://127.0.0.1/ */
+
+.alinea_svg > svg:nth-child(1) > g:nth-child(1) {
+    fill: #d6d6d6;
+}
+
+.alinea_svg.anim_drift_horizontally {
+    animation-name: anim_drift_horizontally;
+    animation-delay: 1s;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: normal;
+}
+
+.alinea_svg.anim_follow_logo_lines {
+    
+   /*  & > svg {
+
+    } */
+
+
+
+
+    animation-name: anim_follow_logo_lines;
+    animation-delay: 0s;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: normal;
+
+    // MODIF TEMPORAIRE :
+    transform: scale(2) translate(-110vw, 20vw);
+
+}

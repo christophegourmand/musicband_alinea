@@ -22,6 +22,8 @@
     <?php include($prefix_to_root_folder."views/common/head.php"); ?>
 
     <body>
+        <?php include($prefix_to_root_folder."views/modules/alinea-svg.php");?>
+
         <div class="topPanel full-height" id="indexPage_topPanel">
             <?php include($prefix_to_root_folder."views/common/header.php"); ?>
 

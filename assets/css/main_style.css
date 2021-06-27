@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* UTILITIES */
 /* =========================================== */
 /* UTILITIES / NORMALIZE */
@@ -84,6 +85,122 @@
   }
 }
 
+@-webkit-keyframes anim_drift_horizontally {
+  0% {
+    opacity: 0;
+    -webkit-transform: translat -e(100vw, 0);
+            transform: translat -e(100vw, 0);
+  }
+  10% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-210vw, 0);
+            transform: translate(-210vw, 0);
+  }
+}
+
+@keyframes anim_drift_horizontally {
+  0% {
+    opacity: 0;
+    -webkit-transform: translat -e(100vw, 0);
+            transform: translat -e(100vw, 0);
+  }
+  10% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-210vw, 0);
+            transform: translate(-210vw, 0);
+  }
+}
+
+@-webkit-keyframes anim_follow_logo_lines {
+  0% {
+    -webkit-transform: scale(2) translate(30vw, -140vw);
+            transform: scale(2) translate(30vw, -140vw);
+  }
+  /*
+	10% {
+		transform: scale(2) translate(-10vw, -110vw);
+	}*/
+  20% {
+    -webkit-transform: scale(2) translate(-116vw, 32vw);
+            transform: scale(2) translate(-116vw, 32vw);
+  }
+  40% {
+    -webkit-transform: scale(2) translate(-77vw, -141vw);
+            transform: scale(2) translate(-77vw, -141vw);
+  }
+  60% {
+    -webkit-transform: scale(2) translate(-10vw, -85vw);
+            transform: scale(2) translate(-10vw, -85vw);
+  }
+  80% {
+    -webkit-transform: scale(2) translate(-122vw, 63vw);
+            transform: scale(2) translate(-122vw, 63vw);
+  }
+  95% {
+    -webkit-transform: scale(2) translate(-120vw, -75vw);
+            transform: scale(2) translate(-120vw, -75vw);
+  }
+  /* 
+	100% {
+		transform: scale(2) translate(-184vw, -55vw);
+	} 
+	*/
+}
+
+@keyframes anim_follow_logo_lines {
+  0% {
+    -webkit-transform: scale(2) translate(30vw, -140vw);
+            transform: scale(2) translate(30vw, -140vw);
+  }
+  /*
+	10% {
+		transform: scale(2) translate(-10vw, -110vw);
+	}*/
+  20% {
+    -webkit-transform: scale(2) translate(-116vw, 32vw);
+            transform: scale(2) translate(-116vw, 32vw);
+  }
+  40% {
+    -webkit-transform: scale(2) translate(-77vw, -141vw);
+            transform: scale(2) translate(-77vw, -141vw);
+  }
+  60% {
+    -webkit-transform: scale(2) translate(-10vw, -85vw);
+            transform: scale(2) translate(-10vw, -85vw);
+  }
+  80% {
+    -webkit-transform: scale(2) translate(-122vw, 63vw);
+            transform: scale(2) translate(-122vw, 63vw);
+  }
+  95% {
+    -webkit-transform: scale(2) translate(-120vw, -75vw);
+            transform: scale(2) translate(-120vw, -75vw);
+  }
+  /* 
+	100% {
+		transform: scale(2) translate(-184vw, -55vw);
+	} 
+	*/
+}
+
 .flex_row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -126,12 +243,18 @@
 /* BASE / base */
 /* =========================================== */
 /* HERE HTML-TAGS ONLY , it should not contain class, id , or else */
+body {
+  overflow-x: hidden;
+}
+
 a:-webkit-any-link {
   text-decoration: none;
 }
+
 a:-moz-any-link {
   text-decoration: none;
 }
+
 a:any-link {
   text-decoration: none;
 }
@@ -1452,6 +1575,53 @@ footer {
   .brand .brand-name {
     font-size: 3.47368rem;
   }
+}
+
+.alinea_svg {
+  position: absolute;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+}
+
+/* Élément | http://127.0.0.1/ */
+.alinea_svg > svg:nth-child(1) > g:nth-child(1) {
+  fill: #d6d6d6;
+}
+
+.alinea_svg.anim_drift_horizontally {
+  -webkit-animation-name: anim_drift_horizontally;
+          animation-name: anim_drift_horizontally;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+}
+
+.alinea_svg.anim_follow_logo_lines {
+  /*  & > svg {
+
+    } */
+  -webkit-animation-name: anim_follow_logo_lines;
+          animation-name: anim_follow_logo_lines;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-transform: scale(2) translate(-110vw, 20vw);
+          transform: scale(2) translate(-110vw, 20vw);
 }
 
 .navfooter .navfooter-menus {

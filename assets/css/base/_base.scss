@@ -4,6 +4,11 @@
 
 /* HERE HTML-TAGS ONLY , it should not contain class, id , or else */
 
+body {
+    overflow-x: hidden;
+}
+
+
 a:any-link {
     text-decoration: none;
     

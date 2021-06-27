@@ -21,3 +21,66 @@
 		text-shadow: 0 0 1rem var(--theme-color_neutral);
 	}
 }
+
+@keyframes anim_drift_horizontally {
+	0% {
+		opacity: 0; 
+		transform: translat
+		-e(100vw, 0);
+	}
+	10% {
+		opacity: 0.2;
+	}
+	50% {
+		opacity: 0.4;
+	}
+	90% {
+		opacity: 0.2;
+	}
+	100% {
+		opacity: 0;
+		transform: translate(-210vw, 0);
+	}
+}
+
+@keyframes anim_follow_logo_lines {
+	0% {
+		transform: scale(2) translate(30vw, -140vw);
+	}
+	/*
+	10% {
+		transform: scale(2) translate(-10vw, -110vw);
+	}*/
+	
+	20% {
+		transform: scale(2) translate(-116vw, 32vw);
+	}
+	
+	40% {
+		transform: scale(2) translate(-77vw, -141vw);
+	}
+	
+	
+	60% {
+		transform: scale(2) translate(-10vw, -85vw);
+		
+	}
+	
+	80% {
+		transform: scale(2) translate(-122vw, 63vw);
+		
+	}
+	
+	
+	95% {
+		transform: scale(2) translate(-120vw, -75vw);
+	}
+	 
+
+	/* 
+	100% {
+		transform: scale(2) translate(-184vw, -55vw);
+	} 
+	*/
+
+}
