@@ -64,7 +64,7 @@ $photoAlbums_indArray = [
     ],
     // ############################################################## NEW ALBUM
     [
-        "album_name"=> "2021.01.12",
+        "album_name"=> "2021.01.12 Répétition",
         "path_to_thumbnails"=>"/assets/img/photos/from-facebook/2021.01.12/thumbnails/",
         "path_to_originals"=>"/assets/img/photos/from-facebook/2021.01.12/",
         "photos_of_album_indArr"=> [
@@ -78,32 +78,33 @@ $photoAlbums_indArray = [
             ["filename"=>"alinea_00086_romain-play-drums.jpeg", "description"=>"Romain à la batterie"],
             ["filename"=>"alinea_00080_instrument_drums.jpeg", "description"=>"La nouvelle batterie de Nico, rayonnante"]
         ]
-    ]
+    ],
     // ############################################################## NEW ALBUM
-    // [
-        // "album_name"=> "",
-        // "path_to_thumbnails"=>"",
-        // "path_to_originals"=>"",
-        // "photos_of_album_indArr"=> [
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-            // ["filename"=>"", "description"=>""],
-        // ]
-    // ],
+    [
+        "album_name"=> "2021.07.08 Répétition",
+        "path_to_thumbnails"=>"/assets/img/photos/from-facebook/2021.07.08/thumbnails/",
+        //                     assets/img/photos/from-facebook/2021.07.08
+        "path_to_originals"=>"/assets/img/photos/from-facebook/2021.07.08/",
+        "photos_of_album_indArr"=> [
+            ["filename"=>"alinea_00087_romain-playing-bass-and-nico-playing-drums.jpg", "description"=>""],
+            ["filename"=>"alinea_00088_thierry-guitar-nicole-sing.jpg", "description"=>""],
+            ["filename"=>"alinea_00089_romain-bass.jpg", "description"=>""],
+            ["filename"=>"alinea_00090_romain-bass-blackwhite.jpg", "description"=>""],
+            ["filename"=>"alinea_00091_thierry-playing-guitar-and-nico-playing-drums.jpg", "description"=>""],
+            ["filename"=>"alinea_00092_nicole-singing.jpg", "description"=>""],
+            ["filename"=>"alinea_00093_instruments-cables.jpg", "description"=>""],
+            ["filename"=>"alinea_00094_nicole-smiling.jpg", "description"=>""],
+            ["filename"=>"alinea_00095_thierry_smiling.jpg", "description"=>""],
+            ["filename"=>"alinea_00096_thierry-and-nico-playing-guitar-and-drums.jpg", "description"=>""],
+            ["filename"=>"alinea_00097_nicole_singing.jpg", "description"=>""],
+            ["filename"=>"alinea_00098_thierry-playing-guitar-and-nicole-singing.jpg", "description"=>""],
+            ["filename"=>"alinea_00099_thierry-playing-guitar-and-nicole-singing.jpg", "description"=>""],
+            ["filename"=>"alinea_00100_instruments-cables.jpg", "description"=>""],
+            ["filename"=>"alinea_00101_nicole_singing.jpg", "description"=>""],
+            ["filename"=>"alinea_00102_romain-playing-bass-and-nico-playing-drums.jpg", "description"=>""],
+            ["filename"=>"alinea_00103_nicole_singing.jpg", "description"=>""]
+        ]
+    ]
     // ############################################################## NEW ALBUM
     // [
         // "album_name"=> "",
