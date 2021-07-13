@@ -2,16 +2,43 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/alineamu/public_html/
-    - /bin/mkdir $DEPLOYPATH/assets
-    - /bin/cp -R assets/audio $DEPLOYPATH/assets
-    - /bin/cp -R assets/img $DEPLOYPATH/assets
-    - /bin/cp -R assets/js $DEPLOYPATH/assets
-    - /bin/mkdir $DEPLOYPATH/assets/css
+    
+    # NECESSARY ONLY THE FIRST TIME:
+    #- /bin/mkdir $DEPLOYPATH/assets
+    
+    # UPDATE EACH FILE ONLY IF MORE RECENT (-u)
+    - /bin/cp -Ru assets/audio $DEPLOYPATH/assets # -u for update file if more recent
+    
+    # UPDATE EACH FILE ONLY IF MORE RECENT (-u)
+    - /bin/cp -Ru assets/img $DEPLOYPATH/assets # -u for update file if more recent
+    
+    # OVERWRITE EVERYTHING :
+    - /bin/cp -RT assets/js $DEPLOYPATH/assets # -T to overwrite also folders 
+    
+    # NECESSARY ONLY THE FIRST TIME:
+    #- /bin/mkdir $DEPLOYPATH/assets/css
+    
+    # TO BE SURE THAT IT WILL OVERWRITE : DELETE THEN COPY AGAIN (normally cp overwrite files by default) 
+    # - /bin/rm $DEPLOYPATH/assets/css/main_style.css
     - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css
+    
+    # MUST OVERWRITE
     - /bin/cp common_variables.php $DEPLOYPATH
-    - /bin/cp -R controller $DEPLOYPATH
-    - /bin/cp -R datas $DEPLOYPATH
-    - /bin/cp -R DOCS $DEPLOYPATH
-    - /bin/cp googled9ba2263786741f0.html $DEPLOYPATH
+    
+    # OVERWRITE EVERYTHING :
+    - /bin/cp -RT controller $DEPLOYPATH
+    
+    # OVERWRITE EVERYTHING :
+    - /bin/cp -RT datas $DEPLOYPATH
+    
+    # OVERWRITE EVERYTHING :
+    - /bin/cp -RT DOCS $DEPLOYPATH
+    
+    # UPDATE THE FILE ONLY IF MORE RECENT (-u)
+    - /bin/cp -u googled9ba2263786741f0.html $DEPLOYPATH # -u for update file if more recent
+    
+    # MUST OVERWRITE (normally cp overwrite files by default)
     - /bin/cp index.php $DEPLOYPATH
-    - /bin/cp -R views $DEPLOYPATH
+    
+    # OVERWRITE EVERYTHING :
+    - /bin/cp -RT views $DEPLOYPATH

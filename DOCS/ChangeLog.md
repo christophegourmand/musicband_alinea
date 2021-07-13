@@ -131,3 +131,4 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
   - {}
 - in `datas/photos_array.php`
   - added new photos from folder '2021.07.08_repetition'
+- UPDATED THE `.cpanel.yml` FILE !
