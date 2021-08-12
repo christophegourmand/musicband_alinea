@@ -1,9 +1,43 @@
+# == FOLDERS EXCLUSIONS ==
 NOT-IN-GIT/
-assets/audio
-assets/img
+
+# == ASSETS EXCLUSIONS ==
+# -- assets folders --
+assets/audio/
+assets/img/
+
+# -- assets files --
 assets/css/main_style.css.map
+
+# -- assets filetypes --
+*.map
+
+
+# == MEDIAS FILETYPES ==
+# -- audio filetypes --
+*.mp3
+*.wav
+*.ogg
+*.mov
+
+# -- images filetypes --
+*.jpg
+*.jpeg
+*.gif
+*.png
+*.svg
+
+# -- video filetypes --
+*.mpg
+*.mpeg
+*.mp4
+*.mov
+
+# == OTHER FILETYPES EXCLUSION ==
 *.txt
 *.zip
 *.ini
+
+# == VS-CODE SETTINGS EXCLUSION ==
 .vscode/
 .code-workspace

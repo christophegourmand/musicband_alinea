@@ -3,42 +3,44 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/alineamu/public_html/
     
-    # NECESSARY ONLY THE FIRST TIME:
+    # == NECESSARY ONLY THE FIRST TIME: ==
     #- /bin/mkdir $DEPLOYPATH/assets
     
-    # UPDATE EACH FILE ONLY IF MORE RECENT (-u)
-    - /bin/cp -Ru assets/audio $DEPLOYPATH/assets # -u for update file if more recent
+    # == UPDATE EACH FILE ONLY IF MORE RECENT (-u) ==
+    # - /bin/cp -Ru assets/audio $DEPLOYPATH/assets # [NOTE: -u for update file if more recent]
+      # [NOTE: Line above is deactivated as "/audio/" folder is in ".gitignore" file -> THEREFORE WILL NOT BE PUSHED ON FOLDER /deploy-alinea.git/]
+
+    # == UPDATE EACH FILE ONLY IF MORE RECENT (-u) ==
+    - /bin/cp -Ru assets/img $DEPLOYPATH/assets # [NOTE: -u for update file if more recent]
+      # [NOTE: Line above is deactivated as "/img/" folder is in ".gitignore" file -> THEREFORE WILL NOT BE PUSHED ON FOLDER /deploy-alinea.git/]
     
-    # UPDATE EACH FILE ONLY IF MORE RECENT (-u)
-    - /bin/cp -Ru assets/img $DEPLOYPATH/assets # -u for update file if more recent
+    # == OVERWRITE EVERYTHING : ==
+    - /bin/cp -RT assets/js $DEPLOYPATH/assets # [NOTE: -T to overwrite also folders]
     
-    # OVERWRITE EVERYTHING :
-    - /bin/cp -RT assets/js $DEPLOYPATH/assets # -T to overwrite also folders 
-    
-    # NECESSARY ONLY THE FIRST TIME:
+    # == NECESSARY ONLY THE FIRST TIME: ==
     #- /bin/mkdir $DEPLOYPATH/assets/css
     
-    # TO BE SURE THAT IT WILL OVERWRITE : DELETE THEN COPY AGAIN (normally cp overwrite files by default) 
+    # == TO BE SURE THAT IT WILL OVERWRITE : DELETE THEN COPY AGAIN (normally cp overwrite files by default)  ==-
     # - /bin/rm $DEPLOYPATH/assets/css/main_style.css
-    - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css
+    - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css--
     
-    # MUST OVERWRITE
+    # == MUST OVERWRITE ==
     - /bin/cp common_variables.php $DEPLOYPATH
     
-    # OVERWRITE EVERYTHING :
+    # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT controller $DEPLOYPATH
     
-    # OVERWRITE EVERYTHING :
+    # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT datas $DEPLOYPATH
     
-    # OVERWRITE EVERYTHING :
+    # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT DOCS $DEPLOYPATH
     
-    # UPDATE THE FILE ONLY IF MORE RECENT (-u)
-    - /bin/cp -u googled9ba2263786741f0.html $DEPLOYPATH # -u for update file if more recent
+    # == UPDATE THE FILE ONLY IF MORE RECENT (-u) ==
+    - /bin/cp -u googled9ba2263786741f0.html $DEPLOYPATH # [NOTE: -u for update file if more recent]
     
-    # MUST OVERWRITE (normally cp overwrite files by default)
+    # == MUST OVERWRITE (normally cp overwrite files by default) ==
     - /bin/cp index.php $DEPLOYPATH
     
-    # OVERWRITE EVERYTHING :
+    # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT views $DEPLOYPATH
