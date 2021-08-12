@@ -132,3 +132,16 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
 - in `datas/photos_array.php`
   - added new photos from folder '2021.07.08_repetition'
 - UPDATED THE `.cpanel.yml` FILE !
+
+---
+
+## 2021.08.12
+
+### UPDATE FOR OWNER : CONCERTS TO ADD
+
+- in `views/pages/page_tour/page-content.php`
+  - removed concert "23 juillet, Paradiso"
+  - removed concert "07 Août, Paradiso"
+  - add concert "21 Août, librairie De Plume Et D'Épée"
+  - add concert "11 Septembre, concert privé, Beynost"
+  
