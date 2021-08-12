@@ -7,7 +7,7 @@
         <div class="tour-body">
 
             <div class="tour-event">
-                <time class="tour-event-date">21 Août 2021</time>
+                <time class="tour-event-date">21 Août 2021 - à 19h</time>
                 <p class="tour-event-location">
                     Concert acoustique, <br>Librairie "De Plume &amp; d'Épée"
                     <a class="tour-event-mapIcon" href="https://goo.gl/maps/fEder5hRUjXE7ghR9" target="_blank"><i class="fas fa-map"></i></a>
