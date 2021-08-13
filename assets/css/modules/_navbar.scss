@@ -97,8 +97,8 @@
 
         .nav-menus {
             display: none;
-            // height: 92vh; //:r the top is hided by firefox or Chrome address-bar on top ! 
-            height: 84vh; //:r so I put less than 92vh.
+            height: 92vh; //:r the top is hided by firefox or Chrome address-bar on top ! 
+            // height: 84vh; //:r so I put less than 92vh.
             
             // When button_toggler is clicked, class "show" is added and we display in flex:
             &.show {
@@ -145,8 +145,8 @@
             
             .nav-item.bg-photos {
                 background: {
-                    // image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg"); // 
-                    image: url("https://cdn.pixabay.com/photo/2015/06/08/15/09/photography-801891_960_720.jpg"); // plus tard appeler une variable.
+                    // image: url("./../img/photos/from-CoppaStudio/2020.06.24/SD/alinea_00029_groupe_cropped.jpg");
+                    image: url("./../img/photos/from-CoppaStudio/2020.06.24/Color/SD/thumbnails/alinea_00043_instrument_steel-tongue-drum.jpg"); // plus tard appeler une variable.
                     size: cover;
                     repeat: norepeat;
                     // color: hsla(0%,100%,50%,1);

@@ -1174,7 +1174,7 @@ footer {
   }
   .nav .nav-menus {
     display: none;
-    height: 84vh;
+    height: 92vh;
   }
   .nav .nav-menus.show {
     display: -ms-grid;
@@ -1233,7 +1233,7 @@ footer {
     background-repeat: norepeat;
   }
   .nav .nav-menus .nav-item.bg-photos {
-    background-image: url("https://cdn.pixabay.com/photo/2015/06/08/15/09/photography-801891_960_720.jpg");
+    background-image: url("./../img/photos/from-CoppaStudio/2020.06.24/Color/SD/thumbnails/alinea_00043_instrument_steel-tongue-drum.jpg");
     background-size: cover;
     background-repeat: norepeat;
   }

@@ -152,3 +152,9 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
 - in `.cpanel.yml` 
   - de-activated line copying `img` folder
   - added some `/` on some lines.
+
+### FIX menu 'Photo' and size of mobile menu
+
+- in `assets/css/modules/_navbar.scss`
+  - change background for menu photo : `.bg-photos` now use image 00043 (steeldrum)
+  - the menu with tiles (mobile view) has height of 92vh intead of 84vh.
