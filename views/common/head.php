@@ -8,7 +8,7 @@
         <meta name="keywords" content="musique, groupe, france, variété française, rock français">
         <meta name="robots" content="index, follow, noarchive, nocache">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
         <link rel="icon" href="/assets/img/icons/Logo_Alinea_white_big.png">
         

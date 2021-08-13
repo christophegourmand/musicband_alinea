@@ -149,7 +149,7 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
 
 ### UPDATE .cpanel.yml frac-line
 
-- in `.cpanel.yml` 
+- in `.cpanel.yml`
   - de-activated line copying `img` folder
   - added some `/` on some lines.
 
@@ -158,3 +158,15 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
 - in `assets/css/modules/_navbar.scss`
   - change background for menu photo : `.bg-photos` now use image 00043 (steeldrum)
   - the menu with tiles (mobile view) has height of 92vh intead of 84vh.
+
+### FIX overflow issue
+
+here I will just describe to the essential :
+
+- in `main_style.scss` : INVERT some lines (to fix and issu between queries and variables).
+- in `_body.scss` : ADD width 100vw on body.
+- on class `.navfooter-menus` : MODIFY the grid and order (now columns order, and optimized according to media-querie).
+- on class `.page-title` : MODIFY font-size (now 2.8 rem if under sm breakpoint).
+- in `_variables.scss` : MODIFY $pageMargin (1rem if under sm breakpoint, 2rem if above).
+- in `footer.php` : MODIFY order of links.
+- in `head.php` : ADD rule who block the zoom for a user.

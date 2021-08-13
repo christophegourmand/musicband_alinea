@@ -2,7 +2,20 @@
 
     .navfooter-menus {        
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-auto-flow: columns;
+
+        @include media("min","sm") {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+        }
+        @include media("sm","md") {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+        }
+        @include media("md","max") {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
         
         padding: .5rem;
 
@@ -11,7 +24,7 @@
             margin-bottom: .3rem;
 
             .navfooter-link , .navfooter-link:visited {
-                font-size: .7rem;
+                font-size: 1rem;
                 
                 @include media("md","max") {
                     font-size: 1.2rem;

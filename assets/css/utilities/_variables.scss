@@ -5,5 +5,14 @@
 // OTHER VARIABLES ==================================
 
 // $pageMargin: 6vw;
-$pageMargin: 2rem;
-$headerMargin: 2rem;
+
+// --- for sizes between "min" and "sm" ---
+$pageMargin: 1rem;
+$headerMargin: 1rem;
+
+
+// --- for sizes between "sm" and "max" ---
+@include media("sm","max"){
+    $pageMargin: 2rem;
+    $headerMargin: 2rem;
+}
