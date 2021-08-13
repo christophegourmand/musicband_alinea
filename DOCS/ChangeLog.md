@@ -144,4 +144,11 @@ TODO : in page page_photos_big ,  the photo could fit the viewport height, not t
   - removed concert "07 Août, Paradiso"
   - add concert "21 Août, librairie De Plume Et D'Épée"
   - add concert "11 Septembre, concert privé, Beynost"
-  
+
+## 2021.08.13
+
+### UPDATE .cpanel.yml frac-line
+
+- in `.cpanel.yml` 
+  - de-activated line copying `img` folder
+  - added some `/` on some lines.
