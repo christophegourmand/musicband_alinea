@@ -7,15 +7,6 @@
         <div class="tour-body">
 
             <div class="tour-event">
-                <time class="tour-event-date">21 Août 2021 - à 19h</time>
-                <p class="tour-event-location">
-                    Concert acoustique, <br>Librairie "De Plume &amp; d'Épée"
-                    <a class="tour-event-mapIcon" href="https://goo.gl/maps/fEder5hRUjXE7ghR9" target="_blank"><i class="fas fa-map"></i></a>
-                </p>
-                <p class="tour-event-city">Crémieu (Isère)</p>
-            </div>
-            
-            <div class="tour-event">
                 <time class="tour-event-date">11 Septembre 2021</time>
                 <p class="tour-event-location">
                     Concert privé sur invitation:<br>double live, en collaboration avec le groupe "Rocking Chairs"

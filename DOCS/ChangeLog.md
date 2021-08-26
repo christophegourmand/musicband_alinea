@@ -170,3 +170,9 @@ here I will just describe to the essential :
 - in `_variables.scss` : MODIFY $pageMargin (1rem if under sm breakpoint, 2rem if above).
 - in `footer.php` : MODIFY order of links.
 - in `head.php` : ADD rule who block the zoom for a user.
+
+## 2021.08.26
+
+### UPDATE concerts
+
+- deleted concert date of 21 august.
