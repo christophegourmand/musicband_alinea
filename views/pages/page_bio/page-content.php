@@ -62,7 +62,7 @@
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_anthony.jpg');?>" alt="photo du musicien" title="photo du musicien">
                 <p class="musiciens-description">Originaire d’Angers, Guitariste électro-acoustique depuis sa plus tendre enfance, ses arpèges et rythmiques font de lui le compagnon idéal d’intégration dans cette belle aventure.<br>
                 Studio ou Scènes, il s’adapte et maîtrise son instrument.<br>
-                Un parfait musicien comme on les aiment …</p>   
+                Un parfait musicien comme on les aime …</p>   
             </div>
             <p class="musiciens-role">Guitariste</p>
         </div>
