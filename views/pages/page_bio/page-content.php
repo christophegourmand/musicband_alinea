@@ -33,7 +33,7 @@
                 Ne devant sa place qu’a un pauvre concours de circonstances: être venu au monde dans une famille de musiciens.<br> 
                 Toujours dispo, maitre du tempo, maitre du tant pis, pour le meilleur, et surtout, pour le pire.</p>
             </div>
-            <p class="musiciens-role">Batterie/Percussions</p>
+            <p class="musiciens-role">Batteur/Percussionniste</p>
         </div>
 
         <div class="musiciens-container">
@@ -53,7 +53,7 @@
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_nicole.jpg');?>" alt="photo du musicien" title="photo du musicien">
                 <p class="musiciens-description">Originaire de Lyon. Née un soir de 21 Juillet 1978, de parents choristes Malgaches.<br>Mère d’une lutine, et d’un lutin. Carnassière de littérature, de café chaud et d’esprit curieux à la  connaissance.<br>Ses passions musicales n’ont, pour frontière, que l’amitié, la positivité et la confiance.<br>Timide, utopiste, optimiste, fragile.<br>Construit uniquement avec son coeur et prend de la vie ce qu’elle lui offre, sans jamais demander en retour.<br>Son Credo? …Carpe diem.</p>
             </div>
-            <p class="musiciens-role">Choeurs</p>
+            <p class="musiciens-role">Chanteuse/Choriste</p>
         </div>
 
         <div class="musiciens-container">
@@ -64,7 +64,7 @@
                 Studio ou Scènes, il s’adapte et maîtrise son instrument.<br>
                 Un parfait musicien comme on les aiment …</p>   
             </div>
-            <p class="musiciens-role">Batterie/Percussions</p>
+            <p class="musiciens-role">Guitariste</p>
         </div>
     </section>
 </main>
