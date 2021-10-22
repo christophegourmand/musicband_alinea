@@ -37,6 +37,7 @@ assets/css/main_style.css.map
 *.txt
 *.zip
 *.ini
+*.DS_Store
 
 # == VS-CODE SETTINGS EXCLUSION ==
 .vscode/
