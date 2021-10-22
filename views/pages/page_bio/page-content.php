@@ -55,5 +55,16 @@
             </div>
             <p class="musiciens-role">Choeurs</p>
         </div>
+
+        <div class="musiciens-container">
+            <h3 class="musiciens-name">Anthony<span class="musiciens-name-lastname">Plaisir</span></h3>
+            <div class="musiciens-2col">
+                <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_anthony.jpg');?>" alt="photo du musicien" title="photo du musicien">
+                <p class="musiciens-description">Originaire d’Angers, Guitariste électro-acoustique depuis sa plus tendre enfance, ses arpèges et rythmiques font de lui le compagnon idéal d’intégration dans cette belle aventure.<br>
+                Studio ou Scènes, il s’adapte et maîtrise son instrument.<br>
+                Un parfait musicien comme on les aiment …</p>   
+            </div>
+            <p class="musiciens-role">Batterie/Percussions</p>
+        </div>
     </section>
 </main>

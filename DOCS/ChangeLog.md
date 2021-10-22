@@ -176,3 +176,10 @@ here I will just describe to the essential :
 ### UPDATE concerts
 
 - deleted concert date of 21 august.
+
+## 2021.10.22
+
+### ADD musician member
+
+- in `views/pages/page_bio/page-content.php` : ADD section for the musician Anthony Plaisir.
+- in `assets/img/photos/musicians/` : ADD `photo_presentation_anthony.jpg` with comica effect (made on 'comica' android app.
