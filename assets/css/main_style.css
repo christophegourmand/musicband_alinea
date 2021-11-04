@@ -130,12 +130,18 @@
 /* BASE / base */
 /* =========================================== */
 /* HERE HTML-TAGS ONLY , it should not contain class, id , or else */
+body {
+  overflow-x: hidden;
+}
+
 a:-webkit-any-link {
   text-decoration: none;
 }
+
 a:-moz-any-link {
   text-decoration: none;
 }
+
 a:any-link {
   text-decoration: none;
 }
