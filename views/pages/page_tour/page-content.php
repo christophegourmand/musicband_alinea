@@ -5,7 +5,7 @@
     <section class="tour">
         <h3 class="tour-title">Concerts</h3>
         <div class="tour-body">
-            
+            <!--
             <div class="tour-event">
                 <time class="tour-event-date">06 Novembre 2021 - à 20h</time>
                 <p class="tour-event-location">
@@ -14,6 +14,7 @@
                 </p>
                 <p class="tour-event-city">Ceyssat (Puis De Dôme)</p>
             </div>
+            -->
 
         </div>
     </section>
