@@ -42,3 +42,6 @@ assets/css/main_style.css.map
 # == VS-CODE SETTINGS EXCLUSION ==
 .vscode/
 .code-workspace
+
+# .env file , reproduved in PHP.
+.env.php

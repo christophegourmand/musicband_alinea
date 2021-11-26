@@ -34,5 +34,9 @@
         <?php include($prefix_to_root_folder."views/common/footer.php"); ?>
 
         <?php include($prefix_to_root_folder."views/common/load_js_scripts.php"); ?>
+        
+        <!-- custom script, only for this page -->
+        <script src="<?php echo($prefix_to_root_folder.'assets/js/effetOnBloquote_indexPage.js')?>"></script>
+        <script src="<?php echo($prefix_to_root_folder.'assets/js/animationOnSocialMediaIcons.js')?>"></script>
     </body>
 </html>

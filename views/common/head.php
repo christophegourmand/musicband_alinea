@@ -21,4 +21,17 @@
 
         <!-- STYLE -->
         <link rel="stylesheet" href="<?php echo($prefix_to_root_folder."assets/css/main_style.css")?>">
+
+        <?php 
+            try {
+                require_once($prefix_to_root_folder.".env.php");
+                // if (isset($env)) {
+                    echo("<script>const ENV='$env';</script>");
+                    echo("<script>console.info('Environnement:');</script>");
+                    echo("<script>console.info(ENV);</script>");
+                // }
+            } catch (Exception $e){
+                echo("<script>console.warn($e);</script>");
+            }
+        ?>
     </head>

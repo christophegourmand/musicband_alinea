@@ -69,5 +69,7 @@
 </nav>
 
 <script>
-    console.log(" <?php echo($active_menu_in_navbar);?> ");
+    if (ENV === 'dev') {
+        console.log(" <?php echo($active_menu_in_navbar);?> ");
+    }
 </script>
