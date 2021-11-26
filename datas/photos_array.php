@@ -54,7 +54,7 @@ $photoAlbums_indArray = [
             ["filename"=>"alinea_00069_nicole.jpg", "description"=>"Nicole, souriante."],
             ["filename"=>"alinea_00070_thierry-play-guitare.jpg", "description"=>"Thierry sur sa guitare électrique"],
             ["filename"=>"alinea_00071_nico-play-drums.jpg", "description"=>"Nico, en plein riff de batterie"],
-            ["filename"=>"alinea_00072_romain-play-bass-bw.jpg", "description"=>"Romain à la basse"],
+            // ["filename"=>"alinea_00072_romain-play-bass-bw.jpg", "description"=>"Romain à la basse"],
             ["filename"=>"alinea_00073_romain-play-bass-color.jpg", "description"=>"Romain à la basse"],
             // ["filename"=>"alinea_00074_simone-play-piano.jpg", "description"=>"Simone au piano"],
             // ["filename"=>"alinea_00075_simone-play-piano-bw.jpg", "description"=>"Simone au piano"],
