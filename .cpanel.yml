@@ -35,6 +35,9 @@ deployment:
 
     # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT models/ $DEPLOYPATH/models/
+
+    # == OVERWRITE EVERYTHING : ==
+    - /bin/cp -RT debug/ $DEPLOYPATH/debug/
     
     # == OVERWRITE EVERYTHING : ==
     - /bin/cp -RT DOCS/ $DEPLOYPATH/DOCS/
