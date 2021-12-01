@@ -1737,25 +1737,20 @@ footer {
 }
 
 .gallery .gallery-body-flex2 .gallery-img-link {
-  height: 30vh;
+  height: 20vh;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   /* optional adjustement for portrait mode (phone, tablets)*/
 }
 
-@media (max-aspect-ratio: 1 / 1) {
-  .gallery .gallery-body-flex2 .gallery-img-link {
-    height: 30vh;
-  }
-}
-
 .gallery .gallery-body-flex2 .gallery-img-link .gallery-img {
-  max-height: 100%;
+  height: 100%;
   min-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  vertical-align: bottom;
+  -o-object-position: top;
+     object-position: top;
 }
 
 .gallery .gallery-body-flex2 .gallery-img-link:last-child {
