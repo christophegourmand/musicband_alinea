@@ -32,7 +32,7 @@
         color: var(--theme-color_neutral);
     }
 */
-    .gallery-body {
+    .gallery-body-flex {
 
         /* technic of Una KRAVETS : "deconstructed pancake" */
         display: flex; /* used in dec.pancake */
@@ -47,24 +47,102 @@
         // border: 2px solid lime; // DEBUG
 
         .gallery-img-link {
-            // border: 2px solid rgb(219, 28, 236); // DEBUG
+                                        // border: 2px solid rgb(219, 28, 236); // DEBUG
             margin: 1px;
             
             /* <flex-grow> <flex-shrink>? <flex-basis> */
             flex: 1 1 250px;
+
+            .gallery-img {
+                // width: 350px; /* NOT used in dec.pancake */
+                // height: 15vw; /* never used */
+                
+                // margin: 3px;  /* used in dec.pancake */
+
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
 
-        .gallery-img {
-            // width: 350px; /* NOT used in dec.pancake */
-            // height: 15vw; /* never used */
-            
-            // margin: 3px;  /* used in dec.pancake */
+    }
+    .gallery-body-flex2 {
+        /* technic from Tim Van Damme , https://css-tricks.com/adaptive-photo-layout-with-flexbox/ */
+        display:flex;
+        flex-wrap: wrap;
+        gap: 10px;
 
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .gallery-img-link {
+                                        // border: 1px solid rgb(219, 28, 236); // DEBUG
+            height: 30vh;
+            flex-grow: 1;
+
+            /* optional adjustement for portrait mode (phone, tablets)*/
+            @media (max-aspect-ratio: 1/1) {
+                height: 30vh;
+            }
+
+            .gallery-img {
+                max-height: 100%;
+                min-width: 100%;
+                object-fit: cover;
+                vertical-align: bottom;
+            }
 
         }
+        .gallery-img-link:last-child {
+            flex-grow: 10;
+        }
+
+    }
+    
+    .gallery-body-grid {
+
+        /* technic of Una KRAVETS : "RAM" */
+
+        display: grid;
+        grid-auto-flow: dense;
+        gap: 2px; // the prefix 'grid-' has been depreciated.
+        // grid-template-columns: repeat( auto-fit , minmax(250px, 1fr) );
+        // grid-template-rows: repeat( auto-fit , minmax(250px, 400px) );
+
+        $minTrack: 70px;
+        $maxTrack_hor: 1fr;
+        $maxTrack_vert: 1fr;
+
+        grid-template-columns: repeat( auto-fit , minmax($minTrack, $maxTrack_hor) );
+        grid-auto-columns: repeat( auto-fit , minmax($minTrack, $maxTrack_hor) );
+
+        grid-template-rows: repeat( auto-fit , minmax($minTrack, $maxTrack_vert) );
+        grid-auto-rows: repeat( auto-fit , minmax($minTrack, $maxTrack_vert) );
+
+                                        // border: 2px solid aqua; // DEBUG
+
+        .gallery-img-link {
+                                        // border: 2px solid rgb(219, 28, 236); // DEBUG
+            // margin: 1px; // removed as i used grid-gap.
+
+            &.landscape {
+                grid-column: span 4; // equivalent to width    4
+                grid-row: span 3; // equivalent to height      3
+            }
+            &.portrait {
+                grid-column: span 2; // equivalent to width     2
+                grid-row: span 3; // equivalent to height       3
+            }
+            &.square {
+                grid-row: span 3; //                            4
+                grid-column: span 3; //                         4
+            }
+
+            .gallery-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                                                // opacity: .5;// DEBUG
+            }
+        }
+
     }
     
     .gallery-body-big {

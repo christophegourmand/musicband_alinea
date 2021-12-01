@@ -183,3 +183,39 @@ here I will just describe to the essential :
 
 - in `views/pages/page_bio/page-content.php` : ADD section for the musician Anthony Plaisir.
 - in `assets/img/photos/musicians/` : ADD `photo_presentation_anthony.jpg` with comica effect (made on 'comica' android app.
+
+## 2021.12.01 (branch `feature_design_photoGallery_flex`)
+
+### feat(photoGallery)
+
+#### detailed version
+
+- created folder `models/media` and within : created files for 3 classes `Gallery.php` , `Album.php` , `Photo.php` with properties, getters-setters and methods.
+- used these files in `datas/photos_array.php` to created instances of Gallery, of Albums, of Photos. All nested.
+- in page 'Photos' , splitted the code of `views/pages/page_photos/page-content.php` into a partial file : `_gallery_loop.php`.
+- in `views/pages/page_photos/_gallery_loop.php` : 
+  - created a new loop who get albums and photos from new classes instances.
+  - tried 3 css classes : `gallery-body-flex`, `gallery-body-flex2` , `gallery-body-grid` who are defined in the file `assets/css/modules/_gallery.scss`
+- in `assets/css/modules/_gallery.scss` : 
+  - the css-class `gallery-body` became 3 variations : `gallery-body-flex`, `gallery-body-flex2` , `gallery-body-grid`.
+  - finally, the css-class `gallery-body-flex2` is the best and I keep this version.
+  (However, Please keep the nice job I made on `gallery-body-grid` who apply different number of cells horizontally and vertically, (using grid span system) by reading the php-class Photo->orientation who contain "landscape" or "portrait" or "square");
+- well, detailed is too long, let me explain more concisely:
+
+#### short Version
+
+- about photos-storage and display :
+  - create 3 php-classes: Gallery, Album and Photo, to replace the previous array system.
+  - create instances of them in `photos_array.php`.
+  - modify the page 'Photos' and 'Photos big' (respectively in their file `page-content.php` to display the albums and photos instances.
+    - move the loop code of page 'Photos' (file `page-content.php`) in a partial `_gallery_loop.php`
+  - BETA, WIP : create a file `photos_by_scandir` to automatically create an array from directory.
+- about photo effects
+  - import new file `animationsOnPhotos.js` in `page_photos.php`
+  - create file `animationsOnPhotos.js` : inside, use my new function `effectOnAppear()` on each photo container (`<a>`) , but doesnt work yet, to be continued...
+- about the navbar
+  - modify menus to 'small caps'.
+- about animation for social media icons
+  - move css animations from `_socialmedia.scss` to `_animations.scss`
+- about 'namespaces' and 'use'
+  - create php namespace for `debug_functions.php`, and for classes `Gallery.php` , `Album.php`, `Photo.php`.

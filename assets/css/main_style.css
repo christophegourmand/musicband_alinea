@@ -88,6 +88,21 @@
   }
 }
 
+/* ANIMATION for social-media-icons  +   for Photos */
+.animation-appearsFromBottom {
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  opacity: 0;
+  transform: translateY(100px);
+  -webkit-transform: translateY(100px);
+}
+
+.play-animation {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+  -webkit-transform: translateY(0px) !important;
+}
+
 .flex_row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1154,6 +1169,7 @@ footer {
   height: fit-content;
   font-size: 2.2rem;
   font-weight: 200;
+  font-variant: small-caps;
 }
 
 @media screen and (max-width: 992px) {
@@ -1671,7 +1687,7 @@ footer {
   color: #FFF;
 }
 
-.gallery .gallery-body {
+.gallery .gallery-body-flex {
   /* technic of Una KRAVETS : "deconstructed pancake" */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1695,7 +1711,7 @@ footer {
           align-items: stretch;
 }
 
-.gallery .gallery-body .gallery-img-link {
+.gallery .gallery-body-flex .gallery-img-link {
   margin: 1px;
   /* <flex-grow> <flex-shrink>? <flex-basis> */
   -webkit-box-flex: 1;
@@ -1703,7 +1719,81 @@ footer {
           flex: 1 1 250px;
 }
 
-.gallery .gallery-body .gallery-img {
+.gallery .gallery-body-flex .gallery-img-link .gallery-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.gallery .gallery-body-flex2 {
+  /* technic from Tim Van Damme , https://css-tricks.com/adaptive-photo-layout-with-flexbox/ */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery .gallery-body-flex2 .gallery-img-link {
+  height: 30vh;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  /* optional adjustement for portrait mode (phone, tablets)*/
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  .gallery .gallery-body-flex2 .gallery-img-link {
+    height: 30vh;
+  }
+}
+
+.gallery .gallery-body-flex2 .gallery-img-link .gallery-img {
+  max-height: 100%;
+  min-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  vertical-align: bottom;
+}
+
+.gallery .gallery-body-flex2 .gallery-img-link:last-child {
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+}
+
+.gallery .gallery-body-grid {
+  /* technic of Una KRAVETS : "RAM" */
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: dense;
+  gap: 2px;
+  -ms-grid-columns: (minmax(70px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-auto-columns: repeat(auto-fit, minmax(70px, 1fr));
+  -ms-grid-rows: (minmax(70px, 1fr))[auto-fit];
+      grid-template-rows: repeat(auto-fit, minmax(70px, 1fr));
+  grid-auto-rows: repeat(auto-fit, minmax(70px, 1fr));
+}
+
+.gallery .gallery-body-grid .gallery-img-link.landscape {
+  grid-column: span 4;
+  grid-row: span 3;
+}
+
+.gallery .gallery-body-grid .gallery-img-link.portrait {
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+.gallery .gallery-body-grid .gallery-img-link.square {
+  grid-row: span 3;
+  grid-column: span 3;
+}
+
+.gallery .gallery-body-grid .gallery-img-link .gallery-img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -1934,21 +2024,6 @@ footer {
 .socialMedia-mini-link-container .socialMedia-mini-link .socialMedia-mini-logo {
   margin-right: 30px;
   width: 40px;
-}
-
-/* ANIMATION */
-.animation-appearsFromBottom {
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
-  opacity: 0;
-  transform: translateY(100px);
-  -webkit-transform: translateY(100px);
-}
-
-.play-animation {
-  opacity: 1 !important;
-  transform: translateY(0px) !important;
-  -webkit-transform: translateY(0px) !important;
 }
 
 .section {
