@@ -8,8 +8,11 @@
             <h3 class="musiciens-name">Le Groupe</h3>
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-band"></div> -->
-                <!-- <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_groupe.jpg');?>" alt="photo du musicien" title="photo du musicien"> -->
-                <p class="musiciens-description">Formation du groupe Alinéa: été 2019</p>
+                <!-- <img class="musiciens-img" src="<?php # echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_groupe.jpg');?>" alt="photo du musicien" title="photo du musicien"> -->
+                
+                <!-- under, keep that div so flexbox place it on left column, and place 'formation du grou...' on right column -->
+                <div></div>
+                <p class="musiciens-description">Formation du groupe Alinéa: été&nbsp;2019</p>
             </div>
         </div>
         <div class="musiciens-container">
@@ -17,7 +20,7 @@
             <div class="musiciens-2col">
                 <!-- <div class="musiciens-bgphoto img-thierry"></div> -->
                 <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_thierry2.jpg');?>" alt="photo du musicien" title="photo du musicien">
-                <p class="musiciens-description">Originaire du Nord Isère. Né le 21 Novembre 1979. Père d’une enfant.<br>Un peu musicien, imaginatif, pas mal perché, assez discret, jamais content de lui (le mec relou, c’est lui…) et toujours mal rasé. Adepte des Dimanches d’hiver et du café fumant.</p>
+                <p class="musiciens-description">Oh! Comme nous aimons parler de nous!<br>Isérois d’origine, né le 21 Novembre 1979.<br>Une chouette année, j’imagine.<br>Père. Et Paire.<br>Distordu par l’attraction gravitationnel de l’Art.<br>Contaminé par le besoin de manquer et d’être utile.<br>Gravement irrécupérable pour cause d’abus de «Blues ».<br>Adepte des Dimanches de procrastination, et du café fumant.</p>
             </div>
             <p class="musiciens-role">Guitare, piano, chants.</p>
             <p class="musiciens-role">Auteur/compositeur/interprète</p>
