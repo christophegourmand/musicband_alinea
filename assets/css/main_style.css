@@ -2329,6 +2329,81 @@ body {
   }
 }
 
+.metronome {
+  padding: 1rem;
+}
+
+.metronome .metronome-tempo-container .metronome-tempo-header {
+  margin-bottom: 2rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 3rem 1fr 1fr;
+      grid-template-rows: 3rem 1fr 1fr;
+  gap: 1.5rem;
+      grid-template-areas: "tempoStart tempoStop" "tempoLabel tempoLabel" "tempoInput tempoInput";
+}
+
+.metronome .metronome-tempo-container .metronome-tempo-header .metronome-tempo-start {
+  background-color: #148b04;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: tempoStart;
+  color: var(--theme-color_neutral);
+  font-size: 2rem;
+}
+
+.metronome .metronome-tempo-container .metronome-tempo-header .metronome-tempo-stop {
+  background-color: #b20606;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: tempoStop;
+  color: var(--theme-color_neutral);
+  font-size: 2rem;
+}
+
+.metronome .metronome-tempo-container .metronome-tempo-header .metronome-tempo-label {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: tempoLabel;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--theme-color_neutral);
+}
+
+.metronome .metronome-tempo-container .metronome-tempo-header .metronome-tempo-input {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: tempoInput;
+  font-family: monospace;
+}
+
+.metronome .metronome-pulse-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.metronome .metronome-pulse-container .metronome-pulse {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-height: 100px;
+  border: 1px solid white;
+  /* style of number inside */
+  color: var(--theme-color_background);
+  font-size: 3rem;
+  text-align: center;
+  /* placement of number inside */
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
 /* STATES */
 /* =========================================== */
 /* STATES / states */
