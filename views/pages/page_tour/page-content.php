@@ -12,7 +12,7 @@
                     brasserie Les Ursulines
                     <a class="tour-event-mapIcon" href="https://goo.gl/maps/dfiKFMc7ahCrUYkUA" target="_blank"><i class="fas fa-map"></i></a>
                 </p>
-                <p class="tour-event-city">Crémieux</p>
+                <p class="tour-event-city">Crémieu</p>
             </div>
 
         </div>
