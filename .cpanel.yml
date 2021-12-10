@@ -23,6 +23,8 @@ deployment:
     # == TO BE SURE THAT IT WILL OVERWRITE : DELETE THEN COPY AGAIN (normally cp overwrite files by default)  ==-
     # - /bin/rm $DEPLOYPATH/assets/css/main_style.css
     - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css/main_style.css
+    - /bin/cp assets/css/main_style.css.map $DEPLOYPATH/assets/css/main_style.css.map
+    - /bin/cp assets/css/main_style.scss $DEPLOYPATH/assets/css/main_style.scss
     
     # == MUST OVERWRITE ==
     - /bin/cp common_variables.php $DEPLOYPATH/common_variables.php
