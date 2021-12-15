@@ -2445,8 +2445,8 @@ body {
   position: absolute;
   top: -1rem;
   left: -2rem;
-  width: 13rem;
-  height: 6rem;
+  width: 7rem;
+  height: 3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2456,9 +2456,9 @@ body {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
@@ -2471,10 +2471,10 @@ body {
 }
 
 .metronome_html .metronome-header .alinea-brand-container .alinea-brand-text {
-  font-size: 2rem;
+  font-size: 1rem;
   position: relative;
   bottom: 0rem;
-  left: -1.7rem;
+  left: -1.1rem;
 }
 
 .metronome_html .metronome-header .metronome-alinea {
@@ -2486,10 +2486,10 @@ body {
 }
 
 .metronome_html .metronome-header .metronome-title {
-  margin-top: 8rem;
-  margin-bottom: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 0rem;
   font-family: var(--metro-font-metronome);
-  font-size: 4rem;
+  font-size: 2.4rem;
   text-align: center;
 }
 

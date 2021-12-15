@@ -48,10 +48,10 @@
             top: -1rem;
             left: -2rem;
 
-            width: 13rem;
-            height: 6rem;
+            width: 7rem;
+            height: 3rem;
 
-            @include flex_row(center, baseline);
+            @include flex_row(flex-start, baseline);
 
             .alinea-brand-logosvg {
                 width: 100%;
@@ -62,10 +62,10 @@
                 // background-size: cover;
             }
             .alinea-brand-text {
-                font-size: 2rem;
+                font-size: 1rem;
                 position: relative;
                 bottom: 0rem;
-                left: -1.7rem;
+                left: -1.1rem;
             }
         }
 
@@ -81,11 +81,11 @@
         
         .metronome-title {
                                             // border: 1px solid yellow;
-            margin-top: 8rem;
-            margin-bottom: 1rem;
+            margin-top: 4rem;
+            margin-bottom: 0rem;
 
             font-family: var(--metro-font-metronome);
-            font-size: 4rem;
+            font-size: 2.4rem;
             text-align: center;
 
             em {
