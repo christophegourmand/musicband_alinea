@@ -2510,7 +2510,7 @@ body {
   /* PULSE 1 ---------- */
 }
 
-@media screen and (min-width: 767.9px) {
+@media screen and (min-width: 575.9px) {
   .metronome_html .metronome-pulse-container {
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
