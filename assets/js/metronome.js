@@ -51,7 +51,7 @@ var metronome = {
     }
     , stop : function() {
         clearInterval(this.tempoInterval_id);
-        this.activated_pulse_id = 0; // rebout to first pulse.
+        this.activated_pulse_id = 0; // reboot to first pulse.
         console.info("METRONOME stoppé")
     }
 }; // end of object 'metronome' ========================================================
