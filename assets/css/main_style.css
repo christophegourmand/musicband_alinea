@@ -2430,11 +2430,14 @@ body {
   --metro-font-metronome: 'Questrial', sans-serif;
 }
 
+body {
+  background-image: -webkit-gradient(linear, right top, left bottom, from(#0f083b), color-stop(63%, var(--metro-color-bg)));
+  background-image: linear-gradient(to bottom left, #0f083b, var(--metro-color-bg) 63%);
+}
+
 .metronome_html {
   height: 100vh;
   width: 100vw;
-  background-image: -webkit-gradient(linear, right top, left bottom, from(#0f083b), color-stop(63%, var(--metro-color-bg)));
-  background-image: linear-gradient(to bottom left, #0f083b, var(--metro-color-bg) 63%);
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 1fr 3fr 1fr 1fr;
@@ -2588,6 +2591,12 @@ body {
   background-color: white;
 }
 
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-timeline .metronome-counts .metronome-counts-separator {
+    height: 80%;
+  }
+}
+
 .metronome_html .metronome-timeline .metronome-counts .metronome-bars-count {
   position: relative;
   top: .3rem;
@@ -2595,9 +2604,21 @@ body {
   text-align: right;
 }
 
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-timeline .metronome-counts .metronome-bars-count {
+    font-size: 3.6rem;
+  }
+}
+
 .metronome_html .metronome-timeline .metronome-counts .metronome-beats-count {
   font-size: 2.2rem;
   text-align: left;
+}
+
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-timeline .metronome-counts .metronome-beats-count {
+    font-size: 1.9rem;
+  }
 }
 
 .metronome_html .metronome-controls {
@@ -2611,6 +2632,12 @@ body {
       grid-template-areas: ". tempo_up ." "tempo_stop tempo_input tempo_start" ". tempo_down .";
 }
 
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-controls {
+    margin-top: -1rem;
+  }
+}
+
 .metronome_html .metronome-controls .metronome-tempo-input {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
@@ -2621,6 +2648,12 @@ body {
   font-size: 3.5rem;
   text-align: center;
   color: var(--metro-color-tempo);
+}
+
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-controls .metronome-tempo-input {
+    font-size: 2.2rem;
+  }
 }
 
 .metronome_html .metronome-controls .metronome-tempo-up {
@@ -2667,6 +2700,13 @@ body {
   width: 4rem;
   height: 4rem;
   cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+  .metronome_html .metronome-controls .metronome-tempo-start, .metronome_html .metronome-controls .metronome-tempo-stop, .metronome_html .metronome-controls .metronome-tempo-up, .metronome_html .metronome-controls .metronome-tempo-down {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 /* STATES */

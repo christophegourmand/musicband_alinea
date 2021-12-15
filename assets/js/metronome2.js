@@ -255,3 +255,51 @@ metronome.tempo_input.addEventListener(
         metronome.start();
     }
 );
+
+// ###############################
+// add same 'event listeners' , but fot 'touch' on mobile :
+
+metronome.button_start.addEventListener(
+    "touch", 
+    (event)=> {
+        metronome.start();
+    }
+);
+
+metronome.button_stop.addEventListener(
+    "touch", 
+    (event)=> {
+        metronome.stop();
+    }
+);
+
+metronome.button_tempo_up.addEventListener(
+    "touch", 
+    (event)=> {
+        metronome.increaseTempo();
+        metronome.stop(); // OPTIONNAL ?
+        metronome.start();
+    }
+);
+
+metronome.button_tempo_down.addEventListener(
+    "touch", 
+    (event)=> {
+        metronome.decreaseTempo();
+        metronome.stop(); // OPTIONNAL ?
+        metronome.start();
+    }
+);
+
+// metronome.tempo_input.addEventListener("focus", (event)=>metronome.stop());  /OPTIONNAL ?
+
+metronome.tempo_input.addEventListener(
+    "focusout",  
+    (event)=>{
+        // console.log(event);
+        metronome.tempo = parseInt(document.getElementById("metronome_tempo_input").value);
+        metronome.updateDelayFromTempo(); // used to update the delay between pulse.
+        metronome.stop(); // OPTIONNAL ?
+        metronome.start();
+    }
+);
