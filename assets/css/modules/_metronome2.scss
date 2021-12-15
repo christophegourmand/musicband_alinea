@@ -1,0 +1,283 @@
+/* =========================================== */
+/* MODULES / metronome2 */
+/* =========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+/* variables */
+:root {
+    --metro-color-bg: hsl(0, 54%, 10%);
+    --metro-color-m: hsl(0, 57%, 50%);
+    --metro-color-pulse1: hsl(0, 100%, 64%);
+    --metro-color-pulse234: white;
+    --metro-color-circle: hsl(0, 84%, 60%);
+    --metro-color-tempo: hsl(0, 31%, 53%); // v1
+    --metro-color-tempo: hsl(0, 57%, 50%); // v2
+    --metro-color-buttons: white;
+    --metro-color-alinea: hsl(0, 7%, 36%);
+
+    --metro-font-alinea: 'Mrs Saint Delafield', cursive;
+    --metro-font-metronome: 'Questrial', sans-serif;
+}
+
+.metronome_html {
+                                            // border: 1px solid red;
+    height: 100vh;
+    width: 100vw;
+
+    // design v1:
+    // background: var(--metro-color-bg);
+
+    // design v2:
+    // background-image: linear-gradient(to bottom left, #0f083b, #4b0404);
+    
+    // design v3:
+    background-image: linear-gradient(to bottom left, #0f083b, var(--metro-color-bg) 63%);
+
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr 1fr;
+
+    .metronome-header {
+                                            // border: 3px solid orange;
+
+
+        .alinea-brand-container {
+            position:absolute;
+            top: -1rem;
+            left: -2rem;
+
+            width: 13rem;
+            height: 6rem;
+
+            @include flex_row(center, baseline);
+
+            .alinea-brand-logosvg {
+                width: 100%;
+                height: 100%;
+
+                // fill: var(--metro-color-alinea); // v1
+                fill: white; // v2
+                // background-size: cover;
+            }
+            .alinea-brand-text {
+                font-size: 2rem;
+                position: relative;
+                bottom: 0rem;
+                left: -1.7rem;
+            }
+        }
+
+        .metronome-alinea {
+                                            // border: 1px solid yellow;
+            
+            margin-top: 1rem;
+            margin-left: 1rem;
+            font-family: var(--metro-font-alinea);
+            font-size: 4rem;
+            color: var(--metro-color-alinea);
+        }
+        
+        .metronome-title {
+                                            // border: 1px solid yellow;
+            margin-top: 8rem;
+            margin-bottom: 1rem;
+
+            font-family: var(--metro-font-metronome);
+            font-size: 4rem;
+            text-align: center;
+
+            em {
+                font-style: normal;
+                color: var(--metro-color-m);
+            
+            }
+        }
+    }
+
+    .metronome-pulse-container {
+                                            // border: 3px solid orange;
+        padding: 1rem;
+        display: grid;
+        gap: 1rem;
+
+        @include media("md","") {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr;
+        }
+
+        .metronome-pulse {
+            // height: 100px;
+            // flex: 1 1 600px;
+            // display: none;
+        }
+        
+        /* PULSES 2 3 4 ---------- */
+        .metronome-pulse {
+            display:block;
+            height: 100%;
+            width: 100%;
+            
+            border: 1px solid var(--metro-color-pulse234);
+            border-radius: 1rem;
+
+            display: grid;
+            place-items: center;
+
+            .metronome-pulse-number {
+                font-size: 5vh;
+                // color: var(--metro-color-pulse234);
+            }
+
+            &.active {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* PULSE 1 ---------- */
+        .metronome-pulse:nth-child(1){
+            border: 2px solid var(--metro-color-pulse1);
+
+            .metronome-pulse-number {
+                font-size: 5vh;
+                // color: var(--metro-color-pulse1);
+            }
+
+            &.active {
+                background: #940202;
+                color: white;
+
+                // v1 : soft red glowing: 
+                // box-shadow: 0px 0px 18px 5px #FF0000;
+                // -webkit-box-shadow: 0px 0px 18px 5px #FF0000; 
+                
+                // v2 : hard red glowing: 
+                box-shadow: 0px 0px 27px 11px #FF0000;
+                -webkit-box-shadow: 0px 0px 27px 11px #FF0000; 
+            }
+        }
+
+    }
+
+    .metronome-timeline {
+                                                // border: 3px solid #ffa500;
+        .metronome-labels {
+            // @include flex_row(center, center);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+
+            .metronome-beats-label, .metronome-bars-label {
+                // width: 100%;
+                font-size: 1.4rem;
+                color: var(--metro-color-alinea);
+                // flex: 1 1 100%;
+            }
+
+            .metronome-bars-label {
+                text-align: right;
+            }
+            .metronome-beats-label {
+                text-align: left;
+            }
+        }
+
+        .metronome-counts {
+            // @include flex_row(center, center);
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            align-items: center;
+            gap: 1.2rem;
+
+
+            .metronome-counts-separator {
+                height: 100%;
+                background-color: white;
+            }
+
+            .metronome-bars-count {
+                // padding-top: 1rem;
+                position: relative;
+                top: .3rem;
+                font-size: 5rem;
+                text-align: right;
+            }
+            .metronome-beats-count {
+                font-size: 2.2rem;
+                text-align: left;
+            }      
+
+        }
+        
+
+    }
+    
+
+    .metronome-controls {
+                                            // border: 3px solid orange;
+        display: grid;
+        grid-template-rows: 3fr 3fr 3fr;
+        grid-template-columns: 2fr 2fr 2fr;
+        place-items: center;
+        grid-template-areas:
+            ". tempo_up ."
+            "tempo_stop tempo_input tempo_start"
+            ". tempo_down .";
+
+        .metronome-tempo-input {
+            grid-area: tempo_input;
+            background-color: transparent;
+
+            width: 100%;
+            // position: relative;
+            border: none;
+            font-size: 3.5rem;
+            text-align: center;
+            color: var(--metro-color-tempo);
+        }
+        .metronome-tempo-up {
+            display:grid;
+            place-items: center;
+            width: 100%;
+            grid-area: tempo_up;
+            // border: 1px solid blue;
+        }
+        .metronome-tempo-down {
+            display:grid;
+            place-items: center;
+            width: 100%;
+            grid-area: tempo_down;
+            // border: 1px solid rgb(62, 62, 124);
+        }
+        .metronome-tempo-stop {
+            display:grid;
+            place-items: center;
+            width: 100%;
+            grid-area: tempo_stop;
+            // border: 1px solid blue;
+        }
+        .metronome-tempo-start {
+            display:grid;
+            place-items: center;
+            width: 100%;
+            grid-area: tempo_start;
+            // border: 1px solid blue;
+        }
+        .metronome-tempo-start, .metronome-tempo-stop,  .metronome-tempo-up,  .metronome-tempo-down {
+            width: 4rem;
+            height: 4rem;
+            // border: 2px solid var(--metro-color-buttons);
+            // border-radius: 3rem;
+            cursor: pointer;
+        } 
+
+        [class^="metronom-tempo-"] > svg {
+            // width: 100%;
+            // height: 100%;
+        }
+    }
+
+
+}

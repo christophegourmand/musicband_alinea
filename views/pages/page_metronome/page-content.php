@@ -10,6 +10,7 @@
                 <button class="metronome-tempo-stop" id="metronome_tempo_stop">Stop</button>
             
                 <label for="tempo" class="metronome-tempo-label">Tempo</label>
+                
                 <input type="text" value="120" id="metronome_tempo_input" class="metronome-tempo-input">
             </div>
             <!-- <p id="metronome_tempo_input">120</p> -->

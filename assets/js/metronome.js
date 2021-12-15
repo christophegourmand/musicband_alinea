@@ -1,12 +1,11 @@
 const metronome_section = document.getElementById("metronome");
-//const metronome_tempo_input = parseInt(document.getElementById("metronome_tempo_input").value);
-// console.log(metronome_tempo_input);
 
-//const metronome_pulses_arr = document.querySelectorAll(".metronome-pulse");
 const metronome_pulses_arr = Array.from(document.querySelectorAll(".metronome-pulse"));
 
+// object 'metronome' ========================================================
 var metronome = {
-    button_start: document.getElementById("metronome_tempo_start")
+    sound: new Audio("../../assets/sound/yamaha_rx5_bd_02.mp3")
+    , button_start: document.getElementById("metronome_tempo_start")
     , button_stop: document.getElementById("metronome_tempo_stop")
     // , tempo: metronome_tempo_input
     , tempo_input: document.getElementById("metronome_tempo_input")
@@ -35,22 +34,28 @@ var metronome = {
             () => {
                 this.active_next_pulse();
                 this.enlightActivePulse();
+                metronome.sound.play();
             }
             , this.ms_between_pulse()
         )
     }
     
     , start : function() {
-        // first pulse :
+        // FIRST PULSE
         console.info("METRONOME démarré")
-        this.enlightActivePulse();
-        this.tempoInterval();
+        metronome.sound.play(); // for the first 'beat'
+        this.enlightActivePulse(); // for the first 'beat'
+        
+        // FOLLOWING PULSES :
+        this.tempoInterval(); // will regularly (on tempo) call 'enlightActivePulse()' who will also play sound
     }
     , stop : function() {
         clearInterval(this.tempoInterval_id);
+        this.activated_pulse_id = 0; // rebout to first pulse.
         console.info("METRONOME stoppé")
     }
-};
+}; // end of object 'metronome' ========================================================
+
 
 metronome.button_start.addEventListener("click", (event)=>metronome.start() );
 

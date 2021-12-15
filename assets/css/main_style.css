@@ -2,6 +2,8 @@
 /* =========================================== */
 /* UTILITIES / NORMALIZE */
 /* =========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -261,7 +263,7 @@ main {
 /* LAYOUTS / footer */
 /* =========================================== */
 footer {
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   height: fit-content(100%);
 }
 
@@ -2408,6 +2410,263 @@ body {
   display: -ms-grid;
   display: grid;
   place-items: center;
+}
+
+/* =========================================== */
+/* MODULES / metronome2 */
+/* =========================================== */
+/* variables */
+:root {
+  --metro-color-bg: hsl(0, 54%, 10%);
+  --metro-color-m: hsl(0, 57%, 50%);
+  --metro-color-pulse1: hsl(0, 100%, 64%);
+  --metro-color-pulse234: white;
+  --metro-color-circle: hsl(0, 84%, 60%);
+  --metro-color-tempo: hsl(0, 31%, 53%);
+  --metro-color-tempo: hsl(0, 57%, 50%);
+  --metro-color-buttons: white;
+  --metro-color-alinea: hsl(0, 7%, 36%);
+  --metro-font-alinea: 'Mrs Saint Delafield', cursive;
+  --metro-font-metronome: 'Questrial', sans-serif;
+}
+
+.metronome_html {
+  height: 100vh;
+  width: 100vw;
+  background-image: -webkit-gradient(linear, right top, left bottom, from(#0f083b), color-stop(63%, var(--metro-color-bg)));
+  background-image: linear-gradient(to bottom left, #0f083b, var(--metro-color-bg) 63%);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 3fr 1fr 1fr;
+      grid-template-rows: 1fr 3fr 1fr 1fr;
+}
+
+.metronome_html .metronome-header .alinea-brand-container {
+  position: absolute;
+  top: -1rem;
+  left: -2rem;
+  width: 13rem;
+  height: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.metronome_html .metronome-header .alinea-brand-container .alinea-brand-logosvg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+.metronome_html .metronome-header .alinea-brand-container .alinea-brand-text {
+  font-size: 2rem;
+  position: relative;
+  bottom: 0rem;
+  left: -1.7rem;
+}
+
+.metronome_html .metronome-header .metronome-alinea {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-family: var(--metro-font-alinea);
+  font-size: 4rem;
+  color: var(--metro-color-alinea);
+}
+
+.metronome_html .metronome-header .metronome-title {
+  margin-top: 8rem;
+  margin-bottom: 1rem;
+  font-family: var(--metro-font-metronome);
+  font-size: 4rem;
+  text-align: center;
+}
+
+.metronome_html .metronome-header .metronome-title em {
+  font-style: normal;
+  color: var(--metro-color-m);
+}
+
+.metronome_html .metronome-pulse-container {
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  gap: 1rem;
+  /* PULSES 2 3 4 ---------- */
+  /* PULSE 1 ---------- */
+}
+
+@media screen and (min-width: 767.9px) {
+  .metronome_html .metronome-pulse-container {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+  }
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--metro-color-pulse234);
+  border-radius: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse .metronome-pulse-number {
+  font-size: 5vh;
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse.active {
+  background: white;
+  color: black;
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse:nth-child(1) {
+  border: 2px solid var(--metro-color-pulse1);
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse:nth-child(1) .metronome-pulse-number {
+  font-size: 5vh;
+}
+
+.metronome_html .metronome-pulse-container .metronome-pulse:nth-child(1).active {
+  background: #940202;
+  color: white;
+  box-shadow: 0px 0px 27px 11px #FF0000;
+  -webkit-box-shadow: 0px 0px 27px 11px #FF0000;
+}
+
+.metronome_html .metronome-timeline .metronome-labels {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+}
+
+.metronome_html .metronome-timeline .metronome-labels .metronome-beats-label, .metronome_html .metronome-timeline .metronome-labels .metronome-bars-label {
+  font-size: 1.4rem;
+  color: var(--metro-color-alinea);
+}
+
+.metronome_html .metronome-timeline .metronome-labels .metronome-bars-label {
+  text-align: right;
+}
+
+.metronome_html .metronome-timeline .metronome-labels .metronome-beats-label {
+  text-align: left;
+}
+
+.metronome_html .metronome-timeline .metronome-counts {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2px 1fr;
+      grid-template-columns: 1fr 2px 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.2rem;
+}
+
+.metronome_html .metronome-timeline .metronome-counts .metronome-counts-separator {
+  height: 100%;
+  background-color: white;
+}
+
+.metronome_html .metronome-timeline .metronome-counts .metronome-bars-count {
+  position: relative;
+  top: .3rem;
+  font-size: 5rem;
+  text-align: right;
+}
+
+.metronome_html .metronome-timeline .metronome-counts .metronome-beats-count {
+  font-size: 2.2rem;
+  text-align: left;
+}
+
+.metronome_html .metronome-controls {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 3fr 3fr 3fr;
+      grid-template-rows: 3fr 3fr 3fr;
+  -ms-grid-columns: 2fr 2fr 2fr;
+      grid-template-columns: 2fr 2fr 2fr;
+  place-items: center;
+      grid-template-areas: ". tempo_up ." "tempo_stop tempo_input tempo_start" ". tempo_down .";
+}
+
+.metronome_html .metronome-controls .metronome-tempo-input {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: tempo_input;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--metro-color-tempo);
+}
+
+.metronome_html .metronome-controls .metronome-tempo-up {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: tempo_up;
+}
+
+.metronome_html .metronome-controls .metronome-tempo-down {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: tempo_down;
+}
+
+.metronome_html .metronome-controls .metronome-tempo-stop {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: tempo_stop;
+}
+
+.metronome_html .metronome-controls .metronome-tempo-start {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: tempo_start;
+}
+
+.metronome_html .metronome-controls .metronome-tempo-start, .metronome_html .metronome-controls .metronome-tempo-stop, .metronome_html .metronome-controls .metronome-tempo-up, .metronome_html .metronome-controls .metronome-tempo-down {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
 }
 
 /* STATES */

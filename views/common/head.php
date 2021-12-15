@@ -10,7 +10,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-        <link rel="icon" href="/assets/img/icons/Logo_Alinea_white_big.png">
+        <link rel="icon" href="/assets/img/icons/Logo_Alinea_blanc_small.png">
         
         <!-- FONTS -->
         <script src="https://kit.fontawesome.com/20e04a2320.js" crossorigin="anonymous"></script>

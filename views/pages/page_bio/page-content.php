@@ -62,7 +62,7 @@
         <div class="musiciens-container">
             <h3 class="musiciens-name">Simone <span class="musiciens-name-lastname">Candian</span></h3>
             <div class="musiciens-2col">
-                <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_simone3.jpg');?>" alt="photo du musicien" title="photo du musicien">
+                <img class="musiciens-img" src="<?php echo($prefix_to_root_folder.'/assets/img/photos/musicians/photo_presentation_simone2.jpg');?>" alt="photo du musicien" title="photo du musicien">
                 <p class="musiciens-description">Originaire de Latina, banlieue Romaine.<br> Né le 23/01/1984<br>A l’aube d’un froid matin d’après tempête.<br>Heureux Père d’un petit garçon fabuleux. <br>Musicien aux multiples influences et à l’esprit rock Inconditionnel. <br>Apporte ses improvisations généreuses sur touches noires et blanches, pour le bonheur d’Alinea.<br>Aime à jouer au chat et à la souris avec le batteur.</p>
             </div>
             <p class="musiciens-role">Pianiste</p>

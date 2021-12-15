@@ -219,3 +219,8 @@ here I will just describe to the essential :
   - move css animations from `_socialmedia.scss` to `_animations.scss`
 - about 'namespaces' and 'use'
   - create php namespace for `debug_functions.php`, and for classes `Gallery.php` , `Album.php`, `Photo.php`.
+
+## 2021.12.15 (branch `master`)
+
+### Add metronome v2
+

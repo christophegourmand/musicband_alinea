@@ -16,8 +16,13 @@
                 <li class="navfooter-item">
                     <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_apropos.php');?>" target="_top">À propos</a>
                 </li>
+                <!-- 
                 <li class="navfooter-item">
-                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_metronome.php');?>" target="_top">Metronome ;-)</a>
+                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_metronome.php');?>" target="_top">Metronome v1</a>
+                </li>
+                 -->
+                <li class="navfooter-item">
+                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_metronome2.php');?>" target="_top">Metronome 2.0</a>
                 </li>
             </li>
         </ul>
