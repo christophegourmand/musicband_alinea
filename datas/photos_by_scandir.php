@@ -2,7 +2,6 @@
 require_once($prefix_to_root_folder."debug/debug_functions.php");
 use christophegourmand\debug as debug;
 
-
 // METHOD USING `SCANDIR` 
 // #####################################################################
 
