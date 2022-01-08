@@ -230,7 +230,7 @@ metronome.button_tempo_up.addEventListener(
     (event)=> {
         metronome.increaseTempo();
         metronome.stop(); // OPTIONNAL ?
-        metronome.start();
+        // metronome.start();
     }
 );
 
@@ -239,7 +239,7 @@ metronome.button_tempo_down.addEventListener(
     (event)=> {
         metronome.decreaseTempo();
         metronome.stop(); // OPTIONNAL ?
-        metronome.start();
+        // metronome.start();
     }
 );
 
@@ -258,7 +258,7 @@ metronome.tempo_input.addEventListener(
         metronome.tempo = parseInt(document.getElementById("metronome_tempo_input").value);
         metronome.updateDelayFromTempo(); // used to update the delay between pulse.
         metronome.stop(); // OPTIONNAL ?
-        metronome.start();
+        //metronome.start();
     }
 );
 
@@ -284,7 +284,7 @@ metronome.button_tempo_up.addEventListener(
     (event)=> {
         metronome.increaseTempo();
         metronome.stop(); // OPTIONNAL ?
-        metronome.start();
+        // metronome.start();
     }
 );
 
@@ -293,7 +293,7 @@ metronome.button_tempo_down.addEventListener(
     (event)=> {
         metronome.decreaseTempo();
         metronome.stop(); // OPTIONNAL ?
-        metronome.start();
+        // metronome.start();
     }
 );
 
