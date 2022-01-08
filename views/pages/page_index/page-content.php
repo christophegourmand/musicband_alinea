@@ -5,7 +5,7 @@
         <!-- CORRECTIONS: "Etrange" : É,  "sois-même" : soi-même,  "A la fois" : À  ,  "L'Alinéa à tout ça" : a -->
     </section>
 
-    <?php include($prefix_to_root_folder."views/modules/socialmedia.php")?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/modules/socialmedia.php")?>
 
     <img class="img-full-page" src="assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/alinea_00027_groupe_SD.jpeg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
 

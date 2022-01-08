@@ -1,8 +1,8 @@
 <main class="">
     <?php
-        include($prefix_to_root_folder.'datas/photos_array.php');
+        include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array.php');
         
-        require_once($prefix_to_root_folder."debug/debug_functions.php");
+        require_once($_SERVER['DOCUMENT_ROOT']."/"."debug/debug_functions.php");
         use christophegourmand\debug as debug;
 
         // on page_photos , when user click a photo thumbnail, the url pass 2 variables that we collect here : 
@@ -16,23 +16,23 @@
 
         // Definition of photo path (previous): 
             if ( intval($photo_id_from_url) === 0 ) {
-                $path_to_previous_photo = $prefix_to_root_folder.'views/pages/page_photos.php';
+                $path_to_previous_photo = '/views/pages/page_photos.php';
             } else {
-                $path_to_previous_photo = $prefix_to_root_folder.'views/pages/page_photos_big.php'.'?album_id='.$album_id_from_url.'&photo_id='.($photo_id_from_url - 1);
+                $path_to_previous_photo = '/views/pages/page_photos_big.php'.'?album_id='.$album_id_from_url.'&photo_id='.($photo_id_from_url - 1);
             }
 
         // Definition of photo path (next): 
             if ( intval($photo_id_from_url) >= $album_obj->getSize() - 1 ) {
-                $path_to_next_photo =  $prefix_to_root_folder.'views/pages/page_photos.php';
+                $path_to_next_photo = '/views/pages/page_photos.php';
             } else {
-                $path_to_next_photo =  $prefix_to_root_folder.'views/pages/page_photos_big.php'.'?album_id='.$album_id_from_url.'&photo_id='.($photo_id_from_url + 1);
+                $path_to_next_photo = '/views/pages/page_photos_big.php'.'?album_id='.$album_id_from_url.'&photo_id='.($photo_id_from_url + 1);
             }
     ?>
 
     <h1 class="page-title">Photos</h1>
 
     <div class="gallery">
-        <a class="gallery-img-btn img-btn--back" href="<?= $prefix_to_root_folder.'views/pages/page_photos.php';?>">
+        <a class="gallery-img-btn img-btn--back" href="<?= '/views/pages/page_photos.php';?>">
             <i class="fas fa-th"></i>
         </a>
         <h3 class="gallery-title"><?= $album_obj->getTitle(); ?></h3>

@@ -2,10 +2,10 @@
 
 //! IMPORTS  ###########################################################
 
-require_once($prefix_to_root_folder."models/media/Photo.php");
-require_once($prefix_to_root_folder."models/media/Album.php"); // class Album need class Photo to be declared first !
-require_once($prefix_to_root_folder."models/media/Gallery.php"); // class Album need class Photo to be declared first !
-require_once($prefix_to_root_folder."debug/debug_functions.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/"."models/media/Photo.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/"."models/media/Album.php"); // class Album need class Photo to be declared first !
+require_once($_SERVER['DOCUMENT_ROOT']."/"."models/media/Gallery.php"); // class Album need class Photo to be declared first !
+require_once($_SERVER['DOCUMENT_ROOT']."/"."debug/debug_functions.php");
 
 
 use christophegourmand\debug as debug;

@@ -45,4 +45,4 @@
     </div>
 <!-- </div> -->
 
-<script src="<?=$prefix_to_root_folder.'assets/js/green-audio-player.js' ?>"></script>
+<script src="<?=$_SERVER['DOCUMENT_ROOT']."/".'assets/js/green-audio-player.js' ?>"></script>

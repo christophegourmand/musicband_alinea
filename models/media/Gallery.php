@@ -3,7 +3,7 @@ namespace models\media;
 use christophegourmand\debug;
 
 
-// require_once($prefix_to_root_folder."models/media/Album.php");
+// require_once($_SERVER['DOCUMENT_ROOT']."/"."models/media/Album.php");
 
 // use models\media\Album as Album;
 

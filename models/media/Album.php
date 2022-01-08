@@ -1,7 +1,7 @@
 <?php 
 namespace models\media;
 
-// require_once($prefix_to_root_folder."models/Photo.php");
+// require_once($_SERVER['DOCUMENT_ROOT']."/"."models/Photo.php");
 
 
 class Album {

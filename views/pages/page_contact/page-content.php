@@ -1,4 +1,4 @@
-<?php include($prefix_to_root_folder.'datas/allSongs_variables.php')?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php')?>
 
 <main>
     <h2 class="page-title">Contact</h2>
@@ -66,7 +66,8 @@
         <div class="contact-body">
             <div class="contact-body_left-col">
                 <h4 class="contact-address">
-                    <a class="contact-link" href="<?=$prefix_to_root_folder.'controller/mailToChristopheGourmand.php'?>">me contacter</a>
+                    <!-- <a class="contact-link" href="<?=$_SERVER['DOCUMENT_ROOT']."/".'controller/mailToChristopheGourmand.php'?>">me contacter</a> -->
+                    <a class="contact-link" href="mailto:christophe.gourmand@gmail.com">me contacter</a>
                 </h4>
                 <h4 class="contact-address">
                     <a class="contact-link" href="https://www.linkedin.com/in/christophe-gourmand-295b87164/" target="_blank">LinkedIn</a>

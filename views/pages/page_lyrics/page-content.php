@@ -8,7 +8,7 @@
         $songToDisplay_nbr = $_GET['songClicked'];
     }
 
-    include($prefix_to_root_folder.'datas/allSongs_variables.php');
+    include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php');
     
     $song_assoArr = $allSongs_indArray[$songToDisplay_nbr];
     $song_title_str = $song_assoArr['song_title'];
@@ -28,19 +28,19 @@
 
         <aside class="songs-song-banner">
                 <div class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>">
-                    <a class="horizontalCard-btn btn-outline-white" href="<?=$prefix_to_root_folder.'views/pages/page_musiques.php';?>">
+                    <a class="horizontalCard-btn btn-outline-white" href="<?='/views/pages/page_musiques.php';?>">
                         <span class="btn-txt">&lt;</span>
                     </a>
-                    <a class="horizontalCard-link" href="<?=$prefix_to_root_folder.'views/pages/page_musiques.php';?>">
+                    <a class="horizontalCard-link" href="<?='/views/pages/page_musiques.php';?>">
                         <h3 class="horizontalCard-title horizontalCard-title--big"><?=$song_title_str?></h3>
                     </a>
                 </div>
         </aside>
 
         <?php if ($songToDisplay_nbr == 12):?>
-            <?php $song_mp3_source_str = $prefix_to_root_folder.'assets/audio/ALINEA_des-bemoles-et-des-dieses.mp3'; ?>
+            <?php $song_mp3_source_str = '/assets/audio/ALINEA_des-bemoles-et-des-dieses.mp3'; ?>
             
-            <?php include($prefix_to_root_folder.'views/modules/audio_player.php');?>
+            <?php include($_SERVER['DOCUMENT_ROOT']."/".'views/modules/audio_player.php');?>
         <?php endif; ?>
 
         <article class="lyrics white">

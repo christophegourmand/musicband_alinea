@@ -1,4 +1,4 @@
-<?php include($prefix_to_root_folder."common_variables.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/"."common_variables.php"); ?>
 
 <header>
     <div class="header-head">
@@ -14,7 +14,7 @@
 
         </div>
         
-        <?php include($prefix_to_root_folder."views/modules/navbar.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/modules/navbar.php"); ?>
     
     </div>
 

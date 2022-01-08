@@ -19,24 +19,24 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include($prefix_to_root_folder."views/common/head.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/head.php"); ?>
 
     <body>
         <div class="topPanel full-height" id="indexPage_topPanel">
-            <?php include($prefix_to_root_folder."views/common/header.php"); ?>
+            <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>
 
             <div class="topPanel-body">
-                <?php include($prefix_to_root_folder."views/pages/".$page_name."/topPanel-body.php"); ?>
+                <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/pages/".$page_name."/topPanel-body.php"); ?>
             </div>
         </div>
-        <?php include($prefix_to_root_folder."views/pages/".$page_name."/page-content.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/pages/".$page_name."/page-content.php"); ?>
 
-        <?php include($prefix_to_root_folder."views/common/footer.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/footer.php"); ?>
 
-        <?php include($prefix_to_root_folder."views/common/load_js_scripts.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/load_js_scripts.php"); ?>
         
         <!-- custom script, only for this page -->
-        <script src="<?php echo($prefix_to_root_folder.'assets/js/effetOnBloquote_indexPage.js')?>"></script>
-        <script src="<?php echo($prefix_to_root_folder.'assets/js/animationOnSocialMediaIcons.js')?>"></script>
+        <script src="<?php echo('/assets/js/effetOnBloquote_indexPage.js')?>"></script>
+        <script src="<?php echo('/assets/js/animationOnSocialMediaIcons.js')?>"></script>
     </body>
 </html>

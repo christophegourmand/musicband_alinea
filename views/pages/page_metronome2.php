@@ -14,7 +14,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include($prefix_to_root_folder."views/common/head.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/head.php"); ?>
 
     <body>
         <div class="metronome_html" id="metronome_html">
@@ -143,8 +143,8 @@
         
         </div>
 
-        <?php # require_once($prefix_to_root_folder."views/common/load_js_scripts.php"); ?>
+        <?php # require_once($_SERVER['DOCUMENT_ROOT']."/"."views/common/load_js_scripts.php"); ?>
 
-        <script src="<?php echo($prefix_to_root_folder.'assets/js/metronome2.js')?>"></script>
+        <script src="<?php echo('/assets/js/metronome2.js')?>"></script>
     </body>
 </html>

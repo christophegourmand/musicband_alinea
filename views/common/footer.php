@@ -3,26 +3,26 @@
     <nav class="navfooter">
         <ul class="navfooter-menus">
             <li class="navfooter-item">
-                <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_sitemap.php');?>">Plan du site</a>
+                <a class="navfooter-link" href="<?php echo('/views/pages/page_sitemap.php');?>">Plan du site</a>
             </li>
             <li class="navfooter-item">
                 <a class="navfooter-link" href="mailto:alineamusique@gmail.com" target="_top">Contacter le groupe</a>
             </li>
             <li class="navfooter-item">
-                <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_contact.php');?>" target="_top">Partenaires</a>
+                <a class="navfooter-link" href="<?php echo('/views/pages/page_contact.php');?>" target="_top">Partenaires</a>
                 <li class="navfooter-item">
                     <a class="navfooter-link" href="mailto:christophe.gourmand@gmail.com" target="_top">Contacter le Webmaster</a>
                 </li>
                 <li class="navfooter-item">
-                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_apropos.php');?>" target="_top">À propos</a>
+                    <a class="navfooter-link" href="<?php echo('/views/pages/page_apropos.php');?>" target="_top">À propos</a>
                 </li>
                 <!-- 
                 <li class="navfooter-item">
-                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_metronome.php');?>" target="_top">Metronome v1</a>
+                    <a class="navfooter-link" href="<?php echo('/views/pages/page_metronome.php');?>" target="_top">Metronome v1</a>
                 </li>
                  -->
                 <li class="navfooter-item">
-                    <a class="navfooter-link" href="<?php echo($prefix_to_root_folder.'views/pages/page_metronome2.php');?>" target="_top">Metronome 2.0</a>
+                    <a class="navfooter-link" href="<?php echo('/views/pages/page_metronome2.php');?>" target="_top">Metronome 2.0</a>
                 </li>
             </li>
         </ul>
