@@ -2431,8 +2431,8 @@ body {
 }
 
 body {
-  background-image: -webkit-gradient(linear, right top, left bottom, from(#0f083b), color-stop(63%, var(--metro-color-bg)));
-  background-image: linear-gradient(to bottom left, #0f083b, var(--metro-color-bg) 63%);
+  background-image: -webkit-gradient(linear, right top, left top, from(#0f083b), color-stop(63%, var(--metro-color-bg)));
+  background-image: linear-gradient(to left, #0f083b, var(--metro-color-bg) 63%);
 }
 
 .metronome_html {
