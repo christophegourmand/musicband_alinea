@@ -1,7 +1,6 @@
 <?php
 
 // VARIABLES USED TO BUILD PATH-TO-FILES : 
-    // $prefix_to_root_folder =   IS NOT DEFINED HERE   -->    is defined in "index.php" where this file is loaded.
 
     $page_name = "page_index"; // used to build paths-to-files
 

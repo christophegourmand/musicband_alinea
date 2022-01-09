@@ -1,6 +1,5 @@
 <?php 
 // VARIABLES USED TO BUILD PATH-TO-FILES :
-    $prefix_to_root_folder = "../../";
     $page_name = "page_musiques"; // used to build paths-to-files
 
 
