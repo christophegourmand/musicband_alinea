@@ -12,13 +12,13 @@
                 </h4>
                 <div class="socialMedia-mini-link-container">
                         <a class="socialMedia-mini-link" href="https://www.facebook.com/Alineamusique" target="_blank">
-                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/facebook/f_logo_RGB-White_58.png'?>" alt="logo facebook" title="logo facebook">
+                            <img class="socialMedia-mini-logo" src="<?='/assets/img/partners/facebook/f_logo_RGB-White_58.png'?>" alt="logo facebook" title="logo facebook">
                         </a>
                         <a class="socialMedia-mini-link" href="https://www.youtube.com/channel/UCKoysXy-RHdX1QtP4Ugr9Fw" target="_blank">
-                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/youtube/youtube_social_circle_dark.png'?>" alt="logo youtube" title="logo youtube">
+                            <img class="socialMedia-mini-logo" src="<?='/assets/img/partners/youtube/youtube_social_circle_dark.png'?>" alt="logo youtube" title="logo youtube">
                         </a>
                         <a class="socialMedia-mini-link" href="https://www.instagram.com/alineamusique/" target="_blank">
-                            <img class="socialMedia-mini-logo" src="<?=$prefix_to_root_folder.'assets/img/partners/instagram/glyph-logo_May2016_modified_white_400px.png'?>" alt="logo instagram" title="logo instagram">
+                            <img class="socialMedia-mini-logo" src="<?='/assets/img/partners/instagram/glyph-logo_May2016_modified_white_400px.png'?>" alt="logo instagram" title="logo instagram">
                         </a>
                 </div>
             </div>
