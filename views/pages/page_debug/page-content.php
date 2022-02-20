@@ -1,6 +1,10 @@
 <?php 
-    include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/datas/allSongs_variables.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/controller/Photosexplorer.php');
 
+    //print_r($_SERVER); 
+    $photosExplorer = new Photosexplorer($_SERVER['DOCUMENT_ROOT'].'/assets/img/photos/from-facebook/');
+    $photosExplorer->scanBaseFolder();
 ?>
 
 <main>
@@ -8,7 +12,7 @@
 
     <section class="debug">
         <pre>
-            <?php print_r($_SERVER); ?>
+            <?php var_dump($photosExplorer->getScannedElements() ); ?>
         </pre>
     </section>
 </main>

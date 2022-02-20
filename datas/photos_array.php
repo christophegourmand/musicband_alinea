@@ -80,7 +80,7 @@ $album1->addPhoto( new Photo("alinea_00050_instrument_guitare-thierry.jpg", "ins
 // --------------------------------------------------------------
 
 $album2 = new Album(
-    "2020.10.24",
+    "2020.10.23",
     "/assets/img/photos/from-facebook/2020.10.23/thumbnails/",
     "/assets/img/photos/from-facebook/2020.10.23/"
 );

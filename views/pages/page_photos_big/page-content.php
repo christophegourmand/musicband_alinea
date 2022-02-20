@@ -1,6 +1,6 @@
 <main class="">
     <?php
-        include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array.php');
+        include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array2.php');
         
         require_once($_SERVER['DOCUMENT_ROOT']."/"."debug/debug_functions.php");
         use christophegourmand\debug as debug;

@@ -3,10 +3,10 @@ namespace models\media;
 
 class Photo {
     // PROPERTIES
-    private string $filename; 
+    private string $filename;
     private string $description; 
-    private string $orientation; // (can only be 'portrait' or 'landscape' or 'square'
-    protected static array $authorizedOrientationValues = ['portrait', 'landscape' , 'square'];
+    private string $orientation; // (can only be 'portrait' or 'landscape' or 'square' or '')
+    protected static array $authorizedOrientationValues = ['portrait', 'landscape' , 'square' , ''];
 
     // CONSTRUCTOR
     public function __construct(string $filename_param, string $description_param, string $orientation_param)
