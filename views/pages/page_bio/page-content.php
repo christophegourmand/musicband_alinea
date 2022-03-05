@@ -78,5 +78,13 @@
             </div>
             <p class="musiciens-role">Guitariste</p>
         </div>
+        <div class="musiciens-container">
+            <h3 class="musiciens-name">Olivier <span class="musiciens-name-lastname">Berton</span></h3>
+            <div class="musiciens-2col">
+                <img class="musiciens-img" src="<?php echo('/assets/img/photos/musicians/photo_presentation_olivier.jpg');?>" alt="photo du musicien" title="photo du musicien">
+                <p class="musiciens-description">Doyen jusqu’à la première note de clavier. Né en février 1970 quelque part sur Terre. Autodidacte insatiable, sensible au grain de l'orgue B3, accro aux couleurs chaudes et froides des synthés d'hier, véritable ado devant un son numérique d'aujourd'hui. Il ose et propose pour des proses musicales, intercalaire des partitions écrites, le contre-temps est son tempo.</p>   
+            </div>
+            <p class="musiciens-role">Guitariste</p>
+        </div>
     </section>
 </main>
