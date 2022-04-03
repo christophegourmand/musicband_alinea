@@ -5,6 +5,7 @@ USE db_alinea;
 INSERT INTO music_album
     (
         name
+        , path_image
         , link_spotify
         , link_applemusic
         , link_itunes
@@ -16,6 +17,7 @@ INSERT INTO music_album
 VALUES
     (
         'Madison'
+        , "/assets/img/photos/album_madison_book/00_PochetteAvant.jpg"
         , 'https://open.spotify.com/album/5tUsiwIBO4IZFMte8EkkcO?si=28KYkyTjSXebE2GWhxlysQ'
         , 'https://music.apple.com/fr/album/1531322642?uo=4&app=music&at=1001l34Ux&lId=22318004&cId=none&sr=1&src=Linkfire&itscg=30440&itsct=catchall_p1&ct=LFV_2805aead92b6e14097073b3071c592dd&ls=1'
         , 'https://itunes.apple.com/fr/album/1531322642?uo=4&app=itunes&at=1001l34Ux&lId=22318004&cId=none&sr=3&src=Linkfire&itscg=30440&itsct=catchall_p3&ct=LFV_2805aead92b6e14097073b3071c592dd&ls=1'

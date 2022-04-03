@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS music_album
 (
     rowid INT(4) NOT NULL AUTO_INCREMENT
     , name VARCHAR(50) NOT NULL UNIQUE
-    , image VARCHAR(512)
+    , path_image VARCHAR(512)
     , link_spotify VARCHAR(512)
     , link_applemusic VARCHAR(512)
     , link_itunes VARCHAR(512)

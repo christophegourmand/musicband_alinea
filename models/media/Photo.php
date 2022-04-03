@@ -2,13 +2,19 @@
 namespace models\media;
 
 class Photo {
+    
+    // =========================================
     // PROPERTIES
+    // =========================================
+
     private string $filename;
     private string $description; 
     private string $orientation; // (can only be 'portrait' or 'landscape' or 'square' or '')
     protected static array $authorizedOrientationValues = ['portrait', 'landscape' , 'square' , ''];
 
+    // =========================================
     // CONSTRUCTOR
+    // =========================================
     public function __construct(string $filename_param, string $description_param, string $orientation_param)
     {
         $this->filename = $filename_param;
@@ -17,7 +23,9 @@ class Photo {
     }
 
 
+    // =========================================
     // GETTERS-SETTERS
+    // =========================================
     
     public function setFilename(string $filename_param): void {
         $this->filename = $filename_param;
@@ -52,7 +60,9 @@ class Photo {
         return $this->orientation;
     }
 
+    // =========================================
     // METHODS
+    // =========================================
 
     // TODO :  CREATE A METHOD `.previous()` and `.next()`
     /* these methods must check if the Photo instance is inside : `class Album -> getPhotos()` which is an array.

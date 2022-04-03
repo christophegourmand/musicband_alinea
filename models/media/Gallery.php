@@ -9,16 +9,22 @@ use christophegourmand\debug;
 
 class Gallery {
 
+    // =========================================
     // PROPERTIES
+    // =========================================
     private array $albums;
 
+    // =========================================
     // CONSTRUCTOR
+    // =========================================
     public function __construct () 
     {
         $this->albums = array();
     }
 
+    // =========================================
     // GETTERS-SETTERS
+    // =========================================
     public function getAlbums() :array
     {
         return $this->albums;
@@ -30,7 +36,9 @@ class Gallery {
         return $requestedAlbum;
     }
 
+    // =========================================
     // METHODS
+    // =========================================
 
     /* Add albums passed as parameters to the $albums array.
         About params:
