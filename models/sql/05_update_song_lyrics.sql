@@ -3,7 +3,7 @@ USE db_alinea;
 -- ==================================================================
 -- insertion des paroles de "Madison"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Madison dans son camion, bandana sur le front
 Elle sillonne le canton, en chantant « Holiday »
 Et sa clope et son blouson, c’est l’Américaine « Bombers »
@@ -54,7 +54,7 @@ WHERE rowid = 1
 -- ==================================================================
 -- insertion des paroles de "Soif"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "J’avais soif, d’effacer les graines de la réalité
 Soif. J’ai crié, hurlé, mille fois « inachevé »
 J’avais faim.
@@ -98,7 +98,7 @@ WHERE rowid = 2
 -- ==================================================================
 -- insertion des paroles de "Le Placard"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "J’ai fait l’inventaire, des petites choses, de nos affaires
 J’ai pris ma guitare, déposé des roses sur ton placard.
 
@@ -115,7 +115,7 @@ WHERE rowid = 3
 -- ==================================================================
 -- insertion des paroles de "L'Exil"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Qui a pris ma mémoire?
 J’ai un prix!
 Mon Karma, mon histoire
@@ -155,7 +155,7 @@ WHERE rowid = 4
 -- ==================================================================
 -- insertion des paroles de "Pas d'autre Monde"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Voyager dans d’autres temps, pour oublier ses problèmes
 Pardonner les bons moments, éteindre les systèmes
 S’évader, je ne sais comment, quand c’est toujours la même
@@ -184,7 +184,7 @@ WHERE rowid = 5
 -- ==================================================================
 -- insertion des paroles de "Post-It"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Il faudra bien se dire merci, le taire mais le dire, mon ami
 
 Il faudra bien se dire je t’aime, le taire mais le dire quand même
@@ -202,7 +202,7 @@ WHERE rowid = 6
 -- ==================================================================
 -- insertion des paroles de "Le Placard (instrumental)"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "..."
 WHERE rowid = 7
 ;
@@ -211,7 +211,7 @@ WHERE rowid = 7
 -- ==================================================================
 -- insertion des paroles de "Si tu vas bien"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Je revois ta lumière et j’y serai demain
 On sort enfin du désert mais toujours on y revient
 C’est l’enfer avant un point, c’est une issue sans fin
@@ -249,7 +249,7 @@ WHERE rowid = 8
 -- ==================================================================
 -- insertion des paroles de "Blanc et Noir"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Distinguer le blanc du noir
 Des panoplies de songes, et chacun son histoire
 Afficher, en blanc et noir
@@ -275,7 +275,7 @@ WHERE rowid = 9
 -- ==================================================================
 -- insertion des paroles de "Des foules de toi"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Encore un temps pour penser, on aurait donné nos vies jusqu’au dernier souffle
 Encore faut-il accepter, que le temps qui est promis est bien trop court
 Encore le temps de rêver, je vais penser à toi jusqu’au petit jour
@@ -311,7 +311,7 @@ WHERE rowid = 10
 -- ==================================================================
 -- insertion des paroles de "J'ai pas les mots"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "J’ai pas vraiment les mots qu’il faut
 J’ai pas vraiment les idées claires
 Pas expert en la matière
@@ -346,7 +346,7 @@ WHERE rowid = 11
 -- ==================================================================
 -- insertion des paroles de "J'écrirais"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "J’écrirais bien quelques poèmes,
 J’écrirais bien quelques amours
 Pourquoi pas un vieux requiem,
@@ -375,7 +375,7 @@ WHERE rowid = 12
 -- ==================================================================
 -- insertion des paroles de "Des bémols et des dièses"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Au fil des SOS,
 Ces vagues à l’âme qui nous enfumes
 Des sociétés en laisse,
@@ -417,7 +417,7 @@ WHERE rowid = 13
 -- ==================================================================
 -- insertion des paroles de "Y'a pas besoin"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Y’a pas besoin
 
 Y’a pas besoin, d’un scénario
@@ -458,7 +458,7 @@ WHERE rowid = 14
 -- ==================================================================
 -- insertion des paroles de "Permettez!"
 -- ==================================================================
-UPDATE song
+UPDATE music_song
 SET lyrics = "Il me vient, certains soirs, des idées
 Mesdames, et Messieurs, permettez...
 Je ne suis pas du genre à m’étaler

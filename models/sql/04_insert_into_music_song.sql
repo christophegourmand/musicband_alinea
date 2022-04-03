@@ -2,7 +2,7 @@ USE db_alinea;
 
 
 -- insertion des noms de morceaux pour l'album "Madison" (rowid = 1)
-INSERT INTO song
+INSERT INTO music_song
 (
     fk_album
     , name
@@ -104,7 +104,7 @@ VALUES
 
 
 -- insertion des noms de morceaux pour l'album "Nouveaux Morceaux" (rowid = 2)
-INSERT INTO song
+INSERT INTO music_song
 (
     fk_album
     , name

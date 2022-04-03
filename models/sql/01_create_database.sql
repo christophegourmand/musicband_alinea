@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS user
 -- CREATE INDEX idx_rowid ON user (rowid);
 
 -- =====================================
--- table for album
+-- table for music_album
 -- =====================================
-CREATE TABLE IF NOT EXISTS album
+CREATE TABLE IF NOT EXISTS music_album
 (
     rowid INT(4) NOT NULL AUTO_INCREMENT
     , name VARCHAR(50) NOT NULL UNIQUE
@@ -41,12 +41,12 @@ CREATE TABLE IF NOT EXISTS album
     , link_tidal VARCHAR(512)
     , PRIMARY KEY (rowid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- CREATE INDEX idx_rowid ON album (rowid);
+-- CREATE INDEX idx_rowid ON music_album (rowid);
 
 -- =====================================
 -- table for song
 -- =====================================
-CREATE TABLE IF NOT EXISTS song
+CREATE TABLE IF NOT EXISTS music_song
 (
     rowid INT(4) NOT NULL AUTO_INCREMENT
     , fk_album INT(4) NOT NULL
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS song
     , path_mp3 VARCHAR(512)
     , lyrics MEDIUMTEXT
     , PRIMARY KEY (rowid)
-    , FOREIGN KEY (fk_album) REFERENCES album(rowid)
+    , FOREIGN KEY (fk_album) REFERENCES music_album(rowid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- CREATE INDEX idx_rowid ON song (rowid);
 

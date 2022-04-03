@@ -2,7 +2,7 @@ USE db_alinea;
 
 
 -- insertion de l'album MADISON et ses liens dans la table `album`
-INSERT INTO album
+INSERT INTO music_album
     (
         name
         , link_spotify
@@ -28,7 +28,7 @@ VALUES
 
 
 -- insertion de l'album 'Nouveaux Morceaux' table `album`
-INSERT INTO album
+INSERT INTO music_album
     (
         name
     )
