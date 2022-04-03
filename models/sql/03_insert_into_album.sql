@@ -1,8 +1,8 @@
 USE db_alinea;
 
 
--- insertion de l'album MADISON et ses liens dans la table `albums`
-INSERT INTO albums
+-- insertion de l'album MADISON et ses liens dans la table `album`
+INSERT INTO album
     (
         name
         , link_spotify
@@ -27,8 +27,8 @@ VALUES
 ;
 
 
--- insertion de l'album 'Nouveaux Morceaux' table `albums`
-INSERT INTO albums
+-- insertion de l'album 'Nouveaux Morceaux' table `album`
+INSERT INTO album
     (
         name
     )

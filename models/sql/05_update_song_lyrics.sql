@@ -3,15 +3,8 @@ USE db_alinea;
 -- ==================================================================
 -- insertion des paroles de "Madison"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-1,
-"Madison dans son camion, bandana sur le front
+UPDATE song
+SET lyrics = "Madison dans son camion, bandana sur le front
 Elle sillonne le canton, en chantant « Holiday »
 Et sa clope et son blouson, c’est l’Américaine « Bombers »
 Elle fait le job sans question, en chantant du Buckley
@@ -27,7 +20,7 @@ __Madison,__
 __Comme une idée qui traverse,__
 __Madison,__
 __Plus de mensonge ni promesse,__
-__Madison, (Aller! Donne!]__
+__Madison, (Aller! Donne!)__
 __Jusqu’à quand la nuit nous laisse ?__
 
 Madison dans son appart’, des fumées et des cartes
@@ -54,22 +47,15 @@ __Pour qu’enfin on disparaisse,__
 __Madison,__
 __Jusqu’à quand la nuit nous laisse ?__
 "
-)
+WHERE rowid = 1
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Soif"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-2,
-"J’avais soif, d’effacer les graines de la réalité
+UPDATE song
+SET lyrics = "J’avais soif, d’effacer les graines de la réalité
 Soif. J’ai crié, hurlé, mille fois « inachevé »
 J’avais faim.
 Faim de richesses, de caresses, de paresses, de prouesses.
@@ -105,22 +91,15 @@ __De plus croire en rien, de lâcher les chiens__
 __De détonateurs, d’aller voir ailleurs__
 __De briser ma cage, de crier ma rage...__
 "
-)
+WHERE rowid = 2
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Le Placard"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-3,
-"J’ai fait l’inventaire, des petites choses, de nos affaires
+UPDATE song
+SET lyrics = "J’ai fait l’inventaire, des petites choses, de nos affaires
 J’ai pris ma guitare, déposé des roses sur ton placard.
 
 J’ai fait le bilan, des états d’âmes, des sentiments
@@ -129,22 +108,15 @@ J’écris des chansons comme thérapie des émotions.
 J’ai fait le silence aux aléas de ma conscience
 J’ai pris ma guitare, déposé les clés sur le placard.
 "
-)
+WHERE rowid = 3
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "L'Exil"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-4,
-"Qui a pris ma mémoire?
+UPDATE song
+SET lyrics = "Qui a pris ma mémoire?
 J’ai un prix!
 Mon Karma, mon histoire
 Et mes nuits
@@ -176,22 +148,15 @@ __Je ne sais plus quoi faire, de nos imaginaires__
 __Je m’exile, je m’exile, je m’exile__
 __Bat mon solitaire dans ce monde à l’envers__
 "
-)
+WHERE rowid = 4
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Pas d'autre Monde"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-5,
-"Voyager dans d’autres temps, pour oublier ses problèmes
+UPDATE song
+SET lyrics = "Voyager dans d’autres temps, pour oublier ses problèmes
 Pardonner les bons moments, éteindre les systèmes
 S’évader, je ne sais comment, quand c’est toujours la même
 Tournent la vie et les vents, et tout n’est que poèmes
@@ -212,22 +177,15 @@ C’est pour prendre le temps de comprendre, qu’il n’y a pas d’autres mond
 __Pas d’autre monde__
 __Pas d’autre monde__
 "
-)
+WHERE rowid = 5
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Post-It"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-6,
-"Il faudra bien se dire merci, le taire mais le dire, mon ami
+UPDATE song
+SET lyrics = "Il faudra bien se dire merci, le taire mais le dire, mon ami
 
 Il faudra bien se dire je t’aime, le taire mais le dire quand même
 
@@ -237,39 +195,24 @@ Faudra bien le dire! Le dire un jour!
 
 Faudra bien le dire, mon amour
 "
-)
+WHERE rowid = 6
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Le Placard (instrumental)"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-7,
-"...
-"
-)
+UPDATE song
+SET lyrics = "..."
+WHERE rowid = 7
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Si tu vas bien"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-8,
-"Je revois ta lumière et j’y serai demain
+UPDATE song
+SET lyrics = "Je revois ta lumière et j’y serai demain
 On sort enfin du désert mais toujours on y revient
 C’est l’enfer avant un point, c’est une issue sans fin
 On connait l’entrée du désert mais jamais on en revient
@@ -299,22 +242,15 @@ __Pour mes brûlures d’accord, si toi tu t’en tires bien__
 __Tu partiras tout-à-l’heure, tu reviendras demain__
 __Pour mes brûlures d’accord, mais si toi tu vas bien__
 "
-)
+WHERE rowid = 8
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Blanc et Noir"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-9,
-"Distinguer le blanc du noir
+UPDATE song
+SET lyrics = "Distinguer le blanc du noir
 Des panoplies de songes, et chacun son histoire
 Afficher, en blanc et noir
 Des plaisirs illustrés, des rêves ou des cauchemars
@@ -332,22 +268,15 @@ Diluer les nuances du fond de ton regard
 __Ou blanc ou noir__
 __Distinguer le blanc du noir__
 "
-)
+WHERE rowid = 9
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Des foules de toi"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-10,
-"Encore un temps pour penser, on aurait donné nos vies jusqu’au dernier souffle
+UPDATE song
+SET lyrics = "Encore un temps pour penser, on aurait donné nos vies jusqu’au dernier souffle
 Encore faut-il accepter, que le temps qui est promis est bien trop court
 Encore le temps de rêver, je vais penser à toi jusqu’au petit jour
 Alors faut-il accepter les chiens aux abois ou les poupées sourdes?
@@ -375,22 +304,15 @@ Ces foules de toi
 Full de toi
 Full de toi.
 "
-)
+WHERE rowid = 10
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "J'ai pas les mots"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-11,
-"J’ai pas vraiment les mots qu’il faut
+UPDATE song
+SET lyrics = "J’ai pas vraiment les mots qu’il faut
 J’ai pas vraiment les idées claires
 Pas expert en la matière
 J’ai pas les mots, j’ai pas les mots qu’il faut
@@ -417,22 +339,15 @@ Qu’est-ce que tu vois?
 Dans ces nuits là, qu’est-ce que tu vois?
 Dans mes nuits de poussières
 "
-)
+WHERE rowid = 11
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "J'écrirais"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-12,
-"J’écrirais bien quelques poèmes,
+UPDATE song
+SET lyrics = "J’écrirais bien quelques poèmes,
 J’écrirais bien quelques amours
 Pourquoi pas un vieux requiem,
 Une histoire à dormir debout
@@ -453,22 +368,15 @@ J’écrirais bien quelques amours
 Puisqu’elles sont mortes mes bohèmes,
 Puisque c’est ici qu’on s’échoue…
 "
-)
+WHERE rowid = 12
 ;
 
 
 -- ==================================================================
 -- insertion des paroles de "Des bémols et des dièses"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-13,
-"Au fil des SOS,
+UPDATE song
+SET lyrics = "Au fil des SOS,
 Ces vagues à l’âme qui nous enfumes
 Des sociétés en laisse,
 La face cachée de sa plume
@@ -496,7 +404,7 @@ Son bock de Bordelaise à la main, il s’imagine un futur…
 
 __Solo__
 "
-)
+WHERE rowid = 13
 ;
 
 
@@ -509,15 +417,8 @@ __Solo__
 -- ==================================================================
 -- insertion des paroles de "Y'a pas besoin"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-14,
-"Y’a pas besoin
+UPDATE song
+SET lyrics = "Y’a pas besoin
 
 Y’a pas besoin, d’un scénario
 Y’a pas besoin, de stéréo
@@ -548,7 +449,7 @@ Contre ta peau, y’a pas besoin
 Y’a pas besoin,
 Contre ta peau
 "
-)
+WHERE rowid = 14
 ;
 
 
@@ -557,15 +458,8 @@ Contre ta peau
 -- ==================================================================
 -- insertion des paroles de "Permettez!"
 -- ==================================================================
-INSERT INTO lyrics
-(
-    fk_song_id
-    , lyrics
-)
-VALUES
-(
-15,
-"Il me vient, certains soirs, des idées
+UPDATE song
+SET lyrics = "Il me vient, certains soirs, des idées
 Mesdames, et Messieurs, permettez...
 Je ne suis pas du genre à m’étaler
 Mais si ça vous dit d’en parler
@@ -584,7 +478,7 @@ Quelques larmes aux heures d’exquises libertés
 Moi qui ne sais plus où aller...
 Il me vient, par moments, des pensées
 "
-)
+WHERE rowid = 15
 ;
 
 

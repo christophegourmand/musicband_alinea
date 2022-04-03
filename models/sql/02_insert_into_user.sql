@@ -1,7 +1,7 @@
 USE db_alinea;
 
 -- creation des utilisateurs qui pourront se connecter sur le site
-INSERT INTO users 
+INSERT INTO user 
 (login, pass)
 VALUES 
     ('thierry','thierry_guitare')
