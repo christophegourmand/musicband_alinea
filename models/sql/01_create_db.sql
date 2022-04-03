@@ -62,3 +62,16 @@ CREATE TABLE IF NOT EXISTS lyrics
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- CREATE INDEX idx_rowid ON lyrics (rowid);
+
+
+-- table for song_mp3
+CREATE TABLE IF NOT EXISTS song_mp3
+(
+    rowid INT(4) NOT NULL AUTO_INCREMENT
+    , song_mp3 VARCHAR(512)
+    , fk_song_id INT(4)
+    , PRIMARY KEY (rowid)
+    , FOREIGN KEY (fk_song_id) REFERENCES songs(rowid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- CREATE INDEX idx_rowid ON song_mp3 (rowid);

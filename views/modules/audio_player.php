@@ -45,4 +45,4 @@
     </div>
 <!-- </div> -->
 
-<script src="<?=$_SERVER['DOCUMENT_ROOT']."/".'assets/js/green-audio-player.js' ?>"></script>
+<script src="/assets/js/green-audio-player.js"></script>

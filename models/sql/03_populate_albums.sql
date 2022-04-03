@@ -1,17 +1,7 @@
-
 USE db_alinea;
-INSERT INTO users 
-(login, pass)
-VALUES 
-    ('thierry','thierry_guitare')
-    , ('nini','nini_micro')
-    , ('nico','nico_batterie')
-    , ('ronron','ronron_bass')
-    , ('simone','simone_piano')
-    , ('olivier','olivier_clavier')
-    , ('anthony','anthony_guitare')
-;
 
+
+-- insertion de l'album MADISON et ses liens dans la table `albums`
 INSERT INTO albums
     (
         name
@@ -36,20 +26,14 @@ VALUES
     )
 ;
 
--- INSERT INTO songs
--- ()
--- VALUES
--- ()
--- , ()
--- , ()
--- , ()
--- ;
 
--- INSERT INTO lyrics
--- ()
--- VALUES
--- ()
--- , ()
--- , ()
--- , ()
--- ;
+-- insertion de l'album 'Nouveaux Morceaux' table `albums`
+INSERT INTO albums
+    (
+        name
+    )
+VALUES
+    (
+        'Nouveaux Morceaux'
+    )
+;

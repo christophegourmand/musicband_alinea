@@ -68,4 +68,16 @@
             <?php endfor; ?>
         </aside>
     </section>
+
+    <section class="album">
+        <h2 class="album-title">Nouveaux morceaux</h2>
+    </section>
+
+    <section class="songs">
+        <h3 class="page-title">Paroles</h3>
+        <aside class="songs-cards">
+            <!--  -->
+        </aside>
+    </section>
+
 </main>
