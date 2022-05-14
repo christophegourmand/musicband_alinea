@@ -9,4 +9,7 @@
 
 	var_dump($musicalbum1);
 
+
+
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/db_close.php");
 ?>

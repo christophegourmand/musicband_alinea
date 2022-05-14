@@ -21,9 +21,20 @@ class MusicAlbum {
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
-	public function __construct ()
+	// public function __construct() {	
+	// }
+	
+	public function __construct (string $name = "")
 	{
-
+		$this->name = $name;
+		$this->path_image = "" ;
+		$this->link_spotify = "" ;
+		$this->link_applemusic = "" ;
+		$this->link_itunes = "" ;
+		$this->link_deezer = "" ;
+		$this->link_amazonmusic = "" ;
+		$this->link_googleplay = "" ;
+		$this->link_tidal = "" ;
 	}
 
 	// =========================================
@@ -111,8 +122,28 @@ class MusicAlbum {
 		foreach($row_arrayAssoc as $fieldname => $value) {
 			$this->{$fieldname} = $value;
 		}
-
 	}
+
+	public function insert_into_db($mysqli){
+		// verify if instance-object is full of data
+		if ( isset($this->name) /*|| !empty($this->name) || $this->name != "" */) {
+			// prepare request
+			$sql_query = "INSERT INTO music_album";
+			$sql_query .= " (name, path_image, link_spotify, link_applemusic, link_itunes, link_deezer, link_amazonmusic, link_googleplay, link_tidal)";
+			$sql_query .= " VALUES ({$this->name}, {$this->path_image}, {$this->link_spotify}, {$this->link_applemusic}, {$this->link_itunes}, {$this->link_deezer}, {$this->link_amazonmusic}, {$this->link_googleplay}, {$this->link_tidal});";
+
+			$mysqli_query_result = $mysqli->query($sql_query);
+
+		}
+
+
+		// get database
+		// prepare request
+		// push it to database.
+
+
+    }
+
 
 }
 ?>

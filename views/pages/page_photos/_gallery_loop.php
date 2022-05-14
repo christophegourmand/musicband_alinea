@@ -1,7 +1,9 @@
 <!-- div class gallery-album -->
     <?php #include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array.php'); ?>
+    
+    
     <?php include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array2.php'); ?>
-        
+
     <?php foreach($gallery1->getAlbums() as $albumIndex => $album): ?>
         <h3 class="gallery-title"><?=$album->getTitle()?></h3>
 
@@ -9,7 +11,7 @@
             // $pathToOriginals = $album->getPath_to_thumbnails();
             // print $pathToOriginals;
         ?>
-        
+
         <div class="gallery-body-flex2">
 
             <?php foreach($album->getPhotos() as $photoIndex => $photo): ?>

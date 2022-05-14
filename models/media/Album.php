@@ -11,7 +11,7 @@ class Album {
     private string $title;          // DON'T FORGET TO CHANGE HTML TOO !
     private string $path_to_thumbnails; 
     private string $path_to_originals;
-    private array $photos;
+    public array $photos;
     private int $size;
     
     // =========================================
