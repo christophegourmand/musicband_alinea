@@ -1,6 +1,7 @@
-<?php 
+<?php
 namespace models\music;
 use christophegourmand\debug;
+use \Exception;
 
 class MusicAlbum {
 
@@ -109,22 +110,25 @@ class MusicAlbum {
 	// =========================================
 	// METHODS
 	// =========================================
-	public function fill_from_db($mysqli, $rowid)
+	public function loadFromDbById($mysqli, $rowid)
 	{
 		$sql_query = "SELECT * FROM music_album WHERE (rowid = $rowid);";
-		$mysqli_query_result = $mysqli->query($sql_query);
-		// $mysqli_query_result__num_rows = $mysqli_query_result->num_rows;
-		// $mysqli_query_result__field_count = $mysqli_query_result->field_count;
+		$mysqli_response = $mysqli->query($sql_query);
 
-		$row_arrayAssoc = $mysqli_query_result->fetch_assoc();
+		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
+		
+		if ($mysqli_nbOfRowsReceived == 1) {
+			$receivedMusicAlbumObject = $mysqli_response->fetch_object();
 
-		// fonctionne si le nom des propriétés de cette classe sont nommés
-		foreach($row_arrayAssoc as $fieldname => $value) {
-			$this->{$fieldname} = $value;
+			// fonctionne si le nom des propriétés de cette classe sont nommés
+			foreach($receivedMusicAlbumObject as $fieldname => $value) {
+				$this->{$fieldname} = (string) $value;
+			}		
 		}
 	}
 
-	public function insert_into_db($mysqli){
+	public function insertIntoDb($mysqli)
+	{
 		// verify if instance-object is full of data
 		if ( isset($this->name) /*|| !empty($this->name) || $this->name != "" */) {
 			// prepare request
@@ -132,17 +136,43 @@ class MusicAlbum {
 			$sql_query .= " (name, path_image, link_spotify, link_applemusic, link_itunes, link_deezer, link_amazonmusic, link_googleplay, link_tidal)";
 			$sql_query .= " VALUES ({$this->name}, {$this->path_image}, {$this->link_spotify}, {$this->link_applemusic}, {$this->link_itunes}, {$this->link_deezer}, {$this->link_amazonmusic}, {$this->link_googleplay}, {$this->link_tidal});";
 
-			$mysqli_query_result = $mysqli->query($sql_query);
+			$mysqli_response = $mysqli->query($sql_query);
+		}
+	}
 
+	public function updateIntoDb($mysqli)
+	{
+		// we check if the instance of MusicAlbum has at least a name and a rowid
+		if ( !empty( $this->name) && !empty( $this->rowid ))
+		{
+			$sql_query = "UPDATE music_album";
+			$sql_query .= " SET name = '$this->name'";
+			$sql_query .= " , path_image = '$this->path_image'";
+			$sql_query .= " , link_spotify = '$this->link_spotify'";
+			$sql_query .= " , link_applemusic = '$this->link_applemusic'";
+			$sql_query .= " , link_itunes = '$this->link_itunes'";
+			$sql_query .= " , link_deezer = '$this->link_deezer'";
+			$sql_query .= " , link_amazonmusic = '$this->link_amazonmusic'";
+			$sql_query .= " , link_googleplay = '$this->link_googleplay'";
+			$sql_query .= " , link_tidal = '$this->link_tidal'";
+			$sql_query .= " WHERE rowid = $this->rowid";
+
+			$mysqli_response = $mysqli->query($sql_query); // will be true or false
+
+			if (!$mysqli_response)
+			{
+				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
+			}
+
+			return $mysqli_response;
+			
+
+		} else 
+		{
+			throw new Exception("ERREUR : L'instance d'album n'a pas de rowid ou n'a pas de nom, et donc ne peut pas mettre à jour celui stocké en base de donnée."); // to indicate that 
 		}
 
-
-		// get database
-		// prepare request
-		// push it to database.
-
-
-    }
+	}
 
 
 }

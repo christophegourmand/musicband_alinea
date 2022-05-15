@@ -1,7 +1,7 @@
 <?php 
 	include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php');
-	require_once($_SERVER['DOCUMENT_ROOT'].'/chrisdebug.php');
-	session_start();
+	# require_once($_SERVER['DOCUMENT_ROOT'].'/chrisdebug.php');
+	# session_start();
 	// $_SESSION = 
 ?>
 
@@ -9,7 +9,7 @@
 	<h2 class="page-title">Connexion</h2>
 	<?php # dbug('$_SERVER', $_SERVER, 'html_dump') ?>
 	<section class="connexion">
-		<form id="connect_form" method="POST" action="<?='/controller/controller_user_create.php'?>" class="form">
+		<form id="connect_form" method="POST" action="<?='/controller/controller_user_connect.php'?>" class="form">
 			<input type="hidden" name="action" value="sendform">
 			<div>
 				<label for="connect_login">Identifiant</label>
