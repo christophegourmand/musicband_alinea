@@ -3,7 +3,7 @@ namespace models\music;
 use christophegourmand\debug;
 use \Exception;
 
-class MusicAlbum {
+class MusicSong {
 
 	// =========================================
 	// PROPERTIES
@@ -18,7 +18,6 @@ class MusicAlbum {
 	private string $link_amazonmusic;
 	private string $link_googleplay;
 	private string $link_tidal;
-	private array $songs; // not in database
 
 	// =========================================
 	// CONSTRUCTOR
@@ -37,7 +36,6 @@ class MusicAlbum {
 		$this->link_amazonmusic = "";
 		$this->link_googleplay = "";
 		$this->link_tidal = "";
-		$this->songs = [];  // not in database
 	}
 
 	// =========================================
@@ -108,7 +106,6 @@ class MusicAlbum {
 	public function get_link_amazonmusic() { return $this->link_amazonmusic; }
 	public function get_link_googleplay() { return $this->link_googleplay; }
 	public function get_link_tidal() { return $this->link_tidal; }
-	public function get_songs() { return $this->songs; }
 
 	// =========================================
 	// METHODS
@@ -120,29 +117,13 @@ class MusicAlbum {
 
 		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
 		
-		if ($mysqli_nbOfRowsReceived == 1) 
-		{
+		if ($mysqli_nbOfRowsReceived == 1) {
 			$receivedMusicAlbumObject = $mysqli_response->fetch_object();
 
 			// fonctionne si le nom des propriétés de cette classe sont nommés
-			foreach($receivedMusicAlbumObject as $fieldname => $value) 
-			{
+			foreach($receivedMusicAlbumObject as $fieldname => $value) {
 				$this->{$fieldname} = (string) $value;
-			}		
-		}
-	}
-
-	public function loadSongsFromDbById($mysqli , $rowid)
-	{
-		$sql_query = "SELECT * FROM music_song WHERE (fk_album = $this->rowid);";
-		$mysqli_response = $mysqli->query($sql_query);
-
-		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
-		if ($mysqli_nbOfRowsReceived > 0)
-		{
-			$receivedSongs = $mysqli_response->fetch_all(MYSQLI_ASSOC);
-			// MYSQLI_ASSOC ou MYSQLI_NUM ou MYSQLI_BOTH
-			$this->songs = $receivedSongs;
+			}
 		}
 	}
 
@@ -180,7 +161,7 @@ class MusicAlbum {
 
 			if (!$mysqli_response)
 			{
-				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
+				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
 			}
 
 			return $mysqli_response;

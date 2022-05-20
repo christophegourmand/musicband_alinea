@@ -2,13 +2,13 @@ USE db_alinea;
 
 -- creation des utilisateurs qui pourront se connecter sur le site
 INSERT INTO user 
-(login, pass)
+(login, pass, active)
 VALUES 
-    ('thierry','thierry_guitare')
-    , ('nini','nini_micro')
-    , ('nico','nico_batterie')
-    , ('ronron','ronron_bass')
-    , ('simone','simone_piano')
-    , ('olivier','olivier_clavier')
-    , ('anthony','anthony_guitare')
+    ('thierry','thierry_guitare' , 1)
+    , ('nini','nini_micro' , 1)
+    , ('nico','nico_batterie' , 1)
+    , ('ronron','ronron_basse' , 0)
+    , ('simone','simone_piano' , 0)
+    , ('olivier','olivier_clavier' , 1)
+    , ('anthony','anthony_guitare' , 1)
 ;

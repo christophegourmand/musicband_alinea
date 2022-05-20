@@ -18,10 +18,15 @@ CREATE TABLE IF NOT EXISTS user
     , login VARCHAR(50) NOT NULL
     , pass VARCHAR(128) NOT NULL
     , pass_encoded VARCHAR(128) NOT NULL DEFAULT ''
+    , active BOOLEAN
     , datecreation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     , datelastconnection DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     , PRIMARY KEY (rowid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB 
+# DEFAULT CHARSET=utf8
+;
 -- CREATE INDEX idx_rowid ON user (rowid);
 
 -- =====================================
@@ -40,7 +45,11 @@ CREATE TABLE IF NOT EXISTS music_album
     , link_googleplay VARCHAR(512)
     , link_tidal VARCHAR(512)
     , PRIMARY KEY (rowid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB 
+# DEFAULT CHARSET=utf8
+;
 -- CREATE INDEX idx_rowid ON music_album (rowid);
 
 -- =====================================
@@ -56,6 +65,10 @@ CREATE TABLE IF NOT EXISTS music_song
     , lyrics MEDIUMTEXT
     , PRIMARY KEY (rowid)
     , FOREIGN KEY (fk_album) REFERENCES music_album(rowid)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB 
+# DEFAULT CHARSET=utf8
+;
 -- CREATE INDEX idx_rowid ON song (rowid);
 

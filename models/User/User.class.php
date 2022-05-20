@@ -8,6 +8,7 @@ class User {
 	private string $login;
 	private string $pass;
 	private string $pass_encoded;
+	private bool $active;
 	private string $date_creation; // REVIEW - est-ce le bon format pour une date ?
 	private string $date_last_connection; // REVIEW - est-ce le bon format pour une date ?
 
@@ -31,6 +32,43 @@ class User {
 	public function setPass (string $pass_given){ 
 		$this->pass = $pass_given; 
 	}
+	public function setActive (string $active_given){ 
+		$this->active = $active_given; 
+	}
+
+	
+	# public function setAa (){}
+	# public function setAa (){}
+	# public function setAa (){}
+
+	// Getters ----------------------------------
+	public function getLogin () 
+	{ 
+		return $this->login; 
+	}
+
+	public function getPass () 
+	{
+		return $this->pass; 
+	}
+
+	public function getPassEncoded () 
+	{ 
+		return $this->pass_encoded; 
+	}
+
+	public function getActive () 
+	{ 
+		return $this->active; 
+	}
+
+	# public function getAa (){}
+	# public function getAa (){}
+	# public function getAa (){}
+
+	// =========================================
+	// METHODS
+	// =========================================
 
 	/*
 	* Check if a User exist with this login.
@@ -98,6 +136,7 @@ class User {
 			$this->login = $receivedUserObject->login;
 			$this->pass = $receivedUserObject->pass;
 			$this->pass_encoded = $receivedUserObject->pass_encoded;
+			$this->active = $receivedUserObject->active;
 			$this->date_creation = $receivedUserObject->datecreation;
 			$this->date_last_connection = $receivedUserObject->datelastconnection;
 
@@ -110,22 +149,9 @@ class User {
 		}
 
 	}
-	
-	# public function setAa (){}
-	# public function setAa (){}
-	# public function setAa (){}
 
-	// Getters ----------------------------------
-	# public function getAa (){}
-	# public function getAa (){}
-	# public function getAa (){}
-	# public function getAa (){}
-	# public function getAa (){}
-	# public function getAa (){}
 
-	// =========================================
-	// METHODS
-	// =========================================
+
 
 }
 
