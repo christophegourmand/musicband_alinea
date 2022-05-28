@@ -161,7 +161,7 @@ class MusicSong {
 
 			if (!$mysqli_response)
 			{
-				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
+				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
 			}
 
 			return $mysqli_response;

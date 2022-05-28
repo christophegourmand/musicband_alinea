@@ -4,20 +4,22 @@ USE db_alinea;
 -- insertion de l'album MADISON et ses liens dans la table `album`
 INSERT INTO music_album
     (
-        name
-        , path_image
-        , link_spotify
-        , link_applemusic
-        , link_itunes
-        , link_deezer
-        , link_amazonmusic
-        , link_googleplay
-        , link_tidal
+        `active`
+        , `name`
+        , `path_image`
+        , `link_spotify`
+        , `link_applemusic`
+        , `link_itunes`
+        , `link_deezer`
+        , `link_amazonmusic`
+        , `link_googleplay`
+        , `link_tidal`
     )
 VALUES
     (
-        'Madison'
-        , "/assets/img/photos/album_madison_book/00_PochetteAvant.jpg"
+        1 -- active
+        , 'Madison'
+        , '/assets/img/photos/album_madison_book/00_PochetteAvant.jpg'
         , 'https://open.spotify.com/album/5tUsiwIBO4IZFMte8EkkcO?si=28KYkyTjSXebE2GWhxlysQ'
         , 'https://music.apple.com/fr/album/1531322642?uo=4&app=music&at=1001l34Ux&lId=22318004&cId=none&sr=1&src=Linkfire&itscg=30440&itsct=catchall_p1&ct=LFV_2805aead92b6e14097073b3071c592dd&ls=1'
         , 'https://itunes.apple.com/fr/album/1531322642?uo=4&app=itunes&at=1001l34Ux&lId=22318004&cId=none&sr=3&src=Linkfire&itscg=30440&itsct=catchall_p3&ct=LFV_2805aead92b6e14097073b3071c592dd&ls=1'
@@ -32,10 +34,12 @@ VALUES
 -- insertion de l'album 'Nouveaux Morceaux' table `album`
 INSERT INTO music_album
     (
-        name
+        `active`
+        , `name`
     )
 VALUES
     (
+        1 -- active
         'Nouveaux Morceaux'
     )
 ;
