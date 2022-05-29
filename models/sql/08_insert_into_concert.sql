@@ -22,6 +22,6 @@ VALUES
 		, 'Crémieux'
 		, 'https://goo.gl/maps/dfiKFMc7ahCrUYkUA'
 		, 'assets/img/concerts/2022-04-09_les-ursulines.jpeg'
-		, "Ici apparaîtra un texte d'accroche du concert. Venez nombreux pour boire de la bonne bière brassée dans ce lieu convivial, tout en assistant au concert que nous vous avons préparé !"
+		, "Ici apparaîtra un texte d\'accroche du concert. Venez nombreux pour boire de la bonne bière brassée dans ce lieu convivial, tout en assistant au concert que nous vous avons préparé !"
 	)
 ;

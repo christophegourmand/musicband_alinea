@@ -1,13 +1,13 @@
 -- delete database first (comment line to not drop)
-DROP DATABASE IF EXISTS `db_alinea`;
+DROP DATABASE IF EXISTS db_alinea;
 
 -- =====================================
 -- create database
 -- =====================================
-CREATE DATABASE IF NOT EXISTS `db_alinea`
-COLLATE = 'utf8mb4_general_ci';
+CREATE DATABASE IF NOT EXISTS db_alinea
+COLLATE 'utf8mb4_general_ci';
 
-USE `db_alinea`;
+USE db_alinea;
 
 -- =====================================
 -- table for group
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `group`
 
     , PRIMARY KEY (`rowid`)
 )
-COLLAGE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `right`
     
     , PRIMARY KEY (`rowid`)
 )
-COLLAGE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
@@ -44,18 +44,22 @@ ENGINE=InnoDB
 CREATE TABLE IF NOT EXISTS `asso_group_right`
 (
     `rowid` INT(3) NOT NULL AUTO_INCREMENT
-    , `fk_group_rowid` INT(4) NOT NULL ON DELETE CASCADE
-    , `fk_right_rowid` INT(4) NOT NULL ON DELETE CASCADE
+    , `fk_group_rowid` INT(4) NOT NULL
+    , `fk_right_rowid` INT(4) NOT NULL
 
     , PRIMARY KEY (`rowid`)
-    , FOREIGN KEY (`fk_group_rowid`) REFERENCES group(`rowid`)
-    , FOREIGN KEY (`fk_right_rowid`) REFERENCES right(`rowid`)
+    , FOREIGN KEY (`fk_group_rowid`) 
+        REFERENCES `group` (`rowid`) 
+        ON DELETE CASCADE
+    , FOREIGN KEY (`fk_right_rowid`) 
+        REFERENCES `right` (`rowid`) 
+        ON DELETE CASCADE
 )
-COLLAGE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
-ATER TABLE `asso_group_right`
+ALTER TABLE `asso_group_right`
 ADD UNIQUE INDEX `idx_rowid_groupid_rightid` (`rowid` , `fk_group_rowid` , `fk_right_rowid`);
 
 -- =====================================
@@ -74,9 +78,10 @@ CREATE TABLE IF NOT EXISTS `user`
     , `email` VARCHAR(100)
 
     , PRIMARY KEY (`rowid`)
-    , FOREIGN KEY (`fk_group_rowid`) REFERENCES group(`rowid`)
+    , FOREIGN KEY (`fk_group_rowid`) 
+        REFERENCES `group` (`rowid`)
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
@@ -94,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `preference`
     
     , PRIMARY KEY (`rowid`)
 )
-COLLAGE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
@@ -108,14 +113,16 @@ CREATE TABLE IF NOT EXISTS `asso_user_preference`
     , `fk_preference_rowid` INT(4) NOT NULL
 
     , PRIMARY KEY (`rowid`)
-    , FOREIGN KEY (`fk_user_rowid`) REFERENCES user(`rowid`)
-    , FOREIGN KEY (`fk_preference_rowid`) REFERENCES preference(`rowid`)
+    , FOREIGN KEY (`fk_user_rowid`) 
+        REFERENCES `user` (`rowid`) ON DELETE CASCADE
+    , FOREIGN KEY (`fk_preference_rowid`) 
+        REFERENCES `preference` (`rowid`) ON DELETE CASCADE
 )
-COLLAGE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
 
-ATER TABLE `asso_user_preference`
+ALTER TABLE `asso_user_preference`
 ADD UNIQUE INDEX `idx_rowid_userid_prefid` (`rowid` , `fk_user_rowid` , `fk_preference_rowid`);
 
 
@@ -137,13 +144,13 @@ CREATE TABLE IF NOT EXISTS `music_album`
     , `link_tidal` VARCHAR(512)
     , PRIMARY KEY (`rowid`)
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
 
 ALTER TABLE `music_album` 
-ADD UNIQUE INDEX `idx_rowid_name` (`rowid` , `name`);
+ADD UNIQUE INDEX `idx_music_album_rowid_name` (`rowid` , `name`);
 
 -- =====================================
 -- table for song
@@ -158,15 +165,15 @@ CREATE TABLE IF NOT EXISTS `music_song`
     , `path_mp3` VARCHAR(512)
     , `lyrics` MEDIUMTEXT
     , PRIMARY KEY (`rowid`)
-    , FOREIGN KEY (`fk_album_rowid`) REFERENCES music_album(`rowid`) ON DELETE NO ACTION
+    , FOREIGN KEY (`fk_album_rowid`) REFERENCES `music_album` (`rowid`) ON DELETE NO ACTION
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
 
 ALTER TABLE `music_song` 
-ADD UNIQUE INDEX `idx_rowid_name` (`rowid` , `name`);
+ADD UNIQUE INDEX `idx_music_song_rowid_name` (`rowid` , `name`);
 
 
 -- =====================================
@@ -183,13 +190,13 @@ CREATE TABLE IF NOT EXISTS `product`
 
     , PRIMARY KEY (`rowid`)
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
 
 ALTER TABLE `product`
-ADD UNIQUE INDEX `idx_rowid_name` (`rowid` , `name`);
+ADD UNIQUE INDEX `idx_product_rowid_name` (`rowid` , `name`);
 
 -- =====================================
 -- table for productImage
@@ -204,13 +211,16 @@ CREATE TABLE IF NOT EXISTS `productimage`
     , `alt_text` VARCHAR(200)
 
     , PRIMARY KEY (`rowid`)
-    , FOREIGN KEY (`fk_product_rowid`) REFERENCES product (`rowid`)
+    , FOREIGN KEY (`fk_product_rowid`) 
+        REFERENCES `product` (`rowid`) 
+        ON DELETE CASCADE
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
 
+ALTER TABLE `productimage`
 ADD UNIQUE INDEX `idx_rowid_title` (`rowid` , `title`);
 
 
@@ -251,10 +261,10 @@ CREATE TABLE IF NOT EXISTS `concert`
 
     , PRIMARY KEY (`rowid`)
 )
-COLLATE='utf8mb4_general_ci'
+COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
 # DEFAULT CHARSET=utf8
 ;
 
-ALTER TABLE `product`
-ADD UNIQUE INDEX `idx_rowid_name` (`rowid` , `name`);
+ALTER TABLE `concert`
+ADD UNIQUE INDEX `idx_concert_rowid_venue_name` (`rowid` , `venue_name`);

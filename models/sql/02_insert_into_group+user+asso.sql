@@ -2,7 +2,7 @@ USE db_alinea;
 
 -- creation des roles pour les utilisateurs
 INSERT INTO `group`
-(`groupename`)
+(`groupname`)
 VALUES
     ('webadmin')
     , ('band_musicians')
@@ -45,7 +45,7 @@ VALUES
 ;
 
 
-INSET INTO `asso_group_right`
+INSERT INTO `asso_group_right`
 (`fk_group_rowid` , `fk_right_rowid`)
 VALUES
 -- group 1:webadmin
@@ -108,7 +108,7 @@ INSERT INTO `user`
 (`active` , `login` , `pass` , `fk_group_rowid`, `email`)
 VALUES 
     (1, 'christophe', '0uvreToi!ali', 1 , 'christophe.gourmand@gmail.com')
-    (1 , 'thierry' , 'thierry_guitare' , 1 , 'alineamusique@gmail.com')
+    , (1 , 'thierry' , 'thierry_guitare' , 1 , 'alineamusique@gmail.com')
     , (1 , 'nini' , 'nini_micro' , 2 , '') -- nicki.rafidy@wanadoo.fr (avoir son accord)
     , (1 , 'nico' , 'nico_batterie' , 1 , 'civifrance8@gmail.com')
     , (0 , 'ronron' , 'ronron_basse' , 2 , '')

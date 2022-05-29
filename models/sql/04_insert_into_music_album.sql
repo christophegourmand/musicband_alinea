@@ -40,6 +40,6 @@ INSERT INTO music_album
 VALUES
     (
         1 -- active
-        'Nouveaux Morceaux'
+        , 'Nouveaux Morceaux'
     )
 ;

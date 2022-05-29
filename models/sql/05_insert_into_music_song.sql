@@ -29,7 +29,7 @@ VALUES
     , 
     (
         1
-        , 1 
+        , 1
         , 'Le Placard' 
         , '../img/photos/album_madison_backgrounds/madison_le-placard.jpg'
         , ''
@@ -38,7 +38,7 @@ VALUES
     (
         1
         , 1 
-        , 'L'Exil' 
+        , "L'Exil" 
         , '../img/photos/album_madison_backgrounds/madison_lexil.jpg'
         , ''
     )
@@ -46,7 +46,7 @@ VALUES
     (
         1
         , 1 
-        , 'Pas d'autre Monde' 
+        , "Pas d'autre Monde" 
         , '../img/photos/album_madison_backgrounds/madison_pas-dautre-monde.jpg'
         , ''
     )
@@ -94,7 +94,7 @@ VALUES
     (
         1
         , 1 
-        , 'J'ai pas les mots' 
+        , "J'ai pas les mots" 
         , '../img/photos/album_madison_backgrounds/madison_jai-pas-les-mots.jpg'
         , ''
     )
@@ -102,7 +102,7 @@ VALUES
     (
         1
         , 1 
-        , 'J'écrirais' 
+        , "J'écrirais" 
         , 'https://source.unsplash.com/5_Ez6yEh8EE/500x300'
         , ''
     )
@@ -120,10 +120,11 @@ VALUES
 -- insertion des noms de morceaux pour l'album "Nouveaux Morceaux" (rowid = 2)
 INSERT INTO music_song
 (
-    fk_album
-    , name
-    , path_image
-    , path_mp3
+    `active`
+    , `fk_album_rowid`
+    , `name`
+    , `path_image`
+    , `path_mp3`
 )
 VALUES
     (
