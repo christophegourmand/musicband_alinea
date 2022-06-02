@@ -1,30 +1,90 @@
 <?php
-class User {
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
+
+class User extends Model implements Modalable {
 
 	// =========================================
 	// PROPERTIES
 	// =========================================
-	private int $rowid;
+	private bool $active;
 	private string $login;
 	private string $pass;
 	private string $pass_encoded;
-	private bool $active;
 	private string $date_creation; // REVIEW - est-ce le bon format pour une date ?
 	private string $date_last_connection; // REVIEW - est-ce le bon format pour une date ?
+	private Group $group;
 
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		//--- we use parent constructor AND pass tablename for the parent's property $tableName
+		parent::__construct('user');
+		$this->rowDatas = []; // defined in Model.class.php
 	}
 
+
+	// =========================================
+	// CRUD
+	// =========================================
+
+	public function create(Mysqli $mysqli)
+	{
+		try {
+			self::$dbHandler->insertRow($mysqli , $this);
+		} catch (Exception $exception) {
+			throw $exception;
+		}
+
+		return true; // REVIEW : bonne manière ?
+	}
+
+	public function load(Mysqli $mysqli , int $rowid)
+	{
+		//--- load the row so $this->rowDatas will be full.
+		self::$dbHandler->loadRow($mysqli , $this , ["rowid = $rowid"]);
+
+		//--- re-affect datas from rowDatas to each properties of this object
+		$this->rowid = (int) $this->rowDatas['rowid'];
+		$this->active = (bool) $this->rowDatas['active'];
+		$this->login = (string) $this->rowDatas['login'];
+		$this->pass = (string) $this->rowDatas['pass'];
+		$this->pass_encoded = (string) $this->rowDatas['pass_encoded'];
+		$this->date_creation = (string) $this->rowDatas['date_creation'];
+		$this->date_last_connection = (string) $this->rowDatas['date_last_connection'];
+
+		// TODO : instancier une classe group puis utiliser la methode `loadRow` et passer $this->rowDatas['fk_group_rowid'] en guise de rowid pour `loadRow`.
+		$groupOfUser = new Group();
+		$groupOfUser->load($mysqli , $this->rowDatas['fk_group_rowid']);
+		$this->group = $groupOfUser;
+
+	}
+	
+	// TODO : À CODER
+	public function update(Mysqli $mysqli , int $rowid)
+	{
+		self::$dbHandler->updateRow($mysqli , $this , ["rowid = $rowid"]);
+		return true;
+	}
+	
+	// TODO : À CODER
+	public function delete(Mysqli $mysqli , int $rowid)
+	{
+		return "user a été deleté";
+	}
+	
+
+
+
+
+//! ===== CI-DESSOUS : NON ADAPTÉS À Model et Modelable ========
 
 	// =========================================
 	// GETTERS-SETTERS
 	// =========================================
 
-	// Setters ----------------------------------
+	//--- Setters ----------------------------------
 	public function setLogin (string $login_given){
 		// todo : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
 		$this->login = $login_given;
@@ -37,11 +97,8 @@ class User {
 	}
 
 	
-	# public function setAa (){}
-	# public function setAa (){}
-	# public function setAa (){}
+	//--- Getters ----------------------------------
 
-	// Getters ----------------------------------
 	public function getLogin () 
 	{ 
 		return $this->login; 
@@ -62,10 +119,6 @@ class User {
 		return $this->active; 
 	}
 
-	# public function getAa (){}
-	# public function getAa (){}
-	# public function getAa (){}
-
 	// =========================================
 	// METHODS
 	// =========================================
@@ -74,11 +127,8 @@ class User {
 	* Check if a User exist with this login.
 	*
 	*/
-	public function loginExist(string $login)
+	public function loginExist(Mysqli $mysqli , string $login)
 	{
-		require($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-		// global $mysqli;
-
 		$sql_query = "SELECT u.login";
 		$sql_query .= " FROM user AS u";
 		$sql_query .= " WHERE u.login = '${login}'";
@@ -87,8 +137,6 @@ class User {
 
 		$mysqli_nbOfRowsReceived = $mysqli_response->num_rows;
 		
-		require($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
-
 		if ($mysqli_nbOfRowsReceived > 0) {
 			return true;
 		} else {
@@ -96,14 +144,12 @@ class User {
 		}
 	}
 
-	/*
+	/**
 	* charge le user depuis la database.
 	*
 	*/
-	public function loadFromLogin (string $login)
+	public function loadFromLogin (Mysqli $mysqli , string $login) // REVIEW: TOUJOURS UTILE ? 
 	{
-		require($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-		
 		$sql_query = "SELECT *";
 		$sql_query .= " FROM user AS u";
 		$sql_query .= " WHERE u.login = '${login}'";
@@ -111,11 +157,8 @@ class User {
 		$mysqli_response = $mysqli->query($sql_query);
 
 		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
-		
-
 
 		// si il y a plus que 1.  UPDATE : inutile de traiter ce cas car je ferai en sorte qu'un user ne puisse jamais avoir le même login qu'un autre.
-
 
 		if ($mysqli_nbOfRowsReceived == 1) { // si il y a 1
 	
@@ -140,19 +183,12 @@ class User {
 			$this->date_creation = $receivedUserObject->datecreation;
 			$this->date_last_connection = $receivedUserObject->datelastconnection;
 
-			// fermer la connexion
-			require($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
-
 			return true;
 		} else { // si il y a 0
 			return false;
 		}
 
 	}
-
-
-
-
 }
 
 

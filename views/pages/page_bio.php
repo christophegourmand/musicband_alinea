@@ -1,4 +1,6 @@
-<?php 
+<?php  
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+
 // VARIABLES USED TO BUILD PATH-TO-FILES :
     $page_name = "page_bio"; // used to build paths-to-files
 
@@ -30,3 +32,7 @@
         <?php require_once($_SERVER['DOCUMENT_ROOT']."/"."views/common/load_js_scripts.php"); ?>
     </body>
 </html>
+
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
+?>

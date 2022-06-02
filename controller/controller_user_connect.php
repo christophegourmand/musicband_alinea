@@ -2,6 +2,8 @@
 // ======================================================================
 // IMPORTS
 
+require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User/User.class.php");
 
 
@@ -31,7 +33,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'sendform'){
 	// $userExist = $user->loginExist('anthony');
 
 	// si il existe , utiliser une fonction `load()`pour recuperer les infos du user.
-	if ($user->loginExist($connect_login)) {
+	if ($user->loginExist($mysqli , $connect_login)) {
 		$user->loadFromLogin($connect_login);
 		echo '<h4>Le user a bien été chargé depuis la Database.</h4>';
 		echo '<pre>';  @var_dump($user);  echo '</pre>';  exit('END');    //! DEBUG
@@ -43,6 +45,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'sendform'){
 
 	// echo '<pre>';  @var_dump($userExist);  echo '</pre>';  //exit('END');    //! DEBUG
 
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 }
 
 

@@ -1,3 +1,8 @@
+<?php 
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+?>
+
+
 <!DOCTYPE html>
 <html>
 <!-- <head>
@@ -23,9 +28,6 @@
 
 			use models\music\AlbumsContainer;
 			use models\music\MusicAlbum as MusicAlbum;
-
-			require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-
 
 			// TEST : récupérer un album de music , et que les variables d'instances soient remplies.
 			/*
@@ -93,3 +95,7 @@
 	</main>
 </body>
 </html>
+
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
+?>

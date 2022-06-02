@@ -73,8 +73,8 @@ CREATE TABLE IF NOT EXISTS `user`
     , `pass` VARCHAR(128) NOT NULL
     , `pass_encoded` VARCHAR(128) NOT NULL DEFAULT ''
     , `fk_group_rowid` INT(4) NOT NULL
-    , `datecreation` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-    , `datelastconnection` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , `date_creation` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    , `date_last_connection` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
     , `email` VARCHAR(100)
 
     , PRIMARY KEY (`rowid`)

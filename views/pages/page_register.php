@@ -1,4 +1,6 @@
-<?php
+<?php 
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+
 
 // VARIABLES USED TO BUILD PATH-TO-FILES : 
 
@@ -41,3 +43,7 @@ session_start();
         <script src="<?php echo('/assets/js/checkFormRegister.js')?>"></script>
     </body>
 </html>
+
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
+?>
