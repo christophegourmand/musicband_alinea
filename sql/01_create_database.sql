@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `user`
 (
     `rowid` INT(5) NOT NULL AUTO_INCREMENT
     , `active` BOOLEAN NOT NULL
-    , `login` VARCHAR(50) NOT NULL
+    , `login` VARCHAR(50) NOT NULL UNIQUE
     , `pass` VARCHAR(128) NOT NULL
     , `pass_encoded` VARCHAR(128) NOT NULL DEFAULT ''
     , `fk_group_rowid` INT(4) NOT NULL

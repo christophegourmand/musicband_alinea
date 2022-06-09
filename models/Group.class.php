@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
+
 class Group extends Model implements Modalable {
 
 	// =========================================
@@ -21,20 +23,30 @@ class Group extends Model implements Modalable {
 	// CRUD
 	// =========================================
 
-	public function create(Mysqli $mysqli)
-	{
-		return "group a été créé";
-	}
-
-	public function load(Mysqli $mysqli , int $rowid)
+	// FONCTIONNE
+	public function create(Mysqli $mysqli) :bool
 	{
 		try {
-			//--- load the row so $this->rowDatas will be full.
-			self::$dbHandler->loadRow($mysqli , $this , ["rowid = $rowid"]);
+			$rowDatas = $this->prepareRowDatas();
+			self::$dbHandler->insertRow($mysqli , $this->get_tableName() , $rowDatas);
+
+		} catch (Exception $exception) {
+			throw $exception;
+		}
+		return true;
+	}
+
+	// FONCTIONNE
+	public function load(Mysqli $mysqli , int $rowid) :bool
+	{
+		try {
+			//--- load the row so $receivedRowDatas will be full.
+			$receivedRowDatas = self::$dbHandler->loadRow($mysqli , $this->get_tableName() , ["rowid = $rowid"]);
+
 
 			//--- re-affect datas from rowDatas to each properties of this object
-			$this->rowid = (int) $this->rowDatas['rowid'];
-			$this->groupname = (string) $this->rowDatas['groupname'];
+			$this->rowid = (int) $receivedRowDatas['rowid'];
+			$this->groupname = (string) $receivedRowDatas['groupname'];
 		} catch (\Throwable $th) {
 			throw $th;
 		}
@@ -42,14 +54,30 @@ class Group extends Model implements Modalable {
 		return true;
 	}
 	
-	public function update(Mysqli $mysqli , int $rowid)
+	// FONCTIONNE
+	public function update(Mysqli $mysqli) :bool
 	{
-		return "group a été updaté";
+		if (empty($this->rowid))
+		{
+			throw new Exception("ERREUR: impossible d'updater un groupe si la propriété `rowid` n'est pas remplie.");
+		}
+
+		$rowDatas = $this->prepareRowDatas();
+		$isUpdated = self::$dbHandler->updateRow($mysqli , $this->get_tableName() , $rowDatas , $this->rowid);
+		return $isUpdated;
 	}
 	
-	public function delete(Mysqli $mysqli , int $rowid)
+	// FONCTIONNE
+	public function delete(Mysqli $mysqli) :bool
 	{
-		return "group a été deleté";
+		if (empty($this->rowid))
+		{
+			throw new Exception("ERREUR: impossible de supprimer un groupe si la propriété `rowid` n'est pas remplie.");
+		}
+
+		$isDeleted = self::$dbHandler->deleteRow($mysqli , $this->get_tableName() , $this->rowid);
+
+		return $isDeleted;
 	}
 	
 
@@ -62,8 +90,8 @@ class Group extends Model implements Modalable {
 
 	// Setters ----------------------------------
 	
-	// --- FONCTIONNE
-	public function set_groupname(Mysqli $mysqli , string $given_groupname)
+	// FONCTIONNE
+	public function set_groupname(Mysqli $mysqli , string $given_groupname) : void
 	{
 		// --- vérifier que le nom donné n'est pas trop long (dans la DB j'ai mis VARCHAR(50) )
 		if (strlen($given_groupname) <= 50)
@@ -76,14 +104,40 @@ class Group extends Model implements Modalable {
 
 	// Getters ----------------------------------
 
-	// TODO : A TESTER
-	public function get_groupname()
+	// FONCTIONNE
+	public function get_groupname() : string
 	{
 		return $this->groupname;
 	}
 
 	// TODO : A TESTER
-	public function get_users()
+	public function load_users(Mysqli $mysqli) : bool
+	{
+		try 
+		{
+			//--- verifie que le group a un rowid chargé
+			if (empty($this->rowid))
+			{
+				throw new Exception("ERREUR: impossible de charger les users d'un groupe si la propriété `rowid` du groupe n'est pas remplie.");
+			}
+
+			$received_rowDatas_ofUsers = self::$dbHandler->loadManyRows($mysqli , 'user' , ["fk_group_rowid = $this->rowid"]);
+
+			foreach ($received_rowDatas_ofUsers as $index => $user_rowDatas) {
+				$newUser = new User();
+				$newUser->load($mysqli , $user_rowDatas['rowid']);
+				$this->users[] = $newUser;
+			}
+		} catch (Exception $exception)
+		{
+			throw $exception;
+		}
+
+		return true;
+	}
+
+	// TODO : A TESTER
+	public function get_users() : array
 	{
 		return $this->users;
 	}
@@ -91,6 +145,24 @@ class Group extends Model implements Modalable {
 	// =========================================
 	// METHODS
 	// =========================================
+
+	// FONCTIONNE
+	// --- sera utilisée pour `create` et pour `update`
+	public function prepareRowDatas() : array
+	{
+		$rowDatas = [];
+
+		//--- si vide, on renvoi une erreur , si non vide , on le prend
+		if (empty($this->groupname))
+		{
+			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `groupname` n'est pas remplie.");
+		} else {
+			$rowDatas['groupname'] = $this->groupname;
+		}
+
+		return $rowDatas;
+	}
+
 
 }
 

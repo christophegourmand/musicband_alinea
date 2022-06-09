@@ -13,13 +13,6 @@ class Model {
 	*/ 
 	protected int $rowid;
 
-	/**
-	* @var	array	expected format:  ['fieldName': value , 'fieldName': value , ... ]
-	* ( ! i do not choose static, because each instance of the child class will have its own datas.
-	* please access it using $this->rowDatas)
-	*/
-	protected array $rowDatas;
-
 	protected static $dbHandler;
 
 	public function __construct(string $given_tableName)
@@ -29,7 +22,7 @@ class Model {
 	}
 
 	//--- pas besoin de setter
-	public function get_tableName()
+	public function get_tableName() :string
 	{
 		if ( isset($this->tableName) && !empty($this->tableName) )
 		{
@@ -40,42 +33,39 @@ class Model {
 	}
 
 
-
-	//* FONCTIONNE
-	public function set_rowDatas(Mysqli $mysqli , array $arrayAssocForRowDatas)
-	{
-		// TODO : vérifier et activer ce code
-		foreach ($arrayAssocForRowDatas as $key => $value) {
-			if ( gettype( $value ) === 'string' )
-			{
-				//! to avoid SQL injection :
-				$this->rowDatas[$key] = mysqli_real_escape_string($mysqli , $value); // NOTE : pour éviter l'injection sql
-			} else
-			{
-				$this->rowDatas[$key] = $value; //--- for every other types than 'string'
-			}
-
-		}
-		
-		// $this->rowDatas = $arrayAssocForRowDatas;
-	}
-	
-	// --- FONCTIONNE
-	public function get_rowDatas()
-	{
-		return $this->rowDatas;
-	}
-
 	// TODO : A TESTER
-	public function set_rowid(int $given_rowid)
+	public function set_rowid(int $given_rowid) :void
 	{
 		$this->rowid = $given_rowid;
 	}
 
-	// TODO : A TESTERX
-	public function get_rowid()
+	// FONCTIONNE
+	public function get_rowid() :int
 	{
 		return $this->rowid;
+	}
+
+
+	// FONCTIONNE
+	/**
+	* @param 	array 	$rowDatas 	Must be formatted as ['rowid'=>5, 'name'=> 'toto' , etc] according to class of object  
+	*/
+	public function fill_from_array(array $rowDatas) : bool
+	{
+		foreach ($rowDatas as $fieldname => $value)
+		{
+			// var_dump($fieldname);
+			// var_dump($value);
+			// var_dump($this->{$fieldname}); //NOTE fonctionne mais ne peut pas accéder car la propriété est sur 'private'
+
+			if (property_exists($this , $fieldname)) 
+			{
+				$methodName = 'set_'.$fieldname;
+				$this->$methodName($value);
+			}
+		}
+
+		return true;
 	}
 
 

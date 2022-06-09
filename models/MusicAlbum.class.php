@@ -1,14 +1,16 @@
 <?php
-namespace models\music;
-use christophegourmand\debug;
-use \Exception;
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 
-class MusicAlbum {
+
+class MusicAlbum extends Model implements Modalable {
 
 	// =========================================
 	// PROPERTIES
 	// =========================================
-	private int $rowid;
+	//--- field in Database
+	// NOTE - rowid est défini dans la classe Model
+	private int $active;
 	private string $name;
 	private string $path_image;
 	private string $link_spotify;
@@ -18,181 +20,478 @@ class MusicAlbum {
 	private string $link_amazonmusic;
 	private string $link_googleplay;
 	private string $link_tidal;
-	private array $songs; // not in database
+
+	//--- field not in Database
+	
+	/**
+	* contain instances of class MusicSongs
+	*/
+	private array $musicSongs;
+	
+	/** 
+	* set 0 for inactive , 1 for active
+	*/
+	private static int $setting_musicAlbumActiveByDefault = 0;
+
 
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
-	// public function __construct() {	
-	// }
-	
-	public function __construct (string $name = "")
+	public function __construct()
 	{
-		$this->name = $name;
-		$this->path_image = "";
-		$this->link_spotify = "";
-		$this->link_applemusic = "";
-		$this->link_itunes = "";
-		$this->link_deezer = "";
-		$this->link_amazonmusic = "";
-		$this->link_googleplay = "";
-		$this->link_tidal = "";
-		$this->songs = [];  // not in database
+		//--- we use parent constructor AND pass tablename for the parent's property $tableName
+		parent::__construct('music_album');
 	}
+
+
+	// =========================================
+	// CRUD
+	// =========================================
+	
+	public function create(Mysqli $mysqli) :bool
+	{
+		try {
+			$rowDatas = $this->prepareRowDatas();
+
+			self::$dbHandler->insertRow($mysqli , $this->get_tableName() , $rowDatas);
+		} catch (Exception $exception) {
+			throw $exception;
+		}
+
+		return true; // REVIEW : bonne manière ?
+	}
+	
+
+	
+	
+	public function load(Mysqli $mysqli , int $rowid) : bool
+	{
+		//--- load the row so $receivedRowDatas will be full.
+		$receivedRowDatas = self::$dbHandler->loadRow($mysqli , $this->get_tableName() , ["rowid = $rowid"]);
+
+		//--- re-affect datas from rowDatas to each properties of this object
+		$this->rowid = (int) $receivedRowDatas['rowid'];
+		$this->active = (int) $receivedRowDatas['active'];
+		$this->name = (string) $receivedRowDatas['name'];
+		$this->path_image = (string) $receivedRowDatas['path_image'];
+		$this->link_spotify = (string) $receivedRowDatas['link_spotify'];
+		$this->link_applemusic = (string) $receivedRowDatas['link_applemusic'];
+		$this->link_itunes = (string) $receivedRowDatas['link_itunes'];
+		$this->link_deezer = (string) $receivedRowDatas['link_deezer'];
+		$this->link_amazonmusic = (string) $receivedRowDatas['link_amazonmusic'];
+		$this->link_googleplay = (string) $receivedRowDatas['link_googleplay'];
+		$this->link_tidal = (string) $receivedRowDatas['link_tidal'];
+
+
+		// TODO : instancier une classe MusicSong puis utiliser la methode `loadRows` pour récupérer un array indexé contenant la rowDatas de chaque $musicSong.
+		
+		return true;
+	}
+
+
+
+	public function update(Mysqli $mysqli) :bool
+	{
+		if (empty($this->rowid))
+		{
+			throw new Exception("ERREUR: impossible d'updater un MusicAlbum si la propriété `rowid` n'est pas remplie.");
+		}
+
+		$rowDatas = $this->prepareRowDatas();
+		$isUpdated = self::$dbHandler->updateRow($mysqli , $this->get_tableName() , $rowDatas , $this->rowid);
+		return $isUpdated;
+	}
+	
+
+	
+	public function delete(Mysqli $mysqli) :bool
+	{
+		if (empty($this->rowid))
+		{
+			throw new Exception("ERREUR: impossible de supprimer un album de music si la propriété `rowid` n'est pas remplie.");
+		}
+
+		$isDeleted = self::$dbHandler->deleteRow($mysqli , $this->get_tableName() , $this->rowid);
+
+		return $isDeleted;
+	}
+	
+
+
 
 	// =========================================
 	// GETTERS-SETTERS
 	// =========================================
 
-	// Setters ----------------------------------
-
-	public function set_rowid(int $rowid_given)
+	//--- Setters ----------------------------------
+	public function set_active(int $active_given) :bool
 	{
-		$this->rowid = $rowid_given;
+		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
+		if ($active_given <= 0)
+		{
+			$active_given = 0;
+		} else {
+			$active_given = 1;
+		}
+
+		$this->active = $active_given; 
+		return true;
+	}
+	
+	public function set_name(string $name_given) : bool
+	{
+		global $mysqli;
+
+		//--- check if size is under limit of sql field
+		if (strlen($name_given) > 50)
+		{
+			throw new Exception("ERREUR : le name donné est supérieur à 50 caractères, ce qui est la limite.");
+			;
+		}
+		
+/* 		//--- check if doesnt contain bad characters
+		$containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($name_given , "letters+digits+spaces+apostrophe");
+		if (!$containAuthorizedCharactersOnly)
+		{
+			throw new Exception("ERREUR : le name donné contient des caractères autres que letters+digits+spaces+apostrophe");
+			;
+		} */
+
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		$this->name = mysqli_real_escape_string($mysqli , $name_given);
+		
+		return true;
 	}
 
-	public function set_name(string $name_given)
+
+	public function set_path_image(string $path_image_given) : bool
 	{
-		$this->name = $name_given;
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($path_image_given) > 512)
+		{
+			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			// --- si non :
+			$this->path_image = $path_image_given;
+		
+		return true;
 	}
 
-	public function set_path_image(string $path_image_given)
+	public function set_link_spotify(string $link_spotify_given) : bool
 	{
-		$this->path_image = $path_image_given;
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_spotify_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_spotify donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_spotify = mysqli_real_escape_string($mysqli , $link_spotify_given);
+			// --- si non :
+			$this->link_spotify = $link_spotify_given;
+		
+		return true;
 	}
 
-	public function set_link_spotify(string $link_spotify_given)
+	public function set_link_applemusic(string $link_applemusic_given) : bool
 	{
-		$this->link_spotify = $link_spotify_given;
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_applemusic_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_applemusic donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_applemusic = mysqli_real_escape_string($mysqli , $link_applemusic_given);
+			// --- si non :
+			$this->link_applemusic = $link_applemusic_given;
+		
+		return true;
 	}
 
-	public function set_link_applemusic(string $link_applemusic_given)
+	public function set_link_itunes(string $link_itunes_given) : bool
 	{
-		$this->link_applemusic = $link_applemusic_given;
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_itunes_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_itunes donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_itunes = mysqli_real_escape_string($mysqli , $link_itunes_given);
+			// --- si non :
+			$this->link_itunes = $link_itunes_given;
+		
+		return true;
 	}
 
-	public function set_link_itunes   (string $link_itunes_given)
+	public function set_link_deezer(string $link_deezer_given) : bool
 	{
-		$this->link_itunes = $link_itunes_given;
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_deezer_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_deezer donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_deezer = mysqli_real_escape_string($mysqli , $link_deezer_given);
+			// --- si non :
+			$this->link_deezer = $link_deezer_given;
+		
+		return true;
+	}
+	
+	public function set_link_amazonmusic(string $link_amazonmusic_given) : bool
+	{
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_amazonmusic_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_amazonmusic donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_amazonmusic = mysqli_real_escape_string($mysqli , $link_amazonmusic_given);
+			// --- si non :
+			$this->link_amazonmusic = $link_amazonmusic_given;
+		
+		return true;
+	}
+	
+	public function set_link_googleplay(string $link_googleplay_given) : bool
+	{
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_googleplay_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_googleplay donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_googleplay = mysqli_real_escape_string($mysqli , $link_googleplay_given);
+			// --- si non :
+			$this->link_googleplay = $link_googleplay_given;
+		
+		return true;
+	}
+	
+	public function set_link_tidal(string $link_tidal_given) : bool
+	{
+		global $mysqli;
+
+		// renvoyer erreur si taille > 512
+		if (strlen($link_tidal_given) > 512)
+		{
+			throw new Exception("ERREUR : le link_tidal donné est supérieur à 512 caractères, ce qui est la limite.");
+			;
+		}
+		
+		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
+		
+		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+			// --- si oui :
+		// $this->link_tidal = mysqli_real_escape_string($mysqli , $link_tidal_given);
+			// --- si non :
+			$this->link_tidal = $link_tidal_given;
+		
+		return true;
+	}
+	
+
+	
+	//--- Getters ----------------------------------
+
+	public function get_active() : int
+	{ 
+		return $this->active; 
 	}
 
-	public function set_link_deezer(string $link_deezer_given)
-	{
-		$this->link_deezer = $link_deezer_given;
+	public function get_name() : string 
+	{ 
+		return $this->name; 
 	}
 
-	public function set_link_amazonmusic(string $link_amazonmusic_given)
-	{
-		$this->link_amazonmusic = $link_amazonmusic_given;
+	public function get_path_image() : string 
+	{ 
+		return $this->path_image; 
 	}
 
-	public function set_link_googleplay(string $link_googleplay_given)
-	{
-		$this->link_googleplay = $link_googleplay_given;
+	public function get_link_spotify() : string 
+	{ 
+		return $this->link_spotify; 
 	}
 
-	public function set_link_tidal(string $link_tidal_given)
-	{
-		$this->link_tidal = $link_tidal_given;
+	public function get_link_applemusic() : string 
+	{ 
+		return $this->link_applemusic; 
 	}
 
-	// Getters ----------------------------------
+	public function get_link_itunes() : string 
+	{ 
+		return $this->link_itunes; 
+	}
 
-	public function get_rowid() { return $this->rowid; }
-	public function get_name() { return $this->name; }
-	public function get_path_image() { return $this->path_image; }
-	public function get_link_spotify() { return $this->link_spotify; }
-	public function get_link_applemusic() { return $this->link_applemusic; }
-	public function get_link_itunes() { return $this->link_itunes; }
-	public function get_link_deezer() { return $this->link_deezer; }
-	public function get_link_amazonmusic() { return $this->link_amazonmusic; }
-	public function get_link_googleplay() { return $this->link_googleplay; }
-	public function get_link_tidal() { return $this->link_tidal; }
-	public function get_songs() { return $this->songs; }
+	public function get_link_deezer() : string 
+	{ 
+		return $this->link_deezer; 
+	}
+
+	public function get_link_amazonmusic() : string 
+	{ 
+		return $this->link_amazonmusic; 
+	}
+
+	public function get_link_googleplay() : string 
+	{ 
+		return $this->link_googleplay; 
+	}
+
+	public function get_link_tidal() : string 
+	{ 
+		return $this->link_tidal; 
+	}
+
+	/**
+	* @return 	array 	Renvoi ce qui est stocké dans la propriété musicSongs , mais une autre méthode les récupère
+	* @see 		Voir aussi load_musicSongs()
+	*/
+	public function get_musicSongs() : array
+	{
+		return $this->musicSongs;
+	}
+
+
 
 	// =========================================
 	// METHODS
 	// =========================================
-	public function loadFromDbById($mysqli, $rowid)
-	{
-		$sql_query = "SELECT * FROM music_album WHERE (rowid = $rowid);";
-		$mysqli_response = $mysqli->query($sql_query);
 
-		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
+	public function load_musicSongs(Mysqli $mysqli) : bool
+	{
+		if ( empty($this->rowid) )
+		{
+			throw new Exception("ERREUR: la propriéé rowid est vide, donc impossible de charger les MusicSongs");
+		}
+
+		$rowid = $this->get_rowid();
+	
+		//--- load the row so $receivedRowDatas will be full.
+		$receivedRowDatas = self::$dbHandler->loadManyRows($mysqli , 'music_song' , ["fk_album_rowid = $rowid"]);
+
+		// echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');    // DEBUG
+
+		foreach ($receivedRowDatas as $loopingRowDatas)
+		{
+			$musicsong = new MusicSong();
+			$musicsong->fill_from_array($loopingRowDatas);
+
+			$this->musicSongs[] = $musicsong;
+		}
 		
-		if ($mysqli_nbOfRowsReceived == 1) 
-		{
-			$receivedMusicAlbumObject = $mysqli_response->fetch_object();
-
-			// fonctionne si le nom des propriétés de cette classe sont nommés
-			foreach($receivedMusicAlbumObject as $fieldname => $value) 
-			{
-				$this->{$fieldname} = (string) $value;
-			}		
-		}
+		return true;
 	}
 
-	public function loadSongsFromDbById($mysqli , $rowid)
+
+
+	// --- sera utilisée pour `create` et pour `update`
+	public function prepareRowDatas() : array    // FONCTIONNE
 	{
-		$sql_query = "SELECT * FROM music_song WHERE (fk_album = $this->rowid);";
-		$mysqli_response = $mysqli->query($sql_query);
+		$rowDatas = [];
+		
+		//--- important : on ne vérifie pas si $this->rowid est rempli , car pour créer il sera vide, et pour updater il sera rempli.
+		//--- donc je vérifie qu'il est rempli directement dans la méthode `update`.
 
-		$mysqli_nbOfRowsReceived = (int) $mysqli_response->num_rows;
-		if ($mysqli_nbOfRowsReceived > 0)
+		//--- si non vide, on prend la valeur
+		if (!empty($this->rowid))
+			$rowDatas['rowid'] = $this->rowid; 
+
+		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
+		if (empty($this->active))
 		{
-			$receivedSongs = $mysqli_response->fetch_all(MYSQLI_ASSOC);
-			// MYSQLI_ASSOC ou MYSQLI_NUM ou MYSQLI_BOTH
-			$this->songs = $receivedSongs;
-		}
-	}
-
-	public function insertIntoDb($mysqli)
-	{
-		// verify if instance-object is full of data
-		if ( isset($this->name) /*|| !empty($this->name) || $this->name != "" */) {
-			// prepare request
-			$sql_query = "INSERT INTO music_album";
-			$sql_query .= " (name, path_image, link_spotify, link_applemusic, link_itunes, link_deezer, link_amazonmusic, link_googleplay, link_tidal)";
-			$sql_query .= " VALUES ({$this->name}, {$this->path_image}, {$this->link_spotify}, {$this->link_applemusic}, {$this->link_itunes}, {$this->link_deezer}, {$this->link_amazonmusic}, {$this->link_googleplay}, {$this->link_tidal});";
-
-			$mysqli_response = $mysqli->query($sql_query);
-		}
-	}
-
-	public function updateIntoDb($mysqli)
-	{
-		// we check if the instance of MusicAlbum has at least a name and a rowid
-		if ( !empty( $this->name) && !empty( $this->rowid ))
-		{
-			$sql_query = "UPDATE music_album";
-			$sql_query .= " SET name = '$this->name'";
-			$sql_query .= " , path_image = '$this->path_image'";
-			$sql_query .= " , link_spotify = '$this->link_spotify'";
-			$sql_query .= " , link_applemusic = '$this->link_applemusic'";
-			$sql_query .= " , link_itunes = '$this->link_itunes'";
-			$sql_query .= " , link_deezer = '$this->link_deezer'";
-			$sql_query .= " , link_amazonmusic = '$this->link_amazonmusic'";
-			$sql_query .= " , link_googleplay = '$this->link_googleplay'";
-			$sql_query .= " , link_tidal = '$this->link_tidal'";
-			$sql_query .= " WHERE rowid = $this->rowid";
-
-			$mysqli_response = $mysqli->query($sql_query); // will be true or false
-
-			if (!$mysqli_response)
-			{
-				throw new Exception("mysqli n'a pas réussi à updater l'instance d'album vers son homologue stocké en base de donnée. la Requete était : [$sql_query]");
-			}
-
-			return $mysqli_response;
-			
-
-		} else 
-		{
-			throw new Exception("ERREUR : L'instance d'album n'a pas de rowid ou n'a pas de nom, et donc ne peut pas mettre à jour celui stocké en base de donnée."); // to indicate that 
+			$rowDatas['active'] = self::$setting_musicAlbumActiveByDefault; // WORKS
+		} else {
+			$rowDatas['active'] = (int) $this->active; // converted as int , (but should already be the case) 
 		}
 
+		//--- si vide, on renvoi une erreur , si non vide , on le prend
+		if (empty($this->name))
+		{
+			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `name` n'est pas remplie.");
+		} else {
+			$rowDatas['name'] = $this->name;
+		}
+
+		if (!empty($this->path_image))
+			$rowDatas['path_image'] = $this->path_image; 
+
+		if (!empty($this->link_spotify))
+			$rowDatas['link_spotify'] = $this->link_spotify; 
+
+		if (!empty($this->link_applemusic))
+			$rowDatas['link_applemusic'] = $this->link_applemusic; 
+
+		if (!empty($this->link_itunes))
+			$rowDatas['link_itunes'] = $this->link_itunes; 
+
+		if (!empty($this->link_deezer))
+			$rowDatas['link_deezer'] = $this->link_deezer; 
+
+		if (!empty($this->link_amazonmusic))
+			$rowDatas['link_amazonmusic'] = $this->link_amazonmusic; 
+
+		if (!empty($this->link_googleplay))
+			$rowDatas['link_googleplay'] = $this->link_googleplay; 
+
+		if (!empty($this->link_tidal))
+			$rowDatas['link_tidal'] = $this->link_tidal; 
+
+		return $rowDatas;
 	}
-
-
 }
+
+
 ?>

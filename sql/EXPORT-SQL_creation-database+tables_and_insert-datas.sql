@@ -325,8 +325,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `pass` varchar(128) NOT NULL,
   `pass_encoded` varchar(128) NOT NULL DEFAULT '',
   `fk_group_rowid` int(4) NOT NULL,
-  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `datelastconnection` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_last_connection` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_rowid_login` (`rowid`,`login`),
@@ -336,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 -- Listage des données de la table db_alinea.user : ~8 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`rowid`, `active`, `login`, `pass`, `pass_encoded`, `fk_group_rowid`, `datecreation`, `datelastconnection`, `email`) VALUES
+INSERT INTO `user` (`rowid`, `active`, `login`, `pass`, `pass_encoded`, `fk_group_rowid`, `date_creation`, `date_last_connection`, `email`) VALUES
 	(1, 1, 'christophe', '0uvreToi!ali', '', 1, '2022-05-29 09:17:25', '2022-05-29 09:17:25', 'christophe.gourmand@gmail.com'),
 	(2, 1, 'thierry', 'thierry_guitare', '', 1, '2022-05-29 09:17:25', '2022-05-29 09:17:25', 'alineamusique@gmail.com'),
 	(3, 1, 'nini', 'nini_micro', '', 2, '2022-05-29 09:17:25', '2022-05-29 09:17:25', ''),
