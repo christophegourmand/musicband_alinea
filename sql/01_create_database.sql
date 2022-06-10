@@ -5,7 +5,7 @@ DROP DATABASE IF EXISTS db_alinea;
 -- create database
 -- =====================================
 CREATE DATABASE IF NOT EXISTS db_alinea
-COLLATE 'utf8mb4_general_ci';
+DEFAULT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 
 USE db_alinea;
 
@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS `group`
 
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
-ENGINE=InnoDB
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 -- =====================================
@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `right`
     
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
-ENGINE=InnoDB
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 -- =====================================
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `asso_group_right`
         REFERENCES `right` (`rowid`) 
         ON DELETE CASCADE
 )
-COLLATE 'utf8mb4_general_ci'
-ENGINE=InnoDB
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `asso_group_right`
@@ -81,9 +81,8 @@ CREATE TABLE IF NOT EXISTS `user`
     , FOREIGN KEY (`fk_group_rowid`) 
         REFERENCES `group` (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 ALTER TABLE `user` 
 ADD UNIQUE INDEX `idx_rowid_login` (`rowid`, `login`);
@@ -99,8 +98,8 @@ CREATE TABLE IF NOT EXISTS `preference`
     
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
-ENGINE=InnoDB
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 -- =====================================
@@ -118,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `asso_user_preference`
     , FOREIGN KEY (`fk_preference_rowid`) 
         REFERENCES `preference` (`rowid`) ON DELETE CASCADE
 )
-COLLATE 'utf8mb4_general_ci'
-ENGINE=InnoDB
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `asso_user_preference`
@@ -144,9 +143,8 @@ CREATE TABLE IF NOT EXISTS `music_album`
     , `link_tidal` VARCHAR(512)
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `music_album` 
@@ -167,9 +165,8 @@ CREATE TABLE IF NOT EXISTS `music_song`
     , PRIMARY KEY (`rowid`)
     , FOREIGN KEY (`fk_album_rowid`) REFERENCES `music_album` (`rowid`) ON DELETE NO ACTION
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `music_song` 
@@ -190,9 +187,8 @@ CREATE TABLE IF NOT EXISTS `product`
 
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `product`
@@ -215,9 +211,8 @@ CREATE TABLE IF NOT EXISTS `productimage`
         REFERENCES `product` (`rowid`) 
         ON DELETE CASCADE
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `productimage`
@@ -254,16 +249,13 @@ CREATE TABLE IF NOT EXISTS `concert`
     -- text de description
     , `description` MEDIUMTEXT
 
-    # , `name` VARCHAR(100) NOT NULL
     # , `purchase_url` VARCHAR(512)
     # , `price` DECIMAL(4 , 2)
-    # , `description` MEDIUMTEXT
 
     , PRIMARY KEY (`rowid`)
 )
-COLLATE 'utf8mb4_general_ci'
 ENGINE=InnoDB 
-# DEFAULT CHARSET=utf8
+DEFAULT CHARSET=utf8mb4 COLLATE 'utf8mb4_general_ci'
 ;
 
 ALTER TABLE `concert`
