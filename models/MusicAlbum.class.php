@@ -41,6 +41,7 @@ class MusicAlbum extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('music_album');
+		$this->musicSongs = [];
 	}
 
 
@@ -124,6 +125,12 @@ class MusicAlbum extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
+
+	/* public function set_rowid(int $given_rowid) :void
+	{
+		$this->rowid = $given_rowid;
+	} */
+
 	public function set_active(int $active_given) :bool
 	{
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)

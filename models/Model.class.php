@@ -54,6 +54,9 @@ class Model {
 	{
 		foreach ($rowDatas as $fieldname => $value)
 		{
+			if ($value == null)
+				$value = '';
+				
 			// var_dump($fieldname);
 			// var_dump($value);
 			// var_dump($this->{$fieldname}); //NOTE fonctionne mais ne peut pas accéder car la propriété est sur 'private'

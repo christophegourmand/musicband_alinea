@@ -684,6 +684,33 @@ footer {
   }
 }
 
+.lyrics .lyrics-formated {
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+.lyrics .lyrics-formated > strong {
+  font-weight: 600;
+}
+
+@media screen and (min-width: 575.9px) {
+  .lyrics .lyrics-formated {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 767.9px) {
+  .lyrics .lyrics-formated {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 991.9px) {
+  .lyrics .lyrics-formated {
+    font-size: 1.8rem;
+  }
+}
+
 .tour {
   margin: 3rem 2rem;
   color: var(--theme-color_neutral);

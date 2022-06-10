@@ -247,7 +247,11 @@ class MusicSong extends Model implements Modalable {
 
 	public function get_lyrics() : string 
 	{ 
-		return $this->lyrics; 
+		# return $this->lyrics;
+
+		// TEST - pour corriger le problème d'accents
+		// LINK : https://programmation-web.net/2010/11/comment-resoudre-les-problemes-daccents/
+		return iconv( 'UTF-8', 'ISO-8859-15', $this->lyrics);
 	}
 
 

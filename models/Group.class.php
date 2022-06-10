@@ -16,6 +16,8 @@ class Group extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('group');
+
+		// TODO : supprimer la propriété ci-dessous quand certain qu'elle n'est plus utilisée
 		$this->rowDatas = []; // defined in Model.class.php
 	}
 

@@ -1,43 +1,61 @@
 .songs-song-banner {
-    width: 100%;
-    margin-bottom: 2rem;
+	width: 100%;
+	margin-bottom: 2rem;
 
-    .horizontalCard-title--big {
-        position: relative;
-        left: -1rem;
+	.horizontalCard-title--big {
+		position: relative;
+		left: -1rem;
 
-        font-size: 3rem !important;
-        font-weight: 300;
-    }
+		font-size: 3rem !important;
+		font-weight: 300;
+	}
 }
 
 .lyrics {
-    margin-top: 2rem;
-    text-align: center;
+	margin-top: 2rem;
+	text-align: center;
 
-    .lyrics-paragraph {
+	.lyrics-paragraph {
+		&.verse {
+			font-weight: 100; 
+			color: var(--theme-color_neutral);
+		}
+		&.chorus {
+			font-weight: 600; 
+			color: var(--theme-color_neutral);
+		}
 
-        &.verse {
-            font-weight: 100; 
-            color: var(--theme-color_neutral);
-        }
-        &.chorus {
-            font-weight: 600; 
-            color: var(--theme-color_neutral);
-        }
+		.lyrics-sentence {
+			font-size: 1rem;
 
-        .lyrics-sentence {
-            font-size: 1rem;
+			@include media("sm","") {
+				font-size: 1.2rem;
+			}
+			@include media("md","") {
+				font-size: 1.5rem;
+			}
+			@include media("lg","") {
+				font-size: 1.8rem;
+			}
+		}
+	}
+	.lyrics-formated {
+		font-weight: 100;
+		&>strong {
+			font-weight: 600; 
+		}
 
-            @include media("sm","") {
-                font-size: 1.2rem;
-            }
-            @include media("md","") {
-                font-size: 1.5rem;
-            }
-            @include media("lg","") {
-                font-size: 1.8rem;
-            }
-        }
-    }
+		font-size: 1rem;
+		@include media("sm","") {
+			font-size: 1.2rem;
+		}
+		@include media("md","") {
+			font-size: 1.5rem;
+		}
+		@include media("lg","") {
+			font-size: 1.8rem;
+		}
+
+
+	}
 }
