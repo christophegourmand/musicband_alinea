@@ -260,3 +260,21 @@ DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
 
 ALTER TABLE `concert`
 ADD UNIQUE INDEX `idx_concert_rowid_venue_name` (`rowid` , `venue_name`);
+
+CREATE TABLE IF NOT EXISTS `bio`
+(
+    `rowid` INT(4) NOT NULL AUTO_INCREMENT
+    , `active` BOOLEAN NOT NULL
+    , `firstname` VARCHAR(50) NOT NULL
+    , `lastname` VARCHAR(50)
+    , `path_image` VARCHAR(512)
+    , `description` MEDIUMTEXT
+    , `job` VARCHAR(100)
+    , PRIMARY KEY (`rowid`)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
+;
+
+ALTER TABLE `bio`
+ADD UNIQUE INDEX `idx_bio_rowid` (`rowid`);
