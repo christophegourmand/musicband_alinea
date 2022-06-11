@@ -132,7 +132,7 @@ VALUES
         , 2
         , "Y'a pas besoin"
         , ''
-        , '/assets/audio/ALINEA_ya-pas-besoin.mp3'
+        , ''
     )
     ,
     (
@@ -140,6 +140,6 @@ VALUES
         , 2
         , 'Permettez!' 
         , ''
-        , '/assets/audio/ALINEA_permettez!.mp3'
+        , ''
     )
 ;
