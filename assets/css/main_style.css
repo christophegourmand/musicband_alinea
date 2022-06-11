@@ -518,7 +518,7 @@ footer {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  background-color: #777;
+  background-color: rgba(128, 128, 128, 0.2);
   border-radius: .6rem;
   background-size: cover;
   background-repeat: no-repeat;
