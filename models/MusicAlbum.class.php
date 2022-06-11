@@ -10,16 +10,16 @@ class MusicAlbum extends Model implements Modalable {
 	// =========================================
 	//--- field in Database
 	// NOTE - rowid est défini dans la classe Model
-	private int $active;
-	private string $name;
-	private string $path_image;
-	private string $link_spotify;
-	private string $link_applemusic;
-	private string $link_itunes;
-	private string $link_deezer;
-	private string $link_amazonmusic;
-	private string $link_googleplay;
-	private string $link_tidal;
+	protected int $active;
+	protected string $name;
+	protected string $path_image;
+	protected string $link_spotify;
+	protected string $link_applemusic;
+	protected string $link_itunes;
+	protected string $link_deezer;
+	protected string $link_amazonmusic;
+	protected string $link_googleplay;
+	protected string $link_tidal;
 
 	//--- field not in Database
 	
@@ -429,7 +429,7 @@ class MusicAlbum extends Model implements Modalable {
 		//--- load the row so $receivedRowDatas will be full.
 		$receivedRowDatas = self::$dbHandler->loadManyRows($mysqli , 'music_song' , ["fk_album_rowid = $rowid"]);
 
-		// echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');    // DEBUG
+		# echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');    // DEBUG
 
 		foreach ($receivedRowDatas as $loopingRowDatas)
 		{

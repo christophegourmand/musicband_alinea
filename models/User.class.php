@@ -7,14 +7,14 @@ class User extends Model implements Modalable {
 	// =========================================
 	// PROPERTIES
 	// =========================================
-	private int $active;
-	private string $login;
-	private string $pass;
-	private string $pass_encoded;
-	private int $fk_group_rowid;
-	private string $date_creation; // REVIEW - est-ce le bon format pour une date ?
-	private string $date_last_connection; // REVIEW - est-ce le bon format pour une date ?
-	private string $email;
+	protected int $active;
+	protected string $login;
+	protected string $pass;
+	protected string $pass_encoded;
+	protected int $fk_group_rowid;
+	protected string $date_creation; // REVIEW - est-ce le bon format pour une date ?
+	protected string $date_last_connection; // REVIEW - est-ce le bon format pour une date ?
+	protected string $email;
 
 	//--- field not in Database
 	private Group $group;

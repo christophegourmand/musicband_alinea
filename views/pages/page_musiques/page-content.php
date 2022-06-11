@@ -12,6 +12,8 @@
 	//--- load MusicAlbums rowDatas
 	$dbHandler = new DbHandler();
 	$albumsRowsFromDb = $dbHandler->loadManyRows($mysqli, 'music_album', ["active = 1"]);
+	echo '<script>console.info(`line_'.__LINE__.': $albumsRowsFromDb`); console.debug('.json_encode($albumsRowsFromDb).');</script>'; //! DEBUG
+	
 
 	//--- create array of MusicAlbum instances and fill them with datas
 	$musicAlbums_list = [];
@@ -118,7 +120,6 @@
 						//--- create string `albumRowid_songRowid` to use as id and css class
 						$musicAlbumid_musicSongid = $musicAlbum->get_rowid() .'_'. $musicSong->get_rowid();
 					?>
-
 
 					<div class="horizontalCard <?='bg-song-'.$musicAlbumid_musicSongid?>" id="<?php echo('horizontalCard_song_'.$musicAlbumid_musicSongid);?>">
 						<a class="horizontalCard-link" href="<?php echo('/views/pages/page_lyrics.php'.'?songRowid='.$musicSong->get_rowid());?>">

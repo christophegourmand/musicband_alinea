@@ -9,6 +9,7 @@ if (!isset($mysqli) || empty($mysqli)){
 
 	//--- modify character set in database to fix accent not being displayed in view page
 	$mysqli->set_charset("utf8");
+				// LINK : https://programmation-web.net/2010/11/comment-resoudre-les-problemes-daccents/
 	
 	//--- vérifie le character set de la database après changement
 	#echo '<script>console.info(`line_'.__LINE__.': Initial Character Set:'.$mysqli->character_set_name().'`);</script>'; // DEBUG

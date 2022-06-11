@@ -6,7 +6,7 @@ class Group extends Model implements Modalable {
 	// =========================================
 	// PROPERTIES
 	// =========================================
-	private string $groupname;
+	protected string $groupname;
 	private array $users;
 
 	// =========================================

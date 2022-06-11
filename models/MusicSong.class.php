@@ -8,12 +8,12 @@ class MusicSong extends Model implements Modalable {
 	// =========================================
 	//--- field in Database
 	// NOTE - rowid est défini dans la classe Model
-	private int $active;
-	private int $fk_album_rowid;
-	private string $name;
-	private string $path_image;
-	private string $path_mp3;
-	private string $lyrics;
+	protected int $active;
+	protected int $fk_album_rowid;
+	protected string $name;
+	protected string $path_image;
+	protected string $path_mp3;
+	protected string $lyrics;
 	
 
 	//--- field not in Database
@@ -150,6 +150,8 @@ class MusicSong extends Model implements Modalable {
 
 		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
 		
+		// NOTE : utiliser l'un au l'autre mais pas les deux
+		// $this->name = $name_given;
 		$this->name = mysqli_real_escape_string($mysqli , $name_given);
 		
 		return true;

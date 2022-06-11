@@ -63,8 +63,16 @@ class Model {
 
 			if (property_exists($this , $fieldname)) 
 			{
-				$methodName = 'set_'.$fieldname;
-				$this->$methodName($value);
+				/*--- methode pour utiliser chaque méthode `set_xxx()` selon le $fieldname 
+				(à utiliser si les propriétés sont sur `private` ) */
+				
+				# $methodName = 'set_'.$fieldname;
+				# $this->$methodName($value);
+
+				/*--- methode pour affecter directement avec $this->nomDuChamps selon le $fieldname 
+				(à utiliser si les propriétés sont sur `protected`) */
+
+				$this->{$fieldname} = $value;
 			}
 		}
 
