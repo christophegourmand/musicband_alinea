@@ -7,24 +7,10 @@
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 
-
-	// REVIEW : old version
-	if ( !isset($_GET['songClicked']) || $_GET['songClicked'] == null )
-	{
-		$songToDisplay_nbr = 0;
-	}
-	else 
-	{
-		$songToDisplay_nbr = $_GET['songClicked'];
-	}
-
-	$song_assoArr = $allSongs_indArray[$songToDisplay_nbr];
-	$song_title_str = $song_assoArr['song_title'];
-	$lyrics_paragraphs_indArr = $song_assoArr["song_lyrics_paragraphs"];
-
-	// SECTION - New version
+	//--- create instances of MusicSong and MusicAlbum , and fill them
 	$musicSong = new MusicSong();
-	$musicSong->load($mysqli , $_GET['songRowid']);
+	$songToDisplay_rowid = (isset( $_GET['songRowid']) && !empty ($_GET['songRowid'])) ? $_GET['songRowid'] : 1;
+	$musicSong->load($mysqli , $songToDisplay_rowid);
 
 	$rowid_albumContainingSong = $musicSong->get_fk_album_rowid();
 
@@ -32,7 +18,6 @@
 	$musicAlbum->load($mysqli , $rowid_albumContainingSong);
 
 	// TODO : AJOUTER DANS LA DATABASE `position_dans_album`
-
 
 
 ?>
@@ -48,8 +33,8 @@
 
 		<aside class="songs-song-banner">
 				<div 
-					class="horizontalCard <?='bg-song-'.$songToDisplay_nbr;?>" 
-					id="<?='horizontalCard_song_'.$songToDisplay_nbr;?>" 
+					class="horizontalCard" 
+					id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>" 
 					data-bg-img="<?= $musicSong->get_path_image() ?>"
 				>
 					<a class="horizontalCard-btn btn-outline-white" href="<?='/views/pages/page_musiques.php';?>">

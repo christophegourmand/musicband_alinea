@@ -116,12 +116,13 @@
 			<aside class="songs-cards">
 				<?php # for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
 				<?php foreach ($musicAlbum->get_musicSongs() as $musicSongindex => $musicSong): ?>
-					<?php 
-						//--- create string `albumRowid_songRowid` to use as id and css class
-						$musicAlbumid_musicSongid = $musicAlbum->get_rowid() .'_'. $musicSong->get_rowid();
-					?>
 
-					<div class="horizontalCard <?='bg-song-'.$musicAlbumid_musicSongid?>" id="<?php echo('horizontalCard_song_'.$musicAlbumid_musicSongid);?>">
+
+					<div 
+						class="horizontalCard" 
+						id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>"
+						data-bg-img="<?= $musicSong->get_path_image() ?>"
+					>
 						<a class="horizontalCard-link" href="<?php echo('/views/pages/page_lyrics.php'.'?songRowid='.$musicSong->get_rowid());?>">
 
 						<!-- .'/?song='.$i -->

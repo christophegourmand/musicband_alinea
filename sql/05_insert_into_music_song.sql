@@ -15,7 +15,7 @@ VALUES
         1
         , 1
         , 'Madison' 
-        , '../img/photos/album_madison_backgrounds/madison_madison.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_madison.jpg'
         , ''
     )
     , 
@@ -23,7 +23,7 @@ VALUES
         1
         , 1 
         , 'Soif' 
-        , '../img/photos/album_madison_backgrounds/madison_soif.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_soif.jpg'
         , ''
     )
     , 
@@ -31,7 +31,7 @@ VALUES
         1
         , 1
         , 'Le Placard' 
-        , '../img/photos/album_madison_backgrounds/madison_le-placard.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_le-placard.jpg'
         , ''
     )
     ,
@@ -39,7 +39,7 @@ VALUES
         1
         , 1 
         , "L'Exil" 
-        , '../img/photos/album_madison_backgrounds/madison_lexil.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_lexil.jpg'
         , ''
     )
     ,
@@ -47,7 +47,7 @@ VALUES
         1
         , 1 
         , "Pas d'autre Monde" 
-        , '../img/photos/album_madison_backgrounds/madison_pas-dautre-monde.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_pas-dautre-monde.jpg'
         , ''
     )
     ,
@@ -55,7 +55,7 @@ VALUES
         1
         , 1 
         , 'Post-It' 
-        , '../img/photos/album_madison_backgrounds/madison_post-it.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_post-it.jpg'
         , ''
     )
     ,
@@ -63,7 +63,7 @@ VALUES
         1
         , 1 
         , 'Le Placard (instrumental)' 
-        , '../img/photos/album_madison_backgrounds/madison_le-placard-instru.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_le-placard-instru.jpg'
         , ''
     )
     ,
@@ -71,7 +71,7 @@ VALUES
         1
         , 1 
         , 'Si tu vas bien' 
-        , '../img/photos/album_madison_backgrounds/madison_si-tu-vas-bien.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_si-tu-vas-bien.jpg'
         , ''
     )
     ,
@@ -79,7 +79,7 @@ VALUES
         1
         , 1 
         , 'Blanc et Noir' 
-        , '../img/photos/album_madison_backgrounds/madison_blanc-et-noir.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_blanc-et-noir.jpg'
         , ''
     )
     ,
@@ -87,7 +87,7 @@ VALUES
         1
         , 1 
         , 'Des foules de toi' 
-        , '../img/photos/album_madison_backgrounds/madison_des-foules-de-toi.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_des-foules-de-toi.jpg'
         , ''
     )
     ,
@@ -95,7 +95,7 @@ VALUES
         1
         , 1 
         , "J'ai pas les mots" 
-        , '../img/photos/album_madison_backgrounds/madison_jai-pas-les-mots.jpg'
+        , '/assets/img/photos/album_madison_backgrounds/madison_jai-pas-les-mots.jpg'
         , ''
     )
     ,
