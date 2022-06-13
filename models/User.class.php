@@ -127,7 +127,7 @@ class User extends Model implements Modalable {
 	
 	public function set_login(string $login_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
 		if (strlen($login_given) > 50)
@@ -136,8 +136,9 @@ class User extends Model implements Modalable {
 			;
 		}
 		
-		$containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($login_given , "letters+digits+dash+underscore");
-		if (!$containAuthorizedCharactersOnly)
+		$containBadCharacters = preg_match("/[^\w\_\-]/i", $login_given) ? true : false;
+
+		if ($containBadCharacters)
 		{
 			throw new Exception("ERREUR : le login donné contient des caractères autres que letters+digits+dash+underscore");
 			;
@@ -151,7 +152,7 @@ class User extends Model implements Modalable {
 	}
 	
 	public function set_pass(string $pass_given){ 
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
 		if (strlen($pass_given) > 50)
@@ -160,8 +161,9 @@ class User extends Model implements Modalable {
 			;
 		}
 		
-		$containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($pass_given , "password");
-		if (!$containAuthorizedCharactersOnly)
+		$containBadCharacters = preg_match("/[^a-z0-9\_\-\@\!\.\?\&\*\$\,\;\:\+\=]/i", $pass_given) ? true : false;
+
+		if ($containBadCharacters)
 		{
 			throw new Exception("ERREUR : le password donné contient des caractères autres que ceux autorisés");
 			;
@@ -173,7 +175,7 @@ class User extends Model implements Modalable {
 	}
 	
 	public function set_pass_encoded(string $pass_encoded_given){ 
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 		$this->pass_encoded = mysqli_real_escape_string($mysqli , $pass_encoded_given); 
 	}
 	
@@ -190,15 +192,23 @@ class User extends Model implements Modalable {
 	}
 	
 	public function set_email(string $email_given){ 
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		if (strlen($email_given > 100))
 		{
 			throw new Exception("ERREUR : la longueur de l'email donné ne peut pas excéder 100 caractères.");
 		}
 
-		$containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($email_given , "email");
-		if (!$containAuthorizedCharactersOnly)
+		# $containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($email_given , "email");
+
+		$containBadCharacters = preg_match("/[^a-z0-9\_\-\.\@]/i", $email_given) ? true : false;
+			/*	\D  pour any non-digit character
+				\_ pour underscore
+				\@ pour arobase 
+				etc
+			*/
+
+		if ($containBadCharacters)
 		{
 			throw new Exception("ERREUR : l\'email donné contient des caractères autres que letters+digits+dash+underscore+@+.");
 			;
@@ -250,6 +260,11 @@ class User extends Model implements Modalable {
 		$rowDatas = [];
 		
 		/* NOTE : on ne vérifie pas si $this->rowid est rempli , car pour créer il sera vide, et pour updater il sera rempli. Donc je vérifie qu'il est rempli directement dans la méthode `update`.*/
+
+		//--- si non vide, on prend la valeur
+		if (!empty($this->rowid))
+			$rowDatas['rowid'] = $this->rowid; 
+
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
 		if (empty($this->active))

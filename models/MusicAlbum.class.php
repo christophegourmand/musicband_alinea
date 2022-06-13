@@ -147,7 +147,7 @@ class MusicAlbum extends Model implements Modalable {
 	
 	public function set_name(string $name_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		//--- check if size is under limit of sql field
 		if (strlen($name_given) > 50)
@@ -174,7 +174,7 @@ class MusicAlbum extends Model implements Modalable {
 
 	public function set_path_image(string $path_image_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($path_image_given) > 512)
@@ -187,16 +187,16 @@ class MusicAlbum extends Model implements Modalable {
 		
 		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 			// --- si oui :
-		// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
 			// --- si non :
-			$this->path_image = $path_image_given;
+			# $this->path_image = $path_image_given;
 		
 		return true;
 	}
 
 	public function set_link_spotify(string $link_spotify_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_spotify_given) > 512)
@@ -218,7 +218,7 @@ class MusicAlbum extends Model implements Modalable {
 
 	public function set_link_applemusic(string $link_applemusic_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_applemusic_given) > 512)
@@ -240,7 +240,7 @@ class MusicAlbum extends Model implements Modalable {
 
 	public function set_link_itunes(string $link_itunes_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_itunes_given) > 512)
@@ -262,7 +262,7 @@ class MusicAlbum extends Model implements Modalable {
 
 	public function set_link_deezer(string $link_deezer_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_deezer_given) > 512)
@@ -284,7 +284,7 @@ class MusicAlbum extends Model implements Modalable {
 	
 	public function set_link_amazonmusic(string $link_amazonmusic_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_amazonmusic_given) > 512)
@@ -306,7 +306,7 @@ class MusicAlbum extends Model implements Modalable {
 	
 	public function set_link_googleplay(string $link_googleplay_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_googleplay_given) > 512)
@@ -328,7 +328,7 @@ class MusicAlbum extends Model implements Modalable {
 	
 	public function set_link_tidal(string $link_tidal_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($link_tidal_given) > 512)

@@ -34,15 +34,6 @@ function containOnlyAuthorizedCharacters(string $str, string $mode="") : bool
 			/*	\D  pour any non-digit character
 			*/
 			break;
-		case 'email':
-			// --- letters+digits+dash+underscore+@
-			$containBadCharacters = preg_match("/[^a-z0-9\_\-\.\@]/i", $str) ? true : false;
-			/*	\D  pour any non-digit character
-				\_ pour underscore
-				\@ pour arobase 
-				etc
-			*/
-			break;
 		case 'letters+digits+spaces':
 			//---v1 (utiliser en priorité)
 			$containBadCharacters = preg_match("/[^a-z0-9 ]/i", $str) ? true : false;
@@ -51,6 +42,9 @@ function containOnlyAuthorizedCharacters(string $str, string $mode="") : bool
 			# $containBadCharacters = preg_match("/[\W]/igx", $str) ? true : false;
 			/* le x pour ignorer les espaces dans la recherche */
 			break;
+		case 'letters+digits+spaces+apostrophe+quote+dash+underscore':
+			$containBadCharacters = preg_match("/[^a-z0-9 \'\_\-\"]/i", $str) ? true : false;
+			break;
 		case 'letters+digits+spaces+apostrophe':
 			$containBadCharacters = preg_match("/[^a-z0-9 \']/i", $str) ? true : false;
 			break;
@@ -58,6 +52,15 @@ function containOnlyAuthorizedCharacters(string $str, string $mode="") : bool
 			// TODO : À TESTER ( utilisé dans classe User->set_pass()  )
 			$containBadCharacters = preg_match("/[^a-z0-9\_\-\@\!\.\?\&\*\$\,\;\:\+\=]/i", $str) ? true : false;
 			/*	\D  pour any non-digit character
+			*/
+			break;
+		case 'email':
+			// --- letters+digits+dash+underscore+@
+			$containBadCharacters = preg_match("/[^a-z0-9\_\-\.\@]/i", $str) ? true : false;
+			/*	\D  pour any non-digit character
+				\_ pour underscore
+				\@ pour arobase 
+				etc
 			*/
 			break;
 

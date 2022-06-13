@@ -132,7 +132,7 @@ class MusicSong extends Model implements Modalable {
 
 	public function set_name(string $name_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
 		if (strlen($name_given) > 50)
@@ -160,7 +160,7 @@ class MusicSong extends Model implements Modalable {
 
 	public function set_path_image(string $path_image_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($path_image_given) > 512)
@@ -173,9 +173,9 @@ class MusicSong extends Model implements Modalable {
 		
 		// REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 			// --- si oui :
-		// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
 			// --- si non :
-			$this->path_image = $path_image_given;
+			# $this->path_image = $path_image_given;
 		
 		return true;
 	}
@@ -183,7 +183,7 @@ class MusicSong extends Model implements Modalable {
 	
 	public function set_path_mp3(string $path_mp3_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 512
 		if (strlen($path_mp3_given) > 512)
@@ -196,22 +196,44 @@ class MusicSong extends Model implements Modalable {
 		
 		// REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 			// --- si oui :
-		// $this->path_mp3 = mysqli_real_escape_string($mysqli , $path_mp3_given);
+			$this->path_mp3 = mysqli_real_escape_string($mysqli , $path_mp3_given);
 			// --- si non :
-			$this->path_mp3 = $path_mp3_given;
+			# $this->path_mp3 = $path_mp3_given;
 		
 		return true;
 	}
 
 	public function set_lyrics(string $lyrics_given) : bool
 	{
-		global $mysqli;
+		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 		
+		//--- renvoyer erreur si taille > 16000000 (normally 16777215 max for a MEDIUMTEXT)
+		//LINK - https://www.mysqltutorial.org/mysql-text/
+		if (strlen($lyrics_given) > 16000000)
+		{
+			throw new Exception("ERREUR : les paroles données sont supérieur à 16000000 caractères, la limite étant 16777215 pour un MEDIUMTEXT.");
+			;
+		}
+
+		// REVIEW : activer si nécessaire
+		//--- renvoi erreur si contient des caractères non-autorisés
+		$listOfBadCharacters = [];
+		$containBadCharacters = preg_match("/[^\w \'\_\-\"\,\.\!\?\:\;\&\(\)\r\n]/iu", $lyrics_given, $listOfBadCharacters) ? true : false;
+
+		if ($containBadCharacters)
+		{
+			throw new Exception("ERREUR : les paroles données contiennent des caractères autres que `letters+digits+spaces+apostrophe+quote+dash+underscore`. Retirer: ".implode(' ', $listOfBadCharacters));
+			;
+		}
+
+
+
+
 		//--- REVIEW : vérifier si je dois effectivement nettoyer les paroles qui sont données dans le formulaire.
 			// --- si oui :
-		// $this->lyrics = mysqli_real_escape_string($mysqli , $lyrics_given);
+			$this->lyrics = mysqli_real_escape_string($mysqli , $lyrics_given);
 			// --- si non :
-			$this->lyrics = $lyrics_given;
+			# $this->lyrics = $lyrics_given;
 		
 		return true;
 	}

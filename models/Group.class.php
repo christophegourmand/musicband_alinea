@@ -96,12 +96,20 @@ class Group extends Model implements Modalable {
 	public function set_groupname(Mysqli $mysqli , string $given_groupname) : void
 	{
 		// --- vérifier que le nom donné n'est pas trop long (dans la DB j'ai mis VARCHAR(50) )
-		if (strlen($given_groupname) <= 50)
+		if (strlen($given_groupname) > 50)
 		{
-			$this->groupname = $given_groupname;
-		} else {
 			throw new Exception("ERREUR : Le nom donné pour le group doit être de 50 caractères max", 1);
 		}
+
+
+		$containBadCharacters = preg_match("/[^\w\_\-]/i", $given_groupname) ? true : false;
+		if ($containBadCharacters)
+		{
+			throw new Exception("ERREUR : le nom de groupe donné contient des caractères autres que letters+digits+dash+underscore");
+			;
+		}
+
+		$this->groupname = $given_groupname;
 	}
 
 	// Getters ----------------------------------
@@ -153,6 +161,10 @@ class Group extends Model implements Modalable {
 	public function prepareRowDatas() : array
 	{
 		$rowDatas = [];
+		
+		//--- si non vide, on prend la valeur
+		if (!empty($this->rowid))
+			$rowDatas['rowid'] = $this->rowid; 
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
 		if (empty($this->groupname))

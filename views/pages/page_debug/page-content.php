@@ -6,8 +6,8 @@ use models\music\MusicSong;
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
-
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/models/Bio.class.php");
 
 ?>
 
@@ -145,10 +145,12 @@ use models\music\MusicSong;
 			# $chaine_a_tester = "jean-pierre!8";   // PASS
 			# $chaine_a_tester = "jean-pierre@8";   // PASS
 			# $chain_est_clean = containOnlyAuthorizedCharacters($chaine_a_tester , "letters+digits+dash+underscore") ? 'oui' : 'non'; // PASS
-
+		// --- TEST 5 : autres modes
+			#$chaine_a_tester = "L'ardoise affiche l'en-tete du menu \"Super\" a 45_euros"; // PASS  mais pas avec les accents
+			#$chain_est_clean = containOnlyAuthorizedCharacters($chaine_a_tester , "letters+digits+spaces+apostrophe+quote+dash+underscore") ? 'oui' : 'non';
 
 		//--- à laisser actif pour tous les tests ci-dessus de containOnlyAuthorizedCharacters()
-		# print "la chaine [ $chaine_a_tester ] contient seulement les caractères autorisés : $chain_est_clean";
+		#print "la chaine [ $chaine_a_tester ] contient seulement les caractères autorisés : $chain_est_clean";
 
 	// TEST : charger un MusicAlbum
 		# $musicAlbum1 = new MusicAlbum();
@@ -218,6 +220,47 @@ use models\music\MusicSong;
 		# $album_withSongs->load_musicSongs($mysqli); // PASS
 		# var_dump( $album_withSongs );
 
+	//--- TEST : Bio >> setters
+		# $bio = new Bio();
+		# $bio->set_firstname("John"); // OK : accepté
+		# $bio->set_firstname("John8"); // OK refusé
+		# $bio->set_firstname("Jean-Émile"); // OK accepté
+		
+		# $bio->set_description("L' ê - _ , abc"); // OK accepté
+		# $bio->set_description("L' ê - _ , abc @"); // OK refusé
+		# $bio->set_description("L' ê - _ , abc #"); // OK refusé
+		# $bio->set_description("L' ê - _ , abc (adf)."); // OK refusé
+		
+		# $bio->set_job("Guitare , ."); // OK
+		// $bio->set_job("Guitare, piano, chants. Auteur/compositeur/interprète"); // OK
+
+		//--- à utiliser pour tous les tests ci-dessus
+		# var_dump($bio);
+
+	//--- TEST : Bio >> load
+		# $bio = new Bio();
+		# $bio->load($mysqli, 4); // PASS
+	//--- TEST : Bio >> update  (réactiver les 2 lignes ci dessus)
+		# $bio->set_firstname('Ron Ron'); // OK
+		# $bio->set_lastname('Hu Gon'); // OK
+		# $bio->set_description(' '); // OK
+		# $bio->update($mysqli); // PASS
+		# var_dump($bio);
+	//--- TEST : Bio >> create
+		# $bio = new Bio();
+		# $bio->set_active(0); // OK
+		# $bio->set_firstname('Michael'); // OK
+		# $bio->set_lastname('Jones'); // OK
+		# $bio->set_path_image('/assets/img/photos/musicians/# photo_presentation_michael.jpg'); // OK
+		# $bio->set_description("L'un des meilleurs guitariste de # France, référence en blues / rock / solos, et très doué au # chant !"); // OK
+		# $bio->set_job('Guitariste / soliste / chant'); // OK
+		# $bio->create($mysqli); // PASS
+
+
+	//--- TEST : Bio >> delete
+		# $bio = new Bio();
+		# $bio->load($mysqli , 9); // OK
+		# $bio->delete($mysqli); // PASS
 
 			?>
 		</pre>
