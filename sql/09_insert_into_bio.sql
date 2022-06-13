@@ -33,7 +33,7 @@ Adepte des Dimanches de procrastination, et du café fumant."
 		, "Nico"
 		, "Cividino"
 		, "/assets/img/photos/musicians/photo_presentation_nico.jpg"
-		, "Originaire du Nord Isère. Né le 08 Mai 1985 dans les bras de sa bonne étoile.\r\nFrère du compositeur.\r\nNe devant sa place qu’a un pauvre concours de circonstances: être venu au monde dans une famille de musiciens.\r\nToujours dispo, maitre du tempo, maitre du tant pis, pour le meilleur, et surtout, pour le pire."
+		, "Originaire du Nord Isère. Né le 08 Mai 1985 dans les bras de sa bonne étoile.\r\nFrère du compositeur.\r\nNe devant sa place qu’à un pauvre concours de circonstances: être venu au monde dans une famille de musiciens.\r\nToujours dispo, maître du tempo, maître du tant pis, pour le meilleur, et surtout, pour le pire."
 		, "Batteur/Percussionniste"
 	),
 	(

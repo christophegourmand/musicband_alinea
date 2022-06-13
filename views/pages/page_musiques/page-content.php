@@ -12,7 +12,7 @@
 	//--- load MusicAlbums rowDatas
 	$dbHandler = new DbHandler();
 	$albumsRowsFromDb = $dbHandler->loadManyRows($mysqli, 'music_album', ["active = 1"]);
-	echo '<script>console.info(`line_'.__LINE__.': $albumsRowsFromDb`); console.debug('.json_encode($albumsRowsFromDb).');</script>'; //! DEBUG
+	# echo '<script>console.info(`line_'.__LINE__.': $albumsRowsFromDb`); console.debug('.json_encode($albumsRowsFromDb).');</script>'; //! DEBUG
 	
 
 	//--- create array of MusicAlbum instances and fill them with datas
