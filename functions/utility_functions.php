@@ -96,5 +96,19 @@ function translateDaysAndMonths (string $date_english_str) : string
 	return $date_french_str;
 }
 
+function displayMessageFromKey(string $messageKey)
+{
+	$translationTable = [];
+
+
+	$translationTable['userAlreadyExist'] = "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !";
+	
+	$linkToConnectPage = "/views/pages/page_connexion.php";
+	$translationTable['userCreatedSuccessfully'] = "Le compte utilisateur a bien été créé !<br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>";
+	
+
+	return $translationTable[$messageKey];
+}
+
 ?>
 

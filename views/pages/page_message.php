@@ -4,16 +4,19 @@
 
 // VARIABLES USED TO BUILD PATH-TO-FILES : 
 
-    $page_name = "page_connexion"; // used to build paths-to-files
+    $page_name = "page_message"; // used to build paths-to-files
 
 // VARIABLES USED IN HEADER :
-    $page_title = "ALINEA musique - connexion";
-    $page_description = "connexion pour les membres d'Alinea.";
+    $page_title = "ALINEA musique - Messages";
+    $page_description = "Alinea : ici s'affiche les messages";
 
 // VARIABLES TO ADJUST "common elements" (header, navbar, ...)
-    $active_menu_in_navbar = "connexion";
+    $active_menu_in_navbar = "Message";
 
 // TODO : PLUS TARD METTRE CES VARIABLES DANS UN OBJET. (Un par page + portant le nom de la page + le nom des clés sont les mêmes d'un objet à l'autre.
+
+// TODO : mettre tout ce qui concerne la session dans un fichier commun et faire un include_once ici (AVANT LE DOCTYPE !)
+session_start();
 
 ?>
 
@@ -37,7 +40,7 @@
         
         <!-- custom script, only for this page -->
         <script src="<?php echo('/assets/js/effetOnBloquote_indexPage.js')?>"></script>
-        <script src="<?php echo('/assets/js/animationOnSocialMediaIcons.js')?>"></script>
+        <script src="<?php echo('/assets/js/checkFormRegister.js')?>"></script>
     </body>
 </html>
 

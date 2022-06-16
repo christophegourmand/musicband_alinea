@@ -25,7 +25,7 @@ session_start();
     <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/head.php"); ?>
 
     <body>
-        <div class="topPanel full-height" id="indexPage_topPanel">
+        <div class="topPanel" id="indexPage_topPanel">
             <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>
 
             <div class="topPanel-body">

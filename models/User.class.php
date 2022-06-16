@@ -171,7 +171,7 @@ class User extends Model implements Modalable {
 
 		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
 		
-		$this->login = mysqli_real_escape_string($mysqli , $pass_given);
+		$this->pass = mysqli_real_escape_string($mysqli , $pass_given);
 	}
 	
 	public function set_pass_encoded(string $pass_encoded_given){ 
