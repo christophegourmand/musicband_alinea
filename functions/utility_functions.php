@@ -1,8 +1,8 @@
 <?php
 
 /**
-* @var    String   $str    string you need to analyse
-* @var    String   $mode   Can be 'letters' , 'digits' , 'letters+digits' , 'letters+digits+dash+underscore' , 'letters+digits+spaces' , 'letters+digits+spaces+apostrophe' , 'password' , 'email'
+* @param    String   $str    string you need to analyse
+* @param    String   $mode   Can be 'letters' , 'digits' , 'letters+digits' , 'letters+digits+dash+underscore' , 'letters+digits+spaces' , 'letters+digits+spaces+apostrophe' , 'password' , 'email'
 * for 'email' : letters+digits+dash+underscore+@
 * @return bool
 */
@@ -72,6 +72,28 @@ function containOnlyAuthorizedCharacters(string $str, string $mode="") : bool
 	$containOnlyAuthorizedCharacters = !$containBadCharacters;
 
 	return $containOnlyAuthorizedCharacters;
+}
+
+
+/**
+* @param	string		$date	Full date as string in english.(ex: Thursday 16 June 2022)
+* @return string	Return the same string as $date, bt with Days and months translated.
+*/
+function translateDaysAndMonths (string $date_english_str) : string
+{
+	$english_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+	$french_days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+
+	$english_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+	$french_months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+
+	$date_french_str = str_replace($english_days , $french_days , $date_english_str);
+	$date_french_str = str_replace($english_months , $french_months , $date_french_str);
+	# $date_french_str = str_replace(' - ' , ' à ' , $date_french_str);
+
+	return $date_french_str;
 }
 
 ?>

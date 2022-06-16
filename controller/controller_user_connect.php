@@ -45,9 +45,9 @@ if (isset($_POST['action']) && $_POST['action'] == 'sendform'){
 
 	// echo '<pre>';  @var_dump($userExist);  echo '</pre>';  //exit('END');    //! DEBUG
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 }
 
+require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 
 // --- check if session from form is the same as the sessionid in client browser.
 // ! TEMPORARLY DE-ACTIVATED

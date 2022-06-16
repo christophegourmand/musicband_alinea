@@ -1,0 +1,66 @@
+.form-container {
+	margin: 0 $pageMargin;
+
+	@include flex_row(center, flex-start);
+
+	.form {
+		width: 100%;
+		max-width: 27rem;
+
+		.form-group {
+			/* @include flex_row(center, center); */
+			margin-bottom: 1.5rem;
+			display: grid;
+
+
+			/* @include media("" , "md") { */
+				grid-template-columns: 1fr;
+				grid-template-rows: fit-content(100%) fit-content(100%);
+			/* } */
+
+			/* @include media("md" , "") {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: fit-content(100%);
+				column-gap: 1rem;
+			} */
+
+			.form-label {
+				text-align: center;
+				font-family: 'Overpass', sans-serif;
+				font-size: 1.3rem;
+				font-weight: 300;
+			}
+
+			/* --- for many kind of input */
+			input[type="text"].form-input , input[type="email"].form-input , textarea.form-input {
+				border: 1px solid var(--theme-color_form-input-border);
+				border-radius: 5px;
+
+				background-color: transparent;
+
+				height:fit-content(100%);
+				padding: .5rem .3rem .3rem .3rem;
+
+				font-size: 1.2rem;
+				font-weight: 200;
+				font-family: 'Overpass', sans-serif;
+				color: white;
+
+				&:hover {
+					border: 1px solid var(--theme-color_form-input-border-hover);
+				}
+				
+			}
+
+			/* --- for textarea only */
+			textarea.form-input {
+				resize: vertical;
+			}
+
+			/* input[type="submit"].form-input {
+
+			} */
+		}
+
+	}
+}

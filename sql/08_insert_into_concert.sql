@@ -19,7 +19,7 @@ VALUES
 		, '20:00:00'
 		, '22:00:00'
 		, 'Les Ursulines'
-		, 'Crémieux'
+		, 'Crémieu'
 		, 'https://goo.gl/maps/dfiKFMc7ahCrUYkUA'
 		, 'assets/img/concerts/2022-04-09_les-ursulines.jpeg'
 		, "Ici apparaîtra un texte d\'accroche du concert. Venez nombreux pour boire de la bonne bière brassée dans ce lieu convivial, tout en assistant au concert que nous vous avons préparé !"

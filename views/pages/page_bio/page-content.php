@@ -11,9 +11,9 @@
 
 	//--- create instances of Bio, fill then with rowDatas , then push them in array
 	$biosInstances = [];
-	foreach ($biosRowsFromDb as $bioRowFormDb) {
+	foreach ($biosRowsFromDb as $bioRowFromDb) {
 		$bio = new Bio();
-		$bio->fill_from_array($bioRowFormDb);
+		$bio->fill_from_array($bioRowFromDb);
 		array_push($biosInstances , $bio);
 	}
 ?>

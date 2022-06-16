@@ -1,9 +1,10 @@
 .btn {
+    width: fit-content(100%);
     padding: .5rem;
     
     border: none;
     text-shadow: none;
-    border-radius: 2rem;
+    border-radius: 5px;
     
     font-size: 1rem;
 
@@ -27,11 +28,16 @@
 
 .btn-outline-white {
     @extend .btn;
-    // background-color: var(--theme-color_important);
-    // border: 1px solid var(--theme-color_neutral);
+    background-color: transparent;
+    border: 1px solid var(--theme-color_neutral);
     
     // color: var(--theme-color_neutral);
     color: white;
+    
+    &:hover {
+        border: 1px solid var( --theme-color_form-input-border-hover);
+        color: var( --theme-color_form-input-border-hover);
+    }
 }
 
 .fly_bottom-right {

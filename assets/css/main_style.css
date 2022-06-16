@@ -29,6 +29,9 @@
   --theme-color_important: #e40000;
   --theme-color_neutral: white;
   --theme-color_discret: #b0b0b0;
+  /* for forms: */
+  --theme-color_form-input-border: hsla(0, 0%, 100%, .5);
+  --theme-color_form-input-border-hover: hsl(193, 100%, 49%);
   --theme-color_background: #1c1c1c;
   --theme-color_brand: white;
 }
@@ -767,7 +770,7 @@ footer {
   font-variant: petite-caps;
 }
 
-.contact {
+.partenaires {
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: 1.3s;
@@ -777,7 +780,7 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  .contact {
+  .partenaires {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-left: 0;
@@ -786,17 +789,17 @@ footer {
 }
 
 @media screen and (min-width: 767.9px) {
-  .contact {
+  .partenaires {
     width: 100%;
     padding: 3rem 1.5rem;
   }
 }
 
-.contact:hover, .contact:active, .contact:focus {
+.partenaires:hover, .partenaires:active, .partenaires:focus {
   background-color: #a31800;
 }
 
-.contact .contact-title {
+.partenaires .partenaires-title {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--theme-color_neutral);
   text-align: left;
@@ -805,7 +808,7 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  .contact .contact-title {
+  .partenaires .partenaires-title {
     margin-left: 1rem;
     margin-right: 1rem;
     font-size: 2.5rem;
@@ -813,24 +816,24 @@ footer {
 }
 
 @media screen and (min-width: 767.9px) {
-  .contact .contact-title {
+  .partenaires .partenaires-title {
     font-size: 3rem;
   }
 }
 
-.contact .contact-link:-webkit-any-link {
+.partenaires .partenaires-link:-webkit-any-link {
   color: var(--theme-color_neutral);
 }
 
-.contact .contact-link:-moz-any-link {
+.partenaires .partenaires-link:-moz-any-link {
   color: var(--theme-color_neutral);
 }
 
-.contact .contact-link:any-link {
+.partenaires .partenaires-link:any-link {
   color: var(--theme-color_neutral);
 }
 
-.contact .contact-body {
+.partenaires .partenaires-body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -839,7 +842,7 @@ footer {
 }
 
 @media screen and (min-width: 767.9px) {
-  .contact .contact-body {
+  .partenaires .partenaires-body {
     -ms-grid-columns: 1fr 3fr;
         grid-template-columns: 1fr 3fr;
     grid-column-gap: 3rem;
@@ -847,13 +850,13 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  .contact .contact-body .contact-body_left-col {
+  .partenaires .partenaires-body .partenaires-body_left-col {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 }
 
-.contact .contact-body .contact-body_left-col .contact-address {
+.partenaires .partenaires-body .partenaires-body_left-col .partenaires-address {
   margin-bottom: 1rem;
   text-align: left;
   font-size: 1.3rem;
@@ -862,13 +865,13 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-  .contact .contact-body .contact-body_right-col {
+  .partenaires .partenaires-body .partenaires-body_right-col {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 }
 
-.contact .contact-body .contact-body_right-col .contact-description {
+.partenaires .partenaires-body .partenaires-body_right-col .partenaires-description {
   text-align: left;
   font-size: 1.3rem;
   font-weight: 200;
@@ -1573,10 +1576,11 @@ footer {
 }
 
 .btn, .btn-dark, .btn-outline-white {
+  width: fit-content(100%);
   padding: .5rem;
   border: none;
   text-shadow: none;
-  border-radius: 2rem;
+  border-radius: 5px;
   font-size: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1605,7 +1609,14 @@ footer {
 }
 
 .btn-outline-white {
+  background-color: transparent;
+  border: 1px solid var(--theme-color_neutral);
   color: white;
+}
+
+.btn-outline-white:hover {
+  border: 1px solid var(--theme-color_form-input-border-hover);
+  color: var(--theme-color_form-input-border-hover);
 }
 
 /* =========================================== */
@@ -2734,6 +2745,80 @@ body {
     width: 3rem;
     height: 3rem;
   }
+}
+
+.form-container {
+  margin: 0 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.form-container .form {
+  width: 100%;
+  max-width: 27rem;
+}
+
+.form-container .form .form-group {
+  /* @include flex_row(center, center); */
+  margin-bottom: 1.5rem;
+  display: -ms-grid;
+  display: grid;
+  /* @include media("" , "md") { */
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: fit-content(100%) fit-content(100%);
+      grid-template-rows: fit-content(100%) fit-content(100%);
+  /* } */
+  /* @include media("md" , "") {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: fit-content(100%);
+				column-gap: 1rem;
+			} */
+  /* --- for many kind of input */
+  /* --- for textarea only */
+  /* input[type="submit"].form-input {
+
+			} */
+}
+
+.form-container .form .form-group .form-label {
+  text-align: center;
+  font-family: 'Overpass', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.form-container .form .form-group input[type="text"].form-input, .form-container .form .form-group input[type="email"].form-input, .form-container .form .form-group textarea.form-input {
+  border: 1px solid var(--theme-color_form-input-border);
+  border-radius: 5px;
+  background-color: transparent;
+  height: fit-content(100%);
+  padding: .5rem .3rem .3rem .3rem;
+  font-size: 1.2rem;
+  font-weight: 200;
+  font-family: 'Overpass', sans-serif;
+  color: white;
+}
+
+.form-container .form .form-group input[type="text"].form-input:hover, .form-container .form .form-group input[type="email"].form-input:hover, .form-container .form .form-group textarea.form-input:hover {
+  border: 1px solid var(--theme-color_form-input-border-hover);
+}
+
+.form-container .form .form-group textarea.form-input {
+  resize: vertical;
 }
 
 /* STATES */

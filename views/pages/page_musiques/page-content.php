@@ -112,10 +112,7 @@
 		<section class="songs">
 			<h3 class="page-title">Titres</h3>
 			<aside class="songs-cards">
-				<?php # for($i=0 ; $i<count($allSongs_indArray) ; $i++): ?>
 				<?php foreach ($musicAlbum->get_musicSongs() as $musicSongindex => $musicSong): ?>
-
-
 					<div 
 						class="horizontalCard" 
 						id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>"
@@ -123,11 +120,9 @@
 					>
 						<a class="horizontalCard-link" href="<?php echo('/views/pages/page_lyrics.php'.'?songRowid='.$musicSong->get_rowid());?>">
 
-						<!-- .'/?song='.$i -->
 							<h3 class="horizontalCard-title"><?= $musicSong->get_name() ?></h3>
 						</a>
 					</div>
-				<?php # endfor; ?>
 				<?php endforeach ?>
 			</aside>
 		</section>

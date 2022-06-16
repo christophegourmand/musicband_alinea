@@ -37,7 +37,7 @@
 					id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>" 
 					data-bg-img="<?= $musicSong->get_path_image() ?>"
 				>
-					<a class="horizontalCard-btn btn-outline-white" href="<?='/views/pages/page_musiques.php';?>">
+					<a class="horizontalCard-btn btn-dark" href="<?='/views/pages/page_musiques.php';?>">
 						<span class="btn-txt">&lt;</span>
 					</a>
 					<a class="horizontalCard-link" href="<?='/views/pages/page_musiques.php';?>">
