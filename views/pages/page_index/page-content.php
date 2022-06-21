@@ -11,11 +11,13 @@
 
     <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/modules/socialmedia.php")?>
 
-	<?php 
+	<?php
 		// --- html who display the message if there is a key in $_GET or $_COOKIE :
 		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
 	?>
 
-    <img class="img-full-page" src="assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/alinea_00027_groupe_SD.jpeg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
+    <!-- <img class="img-full-page" src="assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/alinea_00027_groupe_SD.jpeg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea"> -->
+    <!-- update 21 juin :  -->
+    <img class="img-full-page" src="assets/img/photos/for-pages/presentation-groupe-thierry-nico.jpg" alt="photo des membres fondateurs du groupe de musique Alinea" title="photo des membres fondateurs du groupe de musique Alinea">
 
 </main>
