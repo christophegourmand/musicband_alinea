@@ -1,5 +1,7 @@
 <?php 
     require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 ?>
 
 

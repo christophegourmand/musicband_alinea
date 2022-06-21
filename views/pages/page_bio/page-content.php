@@ -2,6 +2,7 @@
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
 	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Bio.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
 	// SECTION : prepare datas (instances of Bio)
 	$dbHandler = new DbHandler();

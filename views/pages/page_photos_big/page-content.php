@@ -1,3 +1,7 @@
+<?php
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+?>
+
 <main class="">
     <?php
         include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array2.php');

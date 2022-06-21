@@ -7,6 +7,8 @@
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 	//--- create instances of MusicSong and MusicAlbum , and fill them
 	$musicSong = new MusicSong();
 	$songToDisplay_rowid = (isset( $_GET['songRowid']) && !empty ($_GET['songRowid'])) ? $_GET['songRowid'] : 1;

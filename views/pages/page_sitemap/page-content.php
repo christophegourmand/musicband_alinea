@@ -2,6 +2,8 @@
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
 
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 
     $dbHandler = new DbHandler();
     $albumsRowsFromDb = $dbHandler->loadManyRows($mysqli, 'music_song', ["active = 1"]);

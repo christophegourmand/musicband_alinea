@@ -8,6 +8,7 @@ use models\music\MusicSong;
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Bio.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
 ?>
 

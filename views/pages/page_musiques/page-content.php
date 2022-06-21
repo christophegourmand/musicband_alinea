@@ -8,6 +8,8 @@
 	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 
 	//--- load MusicAlbums rowDatas
 	$dbHandler = new DbHandler();
