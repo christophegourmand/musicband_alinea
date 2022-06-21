@@ -11,6 +11,11 @@
 
     <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/modules/socialmedia.php")?>
 
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
+
     <img class="img-full-page" src="assets/img/photos/from-CoppaStudio/2020.06.24/Color/SD/alinea_00027_groupe_SD.jpeg" alt="photo des membres du groupe de musique Alinea" title="photo des membres du groupe de musique Alinea">
 
 </main>

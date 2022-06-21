@@ -9,6 +9,12 @@
 
 <main>
 	<h2 class="page-title">Création de compte</h2>
+
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
+
 	<?php # dbug('$_SERVER', $_SERVER, 'html_dump') ?>
 	<section class="connexion">
 		<div class="form-container">

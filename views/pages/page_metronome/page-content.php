@@ -5,7 +5,12 @@
 
 <main>
 	<h2 class="page-title">Metronome</h2>
-	
+
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
+
 	<section class="metronome" id="metronome">
 		<div class="metronome-tempo-container">
 			<div class="metronome-tempo-header">

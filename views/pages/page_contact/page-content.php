@@ -5,12 +5,13 @@
 
 <main>
     <h2 class="page-title">Contact</h2>
-    
-    <div style="margin: 1.5rem; border:1px solid red; color: red; text-align:center;">
-        <h5>Ce formulaire sera bientôt opérationnel, en attendant veuillez nous contacter par l'adresse suivante:</h5>
-        <a style="color: #ffbaba; text-decoration:underline;" href="mailto:alineamusique@gmail.com">alineamusique@gmail.com</a>
-    </div>
+	<?php 
+        // temporary : 
+        $_GET['messageKey'] = 'formContactWorksSoon';
 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
 
     <div class="form-container">
         <form id="formContact" method="POST" action="<?= '/controller/controller_contact_form.php'?>" class="form">
@@ -24,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="formContact_message" class="form-label">Message</label>
-                <textarea id="formContact_message" name="formContact_message" placeholder="" class="form-input" cols="50" rows="6" required></textarea>
+                <textarea id="formContact_message" name="formContact_message" placeholder="" class="form-input" rows="6" required></textarea>
             </div>
             <!-- <div class="form-group">
                 <label for="formContact_senderWantCopy" class="form-label">Recevoir une copie</label>

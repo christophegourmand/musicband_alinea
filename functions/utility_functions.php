@@ -121,7 +121,7 @@ function getMessageFromKey(string $messageKey)
 	$translationTable['userAlreadyExist'] = 
 		[
 			'cssclass' => 'warning',
-			'text' => "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !", 
+			'text' => "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !"
 		
 		];
 	
@@ -130,21 +130,28 @@ function getMessageFromKey(string $messageKey)
 	$translationTable['userCreatedSuccessfully'] = 
 		[
 			'cssclass' => 'success',
-			'text' => "Le compte utilisateur a bien été créé !<br><br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>", 
+			'text' => "Le compte utilisateur a bien été créé !<br><br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>" 
 		];
 
 	//--- key
 	$translationTable['youAreConnected'] = 
 		[
 			'cssclass' => 'success',
-			'text' => "Vous êtes connectés !", 
+			'text' => "Vous êtes connectés !",
 		];
 
 	//--- key
 	$translationTable['yourPasswordIsWrong'] = 
 		[
 			'cssclass' => 'error',
-			'text' => "Le mot de passe que vous venez d'entrer ne correspond pas à celui que vous nous aviez donné.", 
+			'text' => "Le mot de passe que vous venez d'entrer ne correspond pas à celui que vous nous aviez donné." 
+		];
+
+	//--- key
+	$translationTable['formContactWorksSoon'] = 
+		[
+			'cssclass' => 'info',
+			'text' => "Ce formulaire sera bientôt opérationnel, en attendant veuillez nous contacter par l'adresse suivante:<br><a style=\"color: #ffffff; text-decoration:underline;\" href=\"mailto:alineamusique@gmail.com\">alineamusique@gmail.com</a>"
 		];
 
 	if (in_array($messageKey, array_keys($translationTable) ))

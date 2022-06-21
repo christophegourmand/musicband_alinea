@@ -2920,6 +2920,10 @@ body {
   background-color: #00bd91;
 }
 
+.popupmessage-container.show .popupmessage.info {
+  background-color: #1574ef;
+}
+
 /* STATES */
 /* =========================================== */
 /* STATES / states */

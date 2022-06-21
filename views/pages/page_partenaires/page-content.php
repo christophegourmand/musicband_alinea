@@ -5,7 +5,13 @@
 
 <main>
     <h2 class="page-title">Partenaires</h2>
-    
+
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
+
+
     <section class="partenaires">
         <h3 class="partenaires-title">Alinéa.</h3>
         <div class="partenaires-body">

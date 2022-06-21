@@ -14,6 +14,11 @@ use models\music\MusicSong;
 
 <main>
 	<h2 class="page-title">DEBUG</h2>
+	
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
 
 	<section class="debug">
 		<pre>

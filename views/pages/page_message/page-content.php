@@ -9,13 +9,10 @@
 
 <main>
 	<h2 class="page-title">Message</h2>
+	
 	<?php 
-		if ($_GET['messagekey'])
-		{
-			// en fonction de la clé , aller chrecher le message dans un array
-			
-			$message = getMessageFromKey($_GET['messagekey']);
-		}
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
 	?>
 
 	<div class="message">
