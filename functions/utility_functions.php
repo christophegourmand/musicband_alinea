@@ -96,16 +96,33 @@ function translateDaysAndMonths (string $date_english_str) : string
 	return $date_french_str;
 }
 
-function displayMessageFromKey(string $messageKey)
+function popupMessage(string $message)
 {
+	echo(<<<JS
+		<script>
+			
+		</script>	
+	JS);
+}
+
+function getMessageFromKey(string $messageKey)
+{
+	//--- table initialisation
 	$translationTable = [];
 
 
+	//--- key
 	$translationTable['userAlreadyExist'] = "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !";
 	
+	//--- key
 	$linkToConnectPage = "/views/pages/page_connexion.php";
 	$translationTable['userCreatedSuccessfully'] = "Le compte utilisateur a bien été créé !<br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>";
 	
+	//--- key
+	$translationTable['youAreConnected'] = "Vous êtes connectés !";
+
+	//--- key
+	$translationTable['yourPasswordIsWrong'] = "Le mot de passe est incorrect.<br><small>Et là vous me direz que c'était le bon. Mais si si , je peux assurer que vous nous aviez donné un autre mot de passe !</small>";
 
 	return $translationTable[$messageKey];
 }

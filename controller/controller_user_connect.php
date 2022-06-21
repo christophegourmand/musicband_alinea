@@ -3,48 +3,43 @@
 // IMPORTS
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-
-require_once($_SERVER['DOCUMENT_ROOT']."/models/User/User.class.php");
-
-
-// echo '<pre>';  @var_dump($_REQUEST);  echo '</pre>'; exit('END');    //! DEBUG
-
+require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 
 // ======================================================================
 // VARIABLES 
 
-// creer une fonction pour nettoyer les strings que je recupère en POST ou GET.
-// ou est-ce que la fonction existe déjà
-$connect_login = htmlentities( $_POST['connect_login'] );
-$connect_password = htmlentities( $_POST['connect_login'] ); // TODO : utiliser des regex pour s'assurer qu'il y a des caracteres a-z 0-9 et quelques speciaux.
+// NOTE : we should have : 'given_login' , 'given_password'
+
+echo '<pre>';  @var_dump($_REQUEST);  echo '</pre>'; // exit('END');    // DEBUG
+
+$given_login = htmlentities( $_POST['given_login'] );
+$given_password = htmlentities( $_POST['given_password'] );
 
 // ======================================================================
 // TRAITEMENT
 
-if (isset($_POST['action']) && $_POST['action'] == 'sendform'){
-	// print_r($_POST);
-
-	// importer la classe qui s'occupe des User
-
+if (isset($_POST['action']) && $_POST['action'] == 'check_credentials')
+{
 	// creer une instance de la classe user
 	$user = new User();
 
-	// utiliser une methode `connect($login , $password)` qui va voir dans la database si il y a un user avec ces identifiants.
-	// $userExist = $user->loginExist('anthony');
+	if ($user->loginExist($mysqli , $given_login)) 
+	{
+		$user->loadFromLogin($mysqli , $given_login);
 
-	// si il existe , utiliser une fonction `load()`pour recuperer les infos du user.
-	if ($user->loginExist($mysqli , $connect_login)) {
-		$user->loadFromLogin($connect_login);
-		echo '<h4>Le user a bien été chargé depuis la Database.</h4>';
-		echo '<pre>';  @var_dump($user);  echo '</pre>';  exit('END');    //! DEBUG
+		if ($user->passwordCorrespondToHash($given_password))
+		{
+			$messagekey = "youAreConnected";
+			header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+			exit();
+		}
+		else 
+		{
+			$messagekey = "yourPasswordIsWrong";
+			header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+			exit();
+		}
 	}
-
-
-	// utiliser une fonction qui verifie le password.
-
-
-	// echo '<pre>';  @var_dump($userExist);  echo '</pre>';  //exit('END');    //! DEBUG
-
 }
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");

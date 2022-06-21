@@ -42,11 +42,11 @@ function setHeightForMenusTiles() {
 	}
 	
 	// (4) KEEP TRACK OF HOW MANY TIME THE RESIZE HAPPENED:
-	var counterLabel = "COUNT OF RESIZE-EVENT";
+	/* var counterLabel = "COUNT OF RESIZE-EVENT";
 	if (ENV === 'dev') { 
 		console.count(counterLabel);
 		console.info("✅ DONE: height of menus has been changed !");
-	}
+	} */
 
 }
 
@@ -63,9 +63,10 @@ arrayOfStepsValuesForBloquote = ()=> {
 	}
 	return arrayOfSteps;
 };
-if (ENV === 'dev'){
+/* if (ENV === 'dev'){
+	console.info('arrayOfStepsValuesForBloquote');
 	console.log(arrayOfStepsValuesForBloquote());
-}   
+}  */  
 
 //* ANIMATION ON PAGE 'CONTACT' ========================================================
 
@@ -137,5 +138,8 @@ listOfSongCards_arr.forEach(songCard_node => {
 	// console.log(pathToSongBackground);
 	songCard_node.style.backgroundImage = `url("${pathToSongBackground}")`;
 });
+
+
+
 
 

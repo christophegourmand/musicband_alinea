@@ -1,4 +1,7 @@
-<?php include($_SERVER['DOCUMENT_ROOT']."/"."common_variables.php"); ?>
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT']."/.env.php");
+    include($_SERVER['DOCUMENT_ROOT']."/"."common_variables.php");
+?>
 
 <header>
     <div class="header-head">

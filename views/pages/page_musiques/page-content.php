@@ -5,7 +5,7 @@
 	include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php');
 
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 

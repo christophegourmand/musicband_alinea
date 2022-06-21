@@ -1,6 +1,5 @@
 <?php 
-    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
 
 // VARIABLES USED TO BUILD PATH-TO-FILES : 
 
@@ -22,6 +21,7 @@
     <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/head.php"); ?>
 
     <body>
+        <?php include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); ?>
         <div class="topPanel" id="indexPage_topPanel">
             <?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>
 
@@ -38,6 +38,7 @@
         <!-- custom script, only for this page -->
         <script src="<?php echo('/assets/js/effetOnBloquote_indexPage.js')?>"></script>
         <script src="<?php echo('/assets/js/animationOnSocialMediaIcons.js')?>"></script>
+        <script src="<?php echo('/assets/js/verifyCharactersRegex.js')?>"></script>
     </body>
 </html>
 

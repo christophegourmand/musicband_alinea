@@ -1,6 +1,6 @@
 <?php
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Bio.class.php");
 
 	// SECTION : prepare datas (instances of Bio)

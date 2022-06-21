@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
@@ -161,7 +163,7 @@ class User extends Model implements Modalable {
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^a-z0-9\_\-\@\!\.\?\&\*\$\,\;\:\+\=]/i", $pass_given) ? true : false;
+		$containBadCharacters = preg_match("/[^\w\_\-\@\!\.\?\&\*\$\,\;\:\+\=]/i", $pass_given) ? true : false;
 
 		if ($containBadCharacters)
 		{
@@ -201,7 +203,7 @@ class User extends Model implements Modalable {
 
 		# $containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($email_given , "email");
 
-		$containBadCharacters = preg_match("/[^a-z0-9\_\-\.\@]/i", $email_given) ? true : false;
+		$containBadCharacters = preg_match("/[^\w\_\-\.\@]/i", $email_given) ? true : false;
 			/*	\D  pour any non-digit character
 				\_ pour underscore
 				\@ pour arobase 
@@ -348,7 +350,7 @@ class User extends Model implements Modalable {
 	* charge le user depuis la database.
 	*
 	*/
-	public function loadFromLogin(Mysqli $mysqli , string $login) // REVIEW: TOUJOURS UTILE ? 
+	public function loadFromLogin_old(Mysqli $mysqli , string $login) // REVIEW: TOUJOURS UTILE ? 
 	{
 		$sql_query = "SELECT *";
 		$sql_query .= " FROM user AS u";
@@ -380,14 +382,59 @@ class User extends Model implements Modalable {
 			$this->pass = $receivedUserObject->pass;
 			$this->pass_encoded = $receivedUserObject->pass_encoded;
 			$this->active = $receivedUserObject->active;
-			$this->date_creation = $receivedUserObject->datecreation;
-			$this->date_last_connection = $receivedUserObject->datelastconnection;
+			$this->date_creation = $receivedUserObject->date_creation;
+			$this->date_last_connection = $receivedUserObject->date_last_connection;
 
 			return true;
 		} else { // si il y a 0
 			return false;
 		}
 
+	}
+	
+	/**
+	* charge le user depuis la database.
+	*
+	*/
+	public function loadFromLogin(Mysqli $mysqli , string $login) // REVIEW: TOUJOURS UTILE ? 
+	{
+				//--- load the row so $receivedRowDatas will be full.
+		$receivedRowDatas = self::$dbHandler->loadRow($mysqli , $this->get_tableName() , ["login = '$login'"]);
+
+		//--- re-affect datas from rowDatas to each properties of this object
+		$this->rowid = (int) $receivedRowDatas['rowid'];
+		$this->active = (int) $receivedRowDatas['active'];
+		$this->login = (string) $receivedRowDatas['login'];
+		$this->pass = (string) $receivedRowDatas['pass'];
+		$this->pass_encoded = (string) $receivedRowDatas['pass_encoded'];
+		$this->fk_group_rowid = (int) $receivedRowDatas['fk_group_rowid'];
+		$this->date_creation = (string) $receivedRowDatas['date_creation'];
+		$this->date_last_connection = (string) $receivedRowDatas['date_last_connection'];
+		$this->email = (string) $receivedRowDatas['email'];
+
+
+		// TODO : instancier une classe group puis utiliser la methode `loadRow` et passer $this->rowDatas['fk_group_rowid'] en guise de rowid pour `loadRow`.
+		$groupOfTheUser = new Group();
+		$groupOfTheUser->load($mysqli , $this->fk_group_rowid);
+		$this->group = $groupOfTheUser;
+
+		return true;
+	}
+
+	/**
+	* @param	string	$given_password		The password (in clear) who has been typped and that your want to check if correspond to its hash version stored in database;
+	* @return	bool	Return if True or False , a hash version of given_password correspond to the pass_encoded stored in database
+	*
+	*/
+	public function passwordCorrespondToHash(string $given_password):bool
+	{
+		if (empty($this->pass_encoded))
+		{
+			throw new Exception("ERREUR: impossible de vérifier la correspondance entre password et son hash si la propriété `pass_encoded` n'est pas remplie.");
+		}
+
+		$passwordCorrespondToHash = password_verify($given_password, $this->pass_encoded);
+		return $passwordCorrespondToHash;
 	}
 }
 

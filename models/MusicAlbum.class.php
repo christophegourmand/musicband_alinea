@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 

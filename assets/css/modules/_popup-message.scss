@@ -1,0 +1,99 @@
+.popupmessage-container.hide {
+	display: none;
+}
+.popupmessage-container.show
+{
+	display: grid;
+	place-items: center;
+
+	border: 2px solid rgb(225, 109, 0); /* temporary */
+	
+	position: absolute;
+	width: 100%;
+	height: 80vh;
+
+	.popupmessage
+	{
+		/* --- v1 :
+		position: absolute;
+		top: calc(100%;
+		left: calc(100% + 2rem);
+
+		margin: 2rem;
+		width: calc(100% - (2 * 2rem));
+		*/
+
+
+		border-radius: 10px;
+		text-align: center;
+
+		&.warning
+		{
+			/*
+			$msgColor: hsl(23, 100%, 50%);
+			$bgColor: adjust-color($color:$msgColor , $lightness:-20, $saturation:-30);
+			
+			$txtColor: darken($color:$msgColor, $amount:15);
+
+			$msgColorFade: darken($msgColor, $amount:10);
+			//$txtColor: darken($color:$msgColor, $amount:15);
+			$borderColor: adjust-color($color:$msgColor , $lightness:10, $saturation:30);
+
+			background-color: $bgColor;
+			background-image: linear-gradient(to bottom , $msgColor , $msgColorFade);
+			*/
+			background-color: hsl(32, 100%, 65%);
+			
+			.popupmessage-header
+			{
+				padding: .5rem;
+				border-bottom: 1px solid hsl(24, 100%, 50%);
+
+				.popupmessage-title 
+				{
+					font-size: 1.3rem;
+					color: hsl(24, 100%, 50%);
+				}
+			}
+
+			.popupmessage-body
+			{
+				padding: 1rem;
+
+				.popupmessage-message
+				{
+					font-size: 1.2rem;
+					color: white;
+				}
+			}
+
+
+		}
+
+		&.error
+		{
+			$msgColor: hsl(0, 100%, 44%);
+			background-color: change-color($msgColor, $alpha:0.7, $lightness:70&) ;
+			color: $msgColor;
+		}
+
+		&.success
+		{
+			$msgColor: hsl(136, 100%, 37%);
+			background-color: change-color($msgColor, $alpha:0.7, $lightness:70&) ;
+			color: $msgColor;
+		}
+
+		.popupmessage-title
+		{
+			font-size: 1.2rem;
+			font-weight: 600;
+		}
+
+		.popupmessage-body
+		{
+			font-size: 1.1rem;
+			font-weight: 200;
+		}
+	}
+}

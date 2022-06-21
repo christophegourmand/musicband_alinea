@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 
 class Group extends Model implements Modalable {

@@ -5,20 +5,16 @@
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
 
 
-require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 
 // ======================================================================
 // VARIABLES 
 
-// NOTE : we should have : 'register_login' , 'register_email' , 'register_password'
-// echo '<pre>';  @var_dump($_REQUEST);  echo '</pre>'; exit('END');    //! DEBUG
+// NOTE : we should have : 'given_login' , 'given_email' , 'given_password'
 
-// creer une fonction pour nettoyer les strings que je recupère en POST ou GET.
-// ou est-ce que la fonction existe déjà
-$register_login = htmlentities( $_POST['register_login'] );
-$register_email = htmlentities( $_POST['register_email'] );
-$register_password = htmlentities( $_POST['register_password'] );
+$given_login = htmlentities( $_POST['given_login'] );
+$given_email = htmlentities( $_POST['given_email'] );
+$given_password = htmlentities( $_POST['given_password'] );
 
 // ======================================================================
 // TRAITEMENT
@@ -27,7 +23,7 @@ $register_password = htmlentities( $_POST['register_password'] );
 $registering_user = new User();
 
 // SECTION: verification: if user exist, we display a message page saying that login exist.
-$loginAlreadyExist = $registering_user->loginExist($mysqli , $register_login);
+$loginAlreadyExist = $registering_user->loginExist($mysqli , $given_login);
 
 if ($loginAlreadyExist)
 {
@@ -42,13 +38,13 @@ if ($loginAlreadyExist)
 // SECTION: create user in database
 
 $registering_user->set_active(1);
-$registering_user->set_login($register_login);
-$registering_user->set_pass($register_password);
+$registering_user->set_login($given_login);
+$registering_user->set_pass($given_password);
 //--- encode password
-$registering_user->set_pass_encoded( password_hash($register_password, PASSWORD_DEFAULT) );
+$registering_user->set_pass_encoded( password_hash($given_password, PASSWORD_DEFAULT) );
 
 $registering_user->set_fk_group_rowid(4);
-$registering_user->set_email($register_email);
+$registering_user->set_email($given_email);
 $registering_user->create($mysqli);
 
 

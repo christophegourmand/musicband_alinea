@@ -2,7 +2,7 @@
 
 use models\music\MusicSong;
 
-	require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");

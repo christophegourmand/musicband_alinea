@@ -14,7 +14,7 @@
 		{
 			// en fonction de la clé , aller chrecher le message dans un array
 			
-			$message = displayMessageFromKey($_GET['messagekey']);
+			$message = getMessageFromKey($_GET['messagekey']);
 		}
 	?>
 

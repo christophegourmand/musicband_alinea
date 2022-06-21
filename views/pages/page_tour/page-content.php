@@ -1,6 +1,6 @@
 <?php 
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php"); // REVIEW : utile ?
+	// require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php"); // REVIEW : utile ?
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/Concert.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 	

@@ -1,7 +1,7 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT']."/.env.php");
 
-if (!isset($mysqli) || empty($mysqli)){
+//if (!isset($mysqli) || empty($mysqli)){ // REVIEW: better to reactivate ?
 	$mysqli = new Mysqli($db_serveur, $db_username, $db_userpass, $db_name);
 
 	//--- vérifie le character set de la database avant changement
@@ -13,7 +13,7 @@ if (!isset($mysqli) || empty($mysqli)){
 	
 	//--- vérifie le character set de la database après changement
 	#echo '<script>console.info(`line_'.__LINE__.': Initial Character Set:'.$mysqli->character_set_name().'`);</script>'; // DEBUG
-}
+//} // REVIEW: better to reactivate ?
 
 // Check connection
 if ($mysqli->connect_errno) {

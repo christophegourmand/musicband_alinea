@@ -40,7 +40,7 @@ session_start();
         
         <!-- custom script, only for this page -->
         <script src="<?php echo('/assets/js/effetOnBloquote_indexPage.js')?>"></script>
-        <script src="<?php echo('/assets/js/checkFormRegister.js')?>"></script>
+        <script src="<?php echo('/assets/js/verifyCharactersRegex.js')?>"></script>
     </body>
 </html>
 
