@@ -1,3 +1,17 @@
+<?php
+	if (isset($_GET['messageKey']) || isset($_COOKIE['messageKey']))
+	{
+		if (isset($_GET['messageKey']))
+		{
+			$messageKey = $_GET['messageKey'];
+		} elseif (isset($_COOKIE['messageKey']))
+		{
+			$messageKey = $_COOKIE['messageKey'];
+		}
+		$popupMessage_arr = getMessageFromKey($messageKey);
+	}
+?>
+
 <?php if(isset($popupMessage_arr)): ?>
 	<div id="popupmessage" class="popupmessage-container show">
 		<div class="popupmessage <?= $popupMessage_arr['cssclass'] ?>">

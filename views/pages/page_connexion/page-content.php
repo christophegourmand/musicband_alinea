@@ -27,21 +27,12 @@
 
 <main>
 	<h2 class="page-title">Connexion</h2>
-	<?php
-		if (isset($_GET['messageKey']) || isset($_COOKIE['messageKey']))
-		{
-			if (isset($_GET['messageKey']))
-			{
-				$messageKey = $_GET['messageKey'];
-			} elseif (isset($_COOKIE['messageKey']))
-			{
-				$messageKey = $_COOKIE['messageKey'];
-			}
-			$popupMessage_arr = getMessageFromKey($messageKey);
-			// --- file containing html who display the message :
-			include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php");
-		}
+	
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
 	?>
+
 	<!-- SECTION : form for login -->
 	<?php if($action == 'noaction'): ?>
 		<section class="connexion">
