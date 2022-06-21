@@ -105,26 +105,54 @@ function popupMessage(string $message)
 	JS);
 }
 
+
+/**
+ * getMessageFromKey
+ *
+ * @param  string 	$messageKey
+ * @return mixed
+ */
 function getMessageFromKey(string $messageKey)
 {
 	//--- table initialisation
 	$translationTable = [];
 
-
 	//--- key
-	$translationTable['userAlreadyExist'] = "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !";
+	$translationTable['userAlreadyExist'] = 
+		[
+			'cssclass' => 'warning',
+			'text' => "Désolé mais impossible de créer un compte avec cet identifiant car il existe déjà !", 
+		
+		];
 	
 	//--- key
 	$linkToConnectPage = "/views/pages/page_connexion.php";
-	$translationTable['userCreatedSuccessfully'] = "Le compte utilisateur a bien été créé !<br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>";
-	
-	//--- key
-	$translationTable['youAreConnected'] = "Vous êtes connectés !";
+	$translationTable['userCreatedSuccessfully'] = 
+		[
+			'cssclass' => 'success',
+			'text' => "Le compte utilisateur a bien été créé !<br><br><a href='$linkToConnectPage' class='btn btn-outline-white'>Se Connecter</a>", 
+		];
 
 	//--- key
-	$translationTable['yourPasswordIsWrong'] = "Le mot de passe est incorrect.<br><small>Et là vous me direz que c'était le bon. Mais si si , je peux assurer que vous nous aviez donné un autre mot de passe !</small>";
+	$translationTable['youAreConnected'] = 
+		[
+			'cssclass' => 'success',
+			'text' => "Vous êtes connectés !", 
+		];
 
-	return $translationTable[$messageKey];
+	//--- key
+	$translationTable['yourPasswordIsWrong'] = 
+		[
+			'cssclass' => 'error',
+			'text' => "Le mot de passe que vous venez d'entrer ne correspond pas à celui que vous nous aviez donné.", 
+		];
+
+	if (in_array($messageKey, array_keys($translationTable) ))
+	{
+		return $translationTable[$messageKey];
+	} else {
+		return null;
+	}
 }
 
 ?>

@@ -113,7 +113,6 @@ function animateElementOnAppear(element_node, cssClassToAdd_str){
 	}
 }
 
-
 /* SECTION: pour chaque vignette de chanson, récupère le chemin d'image dans la balise html et l'applique au css */
 
 /*
@@ -138,6 +137,17 @@ listOfSongCards_arr.forEach(songCard_node => {
 	// console.log(pathToSongBackground);
 	songCard_node.style.backgroundImage = `url("${pathToSongBackground}")`;
 });
+
+// SECTION : disparition du popup message lors du click sur la croix (delete popup message on click on close button).
+divPopupMessage_node = document.getElementById('popupmessage');
+divPopupMessageCloseButton_node = document.getElementById('popupmessage_btn_close');
+
+divPopupMessageCloseButton_node.addEventListener(
+	'click', 
+	(event) => {
+		divPopupMessage_node.remove();
+	}
+);
 
 
 

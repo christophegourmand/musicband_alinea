@@ -29,14 +29,18 @@ if (isset($_POST['action']) && $_POST['action'] == 'check_credentials')
 
 		if ($user->passwordCorrespondToHash($given_password))
 		{
-			$messagekey = "youAreConnected";
-			header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+			$messageKey = "youAreConnected";
+			header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
 			exit();
 		}
 		else 
 		{
-			$messagekey = "yourPasswordIsWrong";
-			header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+			$messageKey = "yourPasswordIsWrong";
+			//--- (v1) 1 tried to redirect to page_message
+			# header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
+			
+			//--- (v2) 1 tried instead to redirect to page_connexion (which we come from)
+			header('Location: '.'/views/pages/page_connexion.php?messageKey='.urlencode($messageKey));
 			exit();
 		}
 	}

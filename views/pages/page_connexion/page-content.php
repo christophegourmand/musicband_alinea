@@ -3,6 +3,7 @@
 	# session_start();
 	// $_SESSION = 
 
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 
 	$otherActionValue = 'noaction';
@@ -26,12 +27,26 @@
 
 <main>
 	<h2 class="page-title">Connexion</h2>
-	
+	<?php
+		if (isset($_GET['messageKey']) || isset($_COOKIE['messageKey']))
+		{
+			if (isset($_GET['messageKey']))
+			{
+				$messageKey = $_GET['messageKey'];
+			} elseif (isset($_COOKIE['messageKey']))
+			{
+				$messageKey = $_COOKIE['messageKey'];
+			}
+			$popupMessage_arr = getMessageFromKey($messageKey);
+			// --- file containing html who display the message :
+			include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php");
+		}
+	?>
 	<!-- SECTION : form for login -->
 	<?php if($action == 'noaction'): ?>
 		<section class="connexion">
 			<div class="form-container">
-				<form id="connect_form_login" method="POST" action="<?='/views/pages/page_connexion.php'?>" class="form">
+				<form id="connect_form_login" method="POST" action="<?= $_SERVER['PHP_SELF'] ?>" class="form">
 					<input type="hidden" name="action" value="login_sent">
 					<div class="form-group">
 						<label for="given_login" class="form-label">Identifiant</label>
