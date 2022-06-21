@@ -2,6 +2,12 @@
     require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
+	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/models/AlbumsContainer.class.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/models/Usernew.class.php");
+
+	use models\music\AlbumsContainer;
+	use models\music\MusicAlbum as MusicAlbum;
 ?>
 
 
@@ -24,12 +30,6 @@
 	
 	<main>
 		<?php
-			require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
-			require_once($_SERVER['DOCUMENT_ROOT']."/models/AlbumsContainer.class.php");
-			require_once($_SERVER['DOCUMENT_ROOT']."/models/Usernew.class.php");
-
-			use models\music\AlbumsContainer;
-			use models\music\MusicAlbum as MusicAlbum;
 
 			// TEST : récupérer un album de music , et que les variables d'instances soient remplies.
 			/*
@@ -70,25 +70,25 @@
 
 			require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php"); */
 
-			$usernew = new Usernew();
+			# $usernew = new Usernew();
 			// var_dump($usernew->get_tableName());
-			$usernew->loadOne($mysqli , ["login LIKE 'ni%'", "rowid > 1"]);
+			# $usernew->loadOne($mysqli , ["login LIKE 'ni%'", "rowid > 1"]);
 			
-			echo '<pre>';  @var_dump($usernew);  echo '</pre>';  //exit('END');    //! DEBUG
+			# echo '<pre>';  @var_dump($usernew);  echo '</pre>';  //exit('END');    //! DEBUG
 
-			$usernew->set_rowDatas(
-				[
-					'rowid'=> 2,
-					'login'=> 'nini',
-					'pass' => 'nini_micro3',
-					'pass_encoded' => '',
-					'datecreation' => '2022-04-03 21:50:49',
-					'datelastconnection' => '2022-04-03 21:50:49',
-					'active' => '1'
-				]
-			);
+			# $usernew->set_rowDatas(
+			# 	[
+			# 		'rowid'=> 2,
+			# 		'login'=> 'nini',
+			# 		'pass' => 'nini_micro3',
+			# 		'pass_encoded' => '',
+			# 		'datecreation' => '2022-04-03 21:50:49',
+			# 		'datelastconnection' => '2022-04-03 21:50:49',
+			# 		'active' => '1'
+			# 	]
+			# );
 
-			$usernew->update($mysqli);
+			# $usernew->update($mysqli);
 			
 
 			// var_dump($usernew);
