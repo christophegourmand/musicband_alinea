@@ -15,7 +15,4 @@
 		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
 	?>
 
-	<div class="message">
-		<?= $message ?>
-	</div>
 </main>

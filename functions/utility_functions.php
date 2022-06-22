@@ -137,7 +137,7 @@ function getMessageFromKey(string $messageKey)
 	$translationTable['youAreConnected'] = 
 		[
 			'cssclass' => 'success',
-			'text' => "Vous êtes connectés !",
+			'text' => "Vous êtes connecté !",
 		];
 
 	//--- key

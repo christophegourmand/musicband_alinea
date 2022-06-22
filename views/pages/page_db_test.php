@@ -1,5 +1,7 @@
 <?php 
-    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/common/sessionStartAndCheck.php"); //NOTE: keep before html, after mysqli
 	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
@@ -102,5 +104,5 @@
 </html>
 
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 ?>

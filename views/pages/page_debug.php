@@ -1,5 +1,6 @@
 <?php  
 	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
+	require_once($_SERVER['DOCUMENT_ROOT']."/views/common/sessionStartAndCheck.php"); //NOTE: keep before html, after mysqli
 
 // VARIABLES USED TO BUILD PATH-TO-FILES :
 	$page_name = "page_debug"; // used to build paths-to-files

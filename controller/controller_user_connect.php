@@ -1,4 +1,7 @@
 <?php 
+//--- generate or get the session id.
+session_start();
+
 // ======================================================================
 // IMPORTS
 
@@ -9,8 +12,6 @@ require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 // VARIABLES 
 
 // NOTE : we should have : 'given_login' , 'given_password'
-
-echo '<pre>';  @var_dump($_REQUEST);  echo '</pre>'; // exit('END');    // DEBUG
 
 $given_login = htmlentities( $_POST['given_login'] );
 $given_password = htmlentities( $_POST['given_password'] );
@@ -29,6 +30,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'check_credentials')
 
 		if ($user->passwordCorrespondToHash($given_password))
 		{
+			$_SESSION['user_login'] = $user->get_login();
+			$_SESSION['user_rowid'] = $user->get_rowid();
+			$_SESSION['user_fk_group_rowid'] = $user->get_fk_group_rowid();
+
 			$messageKey = "youAreConnected";
 			header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
 			exit();
@@ -40,7 +45,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'check_credentials')
 			# header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
 			
 			//--- (v2) 1 tried instead to redirect to page_connexion (which we come from)
-			header('Location: '.'/views/pages/page_connexion.php?messageKey='.urlencode($messageKey));
+			header('Location: '.'/views/pages/page_index.php?messageKey='.urlencode($messageKey));
 			exit();
 		}
 	}
