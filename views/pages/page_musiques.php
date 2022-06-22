@@ -21,6 +21,7 @@
 
 	<body>
 		<div class="topPanel">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/usermenu-menus.php"); ?>
 			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>
 
 			<div class="topPanel-body">

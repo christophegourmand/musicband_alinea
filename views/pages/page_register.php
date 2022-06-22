@@ -16,9 +16,6 @@
 
 // TODO : PLUS TARD METTRE CES VARIABLES DANS UN OBJET. (Un par page + portant le nom de la page + le nom des clés sont les mêmes d'un objet à l'autre.
 
-// TODO : mettre tout ce qui concerne la session dans un fichier commun et faire un include_once ici (AVANT LE DOCTYPE !)
-session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +24,7 @@ session_start();
 
 	<body>
 		<div class="topPanel" id="indexPage_topPanel">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/usermenu-menus.php"); ?>
 			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>
 
 			<div class="topPanel-body">

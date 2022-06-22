@@ -24,25 +24,13 @@
 					<i class="fas fa-user-circle"></i>
 				</div>
 				<p class="usermenu-login"><?= $_SESSION['user_login'] ?></p>
-				<div class="usermenu-menus hide" id="usermenu_menus">
-					<ul class="usermenu-menus-list">
-						<li class="usermenu-menus-element">
-							<a href="#" class="usermenu-menus-link">aaa</a>
-						</li>
-						<li class="usermenu-menus-element">
-							<a href="#" class="usermenu-menus-link">bbb</a>
-						</li>
-						<li class="usermenu-menus-element">
-							<a href="#" class="usermenu-menus-link">ccc</a>
-						</li>
-					</ul>
-				</div>
-			<?php else : ?>
-				<div class="usermenu-icon disconnected">
+				
+			<?php else: ?>
+				<div class="usermenu-icon disconnected" id="usermenu_icon">
 					<!-- <i class="far fa-user"></i> -->
 					<i class="far fa-user-circle"></i>
 				</div>
-				<a class="usermenu-signin-link" href="/views/pages/page_connexion.php">Se Connecter</a>
+				<!-- <a class="usermenu-signin-link" href="/views/pages/page_connexion.php">Se Connecter</a> -->
 			<?php endif ?>
 		</div>
 

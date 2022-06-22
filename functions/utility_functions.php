@@ -141,6 +141,13 @@ function getMessageFromKey(string $messageKey)
 		];
 
 	//--- key
+	$translationTable['youAreDisconnected'] = 
+		[
+			'cssclass' => 'success',
+			'text' => "Vous êtes bien déconnecté !<br><br>N'hésitez pas à repasser sur le site pour voir les dates de concerts, photos, et actus.<br>À bientôt !",
+		];
+
+	//--- key
 	$translationTable['yourPasswordIsWrong'] = 
 		[
 			'cssclass' => 'error',

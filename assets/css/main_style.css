@@ -34,6 +34,7 @@
   --theme-color_form-input-border-hover: hsl(193, 100%, 49%);
   --theme-color_background: #1c1c1c;
   --theme-color_brand: white;
+  --color-connected-icon: hsl(0, 91.2%, 40.2%);
 }
 
 .white {
@@ -1084,6 +1085,8 @@ footer {
 /* MODULES / buttons */
 /* =========================================== */
 .topPanel {
+  position: relative;
+  /* for class 'usermenu-menus' to be in position absolute */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2927,10 +2930,10 @@ body {
 }
 
 .usermenu {
-  --color-connected-icon: hsl(0, 91.2%, 40.2%);
   position: absolute;
-  top: 1.5rem;
-  right: 3rem;
+  top: 0.6rem;
+  right: 1.5rem;
+  z-index: 200;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2984,45 +2987,98 @@ body {
           align-items: center;
 }
 
-.usermenu .usermenu-icon.diconnected {
-  color: red;
+.usermenu .usermenu-icon.disconnected {
+  color: #737171;
 }
 
 .usermenu .usermenu-icon.connected {
+  color: white;
+}
+
+/* the html for 'usermenu-menus' is store in a separated file in 'common' folder */
+.usermenu-menus {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -25px;
+  /* NOTE: animation when changed to -50% */
+  z-index: 110;
+  height: 100%;
+  width: 50%;
+  background-color: var(--color-connected-icon);
+  /* --- add some diagonal perspective angle */
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  /* --- add a movement effect (slide from right on appear) (slide to right on dissappear) */
+  -webkit-transition-property: right;
+  transition-property: right;
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-delay: 0ms;
+          transition-delay: 0ms;
+  outline-color: rgba(196, 9, 9, 0.6);
+  outline-offset: 7px;
+  outline-style: solid;
+  outline-width: medium;
+  /* --- EFFECT 'LINE' V2 ::  add a line on left of the div menu, with space */
+}
+
+.usermenu-menus.hide {
+  right: -60%;
+  /* NOTE : animation when changed to -25px */
+}
+
+.usermenu-menus .usermenu-menus-list {
+  margin-top: 5rem;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element {
+  padding-left: 1rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-webkit-any-link {
+  color: white;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-moz-any-link {
+  color: white;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:any-link {
+  color: white;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover {
+  background-color: white;
+}
+
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-webkit-any-link {
   color: var(--color-connected-icon);
 }
 
-.usermenu .usermenu-menus {
-  position: absolute;
-  top: 2.5rem;
-  right: 0;
-  z-index: 110;
-  height: 8rem;
-  width: 8rem;
-  background-color: var(--color-connected-icon);
-  border-radius: 11px;
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-moz-any-link {
+  color: var(--color-connected-icon);
 }
 
-.usermenu .usermenu-menus.hide {
-  display: none;
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:any-link {
+  color: var(--color-connected-icon);
 }
 
-.usermenu .usermenu-menus .usermenu-menus-list {
-  margin-top: 1rem;
-}
-
-.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-webkit-any-link {
-  color: white;
-}
-
-.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-moz-any-link {
-  color: white;
-}
-
-.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:any-link {
-  color: white;
-}
-
+/* .usermenu-menus::before
+{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-left: 13px double var(--color-connected-icon);
+	top: 0px;
+	left: -16px;
+	z-index: 109;
+} */
 /* STATES */
 /* =========================================== */
 /* STATES / states */

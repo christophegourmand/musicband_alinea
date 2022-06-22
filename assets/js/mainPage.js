@@ -142,14 +142,27 @@ listOfSongCards_arr.forEach(songCard_node => {
 divPopupMessage_node = document.getElementById('popupmessage');
 divPopupMessageCloseButton_node = document.getElementById('popupmessage_btn_close');
 
-divPopupMessageCloseButton_node.addEventListener(
-	'click', 
-	(event) => {
-		divPopupMessage_node.remove();
-	}
+if (divPopupMessageCloseButton_node !== null)
+{
+	divPopupMessageCloseButton_node.addEventListener(
+		'click', 
+		(event) => {
+			divPopupMessage_node.remove();
+		}
+	);
+}
+
+
+// SECTION : on click on user icon , display user menus (top right corner of the page)
+document.getElementById('usermenu_icon').addEventListener(
+	'click',
+	(event)=> document.getElementById('usermenu_menus').classList.toggle('hide')
 );
 
-
+/* document.getElementById('usermenu_icon_disconnected').addEventListener(
+	'click',
+	(event)=> document.getElementById('usermenu_menus').classList.toggle('hide')
+); */
 
 
 

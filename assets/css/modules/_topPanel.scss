@@ -1,4 +1,5 @@
 .topPanel {
+    position: relative; /* for class 'usermenu-menus' to be in position absolute */
     @include flex_col(space-between, stretch);
 
     &.full-height {
