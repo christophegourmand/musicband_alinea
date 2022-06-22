@@ -234,6 +234,8 @@ header {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  position: relative;
+  /* for div 'username' being in position absolute */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2922,6 +2924,103 @@ body {
 
 .popupmessage-container.show .popupmessage.info {
   background-color: #1574ef;
+}
+
+.usermenu {
+  --color-connected-icon: hsl(0, 91.2%, 40.2%);
+  position: absolute;
+  top: 1.5rem;
+  right: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.usermenu .usermenu-login {
+  color: white;
+}
+
+.usermenu .usermenu-signin-link:-webkit-any-link {
+  color: white;
+}
+
+.usermenu .usermenu-signin-link:-moz-any-link {
+  color: white;
+}
+
+.usermenu .usermenu-signin-link:any-link {
+  color: white;
+}
+
+.usermenu .usermenu-icon {
+  margin: .3rem;
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.usermenu .usermenu-icon.diconnected {
+  color: red;
+}
+
+.usermenu .usermenu-icon.connected {
+  color: var(--color-connected-icon);
+}
+
+.usermenu .usermenu-menus {
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  z-index: 110;
+  height: 8rem;
+  width: 8rem;
+  background-color: var(--color-connected-icon);
+  border-radius: 11px;
+}
+
+.usermenu .usermenu-menus.hide {
+  display: none;
+}
+
+.usermenu .usermenu-menus .usermenu-menus-list {
+  margin-top: 1rem;
+}
+
+.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-webkit-any-link {
+  color: white;
+}
+
+.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:-moz-any-link {
+  color: white;
+}
+
+.usermenu .usermenu-menus .usermenu-menus-list .usermenu-menus-element .usermenu-menus-link:any-link {
+  color: white;
 }
 
 /* STATES */

@@ -3,12 +3,13 @@
 /* =========================================== */
 
 header {
-    @include flex_col(space-between, stretch);
+	@include flex_col(space-between, stretch);
 }
 
 .header-head {
-    flex-grow: 1;
+	flex-grow: 1;
+	position: relative; /* for div 'username' being in position absolute */
 
-    @include flex_col(flex-start, flex-start);
+	@include flex_col(flex-start, flex-start);
 }
 

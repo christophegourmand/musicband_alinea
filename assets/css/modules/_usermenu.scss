@@ -1,0 +1,68 @@
+.usermenu
+{
+	--color-connected-icon: hsl(0, 91.2%, 40.2%);
+
+	position: absolute;
+	top: 1.5rem;
+	right: 3rem;
+
+	@include flex_col(flex-start, center);
+
+	.usermenu-login
+	{
+		color: white;
+	}
+
+	.usermenu-signin-link:any-link
+	{
+		color: white;
+	}
+
+	.usermenu-icon
+	{
+		// height: 2rem;
+		// width: 2rem;
+		margin: .3rem;
+		font-size: 2rem;
+		@include flex_row(center, center);
+	}
+
+	.usermenu-icon.diconnected
+	{
+		color: red;
+	}
+
+	.usermenu-icon.connected
+	{
+		color: var(--color-connected-icon);
+	}
+
+	.usermenu-menus
+	{
+		position: absolute;
+		top: 2.5rem;
+		right: 0;
+		z-index: 110;
+
+		height: 8rem;
+		width: 8rem;
+		background-color: var(--color-connected-icon);
+		border-radius: 11px;
+
+		&.hide {display:none;}
+
+		.usermenu-menus-list
+		{
+			margin-top: 1rem;
+
+			// border-radius:
+			.usermenu-menus-element
+			{
+				.usermenu-menus-link:any-link
+				{
+					color: white;
+				}
+			}
+		}
+	}
+}
