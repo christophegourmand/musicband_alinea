@@ -1031,6 +1031,26 @@ footer {
   background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
 }
 
+.dashboard {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  height: 100rem;
+}
+
+.dashboard .dashboard-section {
+  margin-bottom: 2rem;
+}
+
+.dashboard .dashboard-section .dashboard-section-title {
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid var(--theme-color_important);
+  font-size: 2.1rem;
+  font-weight: 300;
+  font-variant-caps: small-caps;
+  line-height: 0.6;
+}
+
 .mentions-legales {
   margin: 0 1.5rem;
 }
@@ -2791,13 +2811,13 @@ body {
   margin-bottom: 1.5rem;
   display: -ms-grid;
   display: grid;
-  /* @include media("" , "md") { */
+  /* @include media("min" , "md") { */
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
   -ms-grid-rows: fit-content(100%) fit-content(100%);
       grid-template-rows: fit-content(100%) fit-content(100%);
   /* } */
-  /* @include media("md" , "") {
+  /* @include media("md" , "max") {
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: fit-content(100%);
 				column-gap: 1rem;
@@ -3079,6 +3099,22 @@ body {
 	left: -16px;
 	z-index: 109;
 } */
+.datatable {
+  width: 100%;
+}
+
+.datatable tr:first-child {
+  background-color: rgba(227, 40, 40, 0.73);
+}
+
+.datatable th, .datatable td {
+  padding: 0.2rem 1rem;
+}
+
+.datatable .datatable-title {
+  font-weight: 300;
+}
+
 /* STATES */
 /* =========================================== */
 /* STATES / states */

@@ -1,0 +1,26 @@
+$datatable-borders-color: white;
+$datatable-borders-width: 2px;
+$datatable-padding-y: .2rem;
+$datatable-padding-x: 1rem;
+
+table.datatable
+{
+	width: 100%;
+	// border-collapse: collapse;
+	// border: $datatable-borders-width solid $datatable-borders-color;
+
+	tr:first-child
+	{
+		background-color: hsla(0, 77%, 52.4%, 0.73);
+	}
+
+	th, td
+	{
+		padding: $datatable-padding-y $datatable-padding-x;
+	}
+
+	.datatable-title 
+	{
+		font-weight: 300;
+	}
+}

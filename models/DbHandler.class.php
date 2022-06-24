@@ -26,6 +26,15 @@ class DbHandler
 	// METHODS
 	// =========================================
 
+		
+	/**
+	 * insertRow
+	 *
+	 * @param 	Mysqli 		$mysqli			instance of Mysqli
+	 * @param 	string 		$tablename		ex: 'user' or 'concert'
+	 * @param 	mixed 		$rowDatas 		
+	 * @return	bool
+	 */
 	public function insertRow(Mysqli $mysqli , string $tablename, array $rowDatas) : bool
 	{
 		
@@ -78,6 +87,7 @@ class DbHandler
 	
 	/**
 	* @param	Mysqli	$mysqli				instance of Mysqli
+	* @param 	string	$tablename			ex: 'user' or 'concert'
 	* @param 	array	$whereConditions	Expected format example: ["id = 5" , "year=1998" , "firstname LIKE 'christ%'"]
 	* @return	bool	Return true if success and false if not.
 	*/
@@ -122,8 +132,9 @@ class DbHandler
 
 	/**
 	* @param	Mysqli	$mysqli				instance of Mysqli
+	* @param 	string	$tablename			ex: 'user' or 'concert'
 	* @param 	array	$whereConditions	Expected format example: ["id = 5" , "year=1998" , "firstname LIKE 'christ%'"]
-	* @return	array	Return indexed array containing rowDatas of Users.
+	* @return	array	Return indexed array containing rowDatas of Users or Concerts, etc.
 	*/
 	public function loadManyRows(Mysqli $mysqli , string $tablename, array $whereConditions = []) : array
 	{
@@ -171,8 +182,10 @@ class DbHandler
 
 
 	/**
-	* @param	Mysqli	$mysqli				instance of Mysqli
-	* @param 	array	$whereConditions	Expected format example: ["id = 5" , "year=1998" , "firstname LIKE 'christ%'"]
+	* @param	Mysqli	$mysqli		instance of Mysqli
+	* @param 	string	$tablename	ex: 'user' or 'concert'
+	* @param 	array	$rowDatas	
+	* @param 	int		$rowid		rowid of the database row to update
 	* @return	bool	Return true if success and false if not.
 	*/
 	public function updateRow(Mysqli $mysqli , string $tablename , array $rowDatas , int $rowid)
@@ -235,7 +248,12 @@ class DbHandler
 
 	}
 
-
+	/**
+	* @param	Mysqli	$mysqli		instance of Mysqli
+	* @param 	string	$tablename	ex: 'user' or 'concert'
+	* @param 	int		$rowid		rowid of the database row to update
+	* @return	bool	Return true if success and false if not.
+	*/
 	public function deleteRow(Mysqli $mysqli , string $tablename, int $rowid) : bool
 	{
 		$sql_query = "DELETE FROM `".$tablename."`";
@@ -249,5 +267,37 @@ class DbHandler
 
 		return true;
 	}
+
+	/**
+	* @param	Mysqli	$mysqli		instance of Mysqli
+	* @param 	string	$tablename	ex: 'user' or 'concert'
+	* @return	array	Return array ['field1','field2','field3','field4'].
+	*/
+	public function getFields(Mysqli $mysqli , string $tablename) : array
+	{
+		$sql_query = "SHOW COLUMNS FROM `".$tablename."`";
+		$mysqli_response = $mysqli->query($sql_query);
+		
+		if (!$mysqli_response)
+		{
+			throw new Exception("Mysqli n'a pas donné de réponse pour cette requête SQL :\n" . $sql_query);
+		}
+
+		$indexedArrayOfFieldsInfos = $mysqli_response->fetch_all(MYSQLI_ASSOC); // fetch_row() gives an indexed array
+
+		$fieldsArray = [];
+		for ($i=0 ; $i < count($indexedArrayOfFieldsInfos) ; $i++)
+		{
+			array_push($fieldsArray , $indexedArrayOfFieldsInfos[$i]['Field']);
+		}
+
+		$mysqli_response->free();
+
+		return $fieldsArray;
+	}
+
+
+
+
 
 } 

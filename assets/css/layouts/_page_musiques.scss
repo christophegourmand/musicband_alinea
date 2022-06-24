@@ -166,7 +166,7 @@
             width: 100%;
             min-height: 8rem;
 
-            @include media("sm","") {
+            @include media("sm","max") {
                 min-height: 12rem;
             }
 

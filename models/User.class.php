@@ -251,6 +251,11 @@ class User extends Model implements Modalable {
 		return $this->email; 
 	}
 
+	public function get_group() : Group
+	{
+		return $this->group;
+	}
+
 
 	// =========================================
 	// METHODS

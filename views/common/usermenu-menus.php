@@ -7,7 +7,7 @@
 				<a href="#" class="usermenu-menus-link">Mon compte <small>(en prépa)</small></a>
 			</li>
 			<li class="usermenu-menus-element">
-				<a href="#" class="usermenu-menus-link">Tableau de bord</a>
+				<a href="/views/pages/page_dashboard.php" class="usermenu-menus-link">Tableau de bord</a>
 			</li>
 			<li class="usermenu-menus-element">
 				<a href="#" class="usermenu-menus-link">Messages au groupe <small>(en prépa)</small></a>

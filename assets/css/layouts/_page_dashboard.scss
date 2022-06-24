@@ -1,0 +1,26 @@
+.dashboard
+{
+	margin-left: $pageMargin;
+	margin-right: $pageMargin;
+
+	height: 100rem; // REVIEW : Temporaire !
+	
+	.dashboard-section
+	{
+		margin-bottom: 2rem;
+
+		.dashboard-section-title
+		{
+			padding-top: 1rem;
+			margin-bottom: 1rem;
+
+			border-top: 1px solid var(--theme-color_important);
+
+			font-size: 2.1rem;
+			font-weight: 300;
+			font-variant-caps: small-caps;
+			line-height: 0.6; // space between top line and name
+
+		}
+	}
+}

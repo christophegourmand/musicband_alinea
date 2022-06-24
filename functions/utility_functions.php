@@ -151,7 +151,7 @@ function getMessageFromKey(string $messageKey)
 	$translationTable['yourPasswordIsWrong'] = 
 		[
 			'cssclass' => 'error',
-			'text' => "Le mot de passe que vous venez d'entrer ne correspond pas à celui que vous nous aviez donné." 
+			'text' => "You shall not pass !<br>Le mot de passe que vous venez d'entrer ne correspond pas à celui que vous nous aviez donné." 
 		];
 
 	//--- key

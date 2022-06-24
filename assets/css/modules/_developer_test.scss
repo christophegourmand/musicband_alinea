@@ -20,7 +20,7 @@ body::before {
     background-color: red;
     color: white;
     
-    @include media("","xs") {
+    @include media("min","xs") {
         content: "XS";
     }
     @include media("sm","sm") {
@@ -32,7 +32,7 @@ body::before {
     @include media("lg","lg") {
         content: "LG";
     }
-    @include media("xl","") {
+    @include media("xl","max") {
         content: "XL";
     }   
 }

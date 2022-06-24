@@ -9,49 +9,49 @@
 
 
 @mixin media($min_width_given_str , $max_width_given_str) {
-    $min_width_str: "";
-    $max_width_str: "";
-    $and_optional_str: "";
+	$min_width_str: "";
+	$and_optional_str: "";
+	$max_width_str: "";
 
-    @if ($min_width_given_str == "min") {
-        $min_width_str: "";
-    } @else if ($min_width_given_str == "sm") {
-        $min_width_str: "(min-width: 575.9px)";
-    } @else if ($min_width_given_str == "md") {
-        $min_width_str: "(min-width: 767.9px)";
-    } @else if ($min_width_given_str == "lg") {
-        $min_width_str: "(min-width: 991.9px)";
-    } @else if ($min_width_given_str == "xl") {
-        $min_width_str: "(min-width: 1199.9px)";
-    } // @else {
-      //  @error "minimal value should be min, sm, md, lg, xl _ with quotes";
-    // }
+	@if ($min_width_given_str == "min") {
+		$min_width_str: "";
+	} @else if ($min_width_given_str == "sm") {
+		$min_width_str: "(min-width: 575.9px)";
+	} @else if ($min_width_given_str == "md") {
+		$min_width_str: "(min-width: 767.9px)";
+	} @else if ($min_width_given_str == "lg") {
+		$min_width_str: "(min-width: 991.9px)";
+	} @else if ($min_width_given_str == "xl") {
+		$min_width_str: "(min-width: 1199.9px)";
+	} // @else {
+	  //  @error "minimal value should be min, sm, md, lg, xl _ with quotes";
+	// }
 
-    @if $max_width_given_str == "max" {
-        $max_width_str: "";
-    } @else if ($max_width_given_str == "xs") {
-        $max_width_str: "(max-width: 576px)";
-    } @else if ($max_width_given_str == "sm") {
-        $max_width_str: "(max-width: 768px)";
-    } @else if ($max_width_given_str == "md") {
-        $max_width_str: "(max-width: 992px)";
-    } @else if ($max_width_given_str == "lg") {
-        $max_width_str: "(max-width: 1200px)";
-    } // @else {
-      //  @error "maximal value should be max, xs, sm, md, lg _ with quotes";
-    // }
+	@if $max_width_given_str == "max" {
+		$max_width_str: "";
+	} @else if ($max_width_given_str == "xs") {
+		$max_width_str: "(max-width: 576px)";
+	} @else if ($max_width_given_str == "sm") {
+		$max_width_str: "(max-width: 768px)";
+	} @else if ($max_width_given_str == "md") {
+		$max_width_str: "(max-width: 992px)";
+	} @else if ($max_width_given_str == "lg") {
+		$max_width_str: "(max-width: 1200px)";
+	} // @else {
+	  //  @error "maximal value should be max, xs, sm, md, lg _ with quotes";
+	// }
 
-    @if $min_width_str != "" and $max_width_str != "" {
-        $and_optional_str: "and";
-    } @else {
-        $and_optional_str: "";
-    }
+	@if $min_width_str != "" and $max_width_str != "" {
+		$and_optional_str: "and";
+	} @else {
+		$and_optional_str: "";
+	}
 
-    $combined_queries: $min_width_str + $and_optional_str + $max_width_str;
+	$combined_queries: $min_width_str + $and_optional_str + $max_width_str;
 
-    // @debug $combined_queries;
+	// @debug $combined_queries;
 
-    @media screen and #{$combined_queries} {
-        @content;
-    }
+	@media screen and #{$combined_queries} {
+		@content;
+	}
 }

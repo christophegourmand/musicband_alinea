@@ -48,7 +48,7 @@ $ratio-brand-and-name: 5.5/9.5;
     }
 }
 
-@include media("","lg") {
+@include media("min","lg") {
     .brand{
         .brand-logo {
             height: 6rem;

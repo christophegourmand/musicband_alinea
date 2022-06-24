@@ -41,14 +41,14 @@ $color_button_speaker:#ee5959;
 
 
 .audio.green-audio-player {
-    @include media("","md")
+    @include media("min","md")
     {
         width: 100%;
         margin-left: 30px;
         margin-right: 30px;
     }
     
-    @include media("md","")
+    @include media("md","max")
     {
         width: 400px;
     }

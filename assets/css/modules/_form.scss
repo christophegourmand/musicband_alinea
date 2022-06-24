@@ -13,12 +13,12 @@
 			display: grid;
 
 
-			/* @include media("" , "md") { */
+			/* @include media("min" , "md") { */
 				grid-template-columns: 1fr;
 				grid-template-rows: fit-content(100%) fit-content(100%);
 			/* } */
 
-			/* @include media("md" , "") {
+			/* @include media("md" , "max") {
 				grid-template-columns: 1fr 1fr;
 				grid-template-rows: fit-content(100%);
 				column-gap: 1rem;

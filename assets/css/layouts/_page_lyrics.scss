@@ -28,13 +28,13 @@
 		.lyrics-sentence {
 			font-size: 1rem;
 
-			@include media("sm","") {
+			@include media("sm","max") {
 				font-size: 1.2rem;
 			}
-			@include media("md","") {
+			@include media("md","max") {
 				font-size: 1.5rem;
 			}
-			@include media("lg","") {
+			@include media("lg","max") {
 				font-size: 1.8rem;
 			}
 		}
@@ -46,13 +46,13 @@
 		}
 
 		font-size: 1rem;
-		@include media("sm","") {
+		@include media("sm","max") {
 			font-size: 1.2rem;
 		}
-		@include media("md","") {
+		@include media("md","max") {
 			font-size: 1.5rem;
 		}
-		@include media("lg","") {
+		@include media("lg","max") {
 			font-size: 1.8rem;
 		}
 
