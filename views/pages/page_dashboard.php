@@ -22,7 +22,7 @@
 <html lang="fr">
 	<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/head.php"); ?>
 
-	<body>
+	<body class="body-adminpage">
 		<div class="topPanel" id="indexPage_topPanel">
 			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/usermenu-menus.php"); ?>
 			<?php include($_SERVER['DOCUMENT_ROOT']."/"."views/common/header.php"); ?>

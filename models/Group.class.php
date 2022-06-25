@@ -307,6 +307,21 @@ class Group extends Model implements Modalable {
 		return $rowDatas;
 	}
 
+	public function get_rights_name_array(Mysqli $mysqli)
+	{
+		if (empty($this->rowid))
+		{
+			throw new Exception("ERREUR: impossible de charger un array de droits pour ce groupe si la propriété `rowid` n'est pas remplie.");
+		}
+		
+		$sql_query = "SELECT r.name";
+		// $sql_query .= " , g.groupname"; // we don't need this field for now.
+		$sql_query .= " FROM `right` AS r";
+		$sql_query .= " INNER JOIN `asso_group_right` AS agr ON r.rowid = agr.fk_right_rowid";
+		$sql_query .= " INNER JOIN `group` AS g ON agr.fk_group_rowid = g.rowid";
+		$sql_query .= " WHERE g.rowid = ".$this->rowid;
+		$sql_query .= ";";
+	}
 
 
 	public function get_rightsForThisTable(Mysqli $mysqli, string $tablename)

@@ -1031,20 +1031,86 @@ footer {
   background-image: url("../img/photos/musicians/photo_presentation_nicole.jpg");
 }
 
-.dashboard {
+.body-adminpage {
+  background-image: none;
+}
+
+.adminpage {
+  background-color: #ececec;
+  display: -ms-grid;
+  display: grid;
+}
+
+@media screen and (min-width: 767.9px) {
+  .adminpage {
+    -ms-grid-columns: fit-content(100%) 1fr;
+        grid-template-columns: fit-content(100%) 1fr;
+    -ms-grid-rows: 1fr;
+        grid-template-rows: 1fr;
+  }
+}
+
+.adminpage .adminpage-aside {
+  background: #001d8c;
+}
+
+.adminpage .adminpage-aside .adminpage-menus .adminpage-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .5rem .9rem;
+}
+
+.adminpage .adminpage-aside .adminpage-menus .adminpage-menu:first-child {
+  padding-top: 1.5rem;
+}
+
+.adminpage .adminpage-aside .adminpage-menus .adminpage-menu .adminpage-menu-link:-webkit-any-link {
+  color: white;
+  font-size: 2.4rem;
+}
+
+.adminpage .adminpage-aside .adminpage-menus .adminpage-menu .adminpage-menu-link:-moz-any-link {
+  color: white;
+  font-size: 2.4rem;
+}
+
+.adminpage .adminpage-aside .adminpage-menus .adminpage-menu .adminpage-menu-link:any-link {
+  color: white;
+  font-size: 2.4rem;
+}
+
+.adminpage .dashboard {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   height: 100rem;
 }
 
-.dashboard .dashboard-section {
+.adminpage .dashboard .page-title {
+  color: #333 !important;
+}
+
+.adminpage .dashboard .dashboard-section {
   margin-bottom: 2rem;
 }
 
-.dashboard .dashboard-section .dashboard-section-title {
+.adminpage .dashboard .dashboard-section .dashboard-section-title {
   padding-top: 1rem;
   margin-bottom: 1rem;
-  border-top: 1px solid var(--theme-color_important);
+  border-top: 1px solid #000ee4;
+  color: #333 !important;
   font-size: 2.1rem;
   font-weight: 300;
   font-variant-caps: small-caps;
@@ -3099,19 +3165,19 @@ body {
 	left: -16px;
 	z-index: 109;
 } */
-.datatable {
+table.datatable {
   width: 100%;
 }
 
-.datatable tr:first-child {
+table.datatable tr:first-child {
   background-color: rgba(227, 40, 40, 0.73);
 }
 
-.datatable th, .datatable td {
+table.datatable th, table.datatable td {
   padding: 0.2rem 1rem;
 }
 
-.datatable .datatable-title {
+table.datatable .datatable-title {
   font-weight: 300;
 }
 

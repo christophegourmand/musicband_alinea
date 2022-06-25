@@ -283,7 +283,7 @@ class DbHandler
 			throw new Exception("Mysqli n'a pas donné de réponse pour cette requête SQL :\n" . $sql_query);
 		}
 
-		$indexedArrayOfFieldsInfos = $mysqli_response->fetch_all(MYSQLI_ASSOC); // fetch_row() gives an indexed array
+		$indexedArrayOfFieldsInfos = $mysqli_response->fetch_all(MYSQLI_ASSOC);
 
 		$fieldsArray = [];
 		for ($i=0 ; $i < count($indexedArrayOfFieldsInfos) ; $i++)

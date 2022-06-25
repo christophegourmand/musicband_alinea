@@ -1,26 +1,82 @@
-.dashboard
+
+.body-adminpage
 {
-	margin-left: $pageMargin;
-	margin-right: $pageMargin;
+	background-image:none; // overright the global css rule (class-selector win over tag-selector)
+}
 
-	height: 100rem; // REVIEW : Temporaire !
-	
-	.dashboard-section
+.adminpage
+{
+	background-color: #ececec;
+
+	// background-image: radial-gradient(#00007b,#030335);
+	display: grid;
+
+	@include media("md","max")
 	{
-		margin-bottom: 2rem;
+		grid-template-columns: fit-content(100%) 1fr;
+		grid-template-rows: 1fr;
+	}
 
-		.dashboard-section-title
+	.adminpage-aside {
+		// height
+		//width: 2rem; /* --- temporaire */
+		// border-right: 1px solid white;
+		background: #001d8c;
+
+		.adminpage-menus
 		{
-			padding-top: 1rem;
-			margin-bottom: 1rem;
+			.adminpage-menu
+			{
+				@include flex_row(center, center);
+				
+				padding: .5rem .9rem;
 
-			border-top: 1px solid var(--theme-color_important);
+				&:first-child
+				{
+					padding-top: 1.5rem;
+				}
 
-			font-size: 2.1rem;
-			font-weight: 300;
-			font-variant-caps: small-caps;
-			line-height: 0.6; // space between top line and name
+				.adminpage-menu-link:any-link
+				{
+					color: white;
+					font-size: 2.4rem;
+				}
+			}
+		}
+	}
 
+	.dashboard
+	{
+		margin-left: $pageMargin;
+		margin-right: $pageMargin;
+
+		height: 100rem; // REVIEW : Temporaire !
+
+		.page-title
+		{
+			color: #333 !important; // overright global css rule
+		}
+		
+		.dashboard-section
+		{
+			margin-bottom: 2rem;
+
+			.dashboard-section-title
+			{
+				padding-top: 1rem;
+				margin-bottom: 1rem;
+
+				border-top: 1px solid #000ee4;
+
+				color: #333 !important; // overright global css rule
+				font-size: 2.1rem;
+				font-weight: 300;
+				font-variant-caps: small-caps;
+				line-height: 0.6; // space between top line and name
+
+			}
 		}
 	}
 }
+
+
