@@ -10,6 +10,7 @@ class Group extends Model implements Modalable {
 	// =========================================
 	protected string $groupname;
 	private array $users;
+	protected array $rights = [];
 
 	// =========================================
 	// CONSTRUCTOR
@@ -21,6 +22,133 @@ class Group extends Model implements Modalable {
 
 		// TODO : supprimer la propriété ci-dessous quand certain qu'elle n'est plus utilisée
 		$this->rowDatas = []; // defined in Model.class.php
+
+		//--- array for group rights initialized all to `false`
+		$rights = 
+			[
+				'actu' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'asso_group_right' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null // field `active` do not exists in this table
+					],
+				'asso_user_preference' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null // field `active` do not exists in this table
+					],
+				'bio' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],	
+				'concert' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'group' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null // field `active` do not exists in this table
+					],
+				'music_album' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'music_song' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'preference' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null // field `active` do not exists in this table
+					],
+				'product' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'product_image' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				'right' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null // field `active` do not exists in this table
+					],
+				'user' => 
+					[
+						'can_create' => false,
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => false
+					],
+				//--- THOSE WHO ARE NOT IN DATABASE ---
+				'albumphoto' => //--- concern folders, not database
+					[
+						'can_create' => false, //NOTE: here , `can_create` means in fact `can_add`
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null //NOTE: folder/files doesn't have `in/active` status, I had no choice but to add that field in database, but useless here.
+					],
+				'photo' => //--- concern files, not database
+					[
+						'can_create' => false, //NOTE: here , `can_create` means in fact `can_add`
+						'can_see' => false,
+						'can_modify' => false,
+						'can_delete' => false,
+						'can_activate' => null //NOTE: folder/files doesn't have `in/active` status, I had no choice but to add that field in database, but useless here.
+					]
+			];
+
 	}
 
 	// =========================================
@@ -179,6 +307,99 @@ class Group extends Model implements Modalable {
 		return $rowDatas;
 	}
 
+
+
+	public function get_rightsForThisTable(Mysqli $mysqli, string $tablename)
+	{
+		//--- load the row so $receivedRowDatas will be full.
+		$receivedRowDatas = self::$dbHandler->loadManyRows($mysqli , 'group_right' , ["`fk_group_rowid`={$this->get_rowid()}","`tablename`='{$tablename}'"]);
+
+		// echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');    //! DEBUG
+
+		/* --- ce qu'on reçoit :
+
+			array (size=1)
+				0 => 
+					array (size=8)
+					'rowid' => string '21' (length=2)
+					'fk_group_rowid' => string '1' (length=1)
+					'tablename' => string 'concert' (length=7)
+					'can_create' => string '1' (length=1)
+					'can_see' => string '1' (length=1)
+					'can_modify' => string '1' (length=1)
+					'can_delete' => string '1' (length=1)
+					'can_activate' => string '1' (length=1)
+
+			--- il faut alors recréer un array avec seulement les clé `'can_xxxxx' => valeur`]
+		*/
+
+		$receivedRowDatas = $receivedRowDatas[0];
+		unset($receivedRowDatas['rowid']);
+		unset($receivedRowDatas['fk_group_rowid']);
+		unset($receivedRowDatas['tablename']);
+
+		return $receivedRowDatas;
+	}
+	
+	public function get_rightsForAllTables(Mysqli $mysqli)
+	{
+		//--- load the row so $receivedRowDatas will be full.
+		$receivedRowDatas = self::$dbHandler->loadManyRows($mysqli , 'group_right' , ["`fk_group_rowid`={$this->get_rowid()}"]);
+
+		// echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');    //! DEBUG
+
+		/* --- ce qu'on reçoit :
+
+			array (size=18)
+				0 => 
+					array (size=8)
+					'rowid' => string '1' (length=1)
+					'fk_group_rowid' => string '1' (length=1)
+					'tablename' => string 'actu' (length=4)
+					'can_create' => string '1' (length=1)
+					'can_see' => string '1' (length=1)
+					'can_modify' => string '1' (length=1)
+					'can_delete' => string '1' (length=1)
+					'can_activate' => string '1' (length=1)
+				1 => ...etc
+				2 => ...etc
+				3 => ...etc
+				
+			--- il faut alors recréer un array avec seulement les clé `'can_xxxxx' => valeur`]
+		*/
+
+
+
+		/* --- we want :
+			[
+				'<nameOfTable>' => [
+					'can_create' => true , 
+					'can_see' => true , 
+					'can_modify' => true , 
+					'can_delete' => false
+					'can_activate' => false
+				],
+				'<nameOfTable>' => [..etc..]
+				'<nameOfTable>' => [..etc..]
+			]
+		*/
+		//--- reorganise array so its keys will be tables names instead-of indexes
+		$result = [];
+		foreach ($receivedRowDatas as $row_assocArray) {
+			$looping_tablename = $row_assocArray['tablename'];
+
+			//--- the array `$row_assocArray` is store in $result['user'] or $result['concert'] or ...
+			$result[$looping_tablename] = $row_assocArray;
+
+			//--- we remove keys 'rowid' , 'tablename' , and 'fk_group_rowid' as now they are useless:
+
+			unset($result[$looping_tablename]['rowid']);
+			unset($result[$looping_tablename]['tablename']);
+			unset($result[$looping_tablename]['fk_group_rowid']);
+		}
+
+		return $result;
+	}
 
 }
 

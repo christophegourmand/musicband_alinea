@@ -169,7 +169,7 @@ class DbHandler
 		$i = 1;
 		while ($i <= $nbrOfRows)
 		{
-			$rowDatas = $mysqli_response->fetch_assoc();
+			$rowDatas = $mysqli_response->fetch_assoc(); // REVIEW : it waas possible to use fetch_all() , then no-need a loop`while`.
 			$retreivedRows[] = $rowDatas;
 			$i++;
 		}

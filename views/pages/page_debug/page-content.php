@@ -268,6 +268,18 @@ use models\music\MusicSong;
 		# $bio->load($mysqli , 9); // OK
 		# $bio->delete($mysqli); // PASS
 
+	//--- TEST : Group >> get_rightsForThisTable()
+		# $user_webadmin = new User();
+		# $user_webadmin->load($mysqli , 1);
+		# $group_of_user_webadmin = $user_webadmin->get_group();
+		# var_dump(  $group_of_user_webadmin->get_rightsForThisTable($mysqli, 'concert')  ); // PASS
+
+	//--- TEST : Group >> get_rightsForAllTables()
+		$user_webadmin = new User();
+		$user_webadmin->load($mysqli , 1);
+		$group_of_user_webadmin = $user_webadmin->get_group();
+		var_dump(  $group_of_user_webadmin->get_rightsForAllTables($mysqli)  );
+
 			?>
 		</pre>
 	</section>

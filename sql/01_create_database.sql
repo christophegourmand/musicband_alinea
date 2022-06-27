@@ -63,6 +63,33 @@ ALTER TABLE `asso_group_right`
 ADD UNIQUE INDEX `idx_rowid_groupid_rightid` (`rowid` , `fk_group_rowid` , `fk_right_rowid`);
 
 -- =====================================
+-- table for group_right
+-- =====================================
+CREATE TABLE IF NOT EXISTS `group_right`
+(
+    `rowid` INT(5) NOT NULL AUTO_INCREMENT
+    , `fk_group_rowid` INT(4) NOT NULL
+    , `tablename` VARCHAR(50) NOT NULL
+    , `can_create` BOOLEAN
+    , `can_see` BOOLEAN
+    , `can_modify` BOOLEAN
+    , `can_delete` BOOLEAN
+    , `can_activate` BOOLEAN
+
+    , PRIMARY KEY (`rowid`)
+    , FOREIGN KEY (`fk_group_rowid`) 
+        REFERENCES `group` (`rowid`)
+)
+ENGINE=InnoDB 
+DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
+;
+ALTER TABLE `group_right` 
+ADD UNIQUE INDEX `idx_rowid` (`rowid`);
+
+
+
+
+-- =====================================
 -- table for user
 -- =====================================
 CREATE TABLE IF NOT EXISTS `user`
@@ -101,6 +128,9 @@ CREATE TABLE IF NOT EXISTS `preference`
 ENGINE=InnoDB 
 DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
 ;
+
+ALTER TABLE `preference`
+ADD UNIQUE INDEX `idx_rowid` (`rowid`);
 
 -- =====================================
 -- table for asso_user_preference
@@ -278,3 +308,26 @@ DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
 
 ALTER TABLE `bio`
 ADD UNIQUE INDEX `idx_bio_rowid` (`rowid`);
+
+-- SECTION : create table for actus to be inserted in page_actu.php
+
+CREATE TABLE IF NOT EXISTS `actu`
+(
+    `rowid` INT(5) NOT NULL AUTO_INCREMENT
+    , `active` BOOLEAN NOT NULL
+    , `position_nbr` TINYINT -- no auto increment please
+    , `title` VARCHAR(150) NOT NULL
+    , `description` MEDIUMTEXT
+    , `path_image` VARCHAR(512)
+    , `path_mp3` VARCHAR(512)
+    , `source_url` VARCHAR(512)
+    , `source_name` VARCHAR(512)
+    , `url_youtube` VARCHAR(512)
+    , `url_map` VARCHAR(512)
+    , `css_class_name` VARCHAR(50)
+
+    , PRIMARY KEY (`rowid`)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8 COLLATE 'utf8_unicode_ci'
+;

@@ -7,7 +7,7 @@
 
 
 // VARIABLES USED IN HEADER :
-	$page_title = "ALINEA musique - Plan du site";
+	$page_title = "ALINEA musique - debug";
 	$page_description = "debug";
 
 // VARIABLES TO ADJUST "common elements" (header, navbar, ...)
