@@ -447,21 +447,30 @@ class Group extends Model implements Modalable {
 			]
 		*/
 		//--- reorganise array so its keys will be tables names instead-of indexes
-		$result = [];
+		$rightsPerTablename = [];
 		foreach ($receivedRowDatas as $row_assocArray) {
 			$looping_tablename = $row_assocArray['tablename'];
 
-			//--- the array `$row_assocArray` is store in $result['user'] or $result['concert'] or ...
-			$result[$looping_tablename] = $row_assocArray;
+			//--- the array `$row_assocArray` is store in $rightsPerTablename['user'] or $rightsPerTablename['concert'] or ...
+			$rightsPerTablename[$looping_tablename] = $row_assocArray;
 
 			//--- we remove keys 'rowid' , 'tablename' , and 'fk_group_rowid' as now they are useless:
 
-			unset($result[$looping_tablename]['rowid']);
-			unset($result[$looping_tablename]['tablename']);
-			unset($result[$looping_tablename]['fk_group_rowid']);
+			unset($rightsPerTablename[$looping_tablename]['rowid']);
+			unset($rightsPerTablename[$looping_tablename]['tablename']);
+			unset($rightsPerTablename[$looping_tablename]['fk_group_rowid']);
 		}
-
-		return $result;
+		
+		foreach ($rightsPerTablename as $tablename_key => &$rightsOfLoopingTable)
+		{
+			foreach ($rightsOfLoopingTable as $key => $value) {
+				# var_dump(gettype($value));
+				
+				$rightsOfLoopingTable[$key] = (gettype($value) === 'string') ? (bool) $value : null ;
+			}
+		}
+		
+		return $rightsPerTablename;
 	}
 
 }

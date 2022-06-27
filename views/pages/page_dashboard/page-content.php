@@ -23,18 +23,16 @@
 		$user->load($mysqli, $_SESSION['user_rowid']);
 
 		$user_group = $user->get_group();
-		$authorizedMenusToDisplay = [];
+		$GLOBALS['user_group_rights'] = $user_group->get_rightsForAllTables($mysqli);
+		var_dump( $user_group_rights ); // DEBUG
 
-		//--- if user is a part of group 'webadmin' , 'band_musicians' or 'band_staff'
-		
-		$rightsOfUserGroup_arr = $user_group->get_rights_name_array($mysqli);
-		// var_dump($rightsOfUserGroup_arr);
 
 		// #################################################### 
 		// CONCERTS
 		// #################################################### 
 
-		$GLOBALS['concertsFields'] = $dbHandler->getFields($mysqli, 'concert');
+		$GLOBALS['concertsFields'] = 
+		$dbHandler->getFields($mysqli, 'concert');
 
 		//--- load rows datas from table bio where field `active` = 1
 		$concertsRowsFromDb = $dbHandler->loadManyRows($mysqli, 'concert', ["active = 1"]);
@@ -82,10 +80,10 @@
 <main class="adminpage">
 	<aside class="adminpage-aside">
 		<ul class="adminpage-menus">
-			<?php if (in_array($user_group->get_groupname(), ['webadmin', 'band_musicians','band_staff'])): ?>
+			<?php if ($GLOBALS['user_group_rights']['concert']['can_see'] === '1'): ?>
 				<li class="adminpage-menu">
 					<!-- <a href="" class="adminpage-menu-link">Concerts</a> -->
-					<a href="" class="adminpage-menu-link"><i class="far fa-calendar-alt"></i></a>
+					<a title="concerts" href="" class="adminpage-menu-link"><i class="far fa-calendar-alt"></i></a>
 				</li>
 			<?php endif?>
 
