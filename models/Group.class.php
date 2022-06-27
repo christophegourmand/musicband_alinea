@@ -307,7 +307,12 @@ class Group extends Model implements Modalable {
 		return $rowDatas;
 	}
 
-	public function get_rights_name_array(Mysqli $mysqli)
+	/**
+	* Get datas from tables-in-database named 'right' , 'group' , and the linked-table 'asso_group_right'
+	* @param 	Mysqli 	$mysqli 	instance of Mysqli
+	* @return 	Array 				list of names of rights for this instance of Group (indexed array of strings)
+	*/
+	public function get_rights_name_array(Mysqli $mysqli):array
 	{
 		if (empty($this->rowid))
 		{
@@ -321,6 +326,42 @@ class Group extends Model implements Modalable {
 		$sql_query .= " INNER JOIN `group` AS g ON agr.fk_group_rowid = g.rowid";
 		$sql_query .= " WHERE g.rowid = ".$this->rowid;
 		$sql_query .= ";";
+
+		$mysqli_response = $mysqli->query($sql_query);
+
+		//NOTE autre possibilité de rédaction : 
+		
+		/* 
+		$mysqli_response = $mysqli->query(
+			"SELECT r.name , g.groupname
+			FROM `right` AS r
+			INNER JOIN `asso_group_right` AS agr ON r.rowid = agr.fk_right_rowid
+			INNER JOIN `group` AS g ON agr.fk_group_rowid = g.rowid
+			WHERE g.rowid = {$this->rowid};"
+			); 
+		*/
+
+
+		if (!$mysqli_response)
+		{
+			throw new Exception("Mysqli n'a pas donné de réponse pour cette requête SQL :\n" . $sql_query);
+		}
+
+		if ($mysqli_response->num_rows >0)
+		{
+			$rowsIndexedArray_rowAssocArray = $mysqli_response->fetch_all(MYSQLI_ASSOC);
+			$rows_rightnames = [];
+
+			foreach ($rowsIndexedArray_rowAssocArray as $rowAssocArray)
+			{
+				$rows_rightnames[] = $rowAssocArray['name'];
+			}
+		} else 
+		{
+			$rows_rights_obj = [];
+		}
+
+		return $rows_rightnames;
 	}
 
 
@@ -356,7 +397,14 @@ class Group extends Model implements Modalable {
 		return $receivedRowDatas;
 	}
 	
-	public function get_rightsForAllTables(Mysqli $mysqli)
+		
+	/**
+	 * 
+	 *
+	 * @param  mixed $mysqli
+	 * @return array	
+	 */
+	public function get_rightsForAllTables(Mysqli $mysqli):array
 	{
 		//--- load the row so $receivedRowDatas will be full.
 		$receivedRowDatas = self::$dbHandler->loadManyRows($mysqli , 'group_right' , ["`fk_group_rowid`={$this->get_rowid()}"]);
