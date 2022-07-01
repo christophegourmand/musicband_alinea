@@ -1,4 +1,5 @@
 .btn {
+    display: inline-block; // allow the width:fit-content(100%) to works
     width: fit-content(100%);
     padding: .5rem;
     
@@ -8,13 +9,13 @@
     
     font-size: 1rem;
 
-    @include flex_row(center, center);
+    // @include flex_row(center, center);
     
-    .btn-txt {
+    // NOTE : deactivated (used only for button `<` in page photobig
+    /* .btn-txt {
         margin: .5rem;
         font-size: 1rem;
-    }
-
+    } */
 }
 
 .btn-dark {
@@ -39,6 +40,43 @@
         color: var( --theme-color_form-input-border-hover);
     }
 }
+
+.btn-fit-outline-orange {
+    @extend .btn;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    
+    background-color: transparent;
+    
+    $btnColor: orange;
+    color: $btnColor;
+    border: 1px solid currentColor;
+
+    &:hover, &:active , &:focus, &:target
+    {
+        color:white;
+        background-color: $btnColor;
+    }
+}
+
+.btn-fit-outline-green {
+    @extend .btn;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    
+    background-color: transparent;
+    
+    $btnColor: hsl(148, 100%, 35%);
+    color: $btnColor;
+    border: 1px solid currentColor;
+
+    &:hover, &:active , &:focus, &:target
+    {
+        color:white;
+        background-color: $btnColor;
+    }
+}
+
 
 .fly_bottom-right {
     
