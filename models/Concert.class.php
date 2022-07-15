@@ -1,4 +1,7 @@
 <?php
+
+use FFI\Exception;
+
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
@@ -8,20 +11,19 @@ class Concert extends Model implements Modalable {
 	// =========================================
 	// PROPERTIES
 	// =========================================
-	protected int $active;
-	protected string $date;
-	protected string $hour_start;
-	protected string $hour_end;
-	protected string $venue_name;
-	protected string $city_name;
-	protected string $url_map;
-	protected string $path_image;
-	protected string $description;
+	protected int $active = 0;
+	protected string $date = '';
+	protected string $hour_start = '';
+	protected string $hour_end = '';
+	protected string $venue_name = '';
+	protected string $city_name = '';
+	protected string $url_map = '';
+	protected string $path_image = '';
+	protected string $description = '';
 
-	//--- set 0 for inactive , 1 for active
-	protected DateTime $datetime;
-	protected int $timestamp;
-	private static int $setting_concertActiveByDefault = 1;
+	protected DateTime $datetime; // initialized in constructor
+	protected int $timestamp = 0;
+	private static int $setting_concertActiveByDefault = 1; //--- set 0 for inactive , 1 for active
 
 	// =========================================
 	// CONSTRUCTOR
@@ -30,6 +32,8 @@ class Concert extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('concert');
+
+		$this->datetime = new DateTime();
 
 	}
 
@@ -368,7 +372,7 @@ class Concert extends Model implements Modalable {
 	//--- Getters ----------------------------------
 
 	public function get_active() : int
-	{ 
+	{
 		return $this->active;
 	}
 
@@ -523,7 +527,6 @@ class Concert extends Model implements Modalable {
 
 		return $rowDatas;
 	}
-
 
 }
 

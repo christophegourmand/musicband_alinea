@@ -273,7 +273,7 @@ class DbHandler
 	* @param 	string	$tablename	ex: 'user' or 'concert'
 	* @return	array	Return array ['field1','field2','field3','field4'].
 	*/
-	public function getFields(Mysqli $mysqli , string $tablename) : array
+	public function getFieldsNames(Mysqli $mysqli , string $tablename) : array
 	{
 		$sql_query = "SHOW COLUMNS FROM `".$tablename."`";
 		$mysqli_response = $mysqli->query($sql_query);
@@ -294,6 +294,34 @@ class DbHandler
 		$mysqli_response->free();
 
 		return $fieldsArray;
+	}
+
+	/**
+	* @param	Mysqli	$mysqli		instance of Mysqli
+	* @param 	string	$tablename	ex: 'user' or 'concert'
+	* @return	array	Return array ['field1','field2','field3','field4'].
+	*/
+	public function getFieldsInfos(Mysqli $mysqli , string $tablename) : array
+	{
+		$sql_query = "SHOW COLUMNS FROM `".$tablename."`";
+		$mysqli_response = $mysqli->query($sql_query);
+		
+		if (!$mysqli_response)
+		{
+			throw new Exception("Mysqli n'a pas donné de réponse pour cette requête SQL :\n" . $sql_query);
+		}
+
+		$indexedArrayOfFieldsInfos = $mysqli_response->fetch_all(MYSQLI_ASSOC);
+
+		/* $fieldsArray = [];
+		for ($i=0 ; $i < count($indexedArrayOfFieldsInfos) ; $i++)
+		{
+			array_push($fieldsArray , $indexedArrayOfFieldsInfos[$i]['Field']);
+		} */
+
+		$mysqli_response->free();
+
+		return $indexedArrayOfFieldsInfos;
 	}
 
 

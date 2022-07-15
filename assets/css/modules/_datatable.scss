@@ -1,26 +1,64 @@
 $datatable-borders-color: white;
 $datatable-borders-width: 2px;
 $datatable-padding-y: .2rem;
-$datatable-padding-x: 1rem;
+$datatable-padding-x: .5rem;
 
 table.datatable
 {
 	width: 100%;
-	// border-collapse: collapse;
-	// border: $datatable-borders-width solid $datatable-borders-color;
-
-	tr:first-child
+	border-collapse: collapse;
+	color: #333;
+	
+	thead
 	{
-		background-color: hsla(0, 77%, 52.4%, 0.73);
+		tr
+		{
+			th
+			{
+				font-weight: 300;
+				background-color: hsla(0, 77%, 52.4%, 0.73);
+				border-left: 3px solid #ececec;
+				color: white;
+			}
+		}
 	}
+
+	tbody
+	{
+		tr
+		{
+			border-top: .5px solid hsla(0, 77%, 52.4%, 0.73);
+			
+			&:first-child
+			{
+				border-top: none;
+			}
+
+			td
+			{
+				font-weight: 200;
+			}
+
+			.datatable-row-buttons
+			{
+				@include media("min", "md")
+				{
+					@include flex_col(flex-start, flex-start);
+					gap:.2rem;
+				}
+				@include media("md", "max")
+				{
+					@include flex_row(center, center);
+					gap:.5rem;
+				}
+			}
+		}
+	}
+
 
 	th, td
 	{
 		padding: $datatable-padding-y $datatable-padding-x;
-	}
-
-	.datatable-title 
-	{
-		font-weight: 300;
+		text-align: center;
 	}
 }

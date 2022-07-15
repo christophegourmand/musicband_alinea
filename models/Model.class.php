@@ -80,6 +80,112 @@ class Model {
 	}
 
 
+	public function fieldsInfosFromDb(Mysqli $mysqli)
+	{
+		try
+		{
+			// $fieldsNamesFromDb = self::$dbHandler->getFieldsNames($mysqli, $this->get_tableName());
+			$fieldsInfosFromDb = self::$dbHandler->getFieldsInfos($mysqli, $this->get_tableName());
+		}
+		catch (Exception $exception)
+		{
+			throw $exception;
+		}
+
+		// return $fieldsNamesFromDb;
+		return $fieldsInfosFromDb;
+	}
+
+	/**
+	* @param 	string 	$sqlType 	The type of the field (=column) in the sql table
+	* @return 	string 			The type of html tag input (<input='xxxxx'> , or 'textarea', ...)
+	*/
+	static function convertSqlTypeToFormInputType (string $sqlType):string
+	{
+		
+		//--- varchar >>> input type='text'
+		if ( strstr($sqlType , 'varchar') ) 
+		{
+			$formInputType = 'text';
+		}
+		//--- tinyint >>> input type='text'
+		elseif ( strstr($sqlType , 'tinyint') ) //--- keep the search of `tinyint` before `int`.
+		{
+			$formInputType = 'text';
+		}
+		//--- int >>> input type='text'
+		elseif ( strstr($sqlType , 'int') )
+		{
+			$formInputType = 'text';
+		}
+		//--- mediumtext >>> textarea
+		elseif ( strstr($sqlType , 'mediumtext') )
+		{
+			$formInputType = 'textarea';
+		}
+		
+		//--- date >>> input type='date'  // À VÉRIFIER
+		elseif ( strstr($sqlType , 'date') )
+		{
+			$formInputType = 'date';
+		}
+
+		//--- time >>> input type='time'  // À VÉRIFIER
+		elseif ( strstr($sqlType , 'time') )
+		{
+			$formInputType = 'time'; // LINK : https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time
+		}
+		else
+		{
+			$formInputType = 'undetected by Model::convertSqlTypeToFormInputType()';
+		}
+		
+
+		// TEST ------------------------
+		/* if ( strstr($sqlType , 'int') )
+		{
+			$formInputType = 'text';
+		} else
+		{
+			$formInputType = 'undetected by Model::convertSqlTypeToFormInputType()';
+		} */
+
+		return $formInputType;
+	}
+	
+	public function fieldsInfosForForm(Mysqli $mysqli)
+	{
+		try
+		{
+			$fieldsInfosFromDb = $this->fieldsInfosFromDb($mysqli);
+		}
+		catch (Exception $exception)
+		{
+			throw $exception;
+		}
+
+		$fieldsForForm = [];
+
+		foreach ($fieldsInfosFromDb as $i => $arrayFieldsInfos) {
+			// --- name of the field
+			$fieldsForForm[$i]['fieldName'] = $arrayFieldsInfos['Field'];
+			// --- type of the field
+			$fieldsForForm[$i]['sql_type'] = $arrayFieldsInfos['Type'];
+			$fieldsForForm[$i]['form_input_type'] = self::convertSqlTypeToFormInputType($fieldsForForm[$i]['sql_type']);
+			$fieldsForForm[$i]['id'] = $this->get_tablename().'_'.$fieldsForForm[$i]['fieldName'];
+			$fieldsForForm[$i]['name'] = $this->get_tablename().'_'.$fieldsForForm[$i]['fieldName']; // attribute of html input of form
+
+			// --- attribute `required` if field can't be null in database table
+			$fieldsForForm[$i]['attribute_required'] = ($arrayFieldsInfos['Null'] === 'NO') ? 'required' : '';
+			$fieldsForForm[$i]['getter_method_name'] = 'get_'.$fieldsForForm[$i]['fieldName']/* .'()' */;
+		}
+
+		return $fieldsForForm;
+	}
+
+
+
+
 }
 
 ?>

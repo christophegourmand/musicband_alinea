@@ -164,5 +164,7 @@ document.getElementById('usermenu_icon').addEventListener(
 	(event)=> document.getElementById('usermenu_menus').classList.toggle('hide')
 ); */
 
-
+// SECTION : add special event listener so all CSS selector (such as :hover , :active) will works also on touch displays
+document.addEventListener("touchstart", function() {},false);
+	// LINK : https://alxgbsn.co.uk/2011/10/17/enable-css-active-pseudo-styles-in-mobile-safari/
 

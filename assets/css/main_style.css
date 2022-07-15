@@ -1674,10 +1674,6 @@ footer {
       -ms-flex-align: baseline;
           align-items: baseline;
   font-size: 65%;
-  -webkit-animation-name: apparition;
-          animation-name: apparition;
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
 }
 
 .brand .brand-logo {
@@ -1689,12 +1685,6 @@ footer {
   font-family: 'Overpass', sans-serif;
   font-weight: 200;
   font-size: 5.5em;
-  -webkit-animation-name: neon;
-          animation-name: neon;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  /*text-shadow: 0 0 1rem blue;   */
-  /*end of animation must match */
   color: white;
 }
 
@@ -1784,9 +1774,9 @@ footer {
   border-radius: 5px;
   font-size: 1rem;
   /* .btn-txt {
-        margin: .5rem;
-        font-size: 1rem;
-    } */
+		margin: .5rem;
+		font-size: 1rem;
+	} */
 }
 
 .btn-dark {
@@ -1838,6 +1828,42 @@ footer {
   height: 1.5rem;
   font-size: 1.5rem;
   color: white;
+}
+
+.btn-icon-link:-webkit-any-link.btn-icon-link--add {
+  color: #00c335;
+}
+
+.btn-icon-link:-moz-any-link.btn-icon-link--add {
+  color: #00c335;
+}
+
+.btn-icon-link:any-link.btn-icon-link--add {
+  color: #00c335;
+}
+
+.btn-icon-link:-webkit-any-link.btn-icon-link--edit {
+  color: #fc9700;
+}
+
+.btn-icon-link:-moz-any-link.btn-icon-link--edit {
+  color: #fc9700;
+}
+
+.btn-icon-link:any-link.btn-icon-link--edit {
+  color: #fc9700;
+}
+
+.btn-icon-link:-webkit-any-link.btn-icon-link--delete {
+  color: #e40000;
+}
+
+.btn-icon-link:-moz-any-link.btn-icon-link--delete {
+  color: #e40000;
+}
+
+.btn-icon-link:any-link.btn-icon-link--delete {
+  color: #e40000;
 }
 
 /* =========================================== */
@@ -3202,19 +3228,12 @@ body {
 }
 
 /* the html for 'usermenu-menus' is store in a separated file in 'common' folder */
+/* SECTION - Common rules  --------------------------------------------- */
 .usermenu-menus {
   display: block;
   position: absolute;
-  top: 0;
-  right: -25px;
-  /* NOTE: animation when changed to -50% */
   z-index: 110;
-  height: 100%;
-  width: 50%;
-  background-color: var(--color-connected-icon);
   /* --- add some diagonal perspective angle */
-  -webkit-transform: skewX(-10deg);
-          transform: skewX(-10deg);
   /* --- add a movement effect (slide from right on appear) (slide to right on dissappear) */
   -webkit-transition-property: right;
   transition-property: right;
@@ -3228,20 +3247,17 @@ body {
   outline-offset: 7px;
   outline-style: solid;
   outline-width: medium;
-  /* --- EFFECT 'LINE' V2 ::  add a line on left of the div menu, with space */
 }
 
 .usermenu-menus.hide {
-  right: -60%;
-  /* NOTE : animation when changed to -25px */
+  opacity: 0;
 }
 
 .usermenu-menus .usermenu-menus-list {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .usermenu-menus .usermenu-menus-list .usermenu-menus-element {
-  padding-left: 1rem;
   padding-top: .1rem;
   padding-bottom: .1rem;
 }
@@ -3258,47 +3274,162 @@ body {
   color: white;
 }
 
-.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover {
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover, .usermenu-menus .usermenu-menus-list .usermenu-menus-element:active {
   background-color: white;
 }
 
-.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-webkit-any-link {
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-webkit-any-link, .usermenu-menus .usermenu-menus-list .usermenu-menus-element:active .usermenu-menus-link:-webkit-any-link {
   color: var(--color-connected-icon);
 }
 
-.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-moz-any-link {
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:-moz-any-link, .usermenu-menus .usermenu-menus-list .usermenu-menus-element:active .usermenu-menus-link:-moz-any-link {
   color: var(--color-connected-icon);
 }
 
-.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:any-link {
+.usermenu-menus .usermenu-menus-list .usermenu-menus-element:hover .usermenu-menus-link:any-link, .usermenu-menus .usermenu-menus-list .usermenu-menus-element:active .usermenu-menus-link:any-link {
   color: var(--color-connected-icon);
 }
 
-/* .usermenu-menus::before
-{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	border-left: 13px double var(--color-connected-icon);
-	top: 0px;
-	left: -16px;
-	z-index: 109;
-} */
+/* SECTION : rules for size 'min' to 'lg' --------------------------------------------- */
+@media screen and (max-width: 992px) {
+  .usermenu-menus {
+    width: 100vw;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    opacity: 1;
+    top: 0;
+    padding-bottom: 2rem;
+    background-color: var(--color-connected-icon);
+    right: 0;
+    /* --- add some diagonal perspective angle */
+    -webkit-transform: skewX(0);
+            transform: skewX(0);
+    /* --- add a movement effect (slide from right on appear) (slide to right on dissappear) */
+    -webkit-transition-property: top , opacity;
+    transition-property: top , opacity;
+    -webkit-transition-duration: 600ms;
+            transition-duration: 600ms;
+    -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+            transition-timing-function: cubic-bezier(1, 0, 0, 1);
+    -webkit-transition-delay: 0ms;
+            transition-delay: 0ms;
+    outline-color: rgba(196, 9, 9, 0.6);
+    outline-offset: 7px;
+    outline-style: solid;
+    outline-width: medium;
+  }
+  .usermenu-menus.hide {
+    top: -50vh;
+  }
+  .usermenu-menus .usermenu-menus-list .usermenu-menus-element {
+    padding-left: 2rem;
+  }
+}
+
+/* SECTION - rules for size 'lg' to 'max' --------------------------------------------- */
+@media screen and (min-width: 767.9px) {
+  .usermenu-menus {
+    width: 50vw;
+    height: 100%;
+    opacity: 1;
+    top: 0;
+    background-color: var(--color-connected-icon);
+    right: -25px;
+    /* NOTE: animation when changed to -50% */
+    /* --- add some diagonal perspective angle */
+    -webkit-transform: skewX(-10deg);
+            transform: skewX(-10deg);
+    /* --- add a movement effect (slide from right on appear) (slide to right on dissappear) */
+    -webkit-transition-property: right, opacity;
+    transition-property: right, opacity;
+    -webkit-transition-duration: 600ms;
+            transition-duration: 600ms;
+    -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+            transition-timing-function: cubic-bezier(1, 0, 0, 1);
+    -webkit-transition-delay: 0ms;
+            transition-delay: 0ms;
+    outline-color: rgba(196, 9, 9, 0.6);
+    outline-offset: 7px;
+    outline-style: solid;
+    outline-width: medium;
+  }
+  .usermenu-menus.hide {
+    right: -60vw;
+    /* NOTE : animation when changed to -25px */
+  }
+}
+
 table.datatable {
   width: 100%;
+  border-collapse: collapse;
+  color: #333;
 }
 
-table.datatable tr:first-child {
+table.datatable thead tr th {
+  font-weight: 300;
   background-color: rgba(227, 40, 40, 0.73);
+  border-left: 3px solid #ececec;
+  color: white;
+}
+
+table.datatable tbody tr {
+  border-top: 0.5px solid rgba(227, 40, 40, 0.73);
+}
+
+table.datatable tbody tr:first-child {
+  border-top: none;
+}
+
+table.datatable tbody tr td {
+  font-weight: 200;
+}
+
+@media screen and (max-width: 992px) {
+  table.datatable tbody tr .datatable-row-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: .2rem;
+  }
+}
+
+@media screen and (min-width: 767.9px) {
+  table.datatable tbody tr .datatable-row-buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: .5rem;
+  }
 }
 
 table.datatable th, table.datatable td {
-  padding: 0.2rem 1rem;
-}
-
-table.datatable .datatable-title {
-  font-weight: 300;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
 }
 
 /* STATES */

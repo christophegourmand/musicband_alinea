@@ -1,96 +1,114 @@
 .btn {
-    display: inline-block; // allow the width:fit-content(100%) to works
-    width: fit-content(100%);
-    padding: .5rem;
-    
-    border: none;
-    text-shadow: none;
-    border-radius: 5px;
-    
-    font-size: 1rem;
+	display: inline-block; // allow the width:fit-content(100%) to works
+	width: fit-content(100%);
+	padding: .5rem;
+	
+	border: none;
+	text-shadow: none;
+	border-radius: 5px;
+	
+	font-size: 1rem;
 
-    // @include flex_row(center, center);
-    
-    // NOTE : deactivated (used only for button `<` in page photobig
-    /* .btn-txt {
-        margin: .5rem;
-        font-size: 1rem;
-    } */
+	// @include flex_row(center, center);
+	
+	// NOTE : deactivated (used only for button `<` in page photobig
+	/* .btn-txt {
+		margin: .5rem;
+		font-size: 1rem;
+	} */
 }
 
 .btn-dark {
-    @extend .btn;
-    // background-color: var(--theme-color_important);
-    // border: 1px solid var(--theme-color_important);
-    
-    // color: var(--theme-color_neutral);
-    color: white;
+	@extend .btn;
+	// background-color: var(--theme-color_important);
+	// border: 1px solid var(--theme-color_important);
+	
+	// color: var(--theme-color_neutral);
+	color: white;
 }
 
 .btn-outline-white {
-    @extend .btn;
-    background-color: transparent;
-    border: 1px solid var(--theme-color_neutral);
-    
-    // color: var(--theme-color_neutral);
-    color: white;
-    
-    &:hover {
-        border: 1px solid var( --theme-color_form-input-border-hover);
-        color: var( --theme-color_form-input-border-hover);
-    }
+	@extend .btn;
+	background-color: transparent;
+	border: 1px solid var(--theme-color_neutral);
+	
+	// color: var(--theme-color_neutral);
+	color: white;
+	
+	&:hover {
+		border: 1px solid var( --theme-color_form-input-border-hover);
+		color: var( --theme-color_form-input-border-hover);
+	}
 }
 
 .btn-fit-outline-orange {
-    @extend .btn;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    
-    background-color: transparent;
-    
-    $btnColor: orange;
-    color: $btnColor;
-    border: 1px solid currentColor;
+	@extend .btn;
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+	
+	background-color: transparent;
+	
+	$btnColor: orange;
+	color: $btnColor;
+	border: 1px solid currentColor;
 
-    &:hover, &:active , &:focus, &:target
-    {
-        color:white;
-        background-color: $btnColor;
-    }
+	&:hover, &:active , &:focus, &:target
+	{
+		color:white;
+		background-color: $btnColor;
+	}
 }
 
 .btn-fit-outline-green {
-    @extend .btn;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    
-    background-color: transparent;
-    
-    $btnColor: hsl(148, 100%, 35%);
-    color: $btnColor;
-    border: 1px solid currentColor;
+	@extend .btn;
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+	
+	background-color: transparent;
+	
+	$btnColor: hsl(148, 100%, 35%);
+	color: $btnColor;
+	border: 1px solid currentColor;
 
-    &:hover, &:active , &:focus, &:target
-    {
-        color:white;
-        background-color: $btnColor;
-    }
+	&:hover, &:active , &:focus, &:target
+	{
+		color:white;
+		background-color: $btnColor;
+	}
 }
 
 
 .fly_bottom-right {
-    
-    // position: fixed;
-    // bottom: 6rem;
-    // right: 2rem;
+	
+	// position: fixed;
+	// bottom: 6rem;
+	// right: 2rem;
 }
 
 .close-button {
-    position: absolute;
-    top: .3rem;
-    right: .3rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 1.5rem;
-    color: white;
+	position: absolute;
+	top: .3rem;
+	right: .3rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 1.5rem;
+	color: white;
+}
+
+
+
+.btn-icon-link:any-link
+{
+	&.btn-icon-link--add
+	{
+		color: #00c335;
+	}
+	&.btn-icon-link--edit
+	{
+		color: #fc9700;
+	}
+	&.btn-icon-link--delete
+	{
+		color: #e40000;
+	}
 }
