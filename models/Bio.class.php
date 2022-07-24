@@ -18,6 +18,24 @@ class Bio extends Model implements Modalable {
 	//--- set 0 for inactive , 1 for active
 	private static int $setting_bioActiveByDefault = 1;
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'bio';
+	public static string $iconHtml = '<i class="fas fa-id-card"></i>';
+	public static string $entityNameSingular = 'Bio';
+	public static string $entityNamePlural = 'Bios';
+	public static string $explanation = 'Bios : contient nom, prénom, description, et lien-vers-photo de chaque musicien.';
+
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
+		, ['fieldnameInSql' => 'firstname' , 'fieldnameInHtml' => 'prénom']
+		, ['fieldnameInSql' => 'lastname' , 'fieldnameInHtml' => 'nom']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+	
+	];
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
@@ -25,6 +43,7 @@ class Bio extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('bio');
+
 	}
 
 

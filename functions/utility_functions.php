@@ -161,6 +161,27 @@ function getMessageFromKey(string $messageKey)
 			'text' => "Ce formulaire sera bientôt opérationnel, en attendant veuillez nous contacter par l'adresse suivante:<br><a style=\"color: #ffffff; text-decoration:underline;\" href=\"mailto:alineamusique@gmail.com\">alineamusique@gmail.com</a>"
 		];
 
+	//--- key
+	$translationTable['formControllerReceivedWrongParameters'] = 
+		[
+			'cssclass' => 'error',
+			'text' => "Le controlleur en charge de valider le formulaire n'a pas reçu les bons paramètres. Particulièrement l'action et la classe de l'entité."
+		];
+
+	//--- key
+	$translationTable['$entityCanNotBeDeleted'] = 
+		[
+			'cssclass' => 'error',
+			'text' => "Cet enregistrement n'a pas pu étre supprimé de la base de données ! Contactez-le developpeur du site pour en chercher la cause. <em>(en bas de page, aller dans 'Partenaires' pour le contacter)</em>." 
+		];
+
+	//--- key
+	$translationTable['$entityHasBeenDeletedWell'] = 
+		[
+			'cssclass' => 'success',
+			'text' => "Cet enregistrement a bien été supprimé de la base de données !" 
+		];
+
 	if (in_array($messageKey, array_keys($translationTable) ))
 	{
 		return $translationTable[$messageKey];

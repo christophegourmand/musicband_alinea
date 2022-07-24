@@ -12,6 +12,12 @@ class Photo {
     private string $orientation; // (can only be 'portrait' or 'landscape' or 'square' or '')
     protected static array $authorizedOrientationValues = ['portrait', 'landscape' , 'square' , ''];
 
+	//--- not in database, attached to the class :
+	public static string $iconHtml = '<i class="fas fa-images"></i>';
+	public static string $entityNameSingular = 'Photo';
+	public static string $entityNamePlural = 'Photos';
+	public static string $explanation = 'Photos : contient nom-du-fichier, description, orientation';
+
     // =========================================
     // CONSTRUCTOR
     // =========================================

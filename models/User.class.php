@@ -25,6 +25,32 @@ class User extends Model implements Modalable {
 	private static int $setting_userActiveByDefault = 1;
 	private static int $setting_userGroupIdByDefault = 4;
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'user';
+	public static string $iconHtml = '<i class="fas fa-user-friends"></i>';
+	public static string $entityNameSingular = 'User';
+	public static string $entityNamePlural = 'Users';
+	public static string $explanation = 'Users (utilisateurs) : contient status-actif, login, password, pass-encoded, id-de-son-groupe, email.';
+
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
+		, ['fieldnameInSql' => 'login' , 'fieldnameInHtml' => 'login']
+		, ['fieldnameInSql' => 'fk_group_rowid' , 'fieldnameInHtml' => 'No de groupe']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'login' , 'fieldnameInHtml' => 'login' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'pass' , 'fieldnameInHtml' => 'password' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'pass_encoded' , 'fieldnameInHtml' => 'pass encodé' , 'canBeDisplayed' => false , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'fk_group_rowid' , 'fieldnameInHtml' => 'id du groupe' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'date_creation' , 'fieldnameInHtml' => 'créé le' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'date_last_connection' , 'fieldnameInHtml' => 'dernière connexion le' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'email' , 'fieldnameInHtml' => 'email' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+	];
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
@@ -32,6 +58,8 @@ class User extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('user');
+
+
 	}
 
 
@@ -243,7 +271,17 @@ class User extends Model implements Modalable {
 
 	public function get_fk_group_rowid() : int
 	{ 
-		return $this->active; 
+		return $this->fk_group_rowid;
+	}
+
+	public function get_date_creation()
+	{ 
+		return $this->date_creation;
+	}
+
+	public function get_date_last_connection()
+	{ 
+		return $this->date_last_connection;
 	}
 
 	public function get_email() : string

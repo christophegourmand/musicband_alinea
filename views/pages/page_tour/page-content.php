@@ -9,13 +9,13 @@
 	$dbHandler = new DbHandler();
 
 	//--- load rows datas from table bio where field `active` = 1
-	$concertsRowsFromDb = $dbHandler->loadManyRows($mysqli, 'concert', ["active = 1"]);
+	$entityRowsFromDb = $dbHandler->loadManyRows($mysqli, 'concert', ["active = 1"]);
 
 	//--- create instances of Concert, fill then with rowDatas , then push them in array
 	$concertsInstances = [];
-	foreach ($concertsRowsFromDb as $concertRowFromDb) {
+	foreach ($entityRowsFromDb as $entityRowFromDb) {
 		$concert = new Concert();
-		$concert->fill_from_array($concertRowFromDb);
+		$concert->fill_from_array($entityRowFromDb);
 		array_push($concertsInstances , $concert);
 	}
 

@@ -167,17 +167,34 @@ class Model {
 		$fieldsForForm = [];
 
 		foreach ($fieldsInfosFromDb as $i => $arrayFieldsInfos) {
-			// --- name of the field
-			$fieldsForForm[$i]['fieldName'] = $arrayFieldsInfos['Field'];
-			// --- type of the field
-			$fieldsForForm[$i]['sql_type'] = $arrayFieldsInfos['Type'];
-			$fieldsForForm[$i]['form_input_type'] = self::convertSqlTypeToFormInputType($fieldsForForm[$i]['sql_type']);
-			$fieldsForForm[$i]['id'] = $this->get_tablename().'_'.$fieldsForForm[$i]['fieldName'];
-			$fieldsForForm[$i]['name'] = $this->get_tablename().'_'.$fieldsForForm[$i]['fieldName']; // attribute of html input of form
+			# var_dump($arrayFieldsInfos); // DEBUG
 
-			// --- attribute `required` if field can't be null in database table
-			$fieldsForForm[$i]['attribute_required'] = ($arrayFieldsInfos['Null'] === 'NO') ? 'required' : '';
-			$fieldsForForm[$i]['getter_method_name'] = 'get_'.$fieldsForForm[$i]['fieldName']/* .'()' */;
+			// TODO : prendre le champs qui boucle `$arrayFieldsInfos['Field']` et trouver le bon sous-array dans `$fieldsToPrintInForm`
+			
+			foreach ( static::$fieldsToPrintInForm as $childClass_fieldToPrintInForm) {
+				// --- if the looping fields from the table in Database correspond to the looping field inside `$fieldsToPrintInForm` from child class 
+				if ($childClass_fieldToPrintInForm['fieldnameInSql'] === $arrayFieldsInfos['Field'])
+				{
+					if ( $childClass_fieldToPrintInForm['canBeDisplayed'] )
+					{
+						// --- name of the field
+						$fieldsForForm[$i]['fieldName'] = $arrayFieldsInfos['Field'];
+						// --- type of the field
+						$fieldsForForm[$i]['sql_type'] = $arrayFieldsInfos['Type'];
+						$fieldsForForm[$i]['form_input_type'] = self::convertSqlTypeToFormInputType($fieldsForForm[$i]['sql_type']);
+						$fieldsForForm[$i]['idAttribute'] = $this->get_tablename().'_'.$fieldsForForm[$i]['fieldName'];
+						$fieldsForForm[$i]['nameAttribute'] = $fieldsForForm[$i]['fieldName']; // attribute of html input of form
+
+						// --- attribute `required` if field can't be null in database table
+						$fieldsForForm[$i]['attribute_required'] = ($arrayFieldsInfos['Null'] === 'NO') ? 'required' : '';
+						// --- attribute `readonly` if the user should not modify it.
+						$fieldsForForm[$i]['attribute_readonly'] = ($childClass_fieldToPrintInForm['canBeSet']) ? '' : 'readonly'; // NOTE : possible to use `readonly` instead of `disabled`
+						
+						$fieldsForForm[$i]['getter_method_name'] = 'get_'.$fieldsForForm[$i]['fieldName']/* .'()' */;
+					}
+				}
+			}
+
 		}
 
 		return $fieldsForForm;

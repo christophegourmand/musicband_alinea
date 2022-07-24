@@ -14,7 +14,7 @@
 	?>
 
     <div class="form-container">
-        <form id="formContact" method="POST" action="<?= '/controller/controller_contact_form.php'?>" class="form">
+        <form id="formContact" method="POST" action="/controller/controller_contact_form.php" class="form">
             <div class="form-group">
                 <label for="formContact_senderMail" class="form-label">Email</label>
                 <input type="email" id="formContact_senderMail" name="formContact_senderMail" placeholder="" class="form-input" required>

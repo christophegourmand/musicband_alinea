@@ -64,6 +64,13 @@
 				background-color: hsla(0, 0%, 34%, .5);
 			}
 
+			input[type="text"][readonly].form-input {
+				cursor: not-allowed;
+				color: hsl(0, 0%, 73%);
+				font-style: italic;
+				background-color: hsla(0, 0%, 34%, .5);
+			}
+
 			/* input[type="submit"].form-input {
 
 			} */

@@ -1207,6 +1207,13 @@ footer {
   resize: vertical;
 }
 
+.formdatabase-container .formdatabase .formdatabase-fields [readonly] {
+  cursor: not-allowed;
+  color: #676767;
+  font-style: italic;
+  background-color: rgba(191, 190, 190, 0.5);
+}
+
 .formdatabase-container .formdatabase .formdatabase-buttons {
   margin-top: 1rem;
   display: -webkit-box;
@@ -3070,6 +3077,13 @@ body {
 }
 
 .form-container .form .form-group input[type="text"][disabled].form-input {
+  cursor: not-allowed;
+  color: #bababa;
+  font-style: italic;
+  background-color: rgba(87, 87, 87, 0.5);
+}
+
+.form-container .form .form-group input[type="text"][readonly].form-input {
   cursor: not-allowed;
   color: #bababa;
   font-style: italic;

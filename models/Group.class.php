@@ -12,6 +12,23 @@ class Group extends Model implements Modalable {
 	private array $users;
 	protected array $rights = [];
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'group';
+	public static string $iconHtml = '<i class="fas fa-users"></i>';
+	public static string $entityNameSingular = 'Groupe';
+	public static string $entityNamePlural = 'Groupes';
+	public static string $explanation = 'Groupes : contient nom-du-groupe. Les utilisateurs d\'un groupe sont visualisables , mais seule la carte d\'un utilisateur permet de changer le groupe auquel il appartient.';
+
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'groupname' , 'fieldnameInHtml' => 'groupname']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+	
+	];
+
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================

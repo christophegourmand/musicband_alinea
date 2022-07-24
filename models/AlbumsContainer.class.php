@@ -1,5 +1,5 @@
 <?php 
-namespace models\music;
+// namespace models\music;
 
 use christophegourmand\debug;
 use \Exception;
@@ -56,7 +56,7 @@ class AlbumsContainer {
 				// locally create an instance of MusicAlbum and fill if from db:
 				$loopinguMusicAlbum = new MusicAlbum();
 
-				$loopinguMusicAlbum->loadFromDbById($mysqli, $rowidOfLoopingAlbum);
+				$loopinguMusicAlbum->load($mysqli, $rowidOfLoopingAlbum);
 
 				// load locally created album in array:
 				$this->albums[] = $loopinguMusicAlbum;

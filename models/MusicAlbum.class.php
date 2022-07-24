@@ -35,6 +35,33 @@ class MusicAlbum extends Model implements Modalable {
 	*/
 	private static int $setting_musicAlbumActiveByDefault = 0;
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'music_album';
+	public static string $iconHtml = '<i class="fas fa-compact-disc"></i>';
+	public static string $entityNameSingular = 'Album';
+	public static string $entityNamePlural = 'Albums';
+	public static string $explanation = 'Albums : contient titre, lien-vers-image, liens vers plateformes d\'écoute.';
+
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
+		, ['fieldnameInSql' => 'name' , 'fieldnameInHtml' => 'nom de l\'album']
+		# , ['fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'name' , 'fieldnameInHtml' => 'nom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_spotify' , 'fieldnameInHtml' => 'lien spotify' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_applemusic' , 'fieldnameInHtml' => 'lien applemusic' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_itunes' , 'fieldnameInHtml' => 'lien itunes' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_deezer' , 'fieldnameInHtml' => 'lien deezer' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_amazonmusic' , 'fieldnameInHtml' => 'lien amazonmusic' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_googleplay' , 'fieldnameInHtml' => 'lien googleplay' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'link_tidal' , 'fieldnameInHtml' => 'lien tidal' , 'canBeDisplayed' => true , 'canBeSet' => true ]
+	];
 
 	// =========================================
 	// CONSTRUCTOR
@@ -44,6 +71,8 @@ class MusicAlbum extends Model implements Modalable {
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('music_album');
 		$this->musicSongs = [];
+
+
 	}
 
 

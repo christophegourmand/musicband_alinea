@@ -25,6 +25,34 @@ class Concert extends Model implements Modalable {
 	protected int $timestamp = 0;
 	private static int $setting_concertActiveByDefault = 1; //--- set 0 for inactive , 1 for active
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'concert';
+	public static string $iconHtml = '<i class="far fa-calendar-alt"></i>';
+	public static string $entityNameSingular = 'Concert';
+	public static string $entityNamePlural = 'Concerts';
+	public static string $explanation = 'Concerts : contient les dates, lieux, villes, map, et image';
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
+		, ['fieldnameInSql' => 'date' , 'fieldnameInHtml' => 'date']
+		, ['fieldnameInSql' => 'venue_name' , 'fieldnameInHtml' => 'nom de la salle']
+		# , ['fieldnameInSql' => 'city_name' , 'fieldnameInHtml' => 'ville']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'date' , 'fieldnameInHtml' => 'date' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'hour_start' , 'fieldnameInHtml' => 'heure début' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'hour_end' , 'fieldnameInHtml' => 'heure de fin' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'venue_name' , 'fieldnameInHtml' => 'nom de la salle' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'city_name' , 'fieldnameInHtml' => 'ville' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'url_map' , 'fieldnameInHtml' => 'lien vers carte' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'description' , 'fieldnameInHtml' => 'description' , 'canBeDisplayed' => true , 'canBeSet' => true ]
+	];
+
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
@@ -378,7 +406,7 @@ class Concert extends Model implements Modalable {
 
 	public function get_date() : string 
 	{ 
-		return $this->date; 
+		return $this->date;
 	}
 
 	public function get_hour_start() : string 

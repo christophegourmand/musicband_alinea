@@ -25,6 +25,30 @@ class MusicSong extends Model implements Modalable {
 	*/
 	private static int $setting_musicSongActiveByDefault = 0;
 
+	//--- not in database, attached to the class :
+	const TABLENAME = 'music_song';
+	public static string $iconHtml = '<i class="fas fa-music"></i>';
+	public static string $entityNameSingular = 'Morceau';
+	public static string $entityNamePlural = 'Morceaux';
+	public static string $explanation = 'Morceaux : contient No d\'album, titre, lien-vers-image, lien-vers-mp3, paroles.';
+
+	public static array $fieldsToPrintInDashboard = [
+		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
+		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
+		, ['fieldnameInSql' => 'name' , 'fieldnameInHtml' => 'name']
+		, ['fieldnameInSql' => 'fk_album_rowid' , 'fieldnameInHtml' => 'id album']
+	];
+	
+	public static array $fieldsToPrintInForm = [
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'fk_album_rowid' , 'fieldnameInHtml' => 'id de l\'album' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'name' , 'fieldnameInHtml' => 'titre' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vesr image' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'path_mp3' , 'fieldnameInHtml' => 'chemin vers mp3' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'lyrics' , 'fieldnameInHtml' => 'paroles' , 'canBeDisplayed' => true , 'canBeSet' => true ]
+	];
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
@@ -32,6 +56,8 @@ class MusicSong extends Model implements Modalable {
 	{
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('music_song');
+
+
 	}
 
 
