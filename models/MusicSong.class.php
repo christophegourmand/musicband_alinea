@@ -39,6 +39,10 @@ class MusicSong extends Model implements Modalable {
 		, ['fieldnameInSql' => 'fk_album_rowid' , 'fieldnameInHtml' => 'id album']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
 		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
 		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
@@ -49,14 +53,91 @@ class MusicSong extends Model implements Modalable {
 		[ 'fieldnameInSql' => 'lyrics' , 'fieldnameInHtml' => 'paroles' , 'canBeDisplayed' => true , 'canBeSet' => true ]
 	];
 
+	/**
+	* Each key is|must be the fieldname in database (also called column name)
+	*
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid'
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'active' => [
+			'fieldnameInSql' => 'active'
+			, 'fieldnameInHtml' => 'actif' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'fk_album_rowid' => [
+			'fieldnameInSql' => 'fk_album_rowid'
+			, 'fieldnameInHtml' => 'id album'
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'name' => [
+			'fieldnameInSql' => 'name' 
+			, 'fieldnameInHtml' => 'nom' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'path_image' => [
+			'fieldnameInSql' => 'path_image' 
+			, 'fieldnameInHtml' => 'chemin vers image' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'path_mp3' => [
+			'fieldnameInSql' => 'path_mp3'
+			, 'fieldnameInHtml' => 'chemin vers mp3'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'lyrics' => [
+			'fieldnameInSql' => 'lyrics' 
+			, 'fieldnameInHtml' => 'paroles'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'textarea'
+			, 'phpType' => 'string'
+		]
+	];
+
+
+
+
+
+
+
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('music_song');
-
+		parent::completeFieldsInDbInfos($mysqli);
 
 	}
 
@@ -320,11 +401,11 @@ class MusicSong extends Model implements Modalable {
 		//--- donc je vérifie qu'il est rempli directement dans la méthode `update`.
 
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->active))
+		if (! isset($this->active))
 		{
 			$rowDatas['active'] = self::$setting_musicSongActiveByDefault;
 		} else {
@@ -332,20 +413,28 @@ class MusicSong extends Model implements Modalable {
 		}
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->name))
+		if (! isset($this->fk_album_rowid))
+		{
+			throw new Exception("ERREUR: impossible de créer ou updater un MusicAlbum si la propriété `fk_album_rowid` n'est pas remplie.");
+		} else {
+			$rowDatas['fk_album_rowid'] = $this->fk_album_rowid;
+		}
+	
+		//--- si vide, on renvoi une erreur , si non vide , on le prend
+		if (empty($this->name)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un MusicAlbum si la propriété `name` n'est pas remplie.");
 		} else {
 			$rowDatas['name'] = $this->name;
 		}
 
-		if (!empty($this->path_image))
+		if (isset($this->path_image))
 			$rowDatas['path_image'] = $this->path_image; 
 
-		if (!empty($this->path_mp3))
+		if (isset($this->path_mp3))
 			$rowDatas['path_mp3'] = $this->path_mp3; 
 
-		if (!empty($this->lyrics))
+		if (isset($this->lyrics))
 			$rowDatas['lyrics'] = $this->lyrics;
 
 		return $rowDatas;

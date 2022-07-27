@@ -120,16 +120,18 @@
 			<h3 class="page-title">Titres</h3>
 			<aside class="songs-cards">
 				<?php foreach ($musicAlbum->get_musicSongs() as $musicSongindex => $musicSong): ?>
-					<div 
-						class="horizontalCard" 
-						id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>"
-						data-bg-img="<?= $musicSong->get_path_image() ?>"
-					>
-						<a class="horizontalCard-link" href="<?php echo('/views/pages/page_lyrics.php'.'?songRowid='.$musicSong->get_rowid());?>">
+					<?php if($musicSong->get_active() === 1): ?>
+						<div 
+							class="horizontalCard" 
+							id="<?= 'musicsong_rowid_'.$musicSong->get_rowid() ?>"
+							data-bg-img="<?= $musicSong->get_path_image() ?>"
+						>
+							<a class="horizontalCard-link" href="<?php echo('/views/pages/page_lyrics.php'.'?songRowid='.$musicSong->get_rowid());?>">
 
-							<h3 class="horizontalCard-title"><?= $musicSong->get_name() ?></h3>
-						</a>
-					</div>
+								<h3 class="horizontalCard-title"><?= $musicSong->get_name() ?></h3>
+							</a>
+						</div>
+					<?php endif ?>
 				<?php endforeach ?>
 			</aside>
 		</section>

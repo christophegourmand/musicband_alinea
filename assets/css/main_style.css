@@ -1231,6 +1231,9 @@ footer {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .mentions-legales {
@@ -3268,7 +3271,7 @@ body {
 }
 
 .usermenu-menus .usermenu-menus-list {
-  margin-top: 3rem;
+  margin-top: 5rem;
 }
 
 .usermenu-menus .usermenu-menus-list .usermenu-menus-element {

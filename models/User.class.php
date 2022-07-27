@@ -39,6 +39,10 @@ class User extends Model implements Modalable {
 		, ['fieldnameInSql' => 'fk_group_rowid' , 'fieldnameInHtml' => 'No de groupe']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
 		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
 		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
@@ -51,15 +55,98 @@ class User extends Model implements Modalable {
 		[ 'fieldnameInSql' => 'email' , 'fieldnameInHtml' => 'email' , 'canBeDisplayed' => true , 'canBeSet' => true ],
 	];
 
+	/**
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid' 
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'active' => [
+			'fieldnameInSql' => 'active' 
+			, 'fieldnameInHtml' => 'actif' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'login' => [
+			'fieldnameInSql' => 'login' 
+			, 'fieldnameInHtml' => 'login' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'pass' => [
+			'fieldnameInSql' => 'pass' 
+			, 'fieldnameInHtml' => 'password' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'password'
+			, 'phpType' => 'string'
+		],
+		'pass_encoded' => [
+			'fieldnameInSql' => 'pass_encoded' 
+			, 'fieldnameInHtml' => 'pass encodé' 
+			, 'canBeDisplayed' => false 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'fk_group_rowid' => [
+			'fieldnameInSql' => 'fk_group_rowid' 
+			, 'fieldnameInHtml' => 'id du groupe' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'date_creation' => [
+			'fieldnameInSql' => 'date_creation' 
+			, 'fieldnameInHtml' => 'créé le' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'date'
+			, 'phpType' => 'string'
+		],
+		'date_last_connection' => [
+			'fieldnameInSql' => 'date_last_connection' 
+			, 'fieldnameInHtml' => 'dernière connexion le' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'date'
+			, 'phpType' => 'string'
+		],
+		'email' => [
+			'fieldnameInSql' => 'email' 
+			, 'fieldnameInHtml' => 'email' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'email'
+			, 'phpType' => 'string'
+		]
+	];
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('user');
-
-
+		parent::completeFieldsInDbInfos($mysqli);
 	}
 
 
@@ -307,12 +394,12 @@ class User extends Model implements Modalable {
 		/* NOTE : on ne vérifie pas si $this->rowid est rempli , car pour créer il sera vide, et pour updater il sera rempli. Donc je vérifie qu'il est rempli directement dans la méthode `update`.*/
 
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->active))
+		if (! isset($this->active))
 		{
 			$rowDatas['active'] = self::$setting_userActiveByDefault; // WORKS
 		} else {
@@ -320,7 +407,7 @@ class User extends Model implements Modalable {
 		}
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->login))
+		if (empty($this->login)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `login` n'est pas remplie.");
 		} else {
@@ -328,7 +415,7 @@ class User extends Model implements Modalable {
 		}
 		
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->pass))
+		if (empty($this->pass)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `pass` n'est pas remplie.");
 		} else {
@@ -336,7 +423,7 @@ class User extends Model implements Modalable {
 		}
 		
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->pass_encoded))
+		if (empty($this->pass_encoded)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `pass_encoded` n'est pas remplie.");
 		} else {
@@ -344,7 +431,7 @@ class User extends Model implements Modalable {
 		}
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->fk_group_rowid)) 
+		if (! isset($this->fk_group_rowid)) 
 		{
 			$rowDatas['fk_group_rowid'] = self::$setting_userGroupIdByDefault; // WORKS
 		} else {
@@ -352,13 +439,13 @@ class User extends Model implements Modalable {
 		}
 
 		//--- si non vide, on le prends
-		if (!empty($this->date_last_connection))
+		if (isset($this->date_last_connection))
 		{
 			$rowDatas['date_last_connection'] = $this->date_last_connection;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->email))
+		if (isset($this->email))
 		{
 			$rowDatas['email'] = $this->email;
 		}

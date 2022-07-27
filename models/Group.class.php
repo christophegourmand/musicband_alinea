@@ -24,9 +24,41 @@ class Group extends Model implements Modalable {
 		, ['fieldnameInSql' => 'groupname' , 'fieldnameInHtml' => 'groupname']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
-	
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'groupname' , 'fieldnameInHtml' => 'nom du Groupe' , 'canBeDisplayed' => true , 'canBeSet' => true ]
 	];
+
+	/**
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid' 
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'groupname' => [
+			'fieldnameInSql' => 'groupname' 
+			, 'fieldnameInHtml' => 'nom du groupe' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		]
+	];
+
 
 
 	// =========================================
@@ -34,8 +66,12 @@ class Group extends Model implements Modalable {
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('group');
+		parent::completeFieldsInDbInfos($mysqli);
+
 
 		// TODO : supprimer la propriété ci-dessous quand certain qu'elle n'est plus utilisée
 		$this->rowDatas = []; // defined in Model.class.php
@@ -310,11 +346,11 @@ class Group extends Model implements Modalable {
 		$rowDatas = [];
 		
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->groupname))
+		if (empty($this->groupname)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `groupname` n'est pas remplie.");
 		} else {

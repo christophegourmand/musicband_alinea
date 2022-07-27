@@ -39,6 +39,10 @@ class Concert extends Model implements Modalable {
 		# , ['fieldnameInSql' => 'city_name' , 'fieldnameInHtml' => 'ville']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
 		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
 		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
@@ -52,17 +56,109 @@ class Concert extends Model implements Modalable {
 		[ 'fieldnameInSql' => 'description' , 'fieldnameInHtml' => 'description' , 'canBeDisplayed' => true , 'canBeSet' => true ]
 	];
 
+	/**
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid' 
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'active' => [
+			'fieldnameInSql' => 'active' 
+			, 'fieldnameInHtml' => 'actif' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'date' => [
+			'fieldnameInSql' => 'date' 
+			, 'fieldnameInHtml' => 'date' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'date'
+			, 'phpType' => 'string'
+		],
+		'hour_start' => [
+			'fieldnameInSql' => 'hour_start' 
+			, 'fieldnameInHtml' => 'heure de début' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'time'
+			, 'phpType' => 'string'
+		],
+		'hour_end' => [
+			'fieldnameInSql' => 'hour_end' 
+			, 'fieldnameInHtml' => 'heure de fin' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'time'
+			, 'phpType' => 'string'
+		],
+		'venue_name' => [
+			'fieldnameInSql' => 'venue_name'
+			, 'fieldnameInHtml' => 'nom de la salle'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'city_name' => [
+			'fieldnameInSql' => 'city_name'
+			, 'fieldnameInHtml' => 'ville'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'url_map' => [
+			'fieldnameInSql' => 'url_map' 
+			, 'fieldnameInHtml' => 'lien vers carte'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'path_image' => [
+			'fieldnameInSql' => 'path_image' 
+			, 'fieldnameInHtml' => 'chemin vers image'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'description' => [
+			'fieldnameInSql' => 'description' 
+			, 'fieldnameInHtml' => 'description'
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'textarea'
+			, 'phpType' => 'string'
+		]
+	];
 
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('concert');
+		parent::completeFieldsInDbInfos($mysqli);
 
 		$this->datetime = new DateTime();
-
+		
 	}
 
 
@@ -97,6 +193,7 @@ class Concert extends Model implements Modalable {
 		$this->hour_start = (string) $receivedRowDatas['hour_start'];
 		$this->hour_end = (string) $receivedRowDatas['hour_end'];
 		$this->venue_name = (string) $receivedRowDatas['venue_name'];
+		$this->city_name = (string) $receivedRowDatas['city_name'];
 		$this->url_map = (string) $receivedRowDatas['url_map'];
 		$this->path_image = (string) $receivedRowDatas['path_image'];
 		$this->description = (string) $receivedRowDatas['description'];
@@ -411,12 +508,12 @@ class Concert extends Model implements Modalable {
 
 	public function get_hour_start() : string 
 	{ 
-		return $this->hour_start; 
+		return $this->hour_start;
 	}
 
 	public function get_hour_end() : string 
 	{ 
-		return $this->hour_end; 
+		return $this->hour_end;
 	}
 
 	public function get_venue_name() : string 
@@ -426,7 +523,7 @@ class Concert extends Model implements Modalable {
 
 	public function get_city_name() : string 
 	{ 
-		return $this->city_name; 
+		return $this->city_name;
 	}
 
 	public function get_url_map() : string 
@@ -496,12 +593,12 @@ class Concert extends Model implements Modalable {
 		/* NOTE : on ne vérifie pas si $this->rowid est rempli , car pour créer il sera vide, et pour updater il sera rempli. Donc je vérifie qu'il est rempli directement dans la méthode `update`.*/
 
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->active))
+		if (! isset($this->active))
 		{
 			$rowDatas['active'] = self::$setting_concertActiveByDefault; // WORKS
 		} else {
@@ -509,26 +606,26 @@ class Concert extends Model implements Modalable {
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->date))
+		if (isset($this->date))
 		{
 			$rowDatas['date'] = $this->date;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->hour_start))
+		if (isset($this->hour_start))
 		{
 			$rowDatas['hour_start'] = $this->hour_start;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->hour_end))
+		if (isset($this->hour_end))
 		{
 			$rowDatas['hour_end'] = $this->hour_end;
 		}
 
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->venue_name))
+		if (!isset($this->venue_name))
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `venue_name` n'est pas remplie.");
 		} else {
@@ -536,19 +633,26 @@ class Concert extends Model implements Modalable {
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->url_map))
+		if (isset($this->city_name))
+		{
+			$rowDatas['city_name'] = $this->city_name;
+		}
+
+
+		//--- si non vide, on le prend	
+		if (isset($this->url_map))
 		{
 			$rowDatas['url_map'] = $this->url_map;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->path_image))
+		if (isset($this->path_image))
 		{
 			$rowDatas['path_image'] = $this->path_image;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->description))
+		if (isset($this->description))
 		{
 			$rowDatas['description'] = $this->description;
 		}

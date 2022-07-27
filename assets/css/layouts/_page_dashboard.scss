@@ -144,6 +144,8 @@
 		{
 			margin-top: 1rem;
 			@include flex_row(space-evenly, flex-start);
+			flex-wrap: wrap;
+			gap: 2rem;
 		}
 	}
 }

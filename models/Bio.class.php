@@ -32,17 +32,98 @@ class Bio extends Model implements Modalable {
 		, ['fieldnameInSql' => 'lastname' , 'fieldnameInHtml' => 'nom']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
-	
+		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
+		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'firstname' , 'fieldnameInHtml' => 'prénom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'lastname' , 'fieldnameInHtml' => 'nom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'description' , 'fieldnameInHtml' => 'description' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'job' , 'fieldnameInHtml' => 'rôle' , 'canBeDisplayed' => true , 'canBeSet' => true ]
 	];
+
+	/**
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid' 
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'active' => [
+			'fieldnameInSql' => 'active' 
+			, 'fieldnameInHtml' => 'actif' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'firstname' => [
+			'fieldnameInSql' => 'firstname' 
+			, 'fieldnameInHtml' => 'prénom' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'lastname' => [
+			'fieldnameInSql' => 'lastname' 
+			, 'fieldnameInHtml' => 'nom' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'path_image' => [
+			'fieldnameInSql' => 'path_image' 
+			, 'fieldnameInHtml' => 'chemin vers image' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'description' => [
+			'fieldnameInSql' => 'description' 
+			, 'fieldnameInHtml' => 'description' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'textarea'
+			, 'phpType' => 'string'
+		],
+		'job' => [
+			'fieldnameInSql' => 'job' 
+			, 'fieldnameInHtml' => 'role' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		]
+	];
+
 
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('bio');
+
+		parent::completeFieldsInDbInfos($mysqli);
 
 	}
 
@@ -313,12 +394,12 @@ class Bio extends Model implements Modalable {
 		/* NOTE : on ne vérifie pas si $this->rowid est rempli , car pour créer il sera vide, et pour updater il sera rempli. Donc je vérifie qu'il est rempli directement dans la méthode `update`.*/
 
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->active))
+		if (! isset($this->active))
 		{
 			$rowDatas['active'] = self::$setting_bioActiveByDefault; // WORKS
 		} else {
@@ -326,7 +407,7 @@ class Bio extends Model implements Modalable {
 		}
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->firstname))
+		if (empty($this->firstname)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `firstname` n'est pas remplie.");
 		} else {
@@ -334,25 +415,25 @@ class Bio extends Model implements Modalable {
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->lastname))
+		if (isset($this->lastname))
 		{
 			$rowDatas['lastname'] = $this->lastname;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->path_image))
+		if (isset($this->path_image))
 		{
 			$rowDatas['path_image'] = $this->path_image;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->description))
+		if (isset($this->description))
 		{
 			$rowDatas['description'] = $this->description;
 		}
 
 		//--- si non vide, on le prend	
-		if (!empty($this->job))
+		if (isset($this->job))
 		{
 			$rowDatas['job'] = $this->job;
 		}

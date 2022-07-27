@@ -10,8 +10,11 @@
 			$fieldsInfosFromDb = $entityInstance->fieldsInfosFromDb($mysqli);
 			# var_dump($fieldsInfosFromDb); // DEBUG : car je voudrais un array de champs et leur type (à construire dans la classe)
 
+			// REVIEW : DEPRACATED
 			$fieldsInfosForForm_indArr = $entityInstance->fieldsInfosForForm($mysqli);
 			# var_dump($fieldsInfosForForm_indArr); // DEBUG : car je voudrais un array de champs et leur type (à construire dans la classe)
+
+
 
 			if ($action === 'formEditEntity')
 			{
@@ -29,31 +32,23 @@
 			<input type="hidden" id="entityClassname" name="entityClassname" value="<?= $GLOBALS['entityClassname'] ?>">
 			<!-- other fields -->
 			<div class="formdatabase-fields" style="display:grid; grid-template-columns:fit-content(100%) 1fr; row-gap:.2rem; column-gap: 1rem;">
-				<?php foreach ($fieldsInfosForForm_indArr as $indexFieldInfos => $fieldInfos): ?>
+				<?php foreach ($entityInstance::$fieldsInfos as $key_fieldName => $fieldInfos): ?>
 					<?php 
 						//--- store the get_xxxxxxxx() string to use use dynamically as value for html input
 						$valueOfTheField = '';
+
 						if ($action === 'formEditEntity')
 						{
-							$getter_method_name = $fieldInfos['getter_method_name'];
+							$getter_method_name = 'get_'.$key_fieldName;
 
-							$valueOfTheField = $entityInstance->{$getter_method_name}() ?? 'le fieldName de entityInstance is NOT set';
-
-							# if ( isset($entityInstance->{$fieldInfos['fieldName']}) /* && $entityInstance->{$fieldInfos['fieldName']} !== null */ )
-							# {
-							# 	$valueOfTheField = $entityInstance->{$getter_method_name}();
-							# 	# $valueOfTheField = 'is_set_and_not_null';
-							# } else 
-							# {
-							# 	$valueOfTheField = 'le fieldName de entityInstance is NOT set';
-							# }
+							$valueOfTheField = $entityInstance->{$getter_method_name}() ?? 'le fieldName de entityInstance is NOT set'; // REVIEW : not sure that this line should exist (if yes, maybe a different way is better)
 						}
 					?>
 
 					<div class="formdatabase-label-container" style="background-color: #516875; padding:.2rem .9rem;">
-						<label class="formdatabase-label-text" for="<?= $fieldInfos['idAttribute'] ?>" ><?= $fieldInfos['fieldName'] ?></label>
+						<label class="formdatabase-label-text" for="<?= $fieldInfos['idAttribute'] ?>" ><?= $fieldInfos['fieldnameInHtml'] ?></label>
 					</div>
-					<?php switch($fieldInfos['form_input_type']): ?><?php case 'textarea': ?>
+					<?php switch($fieldInfos['htmlInputType']): ?><?php case 'textarea': ?>
 							<textarea
 								id="<?= $fieldInfos['idAttribute'] ?>"
 								name="<?= $fieldInfos['nameAttribute'] ?>" 
@@ -62,7 +57,26 @@
 								rows="15"
 								onclick="this.style.height = '';this.style.height = this.scrollHeight + 'px'"
 								oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"
-							><?= $valueOfTheField // $entityInstance->get_description() ?></textarea>
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							><?= $valueOfTheField ?></textarea>
+							<?php break ?>
+						<?php case 'number': ?>
+							<?php 
+								$attributes_min_and_max = '';
+								if ($key_fieldName === 'active')
+								{
+									$attributes_min_and_max = 'min="0" max="1"';
+								}
+								// TODO : add a limit for foreign keys (ex: fk_group_id)
+							?>
+							<input 
+								type="number"
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+								<?= $attributes_min_and_max ?>
+							/>
 							<?php break ?>
 						<?php case 'text': ?>
 							<input 
@@ -70,7 +84,16 @@
 								id="<?= $fieldInfos['idAttribute'] ?>" 
 								name="<?= $fieldInfos['nameAttribute'] ?>" 
 								value="<?= $valueOfTheField ?>" 
-								<?= ($fieldInfos['fieldName'] === 'rowid') ? 'readonly' : '' ?>
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							/>
+							<?php break ?>
+						<?php case 'url': ?>
+							<input 
+								type="url" 
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
 							/>
 							<?php break ?>
 						<?php case 'date': ?>
@@ -81,7 +104,7 @@
 								value="<?= $valueOfTheField ?>" 
 								min="2022-01-01"
 								max="2040-12-31"
-								<?= (in_array($fieldInfos['fieldName'] , ['date_creation','date_last_connection'])) ? 'readonly' : '' ?>
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
 							/>
 							<?php break ?>
 						<?php case 'time': ?>
@@ -89,18 +112,16 @@
 								type="time"
 								id="<?= $fieldInfos['idAttribute'] ?>" 
 								name="<?= $fieldInfos['nameAttribute'] ?>" 
-								value="<?= $valueOfTheField ?>" 
-								min="05:00"
-								max="23:00"
-								<?= (in_array($fieldInfos['fieldName'] , ['date_creation','date_last_connection'])) ? 'readonly' : '' ?>
+								value="<?= $valueOfTheField ?>"
+								min="05:00:00"
+								max="23:00:00"
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
 							/>
 							<?php break ?>
 					<?php endswitch; ?>
 				<?php endforeach ?>
 			</div>
 			<div class="formdatabase-buttons">
-				<!-- <a href="<#?= $_SERVER['PHP_SELF'].'?entityClassname='.$_GET['entityClassname'].'&rowidInModifyMode='.$entityRowFromDb['rowid'] ?>" class="btn-fit-outline-orange">Modifier</a> -->
-
 				<a href="<?= $_SERVER['PHP_SELF'].'?entityClassname='.$GLOBALS['entityClassname'].'&action=showDashboardOfEntity' ?>" class="btn-fit-outline-orange">Revenir sans enregistrer</a>
 
 				<input type="submit" id="" name="" class="btn-fit-outline-green" value="Enregistrer les changements">

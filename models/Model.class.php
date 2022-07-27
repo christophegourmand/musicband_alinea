@@ -157,6 +157,19 @@ class Model {
 	{
 		try
 		{
+			/**
+			* @example 
+			* array (size=7)
+			*	0 => 
+			*		array (size=6)
+			*		'Field' => string 'rowid' (length=5)
+			*		'Type' => string 'int(4)' (length=6)
+			*		'Null' => string 'NO' (length=2)
+			*		'Key' => string 'PRI' (length=3)
+			*		'Default' => null
+			*		'Extra' => string 'auto_increment' (length=14)
+			*	1 => ......
+			*/
 			$fieldsInfosFromDb = $this->fieldsInfosFromDb($mysqli);
 		}
 		catch (Exception $exception)
@@ -166,7 +179,8 @@ class Model {
 
 		$fieldsForForm = [];
 
-		foreach ($fieldsInfosFromDb as $i => $arrayFieldsInfos) {
+		foreach ($fieldsInfosFromDb as $i => $arrayFieldsInfos) 
+		{
 			# var_dump($arrayFieldsInfos); // DEBUG
 
 			// TODO : prendre le champs qui boucle `$arrayFieldsInfos['Field']` et trouver le bon sous-array dans `$fieldsToPrintInForm`
@@ -191,6 +205,14 @@ class Model {
 						$fieldsForForm[$i]['attribute_readonly'] = ($childClass_fieldToPrintInForm['canBeSet']) ? '' : 'readonly'; // NOTE : possible to use `readonly` instead of `disabled`
 						
 						$fieldsForForm[$i]['getter_method_name'] = 'get_'.$fieldsForForm[$i]['fieldName']/* .'()' */;
+
+						/* TODO check if this array is really the best solution
+							advantages of this array : 
+								- it automatically provide informations such as field-name, field-type , attribute required if can't be null in database , etc..
+							disadvantages :
+								- it doesn't precise if each field should be displayed or not
+								- it doesn't precise if each field should be modifyable of not
+						*/
 					}
 				}
 			}
@@ -200,7 +222,64 @@ class Model {
 		return $fieldsForForm;
 	}
 
+	/**
+	* each child class of Model possess a property array
+	* called `$fieldsInfos`. This function will add some keys and values
+	* necessary to create the html-form, or to create the controller 
+	* who deal with the form.
+	*
+	* @param    Mysqli    $mysqli    instance of Mysqli
+	* @return   void
+	*/
+	public function completeFieldsInDbInfos(Mysqli $mysqli)
+	{
+		try
+		{
+			/**
+			* @example 
+			* array (size=7)
+			*	0 => 
+			*		array (size=6)
+			*		'Field' => string 'rowid' (length=5)
+			*		'Type' => string 'int(4)' (length=6)
+			*		'Null' => string 'NO' (length=2)
+			*		'Key' => string 'PRI' (length=3)
+			*		'Default' => null
+			*		'Extra' => string 'auto_increment' (length=14)
+			*	1 => ......
+			*/
+			$fieldsInfosFromDb = $this->fieldsInfosFromDb($mysqli);
+		}
+		catch (Exception $exception)
+		{
+			throw $exception;
+		}
 
+		/*                       old name :  $arrayFieldsInfos */
+		foreach ($fieldsInfosFromDb as $i => $fieldInfosFromDb)
+		{
+			//--- shortcut for fieldname
+			$fieldNameFromDb = $fieldInfosFromDb['Field'];
+			
+			//--- shortcut for subarray of array $fieldsInfos in each child class
+			$arrayOfFieldInfosInEntityClass = &static::$fieldsInfos[$fieldNameFromDb];
+
+			//--- attribute `id=""`
+			# $arrayOfFieldInfosInEntityClass['idAttribute'] = $this->get_tablename().'_'.$fieldNameFromDb;
+			
+			$arrayOfFieldInfosInEntityClass['idAttribute'] = static::TABLENAME.'_'.$fieldNameFromDb;
+			
+			//--- attribute `name=""`
+			$arrayOfFieldInfosInEntityClass['nameAttribute'] = $fieldNameFromDb;
+
+			//--- attribute `required`
+			$arrayOfFieldInfosInEntityClass['attribute_required'] = ($fieldInfosFromDb['Null'] === 'NO') ? 'required' : '';
+
+			//--- attribute `readonly`
+			$arrayOfFieldInfosInEntityClass['attribute_readonly'] = ($arrayOfFieldInfosInEntityClass['canBeSet']) ? '' : 'readonly';
+		}
+
+	}
 
 
 }

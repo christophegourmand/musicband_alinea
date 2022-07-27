@@ -49,6 +49,10 @@ class MusicAlbum extends Model implements Modalable {
 		# , ['fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image']
 	];
 	
+	/**
+	* 
+	* @depreacted : You should soon use `$fieldsInfos` instead
+	*/
 	public static array $fieldsToPrintInForm = [
 		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
 		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
@@ -63,13 +67,115 @@ class MusicAlbum extends Model implements Modalable {
 		[ 'fieldnameInSql' => 'link_tidal' , 'fieldnameInHtml' => 'lien tidal' , 'canBeDisplayed' => true , 'canBeSet' => true ]
 	];
 
+	/**
+	* NOTE : some other keys will be filled for each field:
+	*  	'required' => will be filled by a function
+	*  	'getter_method_name'
+	* 	'idAttribute'
+	* 	'nameAttribute'
+	*/
+	public static array $fieldsInfos = [
+		'rowid' => [
+			'fieldnameInSql' => 'rowid' 
+			, 'fieldnameInHtml' => 'id' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => false
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'active' => [
+			'fieldnameInSql' => 'active' 
+			, 'fieldnameInHtml' => 'actif' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'number'
+			, 'phpType' => 'int'
+		],
+		'name' => [
+			'fieldnameInSql' => 'name' 
+			, 'fieldnameInHtml' => 'nom' 
+			, 'canBeDisplayed' => true 
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'path_image' => [
+			'fieldnameInSql' => 'path_image' 
+			, 'fieldnameInHtml' => 'chemin vers image' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'text'
+			, 'phpType' => 'string'
+		],
+		'link_spotify' => [
+			'fieldnameInSql' => 'link_spotify' 
+			, 'fieldnameInHtml' => 'lien spotify' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_applemusic' => [
+			'fieldnameInSql' => 'link_applemusic' 
+			, 'fieldnameInHtml' => 'lien applemusic' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_itunes' => [
+			'fieldnameInSql' => 'link_itunes' 
+			, 'fieldnameInHtml' => 'lien itunes' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_deezer' => [
+			'fieldnameInSql' => 'link_deezer' 
+			, 'fieldnameInHtml' => 'lien deezer' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_amazonmusic' => [
+			'fieldnameInSql' => 'link_amazonmusic' 
+			, 'fieldnameInHtml' => 'lien amazonmusic' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_googleplay' => [
+			'fieldnameInSql' => 'link_googleplay' 
+			, 'fieldnameInHtml' => 'lien googleplay' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		],
+		'link_tidal' => [
+			'fieldnameInSql' => 'link_tidal' 
+			, 'fieldnameInHtml' => 'lien tidal' 
+			, 'canBeDisplayed' => true
+			, 'canBeSet' => true
+			, 'htmlInputType' => 'url'
+			, 'phpType' => 'string'
+		]		
+	];
+
 	// =========================================
 	// CONSTRUCTOR
 	// =========================================
 	public function __construct()
 	{
+		global $mysqli;
+		
 		//--- we use parent constructor AND pass tablename for the parent's property $tableName
 		parent::__construct('music_album');
+		parent::completeFieldsInDbInfos($mysqli);
+		
 		$this->musicSongs = [];
 
 
@@ -484,11 +590,11 @@ class MusicAlbum extends Model implements Modalable {
 		//--- donc je vérifie qu'il est rempli directement dans la méthode `update`.
 
 		//--- si non vide, on prend la valeur
-		if (!empty($this->rowid))
+		if (isset($this->rowid))
 			$rowDatas['rowid'] = $this->rowid; 
 
 		//--- si vide , on prend une valeur par defaut , si non vide , on le prend
-		if (empty($this->active))
+		if (! isset($this->active))
 		{
 			$rowDatas['active'] = self::$setting_musicAlbumActiveByDefault; // WORKS
 		} else {
@@ -496,35 +602,35 @@ class MusicAlbum extends Model implements Modalable {
 		}
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->name))
+		if (empty($this->name)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
 			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `name` n'est pas remplie.");
 		} else {
 			$rowDatas['name'] = $this->name;
 		}
 
-		if (!empty($this->path_image))
+		if (isset($this->path_image))
 			$rowDatas['path_image'] = $this->path_image; 
 
-		if (!empty($this->link_spotify))
+		if (isset($this->link_spotify))
 			$rowDatas['link_spotify'] = $this->link_spotify; 
 
-		if (!empty($this->link_applemusic))
+		if (isset($this->link_applemusic))
 			$rowDatas['link_applemusic'] = $this->link_applemusic; 
 
-		if (!empty($this->link_itunes))
+		if (isset($this->link_itunes))
 			$rowDatas['link_itunes'] = $this->link_itunes; 
 
-		if (!empty($this->link_deezer))
+		if (isset($this->link_deezer))
 			$rowDatas['link_deezer'] = $this->link_deezer; 
 
-		if (!empty($this->link_amazonmusic))
+		if (isset($this->link_amazonmusic))
 			$rowDatas['link_amazonmusic'] = $this->link_amazonmusic; 
 
-		if (!empty($this->link_googleplay))
+		if (isset($this->link_googleplay))
 			$rowDatas['link_googleplay'] = $this->link_googleplay; 
 
-		if (!empty($this->link_tidal))
+		if (isset($this->link_tidal))
 			$rowDatas['link_tidal'] = $this->link_tidal; 
 
 		return $rowDatas;
