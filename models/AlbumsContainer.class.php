@@ -2,7 +2,6 @@
 // namespace models\music;
 
 use christophegourmand\debug;
-use \Exception;
 
 require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 

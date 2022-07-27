@@ -6,7 +6,7 @@
 
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicAlbum.class.php");
 	require_once($_SERVER['DOCUMENT_ROOT']."/models/AlbumsContainer.class.php");
-	require_once($_SERVER['DOCUMENT_ROOT']."/models/Usernew.class.php");
+	# require_once($_SERVER['DOCUMENT_ROOT']."/models/Usernew.class.php");
 
 	use models\music\AlbumsContainer;
 	use models\music\MusicAlbum as MusicAlbum;
