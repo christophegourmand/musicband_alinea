@@ -1,9 +1,9 @@
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
         
-        <title><?php echo $page_title; ?></title>
+        <title><?php echo (isset($page_title) ? $page_title : "Site Alinea"); ?></title>
 
-        <meta name="description" content="<?php echo $page_description; ?>">
+        <meta name="description" content="<?php echo (isset($page_description) ? $page_description : "Site Alinea"); ?>">
         <meta name="creator" content="Christophe GOURMAND - Developpeur Web">
         <meta name="keywords" content="musique, groupe, france, variété française, rock français">
         <meta name="robots" content="index, follow, noarchive, nocache">

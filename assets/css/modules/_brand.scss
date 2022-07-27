@@ -13,8 +13,9 @@ $ratio-brand-and-name: 5.5/9.5;
 
     font-size: 65%;
 
-	animation-name: apparition;
-	animation-duration: 5s;
+    // --- 5 july 2022 : animation turned-off
+	// animation-name: apparition;
+	// animation-duration: 5s;
 
     .brand-logo {
         margin-right: -0.6em;
@@ -29,10 +30,10 @@ $ratio-brand-and-name: 5.5/9.5;
         font-weight: 200;
         font-size: 9.5em*$ratio-brand-and-name;
 		
-		animation-name: neon;
-		animation-duration: 2s;
-		/*text-shadow: 0 0 1rem blue;   */
-				/*end of animation must match */
+        // --- 5 july 2022 : animation turned-off
+		// animation-name: neon;
+		// animation-duration: 2s;
+		
 
         color: white;   // in case in html, I have a .brand-name who does not contain a link.
 
@@ -48,7 +49,7 @@ $ratio-brand-and-name: 5.5/9.5;
     }
 }
 
-@include media("","lg") {
+@include media("min","lg") {
     .brand{
         .brand-logo {
             height: 6rem;

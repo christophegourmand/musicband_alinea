@@ -166,14 +166,14 @@
             width: 100%;
             min-height: 8rem;
 
-            @include media("sm","") {
+            @include media("sm","max") {
                 min-height: 12rem;
             }
 
             @include flex_row(stretch , stretch);
             // flex-wrap: nowrap;
 
-            background-color: #777;
+            background-color: hsla(0,0%,50%,0.2);
             border-radius: .6rem;
             background-size: cover; // put 100% to add effect
             background-repeat: no-repeat;

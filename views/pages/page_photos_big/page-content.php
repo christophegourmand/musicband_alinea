@@ -1,3 +1,7 @@
+<?php
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+?>
+
 <main class="">
     <?php
         include($_SERVER['DOCUMENT_ROOT']."/".'datas/photos_array2.php');
@@ -30,6 +34,11 @@
     ?>
 
     <h1 class="page-title">Photos</h1>
+
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
 
     <div class="gallery">
         <a class="gallery-img-btn img-btn--back" href="<?= '/views/pages/page_photos.php';?>">

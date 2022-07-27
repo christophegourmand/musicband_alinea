@@ -1,0 +1,88 @@
+.popupmessage-container.hide {
+	display: none;
+}
+.popupmessage-container.show
+{
+
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+
+	display: grid;
+	place-items: center;
+
+	width: 100%;
+	padding-left: 2rem;
+	padding-right: 2rem;
+
+	.popupmessage
+	{
+		position: relative; /* for button-close to be in position absolute */
+		padding-top: 1rem; /* for button-close */
+
+
+		border-radius: 10px;
+		text-align: center;
+
+		/* NOTE: temporary deactivation as I decided to not use a title in html */
+		/* .popupmessage-title
+		{
+			font-size: 1.2rem;
+			font-weight: 600;
+		} */
+
+
+		
+		.popupmessage-body
+		{
+			padding: 1rem;
+			font-size: 1.1rem;
+			font-weight: 200;
+
+			.popupmessage-message
+			{
+				font-size: 1.2rem;
+				color: white !important;
+			}
+		}
+
+	}
+
+	.popupmessage
+	{
+		&.warning
+		{
+			/* REVIEW : please later reactivate, use variable for better scalability */
+			/*
+			$msgColor: hsl(23, 100%, 50%);
+			$bgColor: adjust-color($color:$msgColor , $lightness:-20, $saturation:-30);
+			
+			$txtColor: darken($color:$msgColor, $amount:15);
+
+			$msgColorFade: darken($msgColor, $amount:10);
+			//$txtColor: darken($color:$msgColor, $amount:15);
+			$borderColor: adjust-color($color:$msgColor , $lightness:10, $saturation:30);
+
+			background-color: $bgColor;
+			background-image: linear-gradient(to bottom , $msgColor , $msgColorFade);
+			*/
+			background-color: hsl(23, 100%, 50%);
+			
+		}
+
+		&.error
+		{
+			background-color: hsl(0, 100%, 44%);
+		}
+
+		&.success
+		{
+			background-color: hsl(166, 100%, 37%);
+		}
+
+		&.info
+		{
+			background-color: hsl(214, 87%, 51%);
+		}
+
+	}
+}

@@ -103,7 +103,7 @@ var metronome = {
         metronome_pulses_arr[2].classList.remove('active');
         metronome_pulses_arr[3].classList.remove('active');
     }
-     
+
     , turnOnActivePulse: function() {
         // V1 if active pulse is 0 again, reset all pulses style before re-apply to the first
             // if(this.activated_pulse_id == 0) this.turnOffAllPulses();

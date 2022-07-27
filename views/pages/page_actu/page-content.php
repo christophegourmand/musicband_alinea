@@ -1,8 +1,16 @@
-<?php include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php')?>
+<?php 
+    include($_SERVER['DOCUMENT_ROOT']."/".'datas/allSongs_variables.php');
+	require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+?>
 
 <main>
     <h2 class="page-title">Actu</h2>
+	<?php 
+		// --- html who display the message if there is a key in $_GET or $_COOKIE :
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+	?>
     
+    <!--
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er&nbsp;album</sup></h2>
 
@@ -55,6 +63,8 @@
             </div>
         </div>
     </section>
+    -->
+
 
     <section class="section section--actu">
         <h2 class="section-title">Les Jardins du rock</h2>

@@ -5,14 +5,19 @@ namespace models\media;
 
 
 class Album {
+    // =========================================
     // PROPERTIES
+    // =========================================
     private string $title;          // DON'T FORGET TO CHANGE HTML TOO !
     private string $path_to_thumbnails; 
     private string $path_to_originals;
-    private array $photos;
+    public array $photos;
     private int $size;
     
-    // CONSTRUCTOR ############################################
+    // =========================================
+    // CONSTRUCTOR
+    // =========================================
+    // =========================================
     public function __construct(string $title_param, string $path_to_thumbnails_param, string $path_to_originals_param)
     {
         $this->title = $title_param;
@@ -23,7 +28,9 @@ class Album {
     }
 
 
-    // GETTERS-SETTERS ############################################
+    // =========================================
+    // GETTERS-SETTERS
+    // =========================================
     
     // title ----------------------------------------------------------
     public function setTitle(string $title_param): void 
@@ -100,5 +107,7 @@ class Album {
     }
 
 
-    // METHODS ############################################
+    // =========================================
+    // METHODS
+    // =========================================
 }

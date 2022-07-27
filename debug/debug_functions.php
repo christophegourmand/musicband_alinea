@@ -15,7 +15,6 @@
             localhost/Cours-php/views/pages/debug.php
 
 ------------------------------------------------------------------------ */ 
-namespace christophegourmand\debug;
 
 // ###################################################
 function showInHtml($variableTo_vardump , $wanted_title = "noTitle: but you can put one as second parameter") {

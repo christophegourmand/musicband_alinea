@@ -51,7 +51,7 @@
 
 //:g UNIQUEMENT POUR LES PETITS ECRANS =============================================
 
-@include media("","md") {
+@include media("min","md") {
 
     .nav {
         position: fixed;
@@ -200,7 +200,7 @@
 }
 
 //:g UNIQUEMENT POUR LES GRANDS ÉCRANS ==================================================== 
-@include media("lg","") {
+@include media("lg","max") {
 
     .nav {
         position: relative;

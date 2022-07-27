@@ -1,32 +1,28 @@
 .lyrics {
 
-    // text-align: center;
+	// text-align: center;
 
-    .lyrics-title {
-        font-size: 2rem;
-        color: var(--theme-color_important);        
-    }
+	.lyrics-title {
+		font-size: 2rem;
+		color: var(--theme-color_important);        
+	}
 
-    .lyrics-list {
-    
-        
-        .lyrics-paragraph {
-
-
-            .lyrics-sentence {
-                color: var(--theme-color_neutral);
-            }
-            
-            .lyrics-sentence--chorus {
-                color: var(--theme-color_important);
-            }
-        }
-    }
+	.lyrics-list {
+		.lyrics-paragraph {
+			.lyrics-sentence {
+				color: var(--theme-color_neutral);
+			}
+			
+			.lyrics-sentence--chorus {
+				color: var(--theme-color_important);
+			}
+		}
+	}
 }
 
 .horizontalCard-title {
-    // color: $darkred;
-    font-size: 2rem;
-    font-weight: 300;
-    // text-shadow: 0 0 0rem black;
+	// color: $darkred;
+	font-size: 2rem;
+	font-weight: 300;
+	// text-shadow: 0 0 0rem black;
 }

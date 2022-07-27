@@ -1,5 +1,4 @@
-.contact {
-
+.partenaires {
     @include media("min","md") {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
@@ -20,7 +19,7 @@
         background-color: $darkred;
     }
 
-    .contact-title {
+    .partenaires-title {
         margin-bottom: 1.5rem;
         border-bottom: 1px solid var(--theme-color_neutral);
         
@@ -39,27 +38,27 @@
         }
     }
 
-    .contact-link:any-link {
+    .partenaires-link:any-link {
         color: var(--theme-color_neutral);
     }
 
-    .contact-body {
+    .partenaires-body {
 
         display: grid;
         grid-template-columns: 1fr;
         grid-column-gap: 1rem;
 
-        @include media("md","") {
+        @include media("md","max") {
             grid-template-columns: 1fr 3fr;
             grid-column-gap: 3rem;
         }
 
-        .contact-body_left-col {
+        .partenaires-body_left-col {
                 @include media("min","md") {
                     margin-left: 1rem;
                     margin-right: 1rem;
                 }
-            .contact-address {
+            .partenaires-address {
 
                 margin-bottom: 1rem;
 
@@ -70,13 +69,13 @@
             }
         }
         
-        .contact-body_right-col {
+        .partenaires-body_right-col {
             @include media("min","md") {
                 margin-left: 1rem;
                 margin-right: 1rem;
             }
 
-            .contact-description {
+            .partenaires-description {
                 text-align: left;
 
                 font-size: 1.3rem;

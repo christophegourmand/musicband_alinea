@@ -43,5 +43,5 @@ assets/css/main_style.css.map
 .vscode/
 .code-workspace
 
-# .env file , reproduved in PHP.
+# .env file , contain CREDENTIALS !!
 .env.php
