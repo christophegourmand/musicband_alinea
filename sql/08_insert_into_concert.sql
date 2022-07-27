@@ -15,13 +15,13 @@ INSERT INTO `concert`
 VALUES
 	(
 		1
-		, '2022-04-09' -- ou utiliser STR_TO_DATE('24-May-2005', '%d-%M-%Y')
-		, '20:00:00'
-		, '22:00:00'
-		, 'Les Ursulines'
-		, 'Crémieu'
-		, 'https://goo.gl/maps/dfiKFMc7ahCrUYkUA'
-		, 'assets/img/concerts/2022-04-09_les-ursulines.jpeg'
-		, "Ici apparaîtra un texte d\'accroche du concert. Venez nombreux pour boire de la bonne bière brassée dans ce lieu convivial, tout en assistant au concert que nous vous avons préparé !"
+		, '2022-09-03' -- ou utiliser STR_TO_DATE('24-May-2005', '%d-%M-%Y')
+		, '19:00:00'
+		, '21:00:00'
+		, 'Concert privé'
+		, ''
+		, ''
+		, ''
+		, ""
 	)
 ;

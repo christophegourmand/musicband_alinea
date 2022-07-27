@@ -19,6 +19,8 @@
     $ex2_mail_port_imap = 000; 
     $ex2_mail_port_pop3 = 000;
     $ex2_mail_username = ""; 
-    $ex2_mail_password = ""; 
-    
+    $ex2_mail_password = "";
+
+    $ex2_mail_from = "";
+    $ex2_mail_to = "";
 ?>
