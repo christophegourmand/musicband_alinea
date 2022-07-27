@@ -10,7 +10,8 @@
 		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
 	?>
     
-    <!--
+    <?php $madisonAlbumMustBeDisplayed = false; ?>
+    <?php if ($madisonAlbumMustBeDisplayed): ?>
     <section class="album">
         <h2 class="album-title">Madison<sup class="album-title-mention">1er&nbsp;album</sup></h2>
 
@@ -63,7 +64,7 @@
             </div>
         </div>
     </section>
-    -->
+    <?php endif ?>
 
 
     <section class="section section--actu">
