@@ -311,7 +311,7 @@ class User extends Model implements Modalable {
 	public function set_email(string $email_given){ 
 		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
-		if (strlen($email_given > 100))
+		if (strlen($email_given) > 100)
 		{
 			throw new Exception("ERREUR : la longueur de l'email donné ne peut pas excéder 100 caractères.");
 		}
