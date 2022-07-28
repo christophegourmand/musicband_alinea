@@ -40,6 +40,9 @@ deployment:
 
     #! == copy folder `debug` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT debug/ $DEPLOYPATH/debug/
+
+    #! == copy folder `functions` (OVERWRITE EVERYTHING) : ==
+    - /bin/cp -RT functions/ $DEPLOYPATH/functions/
     
     #! == copy folder `DOCS` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT DOCS/ $DEPLOYPATH/DOCS/
