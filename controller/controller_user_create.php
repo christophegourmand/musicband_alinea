@@ -30,8 +30,8 @@ if ($loginAlreadyExist)
 	//--- close connection before re-routing to another page
 	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 
-	$messagekey = "userAlreadyExist";
-	header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+	$messageKey = "userAlreadyExist";
+	header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
 	exit();
 }
 
@@ -51,8 +51,8 @@ $registering_user->create($mysqli);
 //--- close connection before re-routing to another page
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 
-$messagekey = "userCreatedSuccessfully";
-header('Location: '.'/views/pages/page_message.php?messagekey='.$messagekey);
+$messageKey = "userCreatedSuccessfully";
+header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
 exit();
 // - - - - - - -  
 

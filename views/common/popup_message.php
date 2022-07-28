@@ -1,18 +1,18 @@
 <?php
-	if (isset($_GET['messageKey']) || isset($_COOKIE['messageKey']))
+	if (isset($_GET['messageKey']) || isset($_COOKIE['messageKey']) )
 	{
-		if (isset($_GET['messageKey']))
+		if ( isset($_GET['messageKey']) )
 		{
-			$messageKey = $_GET['messageKey'];
-		} elseif (isset($_COOKIE['messageKey']))
+			$GLOBALS['messageKey'] = $_GET['messageKey'];
+		} elseif ( isset($_COOKIE['messageKey']) )
 		{
-			$messageKey = $_COOKIE['messageKey'];
+			$GLOBALS['messageKey'] = $_COOKIE['messageKey'];
 		}
-		$popupMessage_arr = getMessageFromKey($messageKey);
+		$popupMessage_arr = getMessageFromKey($GLOBALS['messageKey']);
 	}
 ?>
 
-<?php if(isset($popupMessage_arr)): ?>
+<?php if( isset($popupMessage_arr)): ?>
 	<div id="popupmessage" class="popupmessage-container show">
 		<div class="popupmessage <?= $popupMessage_arr['cssclass'] ?>">
 			<div class="close-button" id="popupmessage_btn_close">

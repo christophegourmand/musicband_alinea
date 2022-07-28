@@ -10,7 +10,7 @@
         $_GET['messageKey'] = 'formContactWorksSoon';
 
 		// --- html who display the message if there is a key in $_GET or $_COOKIE :
-		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php"); 
+		include($_SERVER['DOCUMENT_ROOT']."/views/common/popup_message.php");
 	?>
 
     <div class="form-container">

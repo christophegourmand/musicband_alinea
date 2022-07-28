@@ -128,12 +128,12 @@
 	
 	if($entityIsDeleted === null || $entityIsDeleted === false)
 	{
-		$messagekey = "entityCanNotBeDeleted";
+		$messageKey = "entityCanNotBeDeleted";
 	} else if ($entityIsDeleted)
 	{
-		$messagekey = "entityHasBeenDeletedWell";
+		$messageKey = "entityHasBeenDeletedWell";
 	}
-	$urlParams .= '&messagekey='.$messagekey;
+	$urlParams .= '&messageKey='.$messageKey;
 
 
 

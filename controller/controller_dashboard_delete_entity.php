@@ -37,12 +37,12 @@
 	
 	if($entityIsDeleted === null || $entityIsDeleted === false)
 	{
-		$messagekey = "entityCanNotBeDeleted";
+		$messageKey = "entityCanNotBeDeleted";
 	} else if ($entityIsDeleted)
 	{
-		$messagekey = "entityHasBeenDeletedWell";
+		$messageKey = "entityHasBeenDeletedWell";
 	}
-	$urlParams .= '&messagekey='.$messagekey;
+	$urlParams .= '&messageKey='.$messageKey;
 	
 	//--- redirect on previous page using prepared params
 	header('Location: '.'/views/pages/page_dashboard.php'.$urlParams);
