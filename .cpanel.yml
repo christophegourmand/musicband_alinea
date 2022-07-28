@@ -3,52 +3,58 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/alineamu/public_html
     
-    # == NECESSARY ONLY THE FIRST TIME: ==
+    #! == create folder `assets` (NECESSARY ONLY THE FIRST TIME): ==
     #- /bin/mkdir $DEPLOYPATH/assets
     
-    # == UPDATE EACH FILE ONLY IF MORE RECENT (-u) ==
+    #! == UPDATE EACH FILE in `audio` to `assets` : ONLY IF MORE RECENT (-u) ==
     # - /bin/cp -Ru assets/audio $DEPLOYPATH/assets # [NOTE: -u for update file if more recent]
       # [NOTE: Line above is deactivated as "/audio/" folder is in ".gitignore" file -> THEREFORE WILL NOT BE PUSHED ON FOLDER /deploy-alinea.git/]
 
-    # == UPDATE EACH FILE ONLY IF MORE RECENT (-u) ==
+    #! == UPDATE EACH FILE in `img` to `assets` : ONLY IF MORE RECENT (-u) ==
     - # /bin/cp -Ru assets/img $DEPLOYPATH/assets # [NOTE: -u for update file if more recent]
       # [NOTE: Line above is deactivated as "/img/" folder is in ".gitignore" file -> THEREFORE WILL NOT BE PUSHED ON FOLDER /deploy-alinea.git/]
     
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `assets/js` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT assets/js $DEPLOYPATH/assets/js # [NOTE: -T to overwrite also folders]
     
-    # == NECESSARY ONLY THE FIRST TIME: ==
+    #! == create folder `assets/css` (NECESSARY ONLY THE FIRST TIME): ==
     #- /bin/mkdir $DEPLOYPATH/assets/css
     
-    # == TO BE SURE THAT IT WILL OVERWRITE : DELETE THEN COPY AGAIN (normally cp overwrite files by default)  ==-
+    #! == DELETE stylesheet files THEN COPY AGAIN (to be sure that it will overwrite) (normally cp overwrite files by default)  ==-
     # - /bin/rm $DEPLOYPATH/assets/css/main_style.css
     - /bin/cp assets/css/main_style.css $DEPLOYPATH/assets/css/main_style.css
     - /bin/cp assets/css/main_style.css.map $DEPLOYPATH/assets/css/main_style.css.map
     - /bin/cp assets/css/main_style.scss $DEPLOYPATH/assets/css/main_style.scss
     
-    # == MUST OVERWRITE ==
+    #! == copy `common_variables.php` (MUST OVERWRITE) ==
     - /bin/cp common_variables.php $DEPLOYPATH/common_variables.php
     
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `controller` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT controller/ $DEPLOYPATH/controller/
     
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `datas` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT datas/ $DEPLOYPATH/datas/
 
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `models` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT models/ $DEPLOYPATH/models/
 
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `debug` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT debug/ $DEPLOYPATH/debug/
     
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy folder `DOCS` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT DOCS/ $DEPLOYPATH/DOCS/
     
-    # == UPDATE THE FILE ONLY IF MORE RECENT (-u) ==
+    #! == copy Google indexation file (UPDATE THE FILE ONLY IF MORE RECENT) (-u) ==
     - /bin/cp -u googled9ba2263786741f0.html $DEPLOYPATH/ # [NOTE: -u for update file if more recent]
     
-    # == MUST OVERWRITE (normally cp overwrite files by default) ==
+    #! == copy file `index.php` (MUST OVERWRITE) (normally cp overwrite files by default) ==
     - /bin/cp index.php $DEPLOYPATH/index.php
+
+    #! == copy file `.env_example.php` (MUST OVERWRITE) (normally cp overwrite files by default) ==
+    - /bin/cp .env_example.php $DEPLOYPATH/.env_example.php
+
+    #! == copy file `chrisdebug.php` (MUST OVERWRITE) (normally cp overwrite files by default) ==
+    - /bin/cp chrisdebug.php $DEPLOYPATH/chrisdebug.php
     
-    # == OVERWRITE EVERYTHING : ==
+    #! == copy all files in folder `views` (OVERWRITE EVERYTHING) : ==
     - /bin/cp -RT views/ $DEPLOYPATH/views/
