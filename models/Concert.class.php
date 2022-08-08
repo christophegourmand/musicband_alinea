@@ -71,6 +71,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'active' => [
 			'fieldnameInSql' => 'active' 
@@ -79,6 +81,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^01]/"
+			, 'max_length' => null
 		],
 		'date' => [
 			'fieldnameInSql' => 'date' 
@@ -87,6 +91,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'date'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^0-9\-\:\,\.]/iu"
+			, 'max_length' => null
 		],
 		'hour_start' => [
 			'fieldnameInSql' => 'hour_start' 
@@ -95,6 +101,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'time'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^0-9\-\:\,\.]/iu"
+			, 'max_length' => null
 		],
 		'hour_end' => [
 			'fieldnameInSql' => 'hour_end' 
@@ -103,6 +111,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'time'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^0-9\-\:\,\.]/iu"
+			, 'max_length' => null
 		],
 		'venue_name' => [
 			'fieldnameInSql' => 'venue_name'
@@ -111,6 +121,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\d\-]/iu"
+			, 'max_length' => 100
 		],
 		'city_name' => [
 			'fieldnameInSql' => 'city_name'
@@ -119,6 +131,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\-]/iu"
+			, 'max_length' => 100
 		],
 		'url_map' => [
 			'fieldnameInSql' => 'url_map' 
@@ -127,6 +141,9 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => null
+			, 'max_length' => 512
 		],
 		'path_image' => [
 			'fieldnameInSql' => 'path_image' 
@@ -135,6 +152,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'description' => [
 			'fieldnameInSql' => 'description' 
@@ -143,6 +162,8 @@ class Concert extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'textarea'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\d\'\_\-\"\,\.\!\?\:\;\&\(\)\€\r\n\/]/iu"
+			, 'max_length' => 16777215
 		]
 	];
 
@@ -256,19 +277,19 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^0-9\-\:\,\.]/iu", $date_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('date', $date_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le date donné contient des caractères autres que letters");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->date = mysqli_real_escape_string($mysqli , $date_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->date = mysqli_real_escape_string($mysqli , $date_given);
-		
-		return true;
 	}
 
 	public function set_hour_start(string $hour_start_given) : bool
@@ -282,19 +303,19 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^0-9\-\:\,\.]/iu", $hour_start_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('hour_start', $hour_start_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le hour_start donné contient des caractères autres que letters");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->hour_start = mysqli_real_escape_string($mysqli , $hour_start_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->hour_start = mysqli_real_escape_string($mysqli , $hour_start_given);
-		
-		return true;
 	}
 	
 	public function set_hour_end(string $hour_end_given) : bool
@@ -308,19 +329,19 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^0-9\-\:\,\.]/iu", $hour_end_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('hour_end', $hour_end_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le hour_end donné contient des caractères autres que letters");
-			;
-		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->hour_end = mysqli_real_escape_string($mysqli , $hour_end_given);
-		
-		return true;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->hour_end = mysqli_real_escape_string($mysqli , $hour_end_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}	
 	}
 
 
@@ -334,21 +355,20 @@ class Concert extends Model implements Modalable {
 			throw new Exception("ERREUR : le venue_name donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
-		
-		// renvoi erreur si comporte des caractères non-autorisés
-		$containBadCharacters = preg_match("/[^\w \-]/iu", $venue_name_given) ? true : false;
 
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('venue_name', $venue_name_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le venue_name donné contient des caractères autres que letters");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->venue_name = mysqli_real_escape_string($mysqli , $venue_name_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->venue_name = mysqli_real_escape_string($mysqli , $venue_name_given);
-		
-		return true;
 	}
 
 	public function set_city_name(string $city_name_given) : bool
@@ -362,20 +382,19 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		// renvoi erreur si comporte des caractères non-autorisés
-		$containBadCharacters = preg_match("/[^\w \-]/iu", $city_name_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('city_name', $city_name_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le city_name donné contient des caractères autres que letters");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->city_name = mysqli_real_escape_string($mysqli , $city_name_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->city_name = mysqli_real_escape_string($mysqli , $city_name_given);
-		
-		return true;
 	}
 	
 	public function set_url_map(string $url_map_given) : bool
@@ -389,15 +408,24 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->url_map = mysqli_real_escape_string($mysqli , $url_map_given);
-			// --- si non :
-			$this->url_map = $url_map_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('url_map', $url_map_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->url_map = mysqli_real_escape_string($mysqli , $url_map_given);
+				// --- si non :
+				$this->url_map = $url_map_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
+
 	}
 
 	public function set_path_image(string $path_image_given) : bool
@@ -411,15 +439,23 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
-			// --- si non :
-			# $this->path_image = $path_image_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+				// --- si non :
+				$this->path_image = $path_image_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_description(string $description_given) : bool
@@ -435,25 +471,19 @@ class Concert extends Model implements Modalable {
 			;
 		}
 		
-		// renvoi erreur si contient des caractères non-autorisés
-		$listOfBadCharacters = [];
-		$containBadCharacters = preg_match("/[^\w \'\_\-\"\,\.\!\?\:\;\&\(\)\r\n\/]/iu", $description_given, $listOfBadCharacters) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('description', $description_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le description donné contient des caractères autres que `letters+digits+spaces+apostrophe+quote+dash+underscore`. Retirer: ".implode(' ', $listOfBadCharacters));
-			;
-		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-
-		//--- REVIEW : vérifier si je dois effectivement nettoyer la description qui est donnée dans le formulaire.
-			// --- si oui :
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
 			$this->description = mysqli_real_escape_string($mysqli , $description_given);
-			// --- si non :
-			# $this->description = $description_given;
-
-		return true;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_datetime_auto() : bool

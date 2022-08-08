@@ -87,6 +87,24 @@
 								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
 							/>
 							<?php break ?>
+						<?php case 'password': ?>
+							<input 
+								type="password" 
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							/>
+							<?php break ?>
+						<?php case 'email': ?>
+							<input 
+								type="email" 
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							/>
+							<?php break ?>
 						<?php case 'url': ?>
 							<input 
 								type="url" 

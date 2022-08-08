@@ -48,6 +48,8 @@ class Group extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'groupname' => [
 			'fieldnameInSql' => 'groupname' 
@@ -56,6 +58,8 @@ class Group extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^w\d]/i"
+			, 'max_length' => 50
 		]
 	];
 
@@ -276,23 +280,28 @@ class Group extends Model implements Modalable {
 	// Setters ----------------------------------
 	
 	// FONCTIONNE
-	public function set_groupname(Mysqli $mysqli , string $given_groupname) : void
+	public function set_groupname(Mysqli $mysqli , string $groupname_given) : void
 	{
 		// --- vérifier que le nom donné n'est pas trop long (dans la DB j'ai mis VARCHAR(50) )
-		if (strlen($given_groupname) > 50)
+		if (strlen($groupname_given) > 50)
 		{
 			throw new Exception("ERREUR : Le nom donné pour le group doit être de 50 caractères max", 1);
 		}
 
 
-		$containBadCharacters = preg_match("/[^\w\_\-]/i", $given_groupname) ? true : false;
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('groupname', $groupname_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le nom de groupe donné contient des caractères autres que letters+digits+dash+underscore");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->groupname = mysqli_real_escape_string($mysqli , $groupname_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		$this->groupname = $given_groupname;
 	}
 
 	// Getters ----------------------------------

@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
 class Model {
 
@@ -277,6 +278,53 @@ class Model {
 
 			//--- attribute `readonly`
 			$arrayOfFieldInfosInEntityClass['attribute_readonly'] = ($arrayOfFieldInfosInEntityClass['canBeSet']) ? '' : 'readonly';
+		}
+
+	}
+
+	/**
+	* this function look in the child class for a static array `$fieldsInfos` , look at the key
+	* corresponding to $fieldname , and then the key 'regex' , and check if the value  had bad characters.
+	* @param 	string 	$fieldName 	: the name of the field (so of the key) to look into $fieldsInfos.
+	* @param 	string	$given_value : the value passed as param of set_xxxxxxxx()
+	* @return 	string|false 	: array if contain bad characters, false if doesn't , null if error.
+	*/
+	public static function fieldContainBadCharacters(string $fieldName , string $given_value)
+	{
+		//--- if no regex defined for that field, we consider that it doesn't contain bad characters.
+		if (!isset(static::$fieldsInfos[$fieldName]['regex']))
+		{
+			return false;
+		}
+
+		if (static::$fieldsInfos[$fieldName]['regex'] === null)
+		{
+			return false;
+		}
+
+		$badCharacters_arr = [];
+		$containBadCharactersResult = preg_match(static::$fieldsInfos[$fieldName]['regex'], $given_value, $badCharacters_arr); //--- 1 if match , 0 if no match , false if error
+
+		if ($containBadCharactersResult === false) // error from preg_match
+		{
+			$errorMessage = "la fonction preg_match() en recherche de mauvais caractères pour le champs ${fieldName} a fait l'objet d'une erreur.";
+			
+			throw new Exception($errorMessage);
+
+			/* NOTE other possibility :
+			redirectOnPageMessageWithCustomMessage($errorMessage,"error");
+			*/
+		}
+
+		if ($containBadCharactersResult === 1) // some bad characters
+		{
+			$badCharacters_str = "caractères interdits détectés dans le champs ${fieldName} : ";
+			$badCharacters_str .= implode('', $badCharacters_arr);
+			return $badCharacters_str;
+			
+		} else if ($containBadCharactersResult === 0) // no bad characters
+		{
+			return false;
 		}
 
 	}

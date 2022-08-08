@@ -3,9 +3,9 @@
 // IMPORTS
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
-
-
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 
 // ======================================================================
 // VARIABLES 
@@ -30,9 +30,7 @@ if ($loginAlreadyExist)
 	//--- close connection before re-routing to another page
 	require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 
-	$messageKey = "userAlreadyExist";
-	header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
-	exit();
+	redirectOnPageMessageWithMessageKey("userAlreadyExist");
 }
 
 // SECTION: create user in database
@@ -51,9 +49,7 @@ $registering_user->create($mysqli);
 //--- close connection before re-routing to another page
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");
 
-$messageKey = "userCreatedSuccessfully";
-header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
-exit();
+redirectOnPageMessageWithMessageKey("userCreatedSuccessfully");
 // - - - - - - -  
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_close.php");

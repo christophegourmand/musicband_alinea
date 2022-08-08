@@ -7,6 +7,8 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 
 // ======================================================================
 // VARIABLES 
@@ -34,18 +36,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'check_credentials')
 			$_SESSION['user_rowid'] = $user->get_rowid();
 			$_SESSION['user_fk_group_rowid'] = $user->get_fk_group_rowid();
 
-			$messageKey = "youAreConnected";
-			header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
-			exit();
+			redirectOnPageMessageWithMessageKey("youAreConnected");
 		}
 		else 
 		{
+			//--- redirect to page_connexion (which we come from)
 			$messageKey = "yourPasswordIsWrong";
-			//--- (v1) 1 tried to redirect to page_message
-			# header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
-			
-			//--- (v2) 1 tried instead to redirect to page_connexion (which we come from)
-			header('Location: '.'/views/pages/page_index.php?messageKey='.urlencode($messageKey));
+			header('Location: '.$_SERVER['HTTP_REFERER'].'?messageKey='.$messageKey);
 			exit();
 		}
 	}

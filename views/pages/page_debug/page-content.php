@@ -275,10 +275,20 @@ use models\music\MusicSong;
 		# var_dump(  $group_of_user_webadmin->get_rightsForThisTable($mysqli, 'concert')  ); // PASS
 
 	//--- TEST : Group >> get_rightsForAllTables()
-		$user_webadmin = new User();
-		$user_webadmin->load($mysqli , 1);
-		$group_of_user_webadmin = $user_webadmin->get_group();
-		var_dump(  $group_of_user_webadmin->get_rightsForAllTables($mysqli)  );
+		# $user_webadmin = new User();
+		# $user_webadmin->load($mysqli , 1);
+		# $group_of_user_webadmin = $user_webadmin->get_group();
+		# var_dump(  $group_of_user_webadmin->get_rightsForAllTables($mysqli)  );
+	
+	//--- TEST : Bio >> setters
+		$bio = new Bio();
+		# $bio->set_firstname("John"); // OK : accepté
+		$bio->set_firstname("John 8"); // FAIL - PAS REFUSÉ
+		# $bio->set_firstname("Jean-Émile"); // resultat ?
+		# var_dump($bio);
+
+		# var_dump(get_defined_vars()); //exit; // DEBUG
+
 
 			?>
 		</pre>

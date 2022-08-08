@@ -70,6 +70,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'active' => [
 			'fieldnameInSql' => 'active'
@@ -78,6 +80,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^01]/"
+			, 'max_length' => null
 		],
 		'fk_album_rowid' => [
 			'fieldnameInSql' => 'fk_album_rowid'
@@ -86,6 +90,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'name' => [
 			'fieldnameInSql' => 'name' 
@@ -94,6 +100,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^w\s\d\-\_\'\"\,\.\;\;\(\)\!\?\]/i"
+			, 'max_length' => 50
 		],
 		'path_image' => [
 			'fieldnameInSql' => 'path_image' 
@@ -102,6 +110,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'path_mp3' => [
 			'fieldnameInSql' => 'path_mp3'
@@ -110,6 +120,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'lyrics' => [
 			'fieldnameInSql' => 'lyrics' 
@@ -118,6 +130,8 @@ class MusicSong extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'textarea'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\d\s\t\'\_\-\"\,\.\!\?\:\;\&\(\)\€\r\n\/\=\+\{\}]/iu"
+			, 'max_length' => 16777215
 		]
 	];
 
@@ -250,20 +264,19 @@ class MusicSong extends Model implements Modalable {
 			;
 		}
 		
-		/* $containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($name_given , "letters+digits+spaces+apostrophe");
-		if (!$containAuthorizedCharactersOnly)
+		$badCharactersResult = parent::fieldContainBadCharacters('name', $name_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le `nom` donné contient des caractères autres que letters+digits+spaces+apostrophe");
-			;
-		} */
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		// NOTE : utiliser l'un au l'autre mais pas les deux
-		// $this->name = $name_given;
-		$this->name = mysqli_real_escape_string($mysqli , $name_given);
-		
-		return true;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->name = mysqli_real_escape_string($mysqli , $name_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 
@@ -278,15 +291,23 @@ class MusicSong extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		// REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
-			// --- si non :
-			# $this->path_image = $path_image_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+				$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+				// --- si non :
+				# $this->path_image = $path_image_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 	
 	
@@ -301,15 +322,23 @@ class MusicSong extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		// REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-			$this->path_mp3 = mysqli_real_escape_string($mysqli , $path_mp3_given);
-			// --- si non :
-			# $this->path_mp3 = $path_mp3_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('path_mp3', $path_mp3_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+				$this->path_mp3 = mysqli_real_escape_string($mysqli , $path_mp3_given);
+				// --- si non :
+				# $this->path_mp3 = $path_mp3_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_lyrics(string $lyrics_given) : bool
@@ -324,27 +353,19 @@ class MusicSong extends Model implements Modalable {
 			;
 		}
 
-		// REVIEW : activer si nécessaire
-		//--- renvoi erreur si contient des caractères non-autorisés
-		$listOfBadCharacters = [];
-		$containBadCharacters = preg_match("/[^\w \'\_\-\"\,\.\!\?\:\;\&\(\)\r\n]/iu", $lyrics_given, $listOfBadCharacters) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('lyrics', $lyrics_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : les paroles données contiennent des caractères autres que `letters+digits+spaces+apostrophe+quote+dash+underscore`. Retirer: ".implode(' ', $listOfBadCharacters));
-			;
-		}
-
-
-
-
-		//--- REVIEW : vérifier si je dois effectivement nettoyer les paroles qui sont données dans le formulaire.
-			// --- si oui :
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
 			$this->lyrics = mysqli_real_escape_string($mysqli , $lyrics_given);
-			// --- si non :
-			# $this->lyrics = $lyrics_given;
-		
-		return true;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 

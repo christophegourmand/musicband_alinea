@@ -82,6 +82,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'active' => [
 			'fieldnameInSql' => 'active' 
@@ -90,6 +92,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^01]/"
+			, 'max_length' => null
 		],
 		'name' => [
 			'fieldnameInSql' => 'name' 
@@ -98,6 +102,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\-]/iu"
+			, 'max_length' => 50
 		],
 		'path_image' => [
 			'fieldnameInSql' => 'path_image' 
@@ -106,6 +112,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_spotify' => [
 			'fieldnameInSql' => 'link_spotify' 
@@ -114,6 +122,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_applemusic' => [
 			'fieldnameInSql' => 'link_applemusic' 
@@ -122,6 +132,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_itunes' => [
 			'fieldnameInSql' => 'link_itunes' 
@@ -130,6 +142,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_deezer' => [
 			'fieldnameInSql' => 'link_deezer' 
@@ -138,6 +152,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_amazonmusic' => [
 			'fieldnameInSql' => 'link_amazonmusic' 
@@ -146,6 +162,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_googleplay' => [
 			'fieldnameInSql' => 'link_googleplay' 
@@ -154,6 +172,8 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'link_tidal' => [
 			'fieldnameInSql' => 'link_tidal' 
@@ -162,7 +182,10 @@ class MusicAlbum extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'url'
 			, 'phpType' => 'string'
-		]		
+			, 'regex' => null
+			, 'max_length' => 512
+		]
+		// TODO : add a field `description` someday.
 	];
 
 	// =========================================
@@ -293,19 +316,19 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-/* 		//--- check if doesnt contain bad characters
-		$containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($name_given , "letters+digits+spaces+apostrophe");
-		if (!$containAuthorizedCharactersOnly)
+		$badCharactersResult = parent::fieldContainBadCharacters('name', $name_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le name donné contient des caractères autres que letters+digits+spaces+apostrophe");
-			;
-		} */
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->name = mysqli_real_escape_string($mysqli , $name_given);
-		
-		return true;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->name = mysqli_real_escape_string($mysqli , $name_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 
@@ -320,15 +343,24 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
-			// --- si non :
-			# $this->path_image = $path_image_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+				// --- si non :
+				$this->path_image = $path_image_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
+
 	}
 
 	public function set_link_spotify(string $link_spotify_given) : bool
@@ -342,15 +374,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_spotify = mysqli_real_escape_string($mysqli , $link_spotify_given);
-			// --- si non :
-			$this->link_spotify = $link_spotify_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_spotify', $link_spotify_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_spotify = mysqli_real_escape_string($mysqli , $link_spotify_given);
+				// --- si non :
+				$this->link_spotify = $link_spotify_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_link_applemusic(string $link_applemusic_given) : bool
@@ -364,15 +404,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_applemusic = mysqli_real_escape_string($mysqli , $link_applemusic_given);
-			// --- si non :
-			$this->link_applemusic = $link_applemusic_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_applemusic', $link_applemusic_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_applemusic = mysqli_real_escape_string($mysqli , $link_applemusic_given);
+				// --- si non :
+				$this->link_applemusic = $link_applemusic_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_link_itunes(string $link_itunes_given) : bool
@@ -386,15 +434,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_itunes = mysqli_real_escape_string($mysqli , $link_itunes_given);
-			// --- si non :
-			$this->link_itunes = $link_itunes_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_itunes', $link_itunes_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_itunes = mysqli_real_escape_string($mysqli , $link_itunes_given);
+				// --- si non :
+				$this->link_itunes = $link_itunes_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
 	public function set_link_deezer(string $link_deezer_given) : bool
@@ -408,15 +464,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_deezer = mysqli_real_escape_string($mysqli , $link_deezer_given);
-			// --- si non :
-			$this->link_deezer = $link_deezer_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_deezer', $link_deezer_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_deezer = mysqli_real_escape_string($mysqli , $link_deezer_given);
+				// --- si non :
+				$this->link_deezer = $link_deezer_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 	
 	public function set_link_amazonmusic(string $link_amazonmusic_given) : bool
@@ -430,15 +494,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_amazonmusic = mysqli_real_escape_string($mysqli , $link_amazonmusic_given);
-			// --- si non :
-			$this->link_amazonmusic = $link_amazonmusic_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_amazonmusic', $link_amazonmusic_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_amazonmusic = mysqli_real_escape_string($mysqli , $link_amazonmusic_given);
+				// --- si non :
+				$this->link_amazonmusic = $link_amazonmusic_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 	
 	public function set_link_googleplay(string $link_googleplay_given) : bool
@@ -452,15 +524,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_googleplay = mysqli_real_escape_string($mysqli , $link_googleplay_given);
-			// --- si non :
-			$this->link_googleplay = $link_googleplay_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_googleplay', $link_googleplay_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_googleplay = mysqli_real_escape_string($mysqli , $link_googleplay_given);
+				// --- si non :
+				$this->link_googleplay = $link_googleplay_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 	
 	public function set_link_tidal(string $link_tidal_given) : bool
@@ -474,15 +554,23 @@ class MusicAlbum extends Model implements Modalable {
 			;
 		}
 		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-		// $this->link_tidal = mysqli_real_escape_string($mysqli , $link_tidal_given);
-			// --- si non :
-			$this->link_tidal = $link_tidal_given;
-		
-		return true;
+		$badCharactersResult = parent::fieldContainBadCharacters('link_tidal', $link_tidal_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
+				// --- si oui :
+			// $this->link_tidal = mysqli_real_escape_string($mysqli , $link_tidal_given);
+				// --- si non :
+				$this->link_tidal = $link_tidal_given;
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 	
 
