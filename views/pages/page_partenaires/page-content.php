@@ -96,4 +96,22 @@
         </div>
 
     </section>
+    <section class="partenaires">
+        <h3 class="partenaires-title"><a class="partenaires-link" href="https://www.jeveuxunartiste.fr">jeveuxunartiste.fr</a></h3>
+        <div class="partenaires-body">
+            <div class="partenaires-body_left-col">
+                <!--
+                <h4 class="partenaires-address">
+                    <a class="partenaires-link" href="mailto:contact@odeva.fr">contact@odeva.fr</a>
+                </h4>
+                -->
+                <h4 class="partenaires-address">
+                    <a class="partenaires-link" href="https://www.jeveuxunartiste.fr" target="_blank">www.jeveuxunartistes.fr</a>
+                </h4>
+            </div>
+            <div class="partenaires-body_right-col">
+                <p class="partenaires-description">Annuaire gratuit d'artistes (chanteurs, musiciens, DJ, cascadeur, clown, cracheur de feu, danseurs, ...) sur toute la France.</p>
+            </div>
+        </div>
+    </section>
 </main>
