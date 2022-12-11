@@ -1,15 +1,16 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class Bio extends Model implements Modalable {
+class Bio extends Model implements Modelable {
 
-	// =========================================
+	// =========================================	
 	// PROPERTIES
 	// =========================================
 	protected int $active;
-	protected string $job;
+	protected string $firstname;
 	protected string $lastname;
 	protected string $path_image;
 	protected string $description;
@@ -28,7 +29,7 @@ class Bio extends Model implements Modalable {
 	public static array $fieldsToPrintInDashboard = [
 		['fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id']
 		, ['fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif']
-		, ['fieldnameInSql' => 'job' , 'fieldnameInHtml' => 'prénom']
+		, ['fieldnameInSql' => 'firstname' , 'fieldnameInHtml' => 'prénom']
 		, ['fieldnameInSql' => 'lastname' , 'fieldnameInHtml' => 'nom']
 	];
 	
@@ -39,7 +40,7 @@ class Bio extends Model implements Modalable {
 	public static array $fieldsToPrintInForm = [
 		[ 'fieldnameInSql' => 'rowid' , 'fieldnameInHtml' => 'id' , 'canBeDisplayed' => true , 'canBeSet' => false ],
 		[ 'fieldnameInSql' => 'active' , 'fieldnameInHtml' => 'actif' , 'canBeDisplayed' => true , 'canBeSet' => true ],
-		[ 'fieldnameInSql' => 'job' , 'fieldnameInHtml' => 'prénom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
+		[ 'fieldnameInSql' => 'firstname' , 'fieldnameInHtml' => 'prénom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
 		[ 'fieldnameInSql' => 'lastname' , 'fieldnameInHtml' => 'nom' , 'canBeDisplayed' => true , 'canBeSet' => true ],
 		[ 'fieldnameInSql' => 'path_image' , 'fieldnameInHtml' => 'chemin vers image' , 'canBeDisplayed' => true , 'canBeSet' => true ],
 		[ 'fieldnameInSql' => 'description' , 'fieldnameInHtml' => 'description' , 'canBeDisplayed' => true , 'canBeSet' => true ],
@@ -72,8 +73,8 @@ class Bio extends Model implements Modalable {
 			, 'phpType' => 'int'
 			, 'regex' => "/[^01]/"
 		],
-		'job' => [
-			'fieldnameInSql' => 'job' 
+		'firstname' => [ // TODO : in database , this fields appears last, so it should be same order here
+			'fieldnameInSql' => 'firstname' 
 			, 'fieldnameInHtml' => 'prénom' 
 			, 'canBeDisplayed' => true 
 			, 'canBeSet' => true
@@ -168,7 +169,7 @@ class Bio extends Model implements Modalable {
 		//--- re-affect datas from rowDatas to each properties of this object
 		$this->rowid = (int) $receivedRowDatas['rowid'];
 		$this->active = (int) $receivedRowDatas['active'];
-		$this->job = (string) $receivedRowDatas['job'];
+		$this->firstname = (string) $receivedRowDatas['firstname'];
 		$this->lastname = (string) $receivedRowDatas['lastname'];
 		$this->path_image = (string) $receivedRowDatas['path_image'];
 		$this->description = (string) $receivedRowDatas['description'];
@@ -209,65 +210,70 @@ class Bio extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
-	public function set_active(int $active_given){
+	public function set_active(int $value_given)
+	{
+		$fieldname = 'active';
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 	}
 
 
-	public function set_job(string $job_given) : bool
+	public function set_firstname(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'firstname';
+
+		parent::checkMaxLength($fieldname, $value_given);
 
 		// renvoyer erreur si taille > 50
-		if (strlen($job_given) > 50)
+		if (strlen($value_given) > 50)
 		{
-			throw new Exception("ERREUR : le job donné est supérieur à 50 caractères, ce qui est la limite.");
-			;
+			throw new Exception("ERREUR : le firstname donné est supérieur à 50 caractères, ce qui est la limite.");
+			
 		}
 
-		$badCharactersResult = parent::fieldContainBadCharacters('job', $job_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('firstname', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->job = mysqli_real_escape_string($mysqli , $job_given);
+			$this->firstname = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
 			//--- if the code didn't go in `return true`, we return false as it means we had a problem
 			return false; 
 		}
-
 	}
 
 
-	public function set_lastname(string $lastname_given) : bool
+	public function set_lastname(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'lastname';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($lastname_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le lastname donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('lastname', $lastname_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('lastname', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->lastname = mysqli_real_escape_string($mysqli , $lastname_given);
+			$this->lastname = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -276,24 +282,25 @@ class Bio extends Model implements Modalable {
 		}	
 	}
 	
-	public function set_path_image(string $path_image_given) : bool
+	public function set_path_image(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_image';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($path_image_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 
-		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			$this->path_image = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -302,26 +309,54 @@ class Bio extends Model implements Modalable {
 		}
 	}
 
-	public function set_description(string $description_given) : bool
+	public function set_description(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'description';
 
 		//--- renvoyer erreur si taille > 16000000 (normally 16777215 max for a MEDIUMTEXT)
 		//LINK - https://www.mysqltutorial.org/mysql-text/
 
-		if (strlen($description_given) > 16000000)
+		if (strlen($value_given) > 16000000)
 		{
 			throw new Exception("ERREUR : le description donné est supérieur à 16000000 caractères, la limite étant 16777215 pour un MEDIUMTEXT.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('description', $description_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('description', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->description = mysqli_real_escape_string($mysqli , $description_given);
+			$this->description = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
+	}
+
+	public function set_job(string $value_given) : bool
+	{
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'job';
+
+		// renvoyer erreur si taille > 50
+		if (strlen($value_given) > 100)
+		{
+			throw new Exception("ERREUR : le job donné est supérieur à 100 caractères, ce qui est la limite.");
+			;
+		}
+
+		$badCharactersResult = parent::fieldContainBadCharacters('job', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->job = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -337,9 +372,9 @@ class Bio extends Model implements Modalable {
 		return $this->active;
 	}
 
-	public function get_job() : string 
+	public function get_firstname() : string 
 	{ 
-		return $this->job; 
+		return $this->firstname; 
 	}
 
 	public function get_lastname() : string 
@@ -355,6 +390,23 @@ class Bio extends Model implements Modalable {
 	public function get_description() : string 
 	{ 
 		return $this->description; 
+	}
+
+	public function get_job() : string 
+	{
+		$job = (isset($this->job) && !is_null($this->job)) ? $this->job : "...";
+		return $job;
+	}
+
+	// SECTION : other getters , non-related to database :
+	public function get_fieldsInfos()
+	{
+		return self::$fieldsInfos;
+	}
+	
+	public function get_fieldsToPrintInForm()
+	{
+		return self::$fieldsToPrintInForm;
 	}
 
 	// =========================================
@@ -382,11 +434,11 @@ class Bio extends Model implements Modalable {
 		}
 
 		//--- si vide, on renvoi une erreur , si non vide , on le prend
-		if (empty($this->job)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
+		if (empty($this->firstname)) // NOTE: here keep `empty` and not `!isset` cause an empty string is set, but we still don't want it !
 		{
-			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `job` n'est pas remplie.");
+			throw new Exception("ERREUR: impossible de créer ou updater un user si la propriété `firstname` n'est pas remplie.");
 		} else {
-			$rowDatas['job'] = $this->job;
+			$rowDatas['firstname'] = $this->firstname;
 		}
 
 		//--- si non vide, on le prend	
