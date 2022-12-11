@@ -1,10 +1,11 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
-
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class User extends Model implements Modalable {
+class User extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -122,6 +123,7 @@ class User extends Model implements Modalable {
 			, 'phpType' => 'int'
 			, 'regex' => "/[^\d]/"
 			, 'max_length' => null
+			// , 'select_options' => Group::getGroupsForDropdown($mysqli)
 		],
 		'date_creation' => [
 			'fieldnameInSql' => 'date_creation' 
@@ -248,36 +250,40 @@ class User extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
-	public function set_active(int $active_given){
+	public function set_active(int $value_given)
+	{
+		$fieldname = 'active';
+	
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 	}
 	
-	public function set_login(string $login_given) : bool
+	public function set_login(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'login';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($login_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le login donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('login', $login_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('login', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->login = mysqli_real_escape_string($mysqli , $login_given);
+			$this->login = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -286,23 +292,24 @@ class User extends Model implements Modalable {
 		}
 	}
 	
-	public function set_pass(string $pass_given){ 
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+	public function set_pass(string $value_given){ 
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'pass';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($pass_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le login donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('pass', $pass_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('pass', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->pass = mysqli_real_escape_string($mysqli , $pass_given);
+			$this->pass = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -312,19 +319,20 @@ class User extends Model implements Modalable {
 	}
 	
 	/**
-	* @param	string		$pass_encoded_given		:must be encoded already using: 
+	* @param	string		$value_given		:must be encoded already using: 
 	* `password_hash($password, PASSWORD_DEFAULT)`
 	*/
-	public function set_pass_encoded(string $pass_encoded_given){ 
+	public function set_pass_encoded(string $value_given){ 
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'pass_encoded';
 
-		$badCharactersResult = parent::fieldContainBadCharacters('pass_encoded', $pass_encoded_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('pass_encoded', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->pass_encoded = mysqli_real_escape_string($mysqli , $pass_encoded_given);
+			$this->pass_encoded = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -334,32 +342,37 @@ class User extends Model implements Modalable {
 	}
 	
 	/**
-	 * @param  int  $fk_group_rowid_given  1:webadmin 2:band_musicians 3:band_staff 4:fan
+	 * @param  int  $value_given  1:webadmin 2:band_musicians 3:band_staff 4:fan
 	 */
-	public function set_fk_group_rowid(int $fk_group_rowid_given){ 
-		if ($fk_group_rowid_given < 0)
+	public function set_fk_group_rowid(int $value_given)
+	{
+		// NOTE : here we don't put `global $mysqli;` as we don't use `mysqli_real_escape_string()` who use $mysqli
+		$fieldname = 'fk_group_rowid';
+
+		if ($value_given < 0)
 		{
 			throw new Exception("l'id du groupe donné ne peut pas être négatif");
 		}
 
-		$this->fk_group_rowid = $fk_group_rowid_given;
+		$this->fk_group_rowid = $value_given;
 	}
 	
-	public function set_email(string $email_given){ 
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+	public function set_email(string $value_given){ 
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'email';
 
-		if (strlen($email_given) > 100)
+		if (strlen($value_given) > 100)
 		{
 			throw new Exception("ERREUR : la longueur de l'email donné ne peut pas excéder 100 caractères.");
 		}
 
-		$badCharactersResult = parent::fieldContainBadCharacters('email', $email_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('email', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->email = mysqli_real_escape_string($mysqli , $email_given);
+			$this->email = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{

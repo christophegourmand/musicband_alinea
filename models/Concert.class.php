@@ -3,10 +3,11 @@
 use FFI\Exception;
 
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class Concert extends Model implements Modalable {
+class Concert extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -253,37 +254,37 @@ class Concert extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
-	public function set_active(int $active_given){
+	public function set_active(int $value_given){
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 	}
 
 
-	public function set_date(string $date_given) : bool
+	public function set_date(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
-		if (strlen($date_given) > 10)
+		if (strlen($value_given) > 10)
 		{
 			throw new Exception("ERREUR : le date donné est supérieur à 10 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('date', $date_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('date', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->date = mysqli_real_escape_string($mysqli , $date_given);
+			$this->date = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -292,24 +293,24 @@ class Concert extends Model implements Modalable {
 		}
 	}
 
-	public function set_hour_start(string $hour_start_given) : bool
+	public function set_hour_start(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
-		if (strlen($hour_start_given) > 10)
+		if (strlen($value_given) > 10)
 		{
 			throw new Exception("ERREUR : le hour_start donné est supérieur à 10 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('hour_start', $hour_start_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('hour_start', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->hour_start = mysqli_real_escape_string($mysqli , $hour_start_given);
+			$this->hour_start = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -318,24 +319,24 @@ class Concert extends Model implements Modalable {
 		}
 	}
 	
-	public function set_hour_end(string $hour_end_given) : bool
+	public function set_hour_end(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
-		if (strlen($hour_end_given) > 10)
+		if (strlen($value_given) > 10)
 		{
 			throw new Exception("ERREUR : le hour_end donné est supérieur à 10 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('hour_end', $hour_end_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('hour_end', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->hour_end = mysqli_real_escape_string($mysqli , $hour_end_given);
+			$this->hour_end = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -345,24 +346,24 @@ class Concert extends Model implements Modalable {
 	}
 
 
-	public function set_venue_name(string $venue_name_given) : bool
+	public function set_venue_name(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
-		if (strlen($venue_name_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le venue_name donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 
-		$badCharactersResult = parent::fieldContainBadCharacters('venue_name', $venue_name_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('venue_name', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->venue_name = mysqli_real_escape_string($mysqli , $venue_name_given);
+			$this->venue_name = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -371,24 +372,24 @@ class Concert extends Model implements Modalable {
 		}
 	}
 
-	public function set_city_name(string $city_name_given) : bool
+	public function set_city_name(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
 
 		// renvoyer erreur si taille > 50
-		if (strlen($city_name_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le city_name donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('city_name', $city_name_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('city_name', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->city_name = mysqli_real_escape_string($mysqli , $city_name_given);
+			$this->city_name = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -397,18 +398,19 @@ class Concert extends Model implements Modalable {
 		}
 	}
 	
-	public function set_url_map(string $url_map_given) : bool
+	public function set_url_map(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'url_map';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($url_map_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le url_map donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('url_map', $url_map_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('url_map', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -416,9 +418,9 @@ class Concert extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->url_map = mysqli_real_escape_string($mysqli , $url_map_given);
+			// $this->url_map = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->url_map = $url_map_given;
+				$this->url_map = $value_given;
 			return true;
 		} else
 		{
@@ -428,18 +430,19 @@ class Concert extends Model implements Modalable {
 
 	}
 
-	public function set_path_image(string $path_image_given) : bool
+	public function set_path_image(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_image';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($path_image_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -447,9 +450,9 @@ class Concert extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			// $this->path_image = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->path_image = $path_image_given;
+				$this->path_image = $value_given;
 			return true;
 		} else
 		{
@@ -458,26 +461,27 @@ class Concert extends Model implements Modalable {
 		}
 	}
 
-	public function set_description(string $description_given) : bool
+	public function set_description(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'description';
 
 		//--- renvoyer erreur si taille > 16000000 (normally 16777215 max for a MEDIUMTEXT)
 		//LINK - https://www.mysqltutorial.org/mysql-text/
 
-		if (strlen($description_given) > 16000000)
+		if (strlen($value_given) > 16000000)
 		{
 			throw new Exception("ERREUR : le description donné est supérieur à 16000000 caractères, la limite étant 16777215 pour un MEDIUMTEXT.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('description', $description_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('description', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->description = mysqli_real_escape_string($mysqli , $description_given);
+			$this->description = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{

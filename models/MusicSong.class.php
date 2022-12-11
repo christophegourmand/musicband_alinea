@@ -1,9 +1,10 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class MusicSong extends Model implements Modalable {
+class MusicSong extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -228,49 +229,54 @@ class MusicSong extends Model implements Modalable {
 
 	//--- Setters ----------------------------------
 
-	public function set_active(int $active_given) :bool
+	public function set_active(int $value_given) :bool
 	{
+		$fieldname = 'active';
+
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 		return true;
 	}
 
-	public function set_fk_album_rowid(int $fk_album_rowid_given) :bool
+	public function set_fk_album_rowid(int $value_given) :bool
 	{
-		if ($fk_album_rowid_given < 0)
+		$fieldname = 'fk_album_rowid';
+
+		if ($value_given < 0)
 		{
-			throw new Exception('ERREUR: $fk_album_rowid_given ne peut pas être négatif');
+			throw new Exception('ERREUR: $value_given ne peut pas être négatif');
 		}
 
-		$this->fk_album_rowid = $fk_album_rowid_given; 
+		$this->fk_album_rowid = $value_given; 
 		return true;
 	}
 
-	public function set_name(string $name_given) : bool
+	public function set_name(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'name';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($name_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le name donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('name', $name_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('name', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->name = mysqli_real_escape_string($mysqli , $name_given);
+			$this->name = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -280,18 +286,19 @@ class MusicSong extends Model implements Modalable {
 	}
 
 
-	public function set_path_image(string $path_image_given) : bool
+	public function set_path_image(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_image';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($path_image_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -299,9 +306,9 @@ class MusicSong extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-				$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+				$this->path_image = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				# $this->path_image = $path_image_given;
+				# $this->path_image = $value_given;
 			return true;
 		} else
 		{
@@ -313,7 +320,8 @@ class MusicSong extends Model implements Modalable {
 	
 	public function set_path_mp3(string $path_mp3_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_mp3';
 
 		// renvoyer erreur si taille > 512
 		if (strlen($path_mp3_given) > 512)
@@ -341,25 +349,26 @@ class MusicSong extends Model implements Modalable {
 		}
 	}
 
-	public function set_lyrics(string $lyrics_given) : bool
+	public function set_lyrics(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
-		
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'lyrics';
+
 		//--- renvoyer erreur si taille > 16000000 (normally 16777215 max for a MEDIUMTEXT)
 		//LINK - https://www.mysqltutorial.org/mysql-text/
-		if (strlen($lyrics_given) > 16000000)
+		if (strlen($value_given) > 16000000)
 		{
 			throw new Exception("ERREUR : les paroles données sont supérieur à 16000000 caractères, la limite étant 16777215 pour un MEDIUMTEXT.");
 			;
 		}
 
-		$badCharactersResult = parent::fieldContainBadCharacters('lyrics', $lyrics_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('lyrics', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->lyrics = mysqli_real_escape_string($mysqli , $lyrics_given);
+			$this->lyrics = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{

@@ -1,11 +1,12 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
-
-require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/MusicSong.class.php");
 
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class MusicAlbum extends Model implements Modalable {
+
+class MusicAlbum extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -291,38 +292,41 @@ class MusicAlbum extends Model implements Modalable {
 		$this->rowid = $given_rowid;
 	} */
 
-	public function set_active(int $active_given) :bool
+	public function set_active(int $value_given) :bool
 	{
+		$fieldname = 'active';
+
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 		return true;
 	}
 	
-	public function set_name(string $name_given) : bool
+	public function set_name(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'name';
 
 		//--- check if size is under limit of sql field
-		if (strlen($name_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le name donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('name', $name_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('name', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
 		} else if ($badCharactersResult === false)
 		{
-			$this->name = mysqli_real_escape_string($mysqli , $name_given);
+			$this->name = mysqli_real_escape_string($mysqli , $value_given);
 			return true;
 		} else
 		{
@@ -332,18 +336,19 @@ class MusicAlbum extends Model implements Modalable {
 	}
 
 
-	public function set_path_image(string $path_image_given) : bool
+	public function set_path_image(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_image';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($path_image_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $path_image_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -351,9 +356,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
+			// $this->path_image = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->path_image = $path_image_given;
+				$this->path_image = $value_given;
 			return true;
 		} else
 		{
@@ -363,18 +368,19 @@ class MusicAlbum extends Model implements Modalable {
 
 	}
 
-	public function set_link_spotify(string $link_spotify_given) : bool
+	public function set_link_spotify(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_spotify';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_spotify_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_spotify donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_spotify', $link_spotify_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_spotify', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -382,9 +388,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_spotify = mysqli_real_escape_string($mysqli , $link_spotify_given);
+			// $this->link_spotify = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_spotify = $link_spotify_given;
+				$this->link_spotify = $value_given;
 			return true;
 		} else
 		{
@@ -393,18 +399,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 
-	public function set_link_applemusic(string $link_applemusic_given) : bool
+	public function set_link_applemusic(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_applemusic';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_applemusic_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_applemusic donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_applemusic', $link_applemusic_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_applemusic', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -412,9 +419,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_applemusic = mysqli_real_escape_string($mysqli , $link_applemusic_given);
+			// $this->link_applemusic = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_applemusic = $link_applemusic_given;
+				$this->link_applemusic = $value_given;
 			return true;
 		} else
 		{
@@ -423,18 +430,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 
-	public function set_link_itunes(string $link_itunes_given) : bool
+	public function set_link_itunes(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_itunes';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_itunes_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_itunes donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_itunes', $link_itunes_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_itunes', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -442,9 +450,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_itunes = mysqli_real_escape_string($mysqli , $link_itunes_given);
+			// $this->link_itunes = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_itunes = $link_itunes_given;
+				$this->link_itunes = $value_given;
 			return true;
 		} else
 		{
@@ -453,18 +461,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 
-	public function set_link_deezer(string $link_deezer_given) : bool
+	public function set_link_deezer(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_deezer';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_deezer_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_deezer donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_deezer', $link_deezer_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_deezer', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -472,9 +481,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_deezer = mysqli_real_escape_string($mysqli , $link_deezer_given);
+			// $this->link_deezer = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_deezer = $link_deezer_given;
+				$this->link_deezer = $value_given;
 			return true;
 		} else
 		{
@@ -483,18 +492,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 	
-	public function set_link_amazonmusic(string $link_amazonmusic_given) : bool
+	public function set_link_amazonmusic(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_amazonmusic';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_amazonmusic_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_amazonmusic donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_amazonmusic', $link_amazonmusic_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_amazonmusic', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -502,9 +512,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_amazonmusic = mysqli_real_escape_string($mysqli , $link_amazonmusic_given);
+			// $this->link_amazonmusic = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_amazonmusic = $link_amazonmusic_given;
+				$this->link_amazonmusic = $value_given;
 			return true;
 		} else
 		{
@@ -513,18 +523,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 	
-	public function set_link_googleplay(string $link_googleplay_given) : bool
+	public function set_link_googleplay(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_googleplay';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_googleplay_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_googleplay donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_googleplay', $link_googleplay_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_googleplay', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -532,9 +543,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_googleplay = mysqli_real_escape_string($mysqli , $link_googleplay_given);
+			// $this->link_googleplay = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_googleplay = $link_googleplay_given;
+				$this->link_googleplay = $value_given;
 			return true;
 		} else
 		{
@@ -543,18 +554,19 @@ class MusicAlbum extends Model implements Modalable {
 		}
 	}
 	
-	public function set_link_tidal(string $link_tidal_given) : bool
+	public function set_link_tidal(string $value_given) : bool
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'link_tidal';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($link_tidal_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le link_tidal donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$badCharactersResult = parent::fieldContainBadCharacters('link_tidal', $link_tidal_given); //--- return string or false
+		$badCharactersResult = parent::fieldContainBadCharacters('link_tidal', $value_given); //--- return string or false
 		if (is_string($badCharactersResult))
 		{
 			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
@@ -562,9 +574,9 @@ class MusicAlbum extends Model implements Modalable {
 		{
 			//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
 				// --- si oui :
-			// $this->link_tidal = mysqli_real_escape_string($mysqli , $link_tidal_given);
+			// $this->link_tidal = mysqli_real_escape_string($mysqli , $value_given);
 				// --- si non :
-				$this->link_tidal = $link_tidal_given;
+				$this->link_tidal = $value_given;
 			return true;
 		} else
 		{
