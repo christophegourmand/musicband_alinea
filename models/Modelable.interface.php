@@ -1,6 +1,5 @@
 <?php
-interface Modalable {
-
+interface Modelable {
 	
 	public function create(Mysqli $mysqli) :bool;
 
