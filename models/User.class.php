@@ -1,10 +1,11 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
-
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Group.class.php");
+
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class User extends Model implements Modalable {
+class User extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -70,6 +71,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'active' => [
 			'fieldnameInSql' => 'active' 
@@ -78,6 +81,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^01]/"
+			, 'max_length' => null
 		],
 		'login' => [
 			'fieldnameInSql' => 'login' 
@@ -86,6 +91,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\d\_\-]/i"
+			, 'max_length' => 50
 		],
 		'pass' => [
 			'fieldnameInSql' => 'pass' 
@@ -94,6 +101,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'password'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\d\-\_\@\!\.\?\&\*\$\,\;\:\+\=]/i"
+			, 'max_length' => 128
 		],
 		'pass_encoded' => [
 			'fieldnameInSql' => 'pass_encoded' 
@@ -102,6 +111,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 128
 		],
 		'fk_group_rowid' => [
 			'fieldnameInSql' => 'fk_group_rowid' 
@@ -110,6 +121,9 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
+			// , 'select_options' => Group::getGroupsForDropdown($mysqli)
 		],
 		'date_creation' => [
 			'fieldnameInSql' => 'date_creation' 
@@ -118,14 +132,18 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'date'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^0-9\-\:\,\.]/iu"
+			, 'max_length' => null
 		],
 		'date_last_connection' => [
-			'fieldnameInSql' => 'date_last_connection' 
-			, 'fieldnameInHtml' => 'dernière connexion le' 
+			'fieldnameInSql' => 'date_last_connection'
+			, 'fieldnameInHtml' => 'dernière connexion le'
 			, 'canBeDisplayed' => true 
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'date'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^0-9\-\:\,\.]/iu"
+			, 'max_length' => null
 		],
 		'email' => [
 			'fieldnameInSql' => 'email' 
@@ -134,6 +152,8 @@ class User extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'email'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\_\-\.\@]/i"
+			, 'max_length' => 100
 		]
 	];
 
@@ -230,108 +250,135 @@ class User extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
-	public function set_active(int $active_given){
-		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
-		{
-			$active_given = 0;
-		} else {
-			$active_given = 1;
-		}
-
-		$this->active = $active_given; 
-	}
-	
-	public function set_login(string $login_given) : bool
+	public function set_active(int $value_given)
 	{
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'active';
+	
+		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
+		if ($value_given <= 0)
+		{
+			$value_given = 0;
+		} else {
+			$value_given = 1;
+		}
+
+		$this->active = $value_given; 
+	}
+	
+	public function set_login(string $value_given) : bool
+	{
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'login';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($login_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le login donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^\w\_\-]/i", $login_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('login', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le login donné contient des caractères autres que letters+digits+dash+underscore");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->login = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->login = mysqli_real_escape_string($mysqli , $login_given);
-		
-		return true;
 	}
 	
-	public function set_pass(string $pass_given){ 
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+	public function set_pass(string $value_given){ 
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'pass';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($pass_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le login donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		$containBadCharacters = preg_match("/[^\w\_\-\@\!\.\?\&\*\$\,\;\:\+\=]/i", $pass_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('pass', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le password donné contient des caractères autres que ceux autorisés");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->pass = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->pass = mysqli_real_escape_string($mysqli , $pass_given);
-	}
-	
-	public function set_pass_encoded(string $pass_encoded_given){ 
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
-		$this->pass_encoded = mysqli_real_escape_string($mysqli , $pass_encoded_given); 
 	}
 	
 	/**
-	 * @param  int  $fk_group_rowid_given  1:webadmin 2:band_musicians 3:band_staff 4:fan
+	* @param	string		$value_given		:must be encoded already using: 
+	* `password_hash($password, PASSWORD_DEFAULT)`
+	*/
+	public function set_pass_encoded(string $value_given){ 
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'pass_encoded';
+
+		$badCharactersResult = parent::fieldContainBadCharacters('pass_encoded', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->pass_encoded = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
+	}
+	
+	/**
+	 * @param  int  $value_given  1:webadmin 2:band_musicians 3:band_staff 4:fan
 	 */
-	public function set_fk_group_rowid(int $fk_group_rowid_given){ 
-		if ($fk_group_rowid_given < 0)
+	public function set_fk_group_rowid(int $value_given)
+	{
+		// NOTE : here we don't put `global $mysqli;` as we don't use `mysqli_real_escape_string()` who use $mysqli
+		$fieldname = 'fk_group_rowid';
+
+		if ($value_given < 0)
 		{
 			throw new Exception("l'id du groupe donné ne peut pas être négatif");
 		}
 
-		$this->fk_group_rowid = $fk_group_rowid_given;
+		$this->fk_group_rowid = $value_given;
 	}
 	
-	public function set_email(string $email_given){ 
-		 global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+	public function set_email(string $value_given){ 
+		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'email';
 
-		if (strlen($email_given) > 100)
+		if (strlen($value_given) > 100)
 		{
 			throw new Exception("ERREUR : la longueur de l'email donné ne peut pas excéder 100 caractères.");
 		}
 
-		# $containAuthorizedCharactersOnly = containOnlyAuthorizedCharacters($email_given , "email");
-
-		$containBadCharacters = preg_match("/[^\w\_\-\.\@]/i", $email_given) ? true : false;
-			/*	\D  pour any non-digit character
-				\_ pour underscore
-				\@ pour arobase 
-				etc
-			*/
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('email', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : l\'email donné contient des caractères autres que letters+digits+dash+underscore+@+.");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->email = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		$this->email = mysqli_real_escape_string($mysqli , $email_given);
 	}
 	
 	//--- Getters ----------------------------------

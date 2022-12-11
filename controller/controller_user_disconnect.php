@@ -7,6 +7,8 @@ session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT']."/views/modules/mysqli_create.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
+
 
 // ======================================================================
 // VARIABLES 
@@ -21,8 +23,7 @@ if ( isset($_SESSION['user_rowid']) && isset($_SESSION['user_login']) && isset($
 	session_unset();
 	session_destroy();
 
-	$messageKey = "youAreDisconnected";
-	header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
+	redirectOnPageMessageWithMessageKey("youAreDisconnected");
 }
 
 

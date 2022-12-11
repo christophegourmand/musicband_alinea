@@ -1,5 +1,5 @@
 
-//* ON 'MOBILE' MODE, DISPLAYING <MENUS PANEL> WHEN BUTTON IS CLICKED.
+// SECTION : ON 'MOBILE' MODE, DISPLAYING <MENUS PANEL> WHEN BUTTON IS CLICKED.
 	var menuToggler_node = document.getElementById("nav_toggler");
 
 	var menusToShow_node = document.getElementById("nav_menus");
@@ -9,10 +9,10 @@
 	});
 
 
-//* DETECTION DE LA HAUTEUR À APPLIQUER AUX MENUS EN TUILE (LORS D'UN RESIZE DE FENETRE)
+// SECTION : DETECTION DE LA HAUTEUR À APPLIQUER AUX MENUS EN TUILE (LORS D'UN RESIZE DE FENETRE)
 function setHeightForMenusTiles() {
-	// (1) OBTAIN WINDOW VISIBLE INNER SIZE,  
-	/* (1) obtenir la taille intérieure la partie visible de la fenêtre, ,  */
+	//--- (1) OBTAIN WINDOW VISIBLE INNER SIZE,  
+	/*--- (1) obtenir la taille intérieure la partie visible de la fenêtre, ,  */
 	var visible_window_interior_size = window.innerHeight;
 			// console.debug(`👁‍🗨 visible_window_interior_size: ${visible_window_interior_size}`); // 🛑 DEBUG
 		
@@ -24,8 +24,8 @@ function setHeightForMenusTiles() {
 	var menuTogglerSize_nbr = menuToggler_node.clientHeight;
 		//console.debug(`👁‍🗨 menuTogglerSize_nbr : ${menuTogglerSize_nbr}`);
 	
-	// (3) THEN SET MENUS-SIZE
-	// (3) en fonction de ça, définir la taille des menus en 'tuiles' pour qu'ils prennents la taille restante.
+	//--- (3) THEN SET MENUS-SIZE
+	//--- (3) en fonction de ça, définir la taille des menus en 'tuiles' pour qu'ils prennents la taille restante.
 	var menusTiles_node = document.querySelector(".nav .nav-menus");
 
 	if (window.innerWidth < 992 ) {
@@ -41,7 +41,7 @@ function setHeightForMenusTiles() {
 		menusTiles_node.style.height = "";
 	}
 	
-	// (4) KEEP TRACK OF HOW MANY TIME THE RESIZE HAPPENED:
+	//--- (4) KEEP TRACK OF HOW MANY TIME THE RESIZE HAPPENED:
 	/* var counterLabel = "COUNT OF RESIZE-EVENT";
 	if (ENV === 'dev') { 
 		console.count(counterLabel);
@@ -52,9 +52,9 @@ function setHeightForMenusTiles() {
 
 window.addEventListener("resize", setHeightForMenusTiles );
 
-//* PREPARATION OF EFFECT 'PER STEPS ========================================================
+// SECTION : PREPARATION OF EFFECT 'PER STEPS ========================================================
 
-// prepare array of 100 values from 0.0 to 1.0
+//--- prepare array of 100 values from 0.0 to 1.0
 arrayOfStepsValuesForBloquote = ()=> {
 	let arrayOfSteps = [];
 	for (let i=1; i<=100 ; i++){
@@ -68,12 +68,13 @@ arrayOfStepsValuesForBloquote = ()=> {
 	console.log(arrayOfStepsValuesForBloquote());
 }  */  
 
-//* ANIMATION ON PAGE 'CONTACT' ========================================================
+// SECTION : ANIMATION ON PAGE 'CONTACT' ========================================================
 
 var listOfSectionsContact_arr = Array.from( document.querySelectorAll(".contact") );
 
 // console.log(listOfSectionsContact_arr[1]);
-/* 
+
+/* NOTE
 	next step: 
 		1- detecter à quel moment une section (par ex: Coppa Studio), est au milieu de l'écran.
 		2- ajouter des events listener
@@ -86,7 +87,7 @@ var listOfSectionsContact_arr = Array.from( document.querySelectorAll(".contact"
 
 // TEST DE << window.scrollY >> ET << addEventListner("scroll", callback(event){...} ); >>
 
-	// j'ajoute un detecteur de scroll sur le document (la page web entière)
+	//--- j'ajoute un detecteur de scroll sur le document (la page web entière)
 	/*
 	document.addEventListener('scroll', function(eventSrollWhoIsHappening){
 		console.log(eventSrollWhoIsHappening); // 🛑 DEBUG

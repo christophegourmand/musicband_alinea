@@ -4,6 +4,7 @@
 * @param    String   $str    string you need to analyse
 * @param    String   $mode   Can be 'letters' , 'digits' , 'letters+digits' , 'letters+digits+dash+underscore' , 'letters+digits+spaces' , 'letters+digits+spaces+apostrophe' , 'password' , 'email'
 * for 'email' : letters+digits+dash+underscore+@
+* @deprecated
 * @return bool
 */
 function containOnlyAuthorizedCharacters(string $str, string $mode="") : bool
@@ -96,15 +97,6 @@ function translateDaysAndMonths (string $date_english_str) : string
 	return $date_french_str;
 }
 
-function popupMessage(string $message)
-{
-	echo(<<<JS
-		<script>
-			
-		</script>	
-	JS);
-}
-
 
 /**
  * getMessageFromKey
@@ -189,6 +181,48 @@ function getMessageFromKey(string $messageKey)
 		return null;
 	}
 }
+
+function getMessageFromCustomMessage(string $customMessage, string $cssclass)
+{
+	$popupMessage_arr = [
+		'cssclass' => $cssclass,
+		'text' => $customMessage 
+	];
+
+	return $popupMessage_arr;
+}
+
+
+/**
+* Will redirect to page_message.php and pass in url
+* a `customMessage` and a `cssclass` so the page 
+* display the message
+* @param	string	$customMessage	:the text message who will be passed 
+* as in url with urlencode.
+* @param	string	$cssclass	:can be 'error' , 'info' or 'success'
+* @see functions/utility_functions.php >> getMessageFromKey()
+* @return void
+*/
+function redirectOnPageMessageWithCustomMessage(string $customMessage, string $cssclass)
+{
+	header('Location: '.'/views/pages/page_message.php?customMessage='.urlencode($customMessage).'&cssclass='.$cssclass);
+	exit();
+}
+
+/**
+* Will redirect to page_message.php and pass a `messageKey` in url.
+* the code in page_message.php will use the key to 
+* get the corresponding message and css class, and display it.
+* @param	string	$messageKey		all keys are listed in functions/utility_functions.php >> getMessageFromKey()
+* @see functions/utility_functions.php >> getMessageFromKey()
+* @return void
+*/
+function redirectOnPageMessageWithMessageKey(string $messageKey)
+{
+	header('Location: '.'/views/pages/page_message.php?messageKey='.$messageKey);
+	exit();
+}
+
 
 ?>
 

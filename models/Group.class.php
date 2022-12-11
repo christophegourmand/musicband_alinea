@@ -1,9 +1,10 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/models/User.class.php");
 
-class Group extends Model implements Modalable {
+class Group extends Model implements Modelable {
 
 	// =========================================
 	// PROPERTIES
@@ -48,6 +49,8 @@ class Group extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
+			, 'max_length' => null
 		],
 		'groupname' => [
 			'fieldnameInSql' => 'groupname' 
@@ -56,6 +59,8 @@ class Group extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^w\d]/i"
+			, 'max_length' => 50
 		]
 	];
 
@@ -276,23 +281,30 @@ class Group extends Model implements Modalable {
 	// Setters ----------------------------------
 	
 	// FONCTIONNE
-	public function set_groupname(Mysqli $mysqli , string $given_groupname) : void
+	public function set_groupname(Mysqli $mysqli , string $value_given) : bool
 	{
+		$fieldname = 'groupname';
+
 		// --- vérifier que le nom donné n'est pas trop long (dans la DB j'ai mis VARCHAR(50) )
-		if (strlen($given_groupname) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : Le nom donné pour le group doit être de 50 caractères max", 1);
 		}
 
 
-		$containBadCharacters = preg_match("/[^\w\_\-]/i", $given_groupname) ? true : false;
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('groupname', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le nom de groupe donné contient des caractères autres que letters+digits+dash+underscore");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->groupname = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		$this->groupname = $given_groupname;
 	}
 
 	// Getters ----------------------------------
@@ -526,6 +538,14 @@ class Group extends Model implements Modalable {
 		return $rightsPerTablename;
 	}
 
+	public static function getGroupsForDropdown(Mysqli $mysqli):array
+	{
+		$receivedRowDatas = self::$dbHandler->loadManyRowsWithCustomFields($mysqli , self::TABLENAME , ['rowid','groupname']);
+
+		// echo '<pre>';  @var_dump($receivedRowDatas);  echo '</pre>';  exit('END');  // DEBUG
+
+		return [];
+	}
 }
 
 

@@ -1,11 +1,12 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/Model.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/models/Modelable.interface.php");
 
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
-class Bio extends Model implements Modalable {
+class Bio extends Model implements Modelable {
 
-	// =========================================
+	// =========================================	
 	// PROPERTIES
 	// =========================================
 	protected int $active;
@@ -61,6 +62,7 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => false
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^\d]/"
 		],
 		'active' => [
 			'fieldnameInSql' => 'active' 
@@ -69,14 +71,18 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'number'
 			, 'phpType' => 'int'
+			, 'regex' => "/[^01]/"
 		],
-		'firstname' => [
+		'firstname' => [ // TODO : in database , this fields appears last, so it should be same order here
 			'fieldnameInSql' => 'firstname' 
 			, 'fieldnameInHtml' => 'prénom' 
 			, 'canBeDisplayed' => true 
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\-]/iu" // NOTE : keep the `space`  between `\w` and `\-`
+			// NOTE: `/[^\w]/iu` let pass `_` , so the only way to let pass only all letters would be `/[^a-zA-Zàèéêëîïôöùûüçà-]/iu`
+			, 'max_length' => 50
 		],
 		'lastname' => [
 			'fieldnameInSql' => 'lastname' 
@@ -85,6 +91,8 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\-]/iu" // NOTE : keep the `space`  between `\w` and `\-`
+			, 'max_length' => 50
 		],
 		'path_image' => [
 			'fieldnameInSql' => 'path_image' 
@@ -93,6 +101,8 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => null
+			, 'max_length' => 512
 		],
 		'description' => [
 			'fieldnameInSql' => 'description' 
@@ -101,6 +111,8 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'textarea'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\'\_\-\"\,\.\!\?\:\;\&\(\)\r\n\/]/iu"
+			, 'max_length' => 16777215
 		],
 		'job' => [
 			'fieldnameInSql' => 'job' 
@@ -109,6 +121,8 @@ class Bio extends Model implements Modalable {
 			, 'canBeSet' => true
 			, 'htmlInputType' => 'text'
 			, 'phpType' => 'string'
+			, 'regex' => "/[^\w\s\.\,\;\'\_\-\"\/]/iu"
+			, 'max_length' => 100
 		]
 	];
 
@@ -196,158 +210,160 @@ class Bio extends Model implements Modalable {
 	// =========================================
 
 	//--- Setters ----------------------------------
-	public function set_active(int $active_given){
+	public function set_active(int $value_given)
+	{
+		$fieldname = 'active';
 		//--- on met la valeur à 0 si celle passée est négative , et on met à 1 si supérieur à 0 (donc 1 et au delà)
-		if ($active_given <= 0)
+		if ($value_given <= 0)
 		{
-			$active_given = 0;
+			$value_given = 0;
 		} else {
-			$active_given = 1;
+			$value_given = 1;
 		}
 
-		$this->active = $active_given; 
+		$this->active = $value_given; 
 	}
 
 
-	public function set_firstname(string $firstname_given) : bool
+	public function set_firstname(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'firstname';
+
+		parent::checkMaxLength($fieldname, $value_given);
 
 		// renvoyer erreur si taille > 50
-		if (strlen($firstname_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le firstname donné est supérieur à 50 caractères, ce qui est la limite.");
-			;
+			
 		}
-		
-		$containBadCharacters = preg_match("/[^\w \-]/iu", $firstname_given) ? true : false;
 
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('firstname', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le firstname donné contient des caractères autres que letters");
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->firstname = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->firstname = mysqli_real_escape_string($mysqli , $firstname_given);
-		
-		return true;
-
 	}
 
 
-	public function set_lastname(string $lastname_given) : bool
+	public function set_lastname(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'lastname';
 
 		// renvoyer erreur si taille > 50
-		if (strlen($lastname_given) > 50)
+		if (strlen($value_given) > 50)
 		{
 			throw new Exception("ERREUR : le lastname donné est supérieur à 50 caractères, ce qui est la limite.");
 			;
 		}
 		
-		// renvoi erreur si comporte des caractères non-autorisés
-		$containBadCharacters = preg_match("/[^\w \-]/iu", $lastname_given) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('lastname', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le lastname donné contient des caractères autres que letters");
-			;
-		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->lastname = mysqli_real_escape_string($mysqli , $lastname_given);
-		
-		return true;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->lastname = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}	
 	}
 	
-	public function set_path_image(string $path_image_given) : bool
+	public function set_path_image(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'path_image';
 
 		// renvoyer erreur si taille > 512
-		if (strlen($path_image_given) > 512)
+		if (strlen($value_given) > 512)
 		{
 			throw new Exception("ERREUR : le path_image donné est supérieur à 512 caractères, ce qui est la limite.");
 			;
 		}
-		
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		//--- REVIEW : vérifier si je dois effectivement nettoyer le lien qui est donné dans le formulaire.
-			// --- si oui :
-			$this->path_image = mysqli_real_escape_string($mysqli , $path_image_given);
-			// --- si non :
-			# $this->path_image = $path_image_given;
-		
-		return true;
+
+		$badCharactersResult = parent::fieldContainBadCharacters('path_image', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
+		{
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->path_image = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
+		}
 	}
 
-	public function set_description(string $description_given) : bool
+	public function set_description(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'description';
 
 		//--- renvoyer erreur si taille > 16000000 (normally 16777215 max for a MEDIUMTEXT)
 		//LINK - https://www.mysqltutorial.org/mysql-text/
 
-		if (strlen($description_given) > 16000000)
+		if (strlen($value_given) > 16000000)
 		{
 			throw new Exception("ERREUR : le description donné est supérieur à 16000000 caractères, la limite étant 16777215 pour un MEDIUMTEXT.");
 			;
 		}
 		
-		// renvoi erreur si contient des caractères non-autorisés
-		$listOfBadCharacters = [];
-		$containBadCharacters = preg_match("/[^\w \'\_\-\"\,\.\!\?\:\;\&\(\)\r\n\/]/iu", $description_given, $listOfBadCharacters) ? true : false;
-
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('description', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR : le description donné contient des caractères autres que `letters+digits+spaces+apostrophe+quote+dash+underscore`. Retirer: ".implode(' ', $listOfBadCharacters));
-			;
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->description = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-	
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-
-		//--- REVIEW : vérifier si je dois effectivement nettoyer la description qui est donnée dans le formulaire.
-			// --- si oui :
-			$this->description = mysqli_real_escape_string($mysqli , $description_given);
-			// --- si non :
-			# $this->description = $description_given;
-
-		return true;
 	}
 
-
-	public function set_job(string $job_given) : bool
+	public function set_job(string $value_given) : bool
 	{
 		global $mysqli; // NOTE: utilisé pour fonction `mysqli_real_escape_string()`
+		$fieldname = 'job';
 
-		// renvoyer erreur si taille > 100
-		if (strlen($job_given) > 100)
+		// renvoyer erreur si taille > 50
+		if (strlen($value_given) > 100)
 		{
 			throw new Exception("ERREUR : le job donné est supérieur à 100 caractères, ce qui est la limite.");
+			;
 		}
-		
-		$listOfBadCharacters = [];
-		$containBadCharacters = preg_match("/[^\w \.\,\'\_\-\"\/]/iu", $job_given) ? true : false;
-		echo '<script>console.info(`line_'.__LINE__.': $listOfBadCharacters`); console.debug('.json_encode($listOfBadCharacters).');</script>'; //! DEBUG)
 
-		if ($containBadCharacters)
+		$badCharactersResult = parent::fieldContainBadCharacters('job', $value_given); //--- return string or false
+		if (is_string($badCharactersResult))
 		{
-			throw new Exception("ERREUR :le job donné contient des caractères autres que letters. Retirer: ".implode(' ', $listOfBadCharacters));
-			
+			redirectOnPageMessageWithCustomMessage($badCharactersResult,"error");
+		} else if ($badCharactersResult === false)
+		{
+			$this->job = mysqli_real_escape_string($mysqli , $value_given);
+			return true;
+		} else
+		{
+			//--- if the code didn't go in `return true`, we return false as it means we had a problem
+			return false; 
 		}
-
-		// TODO : faire les verifications (taille, caracteres, etc, au niveau javascript, pas ici)
-		
-		$this->job = mysqli_real_escape_string($mysqli , $job_given);
-		
-		return true;
 	}
-
 
 	//--- Getters ----------------------------------
 
@@ -377,10 +393,21 @@ class Bio extends Model implements Modalable {
 	}
 
 	public function get_job() : string 
-	{ 
-		return $this->job; 
+	{
+		$job = (isset($this->job) && !is_null($this->job)) ? $this->job : "...";
+		return $job;
 	}
 
+	// SECTION : other getters , non-related to database :
+	public function get_fieldsInfos()
+	{
+		return self::$fieldsInfos;
+	}
+	
+	public function get_fieldsToPrintInForm()
+	{
+		return self::$fieldsToPrintInForm;
+	}
 
 	// =========================================
 	// METHODS

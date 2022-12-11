@@ -5,14 +5,21 @@
 			// TODO : avoir une fonction qui récupère les fields
 			// TODO : avoir une liste d'exclusion dans la classe
 
+			// echo '<pre style="background-color: black;">'; // DEBUG
+			// var_dump($GLOBALS); // DEBUG
+			// echo '</pre>'; // DEBUG
+
+			// dbug('$GLOBALS',$GLOBALS); // DEBUG
+
 			$entityInstance = $GLOBALS['entityInstance']; // TODO plus tard utiliser les noms de tables et de classe de maniere dynamique
 
 			$fieldsInfosFromDb = $entityInstance->fieldsInfosFromDb($mysqli);
-			# var_dump($fieldsInfosFromDb); // DEBUG : car je voudrais un array de champs et leur type (à construire dans la classe)
+			# dbug('fieldsInfosFromDb',$fieldsInfosFromDb); // DEBUG : car je voudrais un array de champs et leur type (à construire dans la classe)
 
 			// REVIEW : DEPRACATED
 			$fieldsInfosForForm_indArr = $entityInstance->fieldsInfosForForm($mysqli);
 			# var_dump($fieldsInfosForForm_indArr); // DEBUG : car je voudrais un array de champs et leur type (à construire dans la classe)
+			# dbug('$fieldsInfosForForm_indArr', $fieldsInfosForForm_indArr);
 
 
 
@@ -81,6 +88,24 @@
 						<?php case 'text': ?>
 							<input 
 								type="text" 
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							/>
+							<?php break ?>
+						<?php case 'password': ?>
+							<input 
+								type="password" 
+								id="<?= $fieldInfos['idAttribute'] ?>" 
+								name="<?= $fieldInfos['nameAttribute'] ?>" 
+								value="<?= $valueOfTheField ?>" 
+								<?= ' '.$fieldInfos['attribute_required'].' '. $fieldInfos['attribute_readonly'] ?>
+							/>
+							<?php break ?>
+						<?php case 'email': ?>
+							<input 
+								type="email" 
 								id="<?= $fieldInfos['idAttribute'] ?>" 
 								name="<?= $fieldInfos['nameAttribute'] ?>" 
 								value="<?= $valueOfTheField ?>" 

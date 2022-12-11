@@ -178,6 +178,74 @@ class DbHandler
 
 		return $retreivedRows;
 	}
+	
+	/**
+	* @param	Mysqli	$mysqli				instance of Mysqli
+	* @param 	string	$tablename			ex: 'user' or 'concert'
+	* @param 	array	$fieldsToSelect		can be ['*'] for all , or ['field1', 'field2', ... ]
+	* @param 	array	$whereConditions	Expected format example: ["id = 5" , "year=1998" , "firstname LIKE 'christ%'"]
+	* @return	array	Return indexed array containing rowDatas of Users or Concerts, etc.
+	*/
+	public function loadManyRowsWithCustomFields(Mysqli $mysqli , string $tablename, array $fieldsToSelect, array $whereConditions = []) : array
+	{
+		//--- prepare part-of-string for fields to select
+			$fieldsToSelect_str = "";
+			//--- prepare case if we have [] or ['*']
+			if(count($fieldsToSelect) === 0 || $fieldsToSelect[0] === '*' )
+			{
+				$fieldsToSelect_str = "*";
+			} 
+			//--- prepare case if we have 1 or more elements, and the first is not '*'
+			else if ( (count($fieldsToSelect) >= 1 && $fieldsToSelect[0] !== '*') )
+			{
+				//--- prepare string if we have ['field1','field2','...'] and we need backtilt before/after each name:
+				$fieldsToSelect_withBacktilts = array_map(  fn($field) => '`'.$field.'`'  ,  $fieldsToSelect  );
+					//--- (info1):here the arrow act as a return. (info2): no `;` at the end of the arrow function
+				
+				//--- now we join the element of ["`field1`" , "`field2`" , "`....`"]
+				$fieldsToSelect_str = implode(" , " , $fieldsToSelect_withBacktilts);
+			}
+
+		//--- prepare sql query : 
+		$sql_query = "SELECT ".$fieldsToSelect_str;
+		$sql_query .= " FROM `".$tablename."`";
+
+		//--- prepare whereConditions 
+		if ( count($whereConditions) > 0 )
+		{
+			$sql_query .= " WHERE "; // important: keep space after WHERE
+
+			$whereConditionsWithParentheses = array_map( fn($value) => "($value)" , $whereConditions);
+			$whereConditionsAsString = implode(' AND ' , $whereConditionsWithParentheses);
+			$sql_query .= $whereConditionsAsString;
+		}
+		
+		//--- in any case , we limit at 1 row only
+		# $sql_query .= " LIMIT 1";
+
+		$mysqli_response = $mysqli->query($sql_query);
+
+		//--- $mysqli_response will be empty if $sql_query was wrong , and will be filled with stats if success.
+
+		if (!$mysqli_response)
+		{
+			throw new Exception("Mysqli n'a pas donné de réponse pour cette requête SQL :\n" . $sql_query);
+		}
+		
+		$retreivedRows = [];
+		$nbrOfRows = $mysqli_response->num_rows;
+		$i = 1;
+		while ($i <= $nbrOfRows)
+		{
+			$rowDatas = $mysqli_response->fetch_assoc(); // REVIEW : it waas possible to use fetch_all() , then no-need a loop`while`.
+			$retreivedRows[] = $rowDatas;
+			$i++;
+		}
+
+		$mysqli_response->free();
+
+		return $retreivedRows;
+	}
 
 
 

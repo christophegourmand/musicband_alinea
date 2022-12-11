@@ -1,6 +1,8 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
+// TODO : CETTE CLASSE DEVRAIT ÊTRE ABSTRAITE POUR NE PAS ÊTRE INSTANCIÉE, (les classes filles pourront)
 class Model {
 
 	/**
@@ -21,7 +23,16 @@ class Model {
 		self::$dbHandler = new DbHandler();
 	}
 
-	//--- pas besoin de setter
+	// ===========================================
+	//               ABSTRACT METHODS (to overwrite in child classes)
+	// ===========================================
+
+	// === NO NEED ANY SETTERS ===
+
+	// ===========================================
+	//               GETTERS
+	// ===========================================
+
 	public function get_tableName() :string
 	{
 		if ( isset($this->tableName) && !empty($this->tableName) )
@@ -60,6 +71,13 @@ class Model {
 			// var_dump($fieldname);
 			// var_dump($value);
 			// var_dump($this->{$fieldname}); //NOTE fonctionne mais ne peut pas accéder car la propriété est sur 'private'
+
+			// if ($fieldname == 'job' || $fieldname == 'firstname')  // DEBUG
+			// 	print "<li>le fieldname $fieldname a la valeur [[ $value ]]</li>"; // DEBUG
+
+			// $reflectorClass = new ReflectionClass($this::class); // DEBUG
+			// print '<h1 style="color:red;">this->properties</h1>'; // DEBUG
+			// echo '<pre>';  @var_dump($reflectorClass->getProperties());  echo '</pre>';  //exit('END');    // DEBUG
 
 			if (property_exists($this , $fieldname)) 
 			{
@@ -281,6 +299,64 @@ class Model {
 
 	}
 
+	/**
+	* this function look in the child class for a static array `$fieldsInfos` , look at the key
+	* corresponding to $fieldname , and then the key 'regex' , and check if the value  had bad characters.
+	* @param 	string 	$fieldName 	: the name of the field (so of the key) to look into $fieldsInfos.
+	* @param 	string	$given_value : the value passed as param of set_xxxxxxxx()
+	* @return 	string|false 	: array if contain bad characters, false if doesn't , null if error.
+	*/
+	public static function fieldContainBadCharacters(string $fieldName , string $given_value)
+	{
+		//--- if no regex defined for that field, we consider that it doesn't contain bad characters.
+		if (!isset(static::$fieldsInfos[$fieldName]['regex']))
+		{
+			return false;
+		}
+
+		if (static::$fieldsInfos[$fieldName]['regex'] === null)
+		{
+			return false;
+		}
+
+		$badCharacters_arr = [];
+		$containBadCharactersResult = preg_match(static::$fieldsInfos[$fieldName]['regex'], $given_value, $badCharacters_arr); //--- 1 if match , 0 if no match , false if error
+
+		if ($containBadCharactersResult === false) // error from preg_match
+		{
+			$errorMessage = "la fonction preg_match() en recherche de mauvais caractères pour le champs ${fieldName} a fait l'objet d'une erreur.";
+			
+			throw new Exception($errorMessage);
+
+			/* NOTE other possibility :
+			redirectOnPageMessageWithCustomMessage($errorMessage,"error");
+			*/
+		}
+
+		if ($containBadCharactersResult === 1) // some bad characters
+		{
+			$badCharacters_str = "caractères interdits détectés dans le champs ${fieldName} : ";
+			$badCharacters_str .= implode('', $badCharacters_arr);
+			return $badCharacters_str;
+			
+		} else if ($containBadCharactersResult === 0) // no bad characters
+		{
+			return false;
+		}
+
+	}
+
+	public static function checkMaxLength(string $fieldname_param, $value_given)
+	{
+		if (  array_key_exists('max_length' , static::$fieldsInfos[$fieldname_param]) && !is_null( static::$fieldsInfos[$fieldname_param]['max_length'] )  )
+		{
+			$max_length = static::$fieldsInfos[$fieldname_param]['max_length'];
+			if (strlen($value_given) > $max_length)
+			{
+				throw new Exception("ERREUR : la valeur pour le champs $fieldname_param donnée est supérieure à  $max_length caractères, ce qui est la limite.");
+			}	
+		}
+	}
 
 }
 

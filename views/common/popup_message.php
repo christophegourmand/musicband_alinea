@@ -9,7 +9,11 @@
 			$GLOBALS['messageKey'] = $_COOKIE['messageKey'];
 		}
 		$popupMessage_arr = getMessageFromKey($GLOBALS['messageKey']);
+	} elseif (isset($_GET['customMessage']) && isset($_GET['cssclass']))
+	{
+		$popupMessage_arr = getMessageFromCustomMessage($_GET['customMessage'], $_GET['cssclass']);
 	}
+
 ?>
 
 <?php if( isset($popupMessage_arr)): ?>
