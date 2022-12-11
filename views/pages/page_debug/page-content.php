@@ -283,9 +283,9 @@ use models\music\MusicSong;
 	//--- TEST : Bio >> setters
 		$bio = new Bio();
 		# $bio->set_firstname("John"); // OK : accepté
-		$bio->set_firstname("John 8"); // FAIL - PAS REFUSÉ
+		$bio->set_firstname("John 8#"); // FAIL - PAS REFUSÉ
 		# $bio->set_firstname("Jean-Émile"); // resultat ?
-		# var_dump($bio);
+		var_dump($bio);
 
 		# var_dump(get_defined_vars()); //exit; // DEBUG
 
