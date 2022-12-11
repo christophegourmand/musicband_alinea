@@ -2,6 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT']."/models/DbHandler.class.php");
 require_once($_SERVER['DOCUMENT_ROOT']."/functions/utility_functions.php");
 
+// TODO : CETTE CLASSE DEVRAIT ÊTRE ABSTRAITE POUR NE PAS ÊTRE INSTANCIÉE, (les classes filles pourront)
 class Model {
 
 	/**
@@ -22,7 +23,16 @@ class Model {
 		self::$dbHandler = new DbHandler();
 	}
 
-	//--- pas besoin de setter
+	// ===========================================
+	//               ABSTRACT METHODS (to overwrite in child classes)
+	// ===========================================
+
+	// === NO NEED ANY SETTERS ===
+
+	// ===========================================
+	//               GETTERS
+	// ===========================================
+
 	public function get_tableName() :string
 	{
 		if ( isset($this->tableName) && !empty($this->tableName) )
@@ -61,6 +71,13 @@ class Model {
 			// var_dump($fieldname);
 			// var_dump($value);
 			// var_dump($this->{$fieldname}); //NOTE fonctionne mais ne peut pas accéder car la propriété est sur 'private'
+
+			// if ($fieldname == 'job' || $fieldname == 'firstname')  // DEBUG
+			// 	print "<li>le fieldname $fieldname a la valeur [[ $value ]]</li>"; // DEBUG
+
+			// $reflectorClass = new ReflectionClass($this::class); // DEBUG
+			// print '<h1 style="color:red;">this->properties</h1>'; // DEBUG
+			// echo '<pre>';  @var_dump($reflectorClass->getProperties());  echo '</pre>';  //exit('END');    // DEBUG
 
 			if (property_exists($this , $fieldname)) 
 			{
@@ -329,6 +346,17 @@ class Model {
 
 	}
 
+	public static function checkMaxLength(string $fieldname_param, $value_given)
+	{
+		if (  array_key_exists('max_length' , static::$fieldsInfos[$fieldname_param]) && !is_null( static::$fieldsInfos[$fieldname_param]['max_length'] )  )
+		{
+			$max_length = static::$fieldsInfos[$fieldname_param]['max_length'];
+			if (strlen($value_given) > $max_length)
+			{
+				throw new Exception("ERREUR : la valeur pour le champs $fieldname_param donnée est supérieure à  $max_length caractères, ce qui est la limite.");
+			}	
+		}
+	}
 
 }
 
