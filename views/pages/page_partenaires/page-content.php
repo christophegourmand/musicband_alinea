@@ -42,7 +42,7 @@
             <h3 class="partenaires-title"><a class="partenaires-link" href="https://www.coppastudio.fr/">Coppa Studio</a></h3>
             <div class="partenaires-body">
                 <div class="partenaires-body_descriptions">
-                    <p class="partenaires-description">Création et production de supports audiovisuels, films d'entreprises, événementiels, spots puoblicitaires, clips musicaux, courts métrages, films associatifs, projets personnels, culturels, institutionnels et mariages.</p>
+                    <p class="partenaires-description">Création et production de supports audiovisuels, films d'entreprises, événementiels, spots publicitaires, clips musicaux, courts métrages, films associatifs, projets personnels, culturels, institutionnels et mariages.</p>
                 </div>
                 <div class="partenaires-body_infos">
                     <h4 class="partenaires-body_info">

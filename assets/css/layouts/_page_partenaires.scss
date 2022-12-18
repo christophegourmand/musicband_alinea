@@ -91,10 +91,8 @@
         }
         
         .partenaires-body_descriptions {
-            @include media("min","md") {
-                margin-left: 1rem;
-                margin-right: 1rem;
-            }
+			margin-left: 1rem;
+			margin-right: 1rem;
 
             .partenaires-description {
                 text-align: left;

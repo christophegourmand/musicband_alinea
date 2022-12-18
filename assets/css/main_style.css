@@ -863,11 +863,9 @@ footer {
   color: var(--theme-color_neutral);
 }
 
-@media screen and (max-width: 992px) {
-  .partenaires .partenaires-body .partenaires-body_descriptions {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
+.partenaires .partenaires-body .partenaires-body_descriptions {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .partenaires .partenaires-body .partenaires-body_descriptions .partenaires-description {
