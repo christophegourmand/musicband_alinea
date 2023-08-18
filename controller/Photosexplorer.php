@@ -5,7 +5,7 @@
 * @baseFolder : beginning of path containing folder of photos 
 * @scannedElements : array of folders, or photos.
 */
-class Photosexplorer {
+class PhotosExplorer {
 
 	// variables d'environnement ---------------------------------------------
 	private $baseFolder;
