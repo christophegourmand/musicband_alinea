@@ -48,44 +48,32 @@ class PhotosExplorer {
 	// methodes ---------------------------------------------
 	public function scanBaseFolder() // : array
 	{
-		//$mainArray = [];
-								//$result_test = [];
-
 		$folderToScan = /*$_SERVER['SERVER_NAME'].*/$this->getBaseFolder();
 
-		$elementsInBaseFolder = scandir($folderToScan);
-								// $result_test["elements"] = $elementsInBaseFolder;
+		$elementsInBaseFolder = scandir($folderToScan, 1);
+                // showInHtml($elementsInBaseFolder, "elementsInBaseFolder"); // DEBUG  
+
 		
-		for ($i=2; $i < count($elementsInBaseFolder) ; $i++) // start at 2, to skip '.' and '..' values.
+		for ($i=0; $i < count($elementsInBaseFolder) ; $i++)
 		{
+            // on skip '.' et '..'
+            if ($elementsInBaseFolder[$i] === '.' || $elementsInBaseFolder[$i] === '..')
+                continue;
+
 			$element = $elementsInBaseFolder[$i];
-								// $result_test["isfolder"][] = $this->isFolder($folderToScan.$element) ? 'is folder' : 'is not folder';
-			
+
 			if ($this->isFolder($folderToScan.$element)) { 
 				$this->scannedElements[$element] = []; // add empty array for contained photos
 			}
 		}
-		
-		// print '<h1>result</h1>';
-		// print_r($this->scannedElements);
 
-		// print '<h1 style="color:red;">FOREACH --------- </h1>';
+
 		foreach ($this->scannedElements as $key_folder => $value_empyArray) {
-			//print_r($key_folder); print "\n";
 			$elementsInSubFolder = scandir($folderToScan.$key_folder);
-			// print "<h1 style='color:orange;'>scandir de $key_folder</h1>";
-			// print_r(  $elementsInSubFolder  );
 
 			foreach ($elementsInSubFolder as $file) { 
-			// (on suppose que c'est un fichier)
-				
-				// print "<h4 style='color:blue;'>scandir de $key_folder</h4>";
-				// print_r($file);
 				
 				if ($this->isPhoto($file)) {
-					//print " :: is photo\n";
-
-					// if filename doesn't contain 'hide' (regardless of caps)
 					if( ! stristr($file, 'HIDE')){
 						$this->scannedElements[$key_folder][] = $file;
 					}
