@@ -2,27 +2,27 @@
 
 
 /**
-* @baseFolder : beginning of path containing folder of photos 
-* @scannedElements : array of folders, or photos.
+* 
 */
 class PhotosExplorer {
 
-	// variables d'environnement ---------------------------------------------
-	private $baseFolder;
-	private $scannedElements;
+	// ==== variables d'environnement =============================================
+
+	/** @var string $baseFolder : beginning of path containing folder of photos */
+    private $baseFolder;
+	
+	/** @var array $scannedElements : array of folders, or photos. */
+    private $scannedElements;
 
 
-	// constructeur ---------------------------------------------
+	// ==== constructeur =======================================================
 	public function __construct(string $baseFolder_arg)
 	{
-		//
 		$this->baseFolder = $baseFolder_arg;
-
-		// initialize array who will contain folders and photos
 		$this->scannedElements = [];
 	}
 
-	// getters - setteurs ---------------------------------------------
+	// ==== getters - setteurs ================================================
 	
 	// recuperer le dossier racine (absolu) pour cette classe
 	public function getBaseFolder () :string
@@ -45,7 +45,7 @@ class PhotosExplorer {
 		return $this->scannedElements;
 	}
 
-	// methodes ---------------------------------------------
+	// ==== methodes ============================================
 	public function scanBaseFolder() // : array
 	{
 		$folderToScan = /*$_SERVER['SERVER_NAME'].*/$this->getBaseFolder();

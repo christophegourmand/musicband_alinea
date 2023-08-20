@@ -20,7 +20,9 @@
 function showInHtml($variableTo_vardump , $wanted_title = "noTitle: but you can put one as second parameter") {
     echo "<h1 style='font-size:2rem; background: orange;'>{$wanted_title}</h1>";
     echo "<br>";
+    echo "<pre style='background:black; color:white;'>";
     var_dump($variableTo_vardump);
+    echo "</pre>";
 }
 
 // ###################################################
