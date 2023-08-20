@@ -69,7 +69,7 @@ class PhotosExplorer {
 
 
 		foreach ($this->scannedElements as $key_folder => $value_empyArray) {
-			$elementsInSubFolder = scandir($folderToScan.$key_folder);
+			$elementsInSubFolder = scandir($folderToScan.$key_folder , 1);
 
 			foreach ($elementsInSubFolder as $file) { 
 				
