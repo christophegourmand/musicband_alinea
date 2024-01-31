@@ -38,6 +38,7 @@ assets/css/main_style.css.map
 *.zip
 *.ini
 *.DS_Store
+link_alinea_www
 
 # == VS-CODE SETTINGS EXCLUSION ==
 .vscode/
