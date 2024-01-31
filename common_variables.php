@@ -5,4 +5,6 @@
 	define('CONST_GROUP_MUSICIANS_ROWID', 2);
 	define('CONST_GROUP_STAFF_ROWID', 3);
 	define('CONST_GROUP_FAN_ROWID', 4);
+
+	define('EMAIL_ADDRESS_ALINEA', "alineamusique@gmail.com");
 ?>
