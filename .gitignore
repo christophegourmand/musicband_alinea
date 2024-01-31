@@ -42,7 +42,7 @@ link_alinea_www
 
 # == VS-CODE SETTINGS EXCLUSION ==
 .vscode/
-.code-workspace
+*.code-workspace
 
 # .env file , contain CREDENTIALS !!
 .env.php
